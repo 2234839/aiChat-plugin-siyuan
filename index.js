@@ -1,16 +1,10369 @@
-(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode(".protyle-custom[data-v-b25bcb10]{padding:2px;border-radius:8px}.input-row[data-v-b25bcb10]{display:flex;align-items:center;justify-content:space-between}.title[data-v-b25bcb10]{font-size:20px;font-weight:700;margin:0 15px 0 0;white-space:nowrap}.editable-wrapper[data-v-b25bcb10]{flex-grow:1;margin-right:15px}textarea[data-v-b25bcb10]{width:100%;height:40px;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;resize:none}textarea[data-v-b25bcb10]:focus{outline:none;border-color:#4a90e2;box-shadow:0 0 0 2px #4a90e233}.submit-button[data-v-b25bcb10]{margin-left:8px;padding:8px 15px;background-color:#4a90e2;color:#fff;border:none;border-radius:4px;font-size:14px;cursor:pointer;transition:background-color .3s ease;white-space:nowrap}.submit-button[data-v-b25bcb10]:hover:not(:disabled){background-color:#357abd}.submit-button[data-v-b25bcb10]:disabled{background-color:#ccc;cursor:not-allowed}.result[data-v-b25bcb10]{margin-top:9px;padding:2px;border-radius:4px;border:1px solid #979595}")),document.head.appendChild(e)}}catch(t){console.error("vite-plugin-css-injected-by-js",t)}})();
-"use strict";var Ii=Object.defineProperty;var Mi=(e,t,n)=>t in e?Ii(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n;var fe=(e,t,n)=>Mi(e,typeof t!="symbol"?t+"":t,n);let oo=ao;const Ct=1,Sn=2,io={owned:null,cleanups:null,context:null,owner:null};var me=null;let ur=null,$i=null,Ke=null,Pe=null,et=null,Wn=0;function ji(e,t){const n=Ke,r=me,s=e.length===0,o=t===void 0?r:t,i=s?io:{owned:null,cleanups:null,context:o?o.context:null,owner:o},l=s?e:()=>e(()=>Kr(()=>sn(i)));me=i,Ke=null;try{return Qn(l,!0)}finally{Ke=n,me=r}}function Nr(e,t,n){const r=lo(e,t,!1,Ct);Wr(r)}function Ui(e,t,n){oo=qi;const r=lo(e,t,!1,Ct);r.user=!0,et?et.push(r):Wr(r)}function Kr(e){if(Ke===null)return e();const t=Ke;Ke=null;try{return e()}finally{Ke=t}}function Hi(e){Ui(()=>Kr(e))}function Li(e,t,n){let r=e.value;return(!e.comparator||!e.comparator(r,t))&&(e.value=t,e.observers&&e.observers.length&&Qn(()=>{for(let s=0;s<e.observers.length;s+=1){const o=e.observers[s],i=ur&&ur.running;i&&ur.disposed.has(o),(i?!o.tState:!o.state)&&(o.pure?Pe.push(o):et.push(o),o.observers&&co(o)),i||(o.state=Ct)}if(Pe.length>1e6)throw Pe=[],new Error},!1)),t}function Wr(e){if(!e.fn)return;sn(e);const t=Wn;Bi(e,e.value,t)}function Bi(e,t,n){let r;const s=me,o=Ke;Ke=me=e;try{r=e.fn(t)}catch(i){return e.pure&&(e.state=Ct,e.owned&&e.owned.forEach(sn),e.owned=null),e.updatedAt=n+1,uo(i)}finally{Ke=o,me=s}(!e.updatedAt||e.updatedAt<=n)&&(e.updatedAt!=null&&"observers"in e?Li(e,r):e.value=r,e.updatedAt=n)}function lo(e,t,n,r=Ct,s){const o={fn:e,state:r,updatedAt:null,owned:null,sources:null,sourceSlots:null,cleanups:null,value:t,owner:me,context:me?me.context:null,pure:n};return me===null||me!==io&&(me.owned?me.owned.push(o):me.owned=[o]),o}function Fn(e){if(e.state===0)return;if(e.state===Sn)return Vr(e);if(e.suspense&&Kr(e.suspense.inFallback))return e.suspense.effects.push(e);const t=[e];for(;(e=e.owner)&&(!e.updatedAt||e.updatedAt<Wn);)e.state&&t.push(e);for(let n=t.length-1;n>=0;n--)if(e=t[n],e.state===Ct)Wr(e);else if(e.state===Sn){const r=Pe;Pe=null,Qn(()=>Vr(e,t[0]),!1),Pe=r}}function Qn(e,t){if(Pe)return e();let n=!1;t||(Pe=[]),et?n=!0:et=[],Wn++;try{const r=e();return ki(n),r}catch(r){n||(et=null),Pe=null,uo(r)}}function ki(e){if(Pe&&(ao(Pe),Pe=null),e)return;const t=et;et=null,t.length&&Qn(()=>oo(t),!1)}function ao(e){for(let t=0;t<e.length;t++)Fn(e[t])}function qi(e){let t,n=0;for(t=0;t<e.length;t++){const r=e[t];r.user?e[n++]=r:Fn(r)}for(t=0;t<n;t++)Fn(e[t])}function Vr(e,t){e.state=0;for(let n=0;n<e.sources.length;n+=1){const r=e.sources[n];if(r.sources){const s=r.state;s===Ct?r!==t&&(!r.updatedAt||r.updatedAt<Wn)&&Fn(r):s===Sn&&Vr(r,t)}}}function co(e){for(let t=0;t<e.observers.length;t+=1){const n=e.observers[t];n.state||(n.state=Sn,n.pure?Pe.push(n):et.push(n),n.observers&&co(n))}}function sn(e){let t;if(e.sources)for(;e.sources.length;){const n=e.sources.pop(),r=e.sourceSlots.pop(),s=n.observers;if(s&&s.length){const o=s.pop(),i=n.observerSlots.pop();r<s.length&&(o.sourceSlots[i]=r,s[r]=o,n.observerSlots[r]=i)}}if(e.tOwned){for(t=e.tOwned.length-1;t>=0;t--)sn(e.tOwned[t]);delete e.tOwned}if(e.owned){for(t=e.owned.length-1;t>=0;t--)sn(e.owned[t]);e.owned=null}if(e.cleanups){for(t=e.cleanups.length-1;t>=0;t--)e.cleanups[t]();e.cleanups=null}e.state=0}function Ki(e){return e instanceof Error?e:new Error(typeof e=="string"?e:"Unknown error",{cause:e})}function uo(e,t=me){throw Ki(e)}function Wi(e,t,n){let r=n.length,s=t.length,o=r,i=0,l=0,a=t[s-1].nextSibling,f=null;for(;i<s||l<o;){if(t[i]===n[l]){i++,l++;continue}for(;t[s-1]===n[o-1];)s--,o--;if(s===i){const d=o<r?l?n[l-1].nextSibling:n[o-l]:a;for(;l<o;)e.insertBefore(n[l++],d)}else if(o===l)for(;i<s;)(!f||!f.has(t[i]))&&t[i].remove(),i++;else if(t[i]===n[o-1]&&n[l]===t[s-1]){const d=t[--s].nextSibling;e.insertBefore(n[l++],t[i++].nextSibling),e.insertBefore(n[--o],d),t[s]=n[o]}else{if(!f){f=new Map;let u=l;for(;u<o;)f.set(n[u],u++)}const d=f.get(t[i]);if(d!=null)if(l<d&&d<o){let u=i,g=1,b;for(;++u<s&&u<o&&!((b=f.get(t[u]))==null||b!==d+g);)g++;if(g>d-l){const x=t[i];for(;l<d;)e.insertBefore(n[l++],x)}else e.replaceChild(n[l++],t[i++])}else i++;else t[i++].remove()}}}function Qi(e,t,n,r={}){let s;return ji(o=>{s=o,t===document?e():Gi(t,e(),t.firstChild?null:void 0,n)},r.owner),()=>{s(),t.textContent=""}}function Gi(e,t,n,r){if(n!==void 0&&!r&&(r=[]),typeof t!="function")return An(e,t,r,n);Nr(s=>An(e,t(),s,n),r)}function An(e,t,n,r,s){for(;typeof n=="function";)n=n();if(t===n)return n;const o=typeof t,i=r!==void 0;if(e=i&&n[0]&&n[0].parentNode||e,o==="string"||o==="number"){if(o==="number"&&(t=t.toString(),t===n))return n;if(i){let l=n[0];l&&l.nodeType===3?l.data!==t&&(l.data=t):l=document.createTextNode(t),n=Ft(e,n,r,l)}else n!==""&&typeof n=="string"?n=e.firstChild.data=t:n=e.textContent=t}else if(t==null||o==="boolean")n=Ft(e,n,r);else{if(o==="function")return Nr(()=>{let l=t();for(;typeof l=="function";)l=l();n=An(e,l,n,r)}),()=>n;if(Array.isArray(t)){const l=[],a=n&&Array.isArray(n);if(wr(l,t,n,s))return Nr(()=>n=An(e,l,n,r,!0)),()=>n;if(l.length===0){if(n=Ft(e,n,r),i)return n}else a?n.length===0?_s(e,l,r):Wi(e,n,l):(n&&Ft(e),_s(e,l));n=l}else if(t.nodeType){if(Array.isArray(n)){if(i)return n=Ft(e,n,r,t);Ft(e,n,null,t)}else n==null||n===""||!e.firstChild?e.appendChild(t):e.replaceChild(t,e.firstChild);n=t}}return n}function wr(e,t,n,r){let s=!1;for(let o=0,i=t.length;o<i;o++){let l=t[o],a=n&&n[e.length],f;if(!(l==null||l===!0||l===!1))if((f=typeof l)=="object"&&l.nodeType)e.push(l);else if(Array.isArray(l))s=wr(e,l,a)||s;else if(f==="function")if(r){for(;typeof l=="function";)l=l();s=wr(e,Array.isArray(l)?l:[l],Array.isArray(a)?a:[a])||s}else e.push(l),s=!0;else{const d=String(l);a&&a.nodeType===3&&a.data===d?e.push(a):e.push(document.createTextNode(d))}}return s}function _s(e,t,n=null){for(let r=0,s=t.length;r<s;r++)e.insertBefore(t[r],n)}function Ft(e,t,n,r){if(n===void 0)return e.textContent="";const s=r||document.createTextNode("");if(t.length){let o=!1;for(let i=t.length-1;i>=0;i--){const l=t[i];if(s!==l){const a=l.parentNode===e;!o&&!i?a?e.replaceChild(s,l):e.insertBefore(s,n):a&&l.remove()}else o=!0}}else e.insertBefore(s,n);return[s]}var fo={env:{}};/**
+(function() {
+  "use strict";
+  try {
+    if (typeof document != "undefined") {
+      var elementStyle = document.createElement("style");
+      elementStyle.appendChild(document.createTextNode(".protyle-custom[data-v-b25bcb10] {\n    padding: 2px;\n    border-radius: 8px;\n}\n.input-row[data-v-b25bcb10] {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n.title[data-v-b25bcb10] {\n    font-size: 20px;\n    font-weight: bold;\n    margin: 0;\n    white-space: nowrap;\n    margin-right: 15px;\n}\n.editable-wrapper[data-v-b25bcb10] {\n    flex-grow: 1;\n    margin-right: 15px;\n}\ntextarea[data-v-b25bcb10] {\n    width: 100%;\n    height: 40px;\n    padding: 8px;\n    border: 1px solid #ccc;\n    border-radius: 4px;\n    font-size: 14px;\n    resize: none;\n}\ntextarea[data-v-b25bcb10]:focus {\n    outline: none;\n    border-color: #4a90e2;\n    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);\n}\n.submit-button[data-v-b25bcb10] {\n    margin-left: 8px;\n    padding: 8px 15px;\n    background-color: #4a90e2;\n    color: white;\n    border: none;\n    border-radius: 4px;\n    font-size: 14px;\n    cursor: pointer;\n    transition: background-color 0.3s ease;\n    white-space: nowrap;\n}\n.submit-button[data-v-b25bcb10]:hover:not(:disabled) {\n    background-color: #357abd;\n}\n.submit-button[data-v-b25bcb10]:disabled {\n    background-color: #cccccc;\n    cursor: not-allowed;\n}\n.result[data-v-b25bcb10] {\n    margin-top: 9px;\n    padding: 2px;\n    border-radius: 4px;\n    border: 1px solid #979595;\n}"));
+      document.head.appendChild(elementStyle);
+    }
+  } catch (e) {
+    console.error("vite-plugin-css-injected-by-js", e);
+  }
+})();
+"use strict";
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+const IS_DEV = false;
+let runEffects = runQueue;
+const STALE = 1;
+const PENDING = 2;
+const UNOWNED = {
+  owned: null,
+  cleanups: null,
+  context: null,
+  owner: null
+};
+var Owner = null;
+let Transition = null;
+let ExternalSourceConfig = null;
+let Listener = null;
+let Updates = null;
+let Effects = null;
+let ExecCount = 0;
+function createRoot(fn, detachedOwner) {
+  const listener = Listener, owner = Owner, unowned = fn.length === 0, current = detachedOwner === void 0 ? owner : detachedOwner, root = unowned ? UNOWNED : {
+    owned: null,
+    cleanups: null,
+    context: current ? current.context : null,
+    owner: current
+  }, updateFn = unowned ? fn : () => fn(() => untrack(() => cleanNode(root)));
+  Owner = root;
+  Listener = null;
+  try {
+    return runUpdates(updateFn, true);
+  } finally {
+    Listener = listener;
+    Owner = owner;
+  }
+}
+function createRenderEffect(fn, value, options) {
+  const c = createComputation(fn, value, false, STALE);
+  updateComputation(c);
+}
+function createEffect(fn, value, options) {
+  runEffects = runUserEffects;
+  const c = createComputation(fn, value, false, STALE);
+  c.user = true;
+  Effects ? Effects.push(c) : updateComputation(c);
+}
+function untrack(fn) {
+  if (Listener === null) return fn();
+  const listener = Listener;
+  Listener = null;
+  try {
+    if (ExternalSourceConfig) ;
+    return fn();
+  } finally {
+    Listener = listener;
+  }
+}
+function onMount(fn) {
+  createEffect(() => untrack(fn));
+}
+function writeSignal(node, value, isComp) {
+  let current = node.value;
+  if (!node.comparator || !node.comparator(current, value)) {
+    node.value = value;
+    if (node.observers && node.observers.length) {
+      runUpdates(() => {
+        for (let i = 0; i < node.observers.length; i += 1) {
+          const o = node.observers[i];
+          const TransitionRunning = Transition && Transition.running;
+          if (TransitionRunning && Transition.disposed.has(o)) ;
+          if (TransitionRunning ? !o.tState : !o.state) {
+            if (o.pure) Updates.push(o);
+            else Effects.push(o);
+            if (o.observers) markDownstream(o);
+          }
+          if (!TransitionRunning) o.state = STALE;
+        }
+        if (Updates.length > 1e6) {
+          Updates = [];
+          if (IS_DEV) ;
+          throw new Error();
+        }
+      }, false);
+    }
+  }
+  return value;
+}
+function updateComputation(node) {
+  if (!node.fn) return;
+  cleanNode(node);
+  const time = ExecCount;
+  runComputation(
+    node,
+    node.value,
+    time
+  );
+}
+function runComputation(node, value, time) {
+  let nextValue;
+  const owner = Owner, listener = Listener;
+  Listener = Owner = node;
+  try {
+    nextValue = node.fn(value);
+  } catch (err) {
+    if (node.pure) {
+      {
+        node.state = STALE;
+        node.owned && node.owned.forEach(cleanNode);
+        node.owned = null;
+      }
+    }
+    node.updatedAt = time + 1;
+    return handleError$1(err);
+  } finally {
+    Listener = listener;
+    Owner = owner;
+  }
+  if (!node.updatedAt || node.updatedAt <= time) {
+    if (node.updatedAt != null && "observers" in node) {
+      writeSignal(node, nextValue);
+    } else node.value = nextValue;
+    node.updatedAt = time;
+  }
+}
+function createComputation(fn, init, pure, state = STALE, options) {
+  const c = {
+    fn,
+    state,
+    updatedAt: null,
+    owned: null,
+    sources: null,
+    sourceSlots: null,
+    cleanups: null,
+    value: init,
+    owner: Owner,
+    context: Owner ? Owner.context : null,
+    pure
+  };
+  if (Owner === null) ;
+  else if (Owner !== UNOWNED) {
+    {
+      if (!Owner.owned) Owner.owned = [c];
+      else Owner.owned.push(c);
+    }
+  }
+  return c;
+}
+function runTop(node) {
+  if (node.state === 0) return;
+  if (node.state === PENDING) return lookUpstream(node);
+  if (node.suspense && untrack(node.suspense.inFallback)) return node.suspense.effects.push(node);
+  const ancestors = [node];
+  while ((node = node.owner) && (!node.updatedAt || node.updatedAt < ExecCount)) {
+    if (node.state) ancestors.push(node);
+  }
+  for (let i = ancestors.length - 1; i >= 0; i--) {
+    node = ancestors[i];
+    if (node.state === STALE) {
+      updateComputation(node);
+    } else if (node.state === PENDING) {
+      const updates = Updates;
+      Updates = null;
+      runUpdates(() => lookUpstream(node, ancestors[0]), false);
+      Updates = updates;
+    }
+  }
+}
+function runUpdates(fn, init) {
+  if (Updates) return fn();
+  let wait = false;
+  if (!init) Updates = [];
+  if (Effects) wait = true;
+  else Effects = [];
+  ExecCount++;
+  try {
+    const res = fn();
+    completeUpdates(wait);
+    return res;
+  } catch (err) {
+    if (!wait) Effects = null;
+    Updates = null;
+    handleError$1(err);
+  }
+}
+function completeUpdates(wait) {
+  if (Updates) {
+    runQueue(Updates);
+    Updates = null;
+  }
+  if (wait) return;
+  const e = Effects;
+  Effects = null;
+  if (e.length) runUpdates(() => runEffects(e), false);
+}
+function runQueue(queue2) {
+  for (let i = 0; i < queue2.length; i++) runTop(queue2[i]);
+}
+function runUserEffects(queue2) {
+  let i, userLength = 0;
+  for (i = 0; i < queue2.length; i++) {
+    const e = queue2[i];
+    if (!e.user) runTop(e);
+    else queue2[userLength++] = e;
+  }
+  for (i = 0; i < userLength; i++) runTop(queue2[i]);
+}
+function lookUpstream(node, ignore) {
+  node.state = 0;
+  for (let i = 0; i < node.sources.length; i += 1) {
+    const source = node.sources[i];
+    if (source.sources) {
+      const state = source.state;
+      if (state === STALE) {
+        if (source !== ignore && (!source.updatedAt || source.updatedAt < ExecCount))
+          runTop(source);
+      } else if (state === PENDING) lookUpstream(source, ignore);
+    }
+  }
+}
+function markDownstream(node) {
+  for (let i = 0; i < node.observers.length; i += 1) {
+    const o = node.observers[i];
+    if (!o.state) {
+      o.state = PENDING;
+      if (o.pure) Updates.push(o);
+      else Effects.push(o);
+      o.observers && markDownstream(o);
+    }
+  }
+}
+function cleanNode(node) {
+  let i;
+  if (node.sources) {
+    while (node.sources.length) {
+      const source = node.sources.pop(), index = node.sourceSlots.pop(), obs = source.observers;
+      if (obs && obs.length) {
+        const n = obs.pop(), s = source.observerSlots.pop();
+        if (index < obs.length) {
+          n.sourceSlots[s] = index;
+          obs[index] = n;
+          source.observerSlots[index] = s;
+        }
+      }
+    }
+  }
+  if (node.tOwned) {
+    for (i = node.tOwned.length - 1; i >= 0; i--) cleanNode(node.tOwned[i]);
+    delete node.tOwned;
+  }
+  if (node.owned) {
+    for (i = node.owned.length - 1; i >= 0; i--) cleanNode(node.owned[i]);
+    node.owned = null;
+  }
+  if (node.cleanups) {
+    for (i = node.cleanups.length - 1; i >= 0; i--) node.cleanups[i]();
+    node.cleanups = null;
+  }
+  node.state = 0;
+}
+function castError(err) {
+  if (err instanceof Error) return err;
+  return new Error(typeof err === "string" ? err : "Unknown error", {
+    cause: err
+  });
+}
+function handleError$1(err, owner = Owner) {
+  const error = castError(err);
+  throw error;
+}
+function reconcileArrays(parentNode, a, b) {
+  let bLength = b.length, aEnd = a.length, bEnd = bLength, aStart = 0, bStart = 0, after = a[aEnd - 1].nextSibling, map2 = null;
+  while (aStart < aEnd || bStart < bEnd) {
+    if (a[aStart] === b[bStart]) {
+      aStart++;
+      bStart++;
+      continue;
+    }
+    while (a[aEnd - 1] === b[bEnd - 1]) {
+      aEnd--;
+      bEnd--;
+    }
+    if (aEnd === aStart) {
+      const node = bEnd < bLength ? bStart ? b[bStart - 1].nextSibling : b[bEnd - bStart] : after;
+      while (bStart < bEnd) parentNode.insertBefore(b[bStart++], node);
+    } else if (bEnd === bStart) {
+      while (aStart < aEnd) {
+        if (!map2 || !map2.has(a[aStart])) a[aStart].remove();
+        aStart++;
+      }
+    } else if (a[aStart] === b[bEnd - 1] && b[bStart] === a[aEnd - 1]) {
+      const node = a[--aEnd].nextSibling;
+      parentNode.insertBefore(b[bStart++], a[aStart++].nextSibling);
+      parentNode.insertBefore(b[--bEnd], node);
+      a[aEnd] = b[bEnd];
+    } else {
+      if (!map2) {
+        map2 = /* @__PURE__ */ new Map();
+        let i = bStart;
+        while (i < bEnd) map2.set(b[i], i++);
+      }
+      const index = map2.get(a[aStart]);
+      if (index != null) {
+        if (bStart < index && index < bEnd) {
+          let i = aStart, sequence = 1, t;
+          while (++i < aEnd && i < bEnd) {
+            if ((t = map2.get(a[i])) == null || t !== index + sequence) break;
+            sequence++;
+          }
+          if (sequence > index - bStart) {
+            const node = a[aStart];
+            while (bStart < index) parentNode.insertBefore(b[bStart++], node);
+          } else parentNode.replaceChild(b[bStart++], a[aStart++]);
+        } else aStart++;
+      } else a[aStart++].remove();
+    }
+  }
+}
+function render(code, element, init, options = {}) {
+  let disposer;
+  createRoot((dispose) => {
+    disposer = dispose;
+    element === document ? code() : insert(element, code(), element.firstChild ? null : void 0, init);
+  }, options.owner);
+  return () => {
+    disposer();
+    element.textContent = "";
+  };
+}
+function insert(parent, accessor, marker, initial) {
+  if (marker !== void 0 && !initial) initial = [];
+  if (typeof accessor !== "function") return insertExpression(parent, accessor, initial, marker);
+  createRenderEffect((current) => insertExpression(parent, accessor(), current, marker), initial);
+}
+function insertExpression(parent, value, current, marker, unwrapArray) {
+  while (typeof current === "function") current = current();
+  if (value === current) return current;
+  const t = typeof value, multi = marker !== void 0;
+  parent = multi && current[0] && current[0].parentNode || parent;
+  if (t === "string" || t === "number") {
+    if (t === "number") {
+      value = value.toString();
+      if (value === current) return current;
+    }
+    if (multi) {
+      let node = current[0];
+      if (node && node.nodeType === 3) {
+        node.data !== value && (node.data = value);
+      } else node = document.createTextNode(value);
+      current = cleanChildren(parent, current, marker, node);
+    } else {
+      if (current !== "" && typeof current === "string") {
+        current = parent.firstChild.data = value;
+      } else current = parent.textContent = value;
+    }
+  } else if (value == null || t === "boolean") {
+    current = cleanChildren(parent, current, marker);
+  } else if (t === "function") {
+    createRenderEffect(() => {
+      let v = value();
+      while (typeof v === "function") v = v();
+      current = insertExpression(parent, v, current, marker);
+    });
+    return () => current;
+  } else if (Array.isArray(value)) {
+    const array = [];
+    const currentArray = current && Array.isArray(current);
+    if (normalizeIncomingArray(array, value, current, unwrapArray)) {
+      createRenderEffect(() => current = insertExpression(parent, array, current, marker, true));
+      return () => current;
+    }
+    if (array.length === 0) {
+      current = cleanChildren(parent, current, marker);
+      if (multi) return current;
+    } else if (currentArray) {
+      if (current.length === 0) {
+        appendNodes(parent, array, marker);
+      } else reconcileArrays(parent, current, array);
+    } else {
+      current && cleanChildren(parent);
+      appendNodes(parent, array);
+    }
+    current = array;
+  } else if (value.nodeType) {
+    if (Array.isArray(current)) {
+      if (multi) return current = cleanChildren(parent, current, marker, value);
+      cleanChildren(parent, current, null, value);
+    } else if (current == null || current === "" || !parent.firstChild) {
+      parent.appendChild(value);
+    } else parent.replaceChild(value, parent.firstChild);
+    current = value;
+  } else ;
+  return current;
+}
+function normalizeIncomingArray(normalized, array, current, unwrap) {
+  let dynamic = false;
+  for (let i = 0, len = array.length; i < len; i++) {
+    let item = array[i], prev = current && current[normalized.length], t;
+    if (item == null || item === true || item === false) ;
+    else if ((t = typeof item) === "object" && item.nodeType) {
+      normalized.push(item);
+    } else if (Array.isArray(item)) {
+      dynamic = normalizeIncomingArray(normalized, item, prev) || dynamic;
+    } else if (t === "function") {
+      if (unwrap) {
+        while (typeof item === "function") item = item();
+        dynamic = normalizeIncomingArray(
+          normalized,
+          Array.isArray(item) ? item : [item],
+          Array.isArray(prev) ? prev : [prev]
+        ) || dynamic;
+      } else {
+        normalized.push(item);
+        dynamic = true;
+      }
+    } else {
+      const value = String(item);
+      if (prev && prev.nodeType === 3 && prev.data === value) normalized.push(prev);
+      else normalized.push(document.createTextNode(value));
+    }
+  }
+  return dynamic;
+}
+function appendNodes(parent, array, marker = null) {
+  for (let i = 0, len = array.length; i < len; i++) parent.insertBefore(array[i], marker);
+}
+function cleanChildren(parent, current, marker, replacement) {
+  if (marker === void 0) return parent.textContent = "";
+  const node = replacement || document.createTextNode("");
+  if (current.length) {
+    let inserted = false;
+    for (let i = current.length - 1; i >= 0; i--) {
+      const el = current[i];
+      if (node !== el) {
+        const isParent = el.parentNode === parent;
+        if (!inserted && !i)
+          isParent ? parent.replaceChild(node, el) : parent.insertBefore(node, marker);
+        else isParent && el.remove();
+      } else inserted = true;
+    }
+  } else parent.insertBefore(node, marker);
+  return [node];
+}
+var define_process_default$4 = { env: {} };
+/**
 * @vue/shared v3.5.13
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
-**//*! #__NO_SIDE_EFFECTS__ */function it(e){const t=Object.create(null);for(const n of e.split(","))t[n]=1;return n=>n in t}const H=fo.env.NODE_ENV!=="production"?Object.freeze({}):{},Ut=fo.env.NODE_ENV!=="production"?Object.freeze([]):[],ae=()=>{},Ji=()=>!1,fn=e=>e.charCodeAt(0)===111&&e.charCodeAt(1)===110&&(e.charCodeAt(2)>122||e.charCodeAt(2)<97),Rn=e=>e.startsWith("onUpdate:"),oe=Object.assign,Qr=(e,t)=>{const n=e.indexOf(t);n>-1&&e.splice(n,1)},Yi=Object.prototype.hasOwnProperty,U=(e,t)=>Yi.call(e,t),S=Array.isArray,wt=e=>Gn(e)==="[object Map]",po=e=>Gn(e)==="[object Set]",A=e=>typeof e=="function",ne=e=>typeof e=="string",vt=e=>typeof e=="symbol",ee=e=>e!==null&&typeof e=="object",Gr=e=>(ee(e)||A(e))&&A(e.then)&&A(e.catch),ho=Object.prototype.toString,Gn=e=>ho.call(e),Jr=e=>Gn(e).slice(8,-1),mo=e=>Gn(e)==="[object Object]",Yr=e=>ne(e)&&e!=="NaN"&&e[0]!=="-"&&""+parseInt(e,10)===e,Zt=it(",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted"),zi=it("bind,cloak,else-if,else,for,html,if,model,on,once,pre,show,slot,text,memo"),Jn=e=>{const t=Object.create(null);return n=>t[n]||(t[n]=e(n))},Xi=/-(\w)/g,Ae=Jn(e=>e.replace(Xi,(t,n)=>n?n.toUpperCase():"")),Zi=/\B([A-Z])/g,bt=Jn(e=>e.replace(Zi,"-$1").toLowerCase()),Yn=Jn(e=>e.charAt(0).toUpperCase()+e.slice(1)),Ot=Jn(e=>e?`on${Yn(e)}`:""),gt=(e,t)=>!Object.is(e,t),Mt=(e,...t)=>{for(let n=0;n<e.length;n++)e[n](...t)},In=(e,t,n,r=!1)=>{Object.defineProperty(e,t,{configurable:!0,enumerable:!1,writable:r,value:n})},Dr=e=>{const t=parseFloat(e);return isNaN(t)?e:t};let vs;const dn=()=>vs||(vs=typeof globalThis<"u"?globalThis:typeof self<"u"?self:typeof window<"u"?window:typeof global<"u"?global:{});function zr(e){if(S(e)){const t={};for(let n=0;n<e.length;n++){const r=e[n],s=ne(r)?rl(r):zr(r);if(s)for(const o in s)t[o]=s[o]}return t}else if(ne(e)||ee(e))return e}const el=/;(?![^(]*\))/g,tl=/:([^]+)/,nl=/\/\*[^]*?\*\//g;function rl(e){const t={};return e.replace(nl,"").split(el).forEach(n=>{if(n){const r=n.split(tl);r.length>1&&(t[r[0].trim()]=r[1].trim())}}),t}function zn(e){let t="";if(ne(e))t=e;else if(S(e))for(let n=0;n<e.length;n++){const r=zn(e[n]);r&&(t+=r+" ")}else if(ee(e))for(const n in e)e[n]&&(t+=n+" ");return t.trim()}const sl="html,body,base,head,link,meta,style,title,address,article,aside,footer,header,hgroup,h1,h2,h3,h4,h5,h6,nav,section,div,dd,dl,dt,figcaption,figure,picture,hr,img,li,main,ol,p,pre,ul,a,b,abbr,bdi,bdo,br,cite,code,data,dfn,em,i,kbd,mark,q,rp,rt,ruby,s,samp,small,span,strong,sub,sup,time,u,var,wbr,area,audio,map,track,video,embed,object,param,source,canvas,script,noscript,del,ins,caption,col,colgroup,table,thead,tbody,td,th,tr,button,datalist,fieldset,form,input,label,legend,meter,optgroup,option,output,progress,select,textarea,details,dialog,menu,summary,template,blockquote,iframe,tfoot",ol="svg,animate,animateMotion,animateTransform,circle,clipPath,color-profile,defs,desc,discard,ellipse,feBlend,feColorMatrix,feComponentTransfer,feComposite,feConvolveMatrix,feDiffuseLighting,feDisplacementMap,feDistantLight,feDropShadow,feFlood,feFuncA,feFuncB,feFuncG,feFuncR,feGaussianBlur,feImage,feMerge,feMergeNode,feMorphology,feOffset,fePointLight,feSpecularLighting,feSpotLight,feTile,feTurbulence,filter,foreignObject,g,hatch,hatchpath,image,line,linearGradient,marker,mask,mesh,meshgradient,meshpatch,meshrow,metadata,mpath,path,pattern,polygon,polyline,radialGradient,rect,set,solidcolor,stop,switch,symbol,text,textPath,title,tspan,unknown,use,view",il="annotation,annotation-xml,maction,maligngroup,malignmark,math,menclose,merror,mfenced,mfrac,mfraction,mglyph,mi,mlabeledtr,mlongdiv,mmultiscripts,mn,mo,mover,mpadded,mphantom,mprescripts,mroot,mrow,ms,mscarries,mscarry,msgroup,msline,mspace,msqrt,msrow,mstack,mstyle,msub,msubsup,msup,mtable,mtd,mtext,mtr,munder,munderover,none,semantics",ll=it(sl),al=it(ol),cl=it(il),ul="itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,readonly",fl=it(ul);function go(e){return!!e||e===""}const bo=e=>!!(e&&e.__v_isRef===!0),_o=e=>ne(e)?e:e==null?"":S(e)||ee(e)&&(e.toString===ho||!A(e.toString))?bo(e)?_o(e.value):JSON.stringify(e,vo,2):String(e),vo=(e,t)=>bo(t)?vo(e,t.value):wt(t)?{[`Map(${t.size})`]:[...t.entries()].reduce((n,[r,s],o)=>(n[fr(r,o)+" =>"]=s,n),{})}:po(t)?{[`Set(${t.size})`]:[...t.values()].map(n=>fr(n))}:vt(t)?fr(t):ee(t)&&!S(t)&&!mo(t)?String(t):t,fr=(e,t="")=>{var n;return vt(e)?`Symbol(${(n=e.description)!=null?n:t})`:e};var te={env:{DEV_MODE:"production"}};function Ge(e,...t){console.warn(`[Vue warn] ${e}`,...t)}let De;class dl{constructor(t=!1){this.detached=t,this._active=!0,this.effects=[],this.cleanups=[],this._isPaused=!1,this.parent=De,!t&&De&&(this.index=(De.scopes||(De.scopes=[])).push(this)-1)}get active(){return this._active}pause(){if(this._active){this._isPaused=!0;let t,n;if(this.scopes)for(t=0,n=this.scopes.length;t<n;t++)this.scopes[t].pause();for(t=0,n=this.effects.length;t<n;t++)this.effects[t].pause()}}resume(){if(this._active&&this._isPaused){this._isPaused=!1;let t,n;if(this.scopes)for(t=0,n=this.scopes.length;t<n;t++)this.scopes[t].resume();for(t=0,n=this.effects.length;t<n;t++)this.effects[t].resume()}}run(t){if(this._active){const n=De;try{return De=this,t()}finally{De=n}}else te.env.NODE_ENV!=="production"&&Ge("cannot run an inactive effect scope.")}on(){De=this}off(){De=this.parent}stop(t){if(this._active){this._active=!1;let n,r;for(n=0,r=this.effects.length;n<r;n++)this.effects[n].stop();for(this.effects.length=0,n=0,r=this.cleanups.length;n<r;n++)this.cleanups[n]();if(this.cleanups.length=0,this.scopes){for(n=0,r=this.scopes.length;n<r;n++)this.scopes[n].stop(!0);this.scopes.length=0}if(!this.detached&&this.parent&&!t){const s=this.parent.scopes.pop();s&&s!==this&&(this.parent.scopes[this.index]=s,s.index=this.index)}this.parent=void 0}}}function pl(){return De}let L;const dr=new WeakSet;class Eo{constructor(t){this.fn=t,this.deps=void 0,this.depsTail=void 0,this.flags=5,this.next=void 0,this.cleanup=void 0,this.scheduler=void 0,De&&De.active&&De.effects.push(this)}pause(){this.flags|=64}resume(){this.flags&64&&(this.flags&=-65,dr.has(this)&&(dr.delete(this),this.trigger()))}notify(){this.flags&2&&!(this.flags&32)||this.flags&8||Oo(this)}run(){if(!(this.flags&1))return this.fn();this.flags|=2,Es(this),No(this);const t=L,n=Re;L=this,Re=!0;try{return this.fn()}finally{te.env.NODE_ENV!=="production"&&L!==this&&Ge("Active effect was not restored correctly - this is likely a Vue internal bug."),Vo(this),L=t,Re=n,this.flags&=-3}}stop(){if(this.flags&1){for(let t=this.deps;t;t=t.nextDep)es(t);this.deps=this.depsTail=void 0,Es(this),this.onStop&&this.onStop(),this.flags&=-2}}trigger(){this.flags&64?dr.add(this):this.scheduler?this.scheduler():this.runIfDirty()}runIfDirty(){xr(this)&&this.run()}get dirty(){return xr(this)}}let yo=0,en,tn;function Oo(e,t=!1){if(e.flags|=8,t){e.next=tn,tn=e;return}e.next=en,en=e}function Xr(){yo++}function Zr(){if(--yo>0)return;if(tn){let t=tn;for(tn=void 0;t;){const n=t.next;t.next=void 0,t.flags&=-9,t=n}}let e;for(;en;){let t=en;for(en=void 0;t;){const n=t.next;if(t.next=void 0,t.flags&=-9,t.flags&1)try{t.trigger()}catch(r){e||(e=r)}t=n}}if(e)throw e}function No(e){for(let t=e.deps;t;t=t.nextDep)t.version=-1,t.prevActiveLink=t.dep.activeLink,t.dep.activeLink=t}function Vo(e){let t,n=e.depsTail,r=n;for(;r;){const s=r.prevDep;r.version===-1?(r===n&&(n=s),es(r),hl(r)):t=r,r.dep.activeLink=r.prevActiveLink,r.prevActiveLink=void 0,r=s}e.deps=t,e.depsTail=n}function xr(e){for(let t=e.deps;t;t=t.nextDep)if(t.dep.version!==t.version||t.dep.computed&&(wo(t.dep.computed)||t.dep.version!==t.version))return!0;return!!e._dirty}function wo(e){if(e.flags&4&&!(e.flags&16)||(e.flags&=-17,e.globalVersion===on))return;e.globalVersion=on;const t=e.dep;if(e.flags|=2,t.version>0&&!e.isSSR&&e.deps&&!xr(e)){e.flags&=-3;return}const n=L,r=Re;L=e,Re=!0;try{No(e);const s=e.fn(e._value);(t.version===0||gt(s,e._value))&&(e._value=s,t.version++)}catch(s){throw t.version++,s}finally{L=n,Re=r,Vo(e),e.flags&=-3}}function es(e,t=!1){const{dep:n,prevSub:r,nextSub:s}=e;if(r&&(r.nextSub=s,e.prevSub=void 0),s&&(s.prevSub=r,e.nextSub=void 0),te.env.NODE_ENV!=="production"&&n.subsHead===e&&(n.subsHead=s),n.subs===e&&(n.subs=r,!r&&n.computed)){n.computed.flags&=-5;for(let o=n.computed.deps;o;o=o.nextDep)es(o,!0)}!t&&!--n.sc&&n.map&&n.map.delete(n.key)}function hl(e){const{prevDep:t,nextDep:n}=e;t&&(t.nextDep=n,e.prevDep=void 0),n&&(n.prevDep=t,e.nextDep=void 0)}let Re=!0;const Do=[];function lt(){Do.push(Re),Re=!1}function at(){const e=Do.pop();Re=e===void 0?!0:e}function Es(e){const{cleanup:t}=e;if(e.cleanup=void 0,t){const n=L;L=void 0;try{t()}finally{L=n}}}let on=0;class ml{constructor(t,n){this.sub=t,this.dep=n,this.version=n.version,this.nextDep=this.prevDep=this.nextSub=this.prevSub=this.prevActiveLink=void 0}}class ts{constructor(t){this.computed=t,this.version=0,this.activeLink=void 0,this.subs=void 0,this.map=void 0,this.key=void 0,this.sc=0,te.env.NODE_ENV!=="production"&&(this.subsHead=void 0)}track(t){if(!L||!Re||L===this.computed)return;let n=this.activeLink;if(n===void 0||n.sub!==L)n=this.activeLink=new ml(L,this),L.deps?(n.prevDep=L.depsTail,L.depsTail.nextDep=n,L.depsTail=n):L.deps=L.depsTail=n,xo(n);else if(n.version===-1&&(n.version=this.version,n.nextDep)){const r=n.nextDep;r.prevDep=n.prevDep,n.prevDep&&(n.prevDep.nextDep=r),n.prevDep=L.depsTail,n.nextDep=void 0,L.depsTail.nextDep=n,L.depsTail=n,L.deps===n&&(L.deps=r)}return te.env.NODE_ENV!=="production"&&L.onTrack&&L.onTrack(oe({effect:L},t)),n}trigger(t){this.version++,on++,this.notify(t)}notify(t){Xr();try{if(te.env.NODE_ENV!=="production")for(let n=this.subsHead;n;n=n.nextSub)n.sub.onTrigger&&!(n.sub.flags&8)&&n.sub.onTrigger(oe({effect:n.sub},t));for(let n=this.subs;n;n=n.prevSub)n.sub.notify()&&n.sub.dep.notify()}finally{Zr()}}}function xo(e){if(e.dep.sc++,e.sub.flags&4){const t=e.dep.computed;if(t&&!e.dep.subs){t.flags|=20;for(let r=t.deps;r;r=r.nextDep)xo(r)}const n=e.dep.subs;n!==e&&(e.prevSub=n,n&&(n.nextSub=e)),te.env.NODE_ENV!=="production"&&e.dep.subsHead===void 0&&(e.dep.subsHead=e),e.dep.subs=e}}const Pr=new WeakMap,Dt=Symbol(te.env.NODE_ENV!=="production"?"Object iterate":""),Tr=Symbol(te.env.NODE_ENV!=="production"?"Map keys iterate":""),ln=Symbol(te.env.NODE_ENV!=="production"?"Array iterate":"");function le(e,t,n){if(Re&&L){let r=Pr.get(e);r||Pr.set(e,r=new Map);let s=r.get(n);s||(r.set(n,s=new ts),s.map=r,s.key=n),te.env.NODE_ENV!=="production"?s.track({target:e,type:t,key:n}):s.track()}}function ke(e,t,n,r,s,o){const i=Pr.get(e);if(!i){on++;return}const l=a=>{a&&(te.env.NODE_ENV!=="production"?a.trigger({target:e,type:t,key:n,newValue:r,oldValue:s,oldTarget:o}):a.trigger())};if(Xr(),t==="clear")i.forEach(l);else{const a=S(e),f=a&&Yr(n);if(a&&n==="length"){const d=Number(r);i.forEach((u,g)=>{(g==="length"||g===ln||!vt(g)&&g>=d)&&l(u)})}else switch((n!==void 0||i.has(void 0))&&l(i.get(n)),f&&l(i.get(ln)),t){case"add":a?f&&l(i.get("length")):(l(i.get(Dt)),wt(e)&&l(i.get(Tr)));break;case"delete":a||(l(i.get(Dt)),wt(e)&&l(i.get(Tr)));break;case"set":wt(e)&&l(i.get(Dt));break}}Zr()}function At(e){const t=I(e);return t===e?t:(le(t,"iterate",ln),Oe(e)?t:t.map(ge))}function ns(e){return le(e=I(e),"iterate",ln),e}const gl={__proto__:null,[Symbol.iterator](){return pr(this,Symbol.iterator,ge)},concat(...e){return At(this).concat(...e.map(t=>S(t)?At(t):t))},entries(){return pr(this,"entries",e=>(e[1]=ge(e[1]),e))},every(e,t){return ze(this,"every",e,t,void 0,arguments)},filter(e,t){return ze(this,"filter",e,t,n=>n.map(ge),arguments)},find(e,t){return ze(this,"find",e,t,ge,arguments)},findIndex(e,t){return ze(this,"findIndex",e,t,void 0,arguments)},findLast(e,t){return ze(this,"findLast",e,t,ge,arguments)},findLastIndex(e,t){return ze(this,"findLastIndex",e,t,void 0,arguments)},forEach(e,t){return ze(this,"forEach",e,t,void 0,arguments)},includes(...e){return hr(this,"includes",e)},indexOf(...e){return hr(this,"indexOf",e)},join(e){return At(this).join(e)},lastIndexOf(...e){return hr(this,"lastIndexOf",e)},map(e,t){return ze(this,"map",e,t,void 0,arguments)},pop(){return Gt(this,"pop")},push(...e){return Gt(this,"push",e)},reduce(e,...t){return ys(this,"reduce",e,t)},reduceRight(e,...t){return ys(this,"reduceRight",e,t)},shift(){return Gt(this,"shift")},some(e,t){return ze(this,"some",e,t,void 0,arguments)},splice(...e){return Gt(this,"splice",e)},toReversed(){return At(this).toReversed()},toSorted(e){return At(this).toSorted(e)},toSpliced(...e){return At(this).toSpliced(...e)},unshift(...e){return Gt(this,"unshift",e)},values(){return pr(this,"values",ge)}};function pr(e,t,n){const r=ns(e),s=r[t]();return r!==e&&!Oe(e)&&(s._next=s.next,s.next=()=>{const o=s._next();return o.value&&(o.value=n(o.value)),o}),s}const bl=Array.prototype;function ze(e,t,n,r,s,o){const i=ns(e),l=i!==e&&!Oe(e),a=i[t];if(a!==bl[t]){const u=a.apply(e,o);return l?ge(u):u}let f=n;i!==e&&(l?f=function(u,g){return n.call(this,ge(u),g,e)}:n.length>2&&(f=function(u,g){return n.call(this,u,g,e)}));const d=a.call(i,f,r);return l&&s?s(d):d}function ys(e,t,n,r){const s=ns(e);let o=n;return s!==e&&(Oe(e)?n.length>3&&(o=function(i,l,a){return n.call(this,i,l,a,e)}):o=function(i,l,a){return n.call(this,i,ge(l),a,e)}),s[t](o,...r)}function hr(e,t,n){const r=I(e);le(r,"iterate",ln);const s=r[t](...n);return(s===-1||s===!1)&&Mn(n[0])?(n[0]=I(n[0]),r[t](...n)):s}function Gt(e,t,n=[]){lt(),Xr();const r=I(e)[t].apply(e,n);return Zr(),at(),r}const _l=it("__proto__,__v_isRef,__isVue"),Po=new Set(Object.getOwnPropertyNames(Symbol).filter(e=>e!=="arguments"&&e!=="caller").map(e=>Symbol[e]).filter(vt));function vl(e){vt(e)||(e=String(e));const t=I(this);return le(t,"has",e),t.hasOwnProperty(e)}class To{constructor(t=!1,n=!1){this._isReadonly=t,this._isShallow=n}get(t,n,r){if(n==="__v_skip")return t.__v_skip;const s=this._isReadonly,o=this._isShallow;if(n==="__v_isReactive")return!s;if(n==="__v_isReadonly")return s;if(n==="__v_isShallow")return o;if(n==="__v_raw")return r===(s?o?Io:Ro:o?Ao:Fo).get(t)||Object.getPrototypeOf(t)===Object.getPrototypeOf(r)?t:void 0;const i=S(t);if(!s){let a;if(i&&(a=gl[n]))return a;if(n==="hasOwnProperty")return vl}const l=Reflect.get(t,n,se(t)?t:r);return(vt(n)?Po.has(n):_l(n))||(s||le(t,"get",n),o)?l:se(l)?i&&Yr(n)?l:l.value:ee(l)?s?rs(l):Zn(l):l}}class Co extends To{constructor(t=!1){super(!1,t)}set(t,n,r,s){let o=t[n];if(!this._isShallow){const a=st(o);if(!Oe(r)&&!st(r)&&(o=I(o),r=I(r)),!S(t)&&se(o)&&!se(r))return a?!1:(o.value=r,!0)}const i=S(t)&&Yr(n)?Number(n)<t.length:U(t,n),l=Reflect.set(t,n,r,se(t)?t:s);return t===I(s)&&(i?gt(r,o)&&ke(t,"set",n,r,o):ke(t,"add",n,r)),l}deleteProperty(t,n){const r=U(t,n),s=t[n],o=Reflect.deleteProperty(t,n);return o&&r&&ke(t,"delete",n,void 0,s),o}has(t,n){const r=Reflect.has(t,n);return(!vt(n)||!Po.has(n))&&le(t,"has",n),r}ownKeys(t){return le(t,"iterate",S(t)?"length":Dt),Reflect.ownKeys(t)}}class So extends To{constructor(t=!1){super(!0,t)}set(t,n){return te.env.NODE_ENV!=="production"&&Ge(`Set operation on key "${String(n)}" failed: target is readonly.`,t),!0}deleteProperty(t,n){return te.env.NODE_ENV!=="production"&&Ge(`Delete operation on key "${String(n)}" failed: target is readonly.`,t),!0}}const El=new Co,yl=new So,Ol=new Co(!0),Nl=new So(!0),Cr=e=>e,vn=e=>Reflect.getPrototypeOf(e);function Vl(e,t,n){return function(...r){const s=this.__v_raw,o=I(s),i=wt(o),l=e==="entries"||e===Symbol.iterator&&i,a=e==="keys"&&i,f=s[e](...r),d=n?Cr:t?Sr:ge;return!t&&le(o,"iterate",a?Tr:Dt),{next(){const{value:u,done:g}=f.next();return g?{value:u,done:g}:{value:l?[d(u[0]),d(u[1])]:d(u),done:g}},[Symbol.iterator](){return this}}}}function En(e){return function(...t){if(te.env.NODE_ENV!=="production"){const n=t[0]?`on key "${t[0]}" `:"";Ge(`${Yn(e)} operation ${n}failed: target is readonly.`,I(this))}return e==="delete"?!1:e==="clear"?void 0:this}}function wl(e,t){const n={get(s){const o=this.__v_raw,i=I(o),l=I(s);e||(gt(s,l)&&le(i,"get",s),le(i,"get",l));const{has:a}=vn(i),f=t?Cr:e?Sr:ge;if(a.call(i,s))return f(o.get(s));if(a.call(i,l))return f(o.get(l));o!==i&&o.get(s)},get size(){const s=this.__v_raw;return!e&&le(I(s),"iterate",Dt),Reflect.get(s,"size",s)},has(s){const o=this.__v_raw,i=I(o),l=I(s);return e||(gt(s,l)&&le(i,"has",s),le(i,"has",l)),s===l?o.has(s):o.has(s)||o.has(l)},forEach(s,o){const i=this,l=i.__v_raw,a=I(l),f=t?Cr:e?Sr:ge;return!e&&le(a,"iterate",Dt),l.forEach((d,u)=>s.call(o,f(d),f(u),i))}};return oe(n,e?{add:En("add"),set:En("set"),delete:En("delete"),clear:En("clear")}:{add(s){!t&&!Oe(s)&&!st(s)&&(s=I(s));const o=I(this);return vn(o).has.call(o,s)||(o.add(s),ke(o,"add",s,s)),this},set(s,o){!t&&!Oe(o)&&!st(o)&&(o=I(o));const i=I(this),{has:l,get:a}=vn(i);let f=l.call(i,s);f?te.env.NODE_ENV!=="production"&&Os(i,l,s):(s=I(s),f=l.call(i,s));const d=a.call(i,s);return i.set(s,o),f?gt(o,d)&&ke(i,"set",s,o,d):ke(i,"add",s,o),this},delete(s){const o=I(this),{has:i,get:l}=vn(o);let a=i.call(o,s);a?te.env.NODE_ENV!=="production"&&Os(o,i,s):(s=I(s),a=i.call(o,s));const f=l?l.call(o,s):void 0,d=o.delete(s);return a&&ke(o,"delete",s,void 0,f),d},clear(){const s=I(this),o=s.size!==0,i=te.env.NODE_ENV!=="production"?wt(s)?new Map(s):new Set(s):void 0,l=s.clear();return o&&ke(s,"clear",void 0,void 0,i),l}}),["keys","values","entries",Symbol.iterator].forEach(s=>{n[s]=Vl(s,e,t)}),n}function Xn(e,t){const n=wl(e,t);return(r,s,o)=>s==="__v_isReactive"?!e:s==="__v_isReadonly"?e:s==="__v_raw"?r:Reflect.get(U(n,s)&&s in r?n:r,s,o)}const Dl={get:Xn(!1,!1)},xl={get:Xn(!1,!0)},Pl={get:Xn(!0,!1)},Tl={get:Xn(!0,!0)};function Os(e,t,n){const r=I(n);if(r!==n&&t.call(e,r)){const s=Jr(e);Ge(`Reactive ${s} contains both the raw and reactive versions of the same object${s==="Map"?" as keys":""}, which can lead to inconsistencies. Avoid differentiating between the raw and reactive versions of an object and only use the reactive version if possible.`)}}const Fo=new WeakMap,Ao=new WeakMap,Ro=new WeakMap,Io=new WeakMap;function Cl(e){switch(e){case"Object":case"Array":return 1;case"Map":case"Set":case"WeakMap":case"WeakSet":return 2;default:return 0}}function Sl(e){return e.__v_skip||!Object.isExtensible(e)?0:Cl(Jr(e))}function Zn(e){return st(e)?e:er(e,!1,El,Dl,Fo)}function Fl(e){return er(e,!1,Ol,xl,Ao)}function rs(e){return er(e,!0,yl,Pl,Ro)}function We(e){return er(e,!0,Nl,Tl,Io)}function er(e,t,n,r,s){if(!ee(e))return te.env.NODE_ENV!=="production"&&Ge(`value cannot be made ${t?"readonly":"reactive"}: ${String(e)}`),e;if(e.__v_raw&&!(t&&e.__v_isReactive))return e;const o=s.get(e);if(o)return o;const i=Sl(e);if(i===0)return e;const l=new Proxy(e,i===2?r:n);return s.set(e,l),l}function Ht(e){return st(e)?Ht(e.__v_raw):!!(e&&e.__v_isReactive)}function st(e){return!!(e&&e.__v_isReadonly)}function Oe(e){return!!(e&&e.__v_isShallow)}function Mn(e){return e?!!e.__v_raw:!1}function I(e){const t=e&&e.__v_raw;return t?I(t):e}function Al(e){return!U(e,"__v_skip")&&Object.isExtensible(e)&&In(e,"__v_skip",!0),e}const ge=e=>ee(e)?Zn(e):e,Sr=e=>ee(e)?rs(e):e;function se(e){return e?e.__v_isRef===!0:!1}function Rl(e){return Il(e,!0)}function Il(e,t){return se(e)?e:new Ml(e,t)}class Ml{constructor(t,n){this.dep=new ts,this.__v_isRef=!0,this.__v_isShallow=!1,this._rawValue=n?t:I(t),this._value=n?t:ge(t),this.__v_isShallow=n}get value(){return te.env.NODE_ENV!=="production"?this.dep.track({target:this,type:"get",key:"value"}):this.dep.track(),this._value}set value(t){const n=this._rawValue,r=this.__v_isShallow||Oe(t)||st(t);t=r?t:I(t),gt(t,n)&&(this._rawValue=t,this._value=r?t:ge(t),te.env.NODE_ENV!=="production"?this.dep.trigger({target:this,type:"set",key:"value",newValue:t,oldValue:n}):this.dep.trigger())}}function Mo(e){return se(e)?e.value:e}const $l={get:(e,t,n)=>t==="__v_raw"?e:Mo(Reflect.get(e,t,n)),set:(e,t,n,r)=>{const s=e[t];return se(s)&&!se(n)?(s.value=n,!0):Reflect.set(e,t,n,r)}};function $o(e){return Ht(e)?e:new Proxy(e,$l)}class jl{constructor(t,n,r){this.fn=t,this.setter=n,this._value=void 0,this.dep=new ts(this),this.__v_isRef=!0,this.deps=void 0,this.depsTail=void 0,this.flags=16,this.globalVersion=on-1,this.next=void 0,this.effect=this,this.__v_isReadonly=!n,this.isSSR=r}notify(){if(this.flags|=16,!(this.flags&8)&&L!==this)return Oo(this,!0),!0}get value(){const t=te.env.NODE_ENV!=="production"?this.dep.track({target:this,type:"get",key:"value"}):this.dep.track();return wo(this),t&&(t.version=this.dep.version),this._value}set value(t){this.setter?this.setter(t):te.env.NODE_ENV!=="production"&&Ge("Write operation failed: computed value is readonly")}}function Ul(e,t,n=!1){let r,s;return A(e)?r=e:(r=e.get,s=e.set),new jl(r,s,n)}const yn={},$n=new WeakMap;let Nt;function Hl(e,t=!1,n=Nt){if(n){let r=$n.get(n);r||$n.set(n,r=[]),r.push(e)}else te.env.NODE_ENV!=="production"&&!t&&Ge("onWatcherCleanup() was called when there was no active watcher to associate with.")}function Ll(e,t,n=H){const{immediate:r,deep:s,once:o,scheduler:i,augmentJob:l,call:a}=n,f=C=>{(n.onWarn||Ge)("Invalid watch source: ",C,"A watch source can only be a getter/effect function, a ref, a reactive object, or an array of these types.")},d=C=>s?C:Oe(C)||s===!1||s===0?Ze(C,1):Ze(C);let u,g,b,x,T=!1,ie=!1;if(se(e)?(g=()=>e.value,T=Oe(e)):Ht(e)?(g=()=>d(e),T=!0):S(e)?(ie=!0,T=e.some(C=>Ht(C)||Oe(C)),g=()=>e.map(C=>{if(se(C))return C.value;if(Ht(C))return d(C);if(A(C))return a?a(C,2):C();te.env.NODE_ENV!=="production"&&f(C)})):A(e)?t?g=a?()=>a(e,2):e:g=()=>{if(b){lt();try{b()}finally{at()}}const C=Nt;Nt=u;try{return a?a(e,3,[x]):e(x)}finally{Nt=C}}:(g=ae,te.env.NODE_ENV!=="production"&&f(e)),t&&s){const C=g,ce=s===!0?1/0:s;g=()=>Ze(C(),ce)}const X=pl(),re=()=>{u.stop(),X&&X.active&&Qr(X.effects,u)};if(o&&t){const C=t;t=(...ce)=>{C(...ce),re()}}let B=ie?new Array(e.length).fill(yn):yn;const Ne=C=>{if(!(!(u.flags&1)||!u.dirty&&!C))if(t){const ce=u.run();if(s||T||(ie?ce.some((Ce,de)=>gt(Ce,B[de])):gt(ce,B))){b&&b();const Ce=Nt;Nt=u;try{const de=[ce,B===yn?void 0:ie&&B[0]===yn?[]:B,x];a?a(t,3,de):t(...de),B=ce}finally{Nt=Ce}}}else u.run()};return l&&l(Ne),u=new Eo(g),u.scheduler=i?()=>i(Ne,!1):Ne,x=C=>Hl(C,!1,u),b=u.onStop=()=>{const C=$n.get(u);if(C){if(a)a(C,4);else for(const ce of C)ce();$n.delete(u)}},te.env.NODE_ENV!=="production"&&(u.onTrack=n.onTrack,u.onTrigger=n.onTrigger),t?r?Ne(!0):B=u.run():i?i(Ne.bind(null,!0),!0):u.run(),re.pause=u.pause.bind(u),re.resume=u.resume.bind(u),re.stop=re,re}function Ze(e,t=1/0,n){if(t<=0||!ee(e)||e.__v_skip||(n=n||new Set,n.has(e)))return e;if(n.add(e),t--,se(e))Ze(e.value,t,n);else if(S(e))for(let r=0;r<e.length;r++)Ze(e[r],t,n);else if(po(e)||wt(e))e.forEach(r=>{Ze(r,t,n)});else if(mo(e)){for(const r in e)Ze(e[r],t,n);for(const r of Object.getOwnPropertySymbols(e))Object.prototype.propertyIsEnumerable.call(e,r)&&Ze(e[r],t,n)}return e}var h={env:{DEV_MODE:"production"}};const xt=[];function On(e){xt.push(e)}function Nn(){xt.pop()}let mr=!1;function V(e,...t){if(mr)return;mr=!0,lt();const n=xt.length?xt[xt.length-1].component:null,r=n&&n.appContext.config.warnHandler,s=Bl();if(r)kt(r,n,11,[e+t.map(o=>{var i,l;return(l=(i=o.toString)==null?void 0:i.call(o))!=null?l:JSON.stringify(o)}).join(""),n&&n.proxy,s.map(({vnode:o})=>`at <${ir(n,o.type)}>`).join(`
-`),s]);else{const o=[`[Vue warn]: ${e}`,...t];s.length&&o.push(`
-`,...kl(s)),console.warn(...o)}at(),mr=!1}function Bl(){let e=xt[xt.length-1];if(!e)return[];const t=[];for(;e;){const n=t[0];n&&n.vnode===e?n.recurseCount++:t.push({vnode:e,recurseCount:0});const r=e.component&&e.component.parent;e=r&&r.vnode}return t}function kl(e){const t=[];return e.forEach((n,r)=>{t.push(...r===0?[]:[`
-`],...ql(n))}),t}function ql({vnode:e,recurseCount:t}){const n=t>0?`... (${t} recursive calls)`:"",r=e.component?e.component.parent==null:!1,s=` at <${ir(e.component,e.type,r)}`,o=">"+n;return e.props?[s,...Kl(e.props),o]:[s+o]}function Kl(e){const t=[],n=Object.keys(e);return n.slice(0,3).forEach(r=>{t.push(...jo(r,e[r]))}),n.length>3&&t.push(" ..."),t}function jo(e,t,n){return ne(t)?(t=JSON.stringify(t),n?t:[`${e}=${t}`]):typeof t=="number"||typeof t=="boolean"||t==null?n?t:[`${e}=${t}`]:se(t)?(t=jo(e,I(t.value),!0),n?t:[`${e}=Ref<`,t,">"]):A(t)?[`${e}=fn${t.name?`<${t.name}>`:""}`]:(t=I(t),n?t:[`${e}=`,t])}const ss={sp:"serverPrefetch hook",bc:"beforeCreate hook",c:"created hook",bm:"beforeMount hook",m:"mounted hook",bu:"beforeUpdate hook",u:"updated",bum:"beforeUnmount hook",um:"unmounted hook",a:"activated hook",da:"deactivated hook",ec:"errorCaptured hook",rtc:"renderTracked hook",rtg:"renderTriggered hook",0:"setup function",1:"render function",2:"watcher getter",3:"watcher callback",4:"watcher cleanup function",5:"native event handler",6:"component event handler",7:"vnode hook",8:"directive hook",9:"transition hook",10:"app errorHandler",11:"app warnHandler",12:"ref function",13:"async component loader",14:"scheduler flush",15:"component update",16:"app unmount cleanup function"};function kt(e,t,n,r){try{return r?e(...r):e()}catch(s){pn(s,t,n)}}function Je(e,t,n,r){if(A(e)){const s=kt(e,t,n,r);return s&&Gr(s)&&s.catch(o=>{pn(o,t,n)}),s}if(S(e)){const s=[];for(let o=0;o<e.length;o++)s.push(Je(e[o],t,n,r));return s}else h.env.NODE_ENV!=="production"&&V(`Invalid value type passed to callWithAsyncErrorHandling(): ${typeof e}`)}function pn(e,t,n,r=!0){const s=t?t.vnode:null,{errorHandler:o,throwUnhandledErrorInProduction:i}=t&&t.appContext.config||H;if(t){let l=t.parent;const a=t.proxy,f=h.env.NODE_ENV!=="production"?ss[n]:`https://vuejs.org/error-reference/#runtime-${n}`;for(;l;){const d=l.ec;if(d){for(let u=0;u<d.length;u++)if(d[u](e,a,f)===!1)return}l=l.parent}if(o){lt(),kt(o,null,10,[e,a,f]),at();return}}Wl(e,n,s,r,i)}function Wl(e,t,n,r=!0,s=!1){if(h.env.NODE_ENV!=="production"){const o=ss[t];if(n&&On(n),V(`Unhandled error${o?` during execution of ${o}`:""}`),n&&Nn(),r)throw e;console.error(e)}else{if(s)throw e;console.error(e)}}const be=[];let Le=-1;const Lt=[];let pt=null,$t=0;const Uo=Promise.resolve();let jn=null;const Ql=100;function Gl(e){const t=jn||Uo;return e?t.then(this?e.bind(this):e):t}function Jl(e){let t=Le+1,n=be.length;for(;t<n;){const r=t+n>>>1,s=be[r],o=an(s);o<e||o===e&&s.flags&2?t=r+1:n=r}return t}function tr(e){if(!(e.flags&1)){const t=an(e),n=be[be.length-1];!n||!(e.flags&2)&&t>=an(n)?be.push(e):be.splice(Jl(t),0,e),e.flags|=1,Ho()}}function Ho(){jn||(jn=Uo.then(ko))}function Lo(e){S(e)?Lt.push(...e):pt&&e.id===-1?pt.splice($t+1,0,e):e.flags&1||(Lt.push(e),e.flags|=1),Ho()}function Ns(e,t,n=Le+1){for(h.env.NODE_ENV!=="production"&&(t=t||new Map);n<be.length;n++){const r=be[n];if(r&&r.flags&2){if(e&&r.id!==e.uid||h.env.NODE_ENV!=="production"&&os(t,r))continue;be.splice(n,1),n--,r.flags&4&&(r.flags&=-2),r(),r.flags&4||(r.flags&=-2)}}}function Bo(e){if(Lt.length){const t=[...new Set(Lt)].sort((n,r)=>an(n)-an(r));if(Lt.length=0,pt){pt.push(...t);return}for(pt=t,h.env.NODE_ENV!=="production"&&(e=e||new Map),$t=0;$t<pt.length;$t++){const n=pt[$t];h.env.NODE_ENV!=="production"&&os(e,n)||(n.flags&4&&(n.flags&=-2),n.flags&8||n(),n.flags&=-2)}pt=null,$t=0}}const an=e=>e.id==null?e.flags&2?-1:1/0:e.id;function ko(e){h.env.NODE_ENV!=="production"&&(e=e||new Map);const t=h.env.NODE_ENV!=="production"?n=>os(e,n):ae;try{for(Le=0;Le<be.length;Le++){const n=be[Le];if(n&&!(n.flags&8)){if(h.env.NODE_ENV!=="production"&&t(n))continue;n.flags&4&&(n.flags&=-2),kt(n,n.i,n.i?15:14),n.flags&4||(n.flags&=-2)}}}finally{for(;Le<be.length;Le++){const n=be[Le];n&&(n.flags&=-2)}Le=-1,be.length=0,Bo(e),jn=null,(be.length||Lt.length)&&ko(e)}}function os(e,t){const n=e.get(t)||0;if(n>Ql){const r=t.i,s=r&&wi(r.type);return pn(`Maximum recursive updates exceeded${s?` in component <${s}>`:""}. This means you have a reactive effect that is mutating its own dependencies and thus recursively triggering itself. Possible sources include component template, render function, updated hook or watcher source function.`,null,10),!0}return e.set(t,n+1),!1}let Qe=!1;const Vn=new Map;h.env.NODE_ENV!=="production"&&(dn().__VUE_HMR_RUNTIME__={createRecord:gr(qo),rerender:gr(Xl),reload:gr(Zl)});const Tt=new Map;function Yl(e){const t=e.type.__hmrId;let n=Tt.get(t);n||(qo(t,e.type),n=Tt.get(t)),n.instances.add(e)}function zl(e){Tt.get(e.type.__hmrId).instances.delete(e)}function qo(e,t){return Tt.has(e)?!1:(Tt.set(e,{initialDef:Un(t),instances:new Set}),!0)}function Un(e){return Di(e)?e.__vccOpts:e}function Xl(e,t){const n=Tt.get(e);n&&(n.initialDef.render=t,[...n.instances].forEach(r=>{t&&(r.render=t,Un(r.type).render=t),r.renderCache=[],Qe=!0,r.update(),Qe=!1}))}function Zl(e,t){const n=Tt.get(e);if(!n)return;t=Un(t),Vs(n.initialDef,t);const r=[...n.instances];for(let s=0;s<r.length;s++){const o=r[s],i=Un(o.type);let l=Vn.get(i);l||(i!==n.initialDef&&Vs(i,t),Vn.set(i,l=new Set)),l.add(o),o.appContext.propsCache.delete(o.type),o.appContext.emitsCache.delete(o.type),o.appContext.optionsCache.delete(o.type),o.ceReload?(l.add(o),o.ceReload(t.styles),l.delete(o)):o.parent?tr(()=>{Qe=!0,o.parent.update(),Qe=!1,l.delete(o)}):o.appContext.reload?o.appContext.reload():typeof window<"u"?window.location.reload():console.warn("[HMR] Root or manually mounted instance modified. Full reload required."),o.root.ce&&o!==o.root&&o.root.ce._removeChildStyle(i)}Lo(()=>{Vn.clear()})}function Vs(e,t){oe(e,t);for(const n in e)n!=="__file"&&!(n in t)&&delete e[n]}function gr(e){return(t,n)=>{try{return e(t,n)}catch(r){console.error(r),console.warn("[HMR] Something went wrong during Vue component hot-reload. Full reload required.")}}}let qe,zt=[],Fr=!1;function hn(e,...t){qe?qe.emit(e,...t):Fr||zt.push({event:e,args:t})}function Ko(e,t){var n,r;qe=e,qe?(qe.enabled=!0,zt.forEach(({event:s,args:o})=>qe.emit(s,...o)),zt=[]):typeof window<"u"&&window.HTMLElement&&!((r=(n=window.navigator)==null?void 0:n.userAgent)!=null&&r.includes("jsdom"))?((t.__VUE_DEVTOOLS_HOOK_REPLAY__=t.__VUE_DEVTOOLS_HOOK_REPLAY__||[]).push(o=>{Ko(o,t)}),setTimeout(()=>{qe||(t.__VUE_DEVTOOLS_HOOK_REPLAY__=null,Fr=!0,zt=[])},3e3)):(Fr=!0,zt=[])}function ea(e,t){hn("app:init",e,t,{Fragment:Be,Text:mn,Comment:Te,Static:xn})}function ta(e){hn("app:unmount",e)}const na=is("component:added"),Wo=is("component:updated"),ra=is("component:removed"),sa=e=>{qe&&typeof qe.cleanupBuffer=="function"&&!qe.cleanupBuffer(e)&&ra(e)};/*! #__NO_SIDE_EFFECTS__ */function is(e){return t=>{hn(e,t.appContext.app,t.uid,t.parent?t.parent.uid:void 0,t)}}const oa=Qo("perf:start"),ia=Qo("perf:end");function Qo(e){return(t,n,r)=>{hn(e,t.appContext.app,t.uid,t,n,r)}}function la(e,t,n){hn("component:emit",e.appContext.app,e,t,n)}let _e=null,Go=null;function Hn(e){const t=_e;return _e=e,Go=e&&e.type.__scopeId||null,t}function aa(e,t=_e,n){if(!t||e._n)return e;const r=(...s)=>{r._d&&$s(-1);const o=Hn(t);let i;try{i=e(...s)}finally{Hn(o),r._d&&$s(1)}return h.env.NODE_ENV!=="production"&&Wo(t),i};return r._n=!0,r._c=!0,r._d=!0,r}function Jo(e){zi(e)&&V("Do not use built-in directive ids as custom directive id: "+e)}function ca(e,t){if(_e===null)return h.env.NODE_ENV!=="production"&&V("withDirectives can only be used inside render functions."),e;const n=or(_e),r=e.dirs||(e.dirs=[]);for(let s=0;s<t.length;s++){let[o,i,l,a=H]=t[s];o&&(A(o)&&(o={mounted:o,updated:o}),o.deep&&Ze(i),r.push({dir:o,instance:n,value:i,oldValue:void 0,arg:l,modifiers:a}))}return e}function Et(e,t,n,r){const s=e.dirs,o=t&&t.dirs;for(let i=0;i<s.length;i++){const l=s[i];o&&(l.oldValue=o[i].value);let a=l.dir[r];a&&(lt(),Je(a,n,8,[e.el,l,e,t]),at())}}const ua=Symbol("_vte"),fa=e=>e.__isTeleport;function ls(e,t){e.shapeFlag&6&&e.component?(e.transition=t,ls(e.component.subTree,t)):e.shapeFlag&128?(e.ssContent.transition=t.clone(e.ssContent),e.ssFallback.transition=t.clone(e.ssFallback)):e.transition=t}/*! #__NO_SIDE_EFFECTS__ */function da(e,t){return A(e)?oe({name:e.name},t,{setup:e}):e}function Yo(e){e.ids=[e.ids[0]+e.ids[2]+++"-",0,0]}const zo=new WeakSet;function ws(e){const t=Oi(),n=Rl(null);if(t){const s=t.refs===H?t.refs={}:t.refs;let o;h.env.NODE_ENV!=="production"&&(o=Object.getOwnPropertyDescriptor(s,e))&&!o.configurable?V(`useTemplateRef('${e}') already exists.`):Object.defineProperty(s,e,{enumerable:!0,get:()=>n.value,set:i=>n.value=i})}else h.env.NODE_ENV!=="production"&&V("useTemplateRef() is called when there is no active component instance to be associated with.");const r=h.env.NODE_ENV!=="production"?rs(n):n;return h.env.NODE_ENV!=="production"&&zo.add(r),r}function Ln(e,t,n,r,s=!1){if(S(e)){e.forEach((x,T)=>Ln(x,t&&(S(t)?t[T]:t),n,r,s));return}if(nn(r)&&!s){r.shapeFlag&512&&r.type.__asyncResolved&&r.component.subTree.component&&Ln(e,t,n,r.component.subTree);return}const o=r.shapeFlag&4?or(r.component):r.el,i=s?null:o,{i:l,r:a}=e;if(h.env.NODE_ENV!=="production"&&!l){V("Missing ref owner context. ref cannot be used on hoisted vnodes. A vnode with ref must be created inside the render function.");return}const f=t&&t.r,d=l.refs===H?l.refs={}:l.refs,u=l.setupState,g=I(u),b=u===H?()=>!1:x=>h.env.NODE_ENV!=="production"&&(U(g,x)&&!se(g[x])&&V(`Template ref "${x}" used on a non-ref value. It will not work in the production build.`),zo.has(g[x]))?!1:U(g,x);if(f!=null&&f!==a&&(ne(f)?(d[f]=null,b(f)&&(u[f]=null)):se(f)&&(f.value=null)),A(a))kt(a,l,12,[i,d]);else{const x=ne(a),T=se(a);if(x||T){const ie=()=>{if(e.f){const X=x?b(a)?u[a]:d[a]:a.value;s?S(X)&&Qr(X,o):S(X)?X.includes(o)||X.push(o):x?(d[a]=[o],b(a)&&(u[a]=d[a])):(a.value=[o],e.k&&(d[e.k]=a.value))}else x?(d[a]=i,b(a)&&(u[a]=i)):T?(a.value=i,e.k&&(d[e.k]=i)):h.env.NODE_ENV!=="production"&&V("Invalid template ref type:",a,`(${typeof a})`)};i?(ie.id=-1,we(ie,n)):ie()}else h.env.NODE_ENV!=="production"&&V("Invalid template ref type:",a,`(${typeof a})`)}}dn().requestIdleCallback;dn().cancelIdleCallback;const nn=e=>!!e.type.__asyncLoader,as=e=>e.type.__isKeepAlive;function pa(e,t){Xo(e,"a",t)}function ha(e,t){Xo(e,"da",t)}function Xo(e,t,n=ue){const r=e.__wdc||(e.__wdc=()=>{let s=n;for(;s;){if(s.isDeactivated)return;s=s.parent}return e()});if(nr(t,r,n),n){let s=n.parent;for(;s&&s.parent;)as(s.parent.vnode)&&ma(r,t,n,s),s=s.parent}}function ma(e,t,n,r){const s=nr(t,e,r,!0);Zo(()=>{Qr(r[t],s)},n)}function nr(e,t,n=ue,r=!1){if(n){const s=n[e]||(n[e]=[]),o=t.__weh||(t.__weh=(...i)=>{lt();const l=gn(n),a=Je(t,n,e,i);return l(),at(),a});return r?s.unshift(o):s.push(o),o}else if(h.env.NODE_ENV!=="production"){const s=Ot(ss[e].replace(/ hook$/,""));V(`${s} is called when there is no active component instance to be associated with. Lifecycle injection APIs can only be used during execution of setup(). If you are using async setup(), make sure to register lifecycle hooks before the first await statement.`)}}const ct=e=>(t,n=ue)=>{(!un||e==="sp")&&nr(e,(...r)=>t(...r),n)},ga=ct("bm"),ba=ct("m"),_a=ct("bu"),va=ct("u"),Ea=ct("bum"),Zo=ct("um"),ya=ct("sp"),Oa=ct("rtg"),Na=ct("rtc");function Va(e,t=ue){nr("ec",e,t)}const wa=Symbol.for("v-ndc"),Ar=e=>e?Ni(e)?or(e):Ar(e.parent):null,Pt=oe(Object.create(null),{$:e=>e,$el:e=>e.vnode.el,$data:e=>e.data,$props:e=>h.env.NODE_ENV!=="production"?We(e.props):e.props,$attrs:e=>h.env.NODE_ENV!=="production"?We(e.attrs):e.attrs,$slots:e=>h.env.NODE_ENV!=="production"?We(e.slots):e.slots,$refs:e=>h.env.NODE_ENV!=="production"?We(e.refs):e.refs,$parent:e=>Ar(e.parent),$root:e=>Ar(e.root),$host:e=>e.ce,$emit:e=>e.emit,$options:e=>ni(e),$forceUpdate:e=>e.f||(e.f=()=>{tr(e.update)}),$nextTick:e=>e.n||(e.n=Gl.bind(e.proxy)),$watch:e=>oc.bind(e)}),cs=e=>e==="_"||e==="$",br=(e,t)=>e!==H&&!e.__isScriptSetup&&U(e,t),ei={get({_:e},t){if(t==="__v_skip")return!0;const{ctx:n,setupState:r,data:s,props:o,accessCache:i,type:l,appContext:a}=e;if(h.env.NODE_ENV!=="production"&&t==="__isVue")return!0;let f;if(t[0]!=="$"){const b=i[t];if(b!==void 0)switch(b){case 1:return r[t];case 2:return s[t];case 4:return n[t];case 3:return o[t]}else{if(br(r,t))return i[t]=1,r[t];if(s!==H&&U(s,t))return i[t]=2,s[t];if((f=e.propsOptions[0])&&U(f,t))return i[t]=3,o[t];if(n!==H&&U(n,t))return i[t]=4,n[t];Rr&&(i[t]=0)}}const d=Pt[t];let u,g;if(d)return t==="$attrs"?(le(e.attrs,"get",""),h.env.NODE_ENV!=="production"&&qn()):h.env.NODE_ENV!=="production"&&t==="$slots"&&le(e,"get",t),d(e);if((u=l.__cssModules)&&(u=u[t]))return u;if(n!==H&&U(n,t))return i[t]=4,n[t];if(g=a.config.globalProperties,U(g,t))return g[t];h.env.NODE_ENV!=="production"&&_e&&(!ne(t)||t.indexOf("__v")!==0)&&(s!==H&&cs(t[0])&&U(s,t)?V(`Property ${JSON.stringify(t)} must be accessed via $data because it starts with a reserved character ("$" or "_") and is not proxied on the render context.`):e===_e&&V(`Property ${JSON.stringify(t)} was accessed during render but is not defined on instance.`))},set({_:e},t,n){const{data:r,setupState:s,ctx:o}=e;return br(s,t)?(s[t]=n,!0):h.env.NODE_ENV!=="production"&&s.__isScriptSetup&&U(s,t)?(V(`Cannot mutate <script setup> binding "${t}" from Options API.`),!1):r!==H&&U(r,t)?(r[t]=n,!0):U(e.props,t)?(h.env.NODE_ENV!=="production"&&V(`Attempting to mutate prop "${t}". Props are readonly.`),!1):t[0]==="$"&&t.slice(1)in e?(h.env.NODE_ENV!=="production"&&V(`Attempting to mutate public property "${t}". Properties starting with $ are reserved and readonly.`),!1):(h.env.NODE_ENV!=="production"&&t in e.appContext.config.globalProperties?Object.defineProperty(o,t,{enumerable:!0,configurable:!0,value:n}):o[t]=n,!0)},has({_:{data:e,setupState:t,accessCache:n,ctx:r,appContext:s,propsOptions:o}},i){let l;return!!n[i]||e!==H&&U(e,i)||br(t,i)||(l=o[0])&&U(l,i)||U(r,i)||U(Pt,i)||U(s.config.globalProperties,i)},defineProperty(e,t,n){return n.get!=null?e._.accessCache[t]=0:U(n,"value")&&this.set(e,t,n.value,null),Reflect.defineProperty(e,t,n)}};h.env.NODE_ENV!=="production"&&(ei.ownKeys=e=>(V("Avoid app logic that relies on enumerating keys on a component instance. The keys will be empty in production mode to avoid performance overhead."),Reflect.ownKeys(e)));function Da(e){const t={};return Object.defineProperty(t,"_",{configurable:!0,enumerable:!1,get:()=>e}),Object.keys(Pt).forEach(n=>{Object.defineProperty(t,n,{configurable:!0,enumerable:!1,get:()=>Pt[n](e),set:ae})}),t}function xa(e){const{ctx:t,propsOptions:[n]}=e;n&&Object.keys(n).forEach(r=>{Object.defineProperty(t,r,{enumerable:!0,configurable:!0,get:()=>e.props[r],set:ae})})}function Pa(e){const{ctx:t,setupState:n}=e;Object.keys(I(n)).forEach(r=>{if(!n.__isScriptSetup){if(cs(r[0])){V(`setup() return property ${JSON.stringify(r)} should not start with "$" or "_" which are reserved prefixes for Vue internals.`);return}Object.defineProperty(t,r,{enumerable:!0,configurable:!0,get:()=>n[r],set:ae})}})}function Ds(e){return S(e)?e.reduce((t,n)=>(t[n]=null,t),{}):e}function Ta(){const e=Object.create(null);return(t,n)=>{e[n]?V(`${t} property "${n}" is already defined in ${e[n]}.`):e[n]=t}}let Rr=!0;function Ca(e){const t=ni(e),n=e.proxy,r=e.ctx;Rr=!1,t.beforeCreate&&xs(t.beforeCreate,e,"bc");const{data:s,computed:o,methods:i,watch:l,provide:a,inject:f,created:d,beforeMount:u,mounted:g,beforeUpdate:b,updated:x,activated:T,deactivated:ie,beforeDestroy:X,beforeUnmount:re,destroyed:B,unmounted:Ne,render:C,renderTracked:ce,renderTriggered:Ce,errorCaptured:de,serverPrefetch:ve,expose:Ye,inheritAttrs:ut,components:Se,directives:bn,filters:hs}=t,ft=h.env.NODE_ENV!=="production"?Ta():null;if(h.env.NODE_ENV!=="production"){const[$]=e.propsOptions;if($)for(const M in $)ft("Props",M)}if(f&&Sa(f,r,ft),i)for(const $ in i){const M=i[$];A(M)?(h.env.NODE_ENV!=="production"?Object.defineProperty(r,$,{value:M.bind(n),configurable:!0,enumerable:!0,writable:!0}):r[$]=M.bind(n),h.env.NODE_ENV!=="production"&&ft("Methods",$)):h.env.NODE_ENV!=="production"&&V(`Method "${$}" has type "${typeof M}" in the component definition. Did you reference the function correctly?`)}if(s){h.env.NODE_ENV!=="production"&&!A(s)&&V("The data option must be a function. Plain object usage is no longer supported.");const $=s.call(n,n);if(h.env.NODE_ENV!=="production"&&Gr($)&&V("data() returned a Promise - note data() cannot be async; If you intend to perform data fetching before component renders, use async setup() + <Suspense>."),!ee($))h.env.NODE_ENV!=="production"&&V("data() should return an object.");else if(e.data=Zn($),h.env.NODE_ENV!=="production")for(const M in $)ft("Data",M),cs(M[0])||Object.defineProperty(r,M,{configurable:!0,enumerable:!0,get:()=>$[M],set:ae})}if(Rr=!0,o)for(const $ in o){const M=o[$],Ie=A(M)?M.bind(n,n):A(M.get)?M.get.bind(n,n):ae;h.env.NODE_ENV!=="production"&&Ie===ae&&V(`Computed property "${$}" has no getter.`);const lr=!A(M)&&A(M.set)?M.set.bind(n):h.env.NODE_ENV!=="production"?()=>{V(`Write operation failed: computed property "${$}" is readonly.`)}:ae,qt=Sc({get:Ie,set:lr});Object.defineProperty(r,$,{enumerable:!0,configurable:!0,get:()=>qt.value,set:St=>qt.value=St}),h.env.NODE_ENV!=="production"&&ft("Computed",$)}if(l)for(const $ in l)ti(l[$],r,n,$);if(a){const $=A(a)?a.call(n):a;Reflect.ownKeys($).forEach(M=>{$a(M,$[M])})}d&&xs(d,e,"c");function Ee($,M){S(M)?M.forEach(Ie=>$(Ie.bind(n))):M&&$(M.bind(n))}if(Ee(ga,u),Ee(ba,g),Ee(_a,b),Ee(va,x),Ee(pa,T),Ee(ha,ie),Ee(Va,de),Ee(Na,ce),Ee(Oa,Ce),Ee(Ea,re),Ee(Zo,Ne),Ee(ya,ve),S(Ye))if(Ye.length){const $=e.exposed||(e.exposed={});Ye.forEach(M=>{Object.defineProperty($,M,{get:()=>n[M],set:Ie=>n[M]=Ie})})}else e.exposed||(e.exposed={});C&&e.render===ae&&(e.render=C),ut!=null&&(e.inheritAttrs=ut),Se&&(e.components=Se),bn&&(e.directives=bn),ve&&Yo(e)}function Sa(e,t,n=ae){S(e)&&(e=Ir(e));for(const r in e){const s=e[r];let o;ee(s)?"default"in s?o=wn(s.from||r,s.default,!0):o=wn(s.from||r):o=wn(s),se(o)?Object.defineProperty(t,r,{enumerable:!0,configurable:!0,get:()=>o.value,set:i=>o.value=i}):t[r]=o,h.env.NODE_ENV!=="production"&&n("Inject",r)}}function xs(e,t,n){Je(S(e)?e.map(r=>r.bind(t.proxy)):e.bind(t.proxy),t,n)}function ti(e,t,n,r){let s=r.includes(".")?hi(n,r):()=>n[r];if(ne(e)){const o=t[e];A(o)?vr(s,o):h.env.NODE_ENV!=="production"&&V(`Invalid watch handler specified by key "${e}"`,o)}else if(A(e))vr(s,e.bind(n));else if(ee(e))if(S(e))e.forEach(o=>ti(o,t,n,r));else{const o=A(e.handler)?e.handler.bind(n):t[e.handler];A(o)?vr(s,o,e):h.env.NODE_ENV!=="production"&&V(`Invalid watch handler specified by key "${e.handler}"`,o)}else h.env.NODE_ENV!=="production"&&V(`Invalid watch option: "${r}"`,e)}function ni(e){const t=e.type,{mixins:n,extends:r}=t,{mixins:s,optionsCache:o,config:{optionMergeStrategies:i}}=e.appContext,l=o.get(t);let a;return l?a=l:!s.length&&!n&&!r?a=t:(a={},s.length&&s.forEach(f=>Bn(a,f,i,!0)),Bn(a,t,i)),ee(t)&&o.set(t,a),a}function Bn(e,t,n,r=!1){const{mixins:s,extends:o}=t;o&&Bn(e,o,n,!0),s&&s.forEach(i=>Bn(e,i,n,!0));for(const i in t)if(r&&i==="expose")h.env.NODE_ENV!=="production"&&V('"expose" option is ignored when declared in mixins or extends. It should only be declared in the base component itself.');else{const l=Fa[i]||n&&n[i];e[i]=l?l(e[i],t[i]):t[i]}return e}const Fa={data:Ps,props:Ts,emits:Ts,methods:Xt,computed:Xt,beforeCreate:he,created:he,beforeMount:he,mounted:he,beforeUpdate:he,updated:he,beforeDestroy:he,beforeUnmount:he,destroyed:he,unmounted:he,activated:he,deactivated:he,errorCaptured:he,serverPrefetch:he,components:Xt,directives:Xt,watch:Ra,provide:Ps,inject:Aa};function Ps(e,t){return t?e?function(){return oe(A(e)?e.call(this,this):e,A(t)?t.call(this,this):t)}:t:e}function Aa(e,t){return Xt(Ir(e),Ir(t))}function Ir(e){if(S(e)){const t={};for(let n=0;n<e.length;n++)t[e[n]]=e[n];return t}return e}function he(e,t){return e?[...new Set([].concat(e,t))]:t}function Xt(e,t){return e?oe(Object.create(null),e,t):t}function Ts(e,t){return e?S(e)&&S(t)?[...new Set([...e,...t])]:oe(Object.create(null),Ds(e),Ds(t??{})):t}function Ra(e,t){if(!e)return t;if(!t)return e;const n=oe(Object.create(null),e);for(const r in t)n[r]=he(e[r],t[r]);return n}function ri(){return{app:null,config:{isNativeTag:Ji,performance:!1,globalProperties:{},optionMergeStrategies:{},errorHandler:void 0,warnHandler:void 0,compilerOptions:{}},mixins:[],components:{},directives:{},provides:Object.create(null),optionsCache:new WeakMap,propsCache:new WeakMap,emitsCache:new WeakMap}}let Ia=0;function Ma(e,t){return function(r,s=null){A(r)||(r=oe({},r)),s!=null&&!ee(s)&&(h.env.NODE_ENV!=="production"&&V("root props passed to app.mount() must be an object."),s=null);const o=ri(),i=new WeakSet,l=[];let a=!1;const f=o.app={_uid:Ia++,_component:r,_props:s,_container:null,_context:o,_instance:null,version:Bs,get config(){return o.config},set config(d){h.env.NODE_ENV!=="production"&&V("app.config cannot be replaced. Modify individual options instead.")},use(d,...u){return i.has(d)?h.env.NODE_ENV!=="production"&&V("Plugin has already been applied to target app."):d&&A(d.install)?(i.add(d),d.install(f,...u)):A(d)?(i.add(d),d(f,...u)):h.env.NODE_ENV!=="production"&&V('A plugin must either be a function or an object with an "install" function.'),f},mixin(d){return o.mixins.includes(d)?h.env.NODE_ENV!=="production"&&V("Mixin has already been applied to target app"+(d.name?`: ${d.name}`:"")):o.mixins.push(d),f},component(d,u){return h.env.NODE_ENV!=="production"&&Lr(d,o.config),u?(h.env.NODE_ENV!=="production"&&o.components[d]&&V(`Component "${d}" has already been registered in target app.`),o.components[d]=u,f):o.components[d]},directive(d,u){return h.env.NODE_ENV!=="production"&&Jo(d),u?(h.env.NODE_ENV!=="production"&&o.directives[d]&&V(`Directive "${d}" has already been registered in target app.`),o.directives[d]=u,f):o.directives[d]},mount(d,u,g){if(a)h.env.NODE_ENV!=="production"&&V("App has already been mounted.\nIf you want to remount the same app, move your app creation logic into a factory function and create fresh app instances for each mount - e.g. `const createMyApp = () => createApp(App)`");else{h.env.NODE_ENV!=="production"&&d.__vue_app__&&V("There is already an app instance mounted on the host container.\n If you want to mount another app on the same host container, you need to unmount the previous app by calling `app.unmount()` first.");const b=f._ceVNode||tt(r,s);return b.appContext=o,g===!0?g="svg":g===!1&&(g=void 0),h.env.NODE_ENV!=="production"&&(o.reload=()=>{e(_t(b),d,g)}),e(b,d,g),a=!0,f._container=d,d.__vue_app__=f,h.env.NODE_ENV!=="production"&&(f._instance=b.component,ea(f,Bs)),or(b.component)}},onUnmount(d){h.env.NODE_ENV!=="production"&&typeof d!="function"&&V(`Expected function as first argument to app.onUnmount(), but got ${typeof d}`),l.push(d)},unmount(){a?(Je(l,f._instance,16),e(null,f._container),h.env.NODE_ENV!=="production"&&(f._instance=null,ta(f)),delete f._container.__vue_app__):h.env.NODE_ENV!=="production"&&V("Cannot unmount an app that is not mounted.")},provide(d,u){return h.env.NODE_ENV!=="production"&&d in o.provides&&V(`App already provides property with key "${String(d)}". It will be overwritten with the new value.`),o.provides[d]=u,f},runWithContext(d){const u=Bt;Bt=f;try{return d()}finally{Bt=u}}};return f}}let Bt=null;function $a(e,t){if(!ue)h.env.NODE_ENV!=="production"&&V("provide() can only be used inside setup().");else{let n=ue.provides;const r=ue.parent&&ue.parent.provides;r===n&&(n=ue.provides=Object.create(r)),n[e]=t}}function wn(e,t,n=!1){const r=ue||_e;if(r||Bt){const s=Bt?Bt._context.provides:r?r.parent==null?r.vnode.appContext&&r.vnode.appContext.provides:r.parent.provides:void 0;if(s&&e in s)return s[e];if(arguments.length>1)return n&&A(t)?t.call(r&&r.proxy):t;h.env.NODE_ENV!=="production"&&V(`injection "${String(e)}" not found.`)}else h.env.NODE_ENV!=="production"&&V("inject() can only be used inside setup() or functional components.")}const si={},oi=()=>Object.create(si),ii=e=>Object.getPrototypeOf(e)===si;function ja(e,t,n,r=!1){const s={},o=oi();e.propsDefaults=Object.create(null),li(e,t,s,o);for(const i in e.propsOptions[0])i in s||(s[i]=void 0);h.env.NODE_ENV!=="production"&&ci(t||{},s,e),n?e.props=r?s:Fl(s):e.type.props?e.props=s:e.props=o,e.attrs=o}function Ua(e){for(;e;){if(e.type.__hmrId)return!0;e=e.parent}}function Ha(e,t,n,r){const{props:s,attrs:o,vnode:{patchFlag:i}}=e,l=I(s),[a]=e.propsOptions;let f=!1;if(!(h.env.NODE_ENV!=="production"&&Ua(e))&&(r||i>0)&&!(i&16)){if(i&8){const d=e.vnode.dynamicProps;for(let u=0;u<d.length;u++){let g=d[u];if(rr(e.emitsOptions,g))continue;const b=t[g];if(a)if(U(o,g))b!==o[g]&&(o[g]=b,f=!0);else{const x=Ae(g);s[x]=Mr(a,l,x,b,e,!1)}else b!==o[g]&&(o[g]=b,f=!0)}}}else{li(e,t,s,o)&&(f=!0);let d;for(const u in l)(!t||!U(t,u)&&((d=bt(u))===u||!U(t,d)))&&(a?n&&(n[u]!==void 0||n[d]!==void 0)&&(s[u]=Mr(a,l,u,void 0,e,!0)):delete s[u]);if(o!==l)for(const u in o)(!t||!U(t,u))&&(delete o[u],f=!0)}f&&ke(e.attrs,"set",""),h.env.NODE_ENV!=="production"&&ci(t||{},s,e)}function li(e,t,n,r){const[s,o]=e.propsOptions;let i=!1,l;if(t)for(let a in t){if(Zt(a))continue;const f=t[a];let d;s&&U(s,d=Ae(a))?!o||!o.includes(d)?n[d]=f:(l||(l={}))[d]=f:rr(e.emitsOptions,a)||(!(a in r)||f!==r[a])&&(r[a]=f,i=!0)}if(o){const a=I(n),f=l||H;for(let d=0;d<o.length;d++){const u=o[d];n[u]=Mr(s,a,u,f[u],e,!U(f,u))}}return i}function Mr(e,t,n,r,s,o){const i=e[n];if(i!=null){const l=U(i,"default");if(l&&r===void 0){const a=i.default;if(i.type!==Function&&!i.skipFactory&&A(a)){const{propsDefaults:f}=s;if(n in f)r=f[n];else{const d=gn(s);r=f[n]=a.call(null,t),d()}}else r=a;s.ce&&s.ce._setProp(n,r)}i[0]&&(o&&!l?r=!1:i[1]&&(r===""||r===bt(n))&&(r=!0))}return r}const La=new WeakMap;function ai(e,t,n=!1){const r=n?La:t.propsCache,s=r.get(e);if(s)return s;const o=e.props,i={},l=[];let a=!1;if(!A(e)){const d=u=>{a=!0;const[g,b]=ai(u,t,!0);oe(i,g),b&&l.push(...b)};!n&&t.mixins.length&&t.mixins.forEach(d),e.extends&&d(e.extends),e.mixins&&e.mixins.forEach(d)}if(!o&&!a)return ee(e)&&r.set(e,Ut),Ut;if(S(o))for(let d=0;d<o.length;d++){h.env.NODE_ENV!=="production"&&!ne(o[d])&&V("props must be strings when using array syntax.",o[d]);const u=Ae(o[d]);Cs(u)&&(i[u]=H)}else if(o){h.env.NODE_ENV!=="production"&&!ee(o)&&V("invalid props options",o);for(const d in o){const u=Ae(d);if(Cs(u)){const g=o[d],b=i[u]=S(g)||A(g)?{type:g}:oe({},g),x=b.type;let T=!1,ie=!0;if(S(x))for(let X=0;X<x.length;++X){const re=x[X],B=A(re)&&re.name;if(B==="Boolean"){T=!0;break}else B==="String"&&(ie=!1)}else T=A(x)&&x.name==="Boolean";b[0]=T,b[1]=ie,(T||U(b,"default"))&&l.push(u)}}}const f=[i,l];return ee(e)&&r.set(e,f),f}function Cs(e){return e[0]!=="$"&&!Zt(e)?!0:(h.env.NODE_ENV!=="production"&&V(`Invalid prop name: "${e}" is a reserved property.`),!1)}function Ba(e){return e===null?"null":typeof e=="function"?e.name||"":typeof e=="object"&&e.constructor&&e.constructor.name||""}function ci(e,t,n){const r=I(t),s=n.propsOptions[0],o=Object.keys(e).map(i=>Ae(i));for(const i in s){let l=s[i];l!=null&&ka(i,r[i],l,h.env.NODE_ENV!=="production"?We(r):r,!o.includes(i))}}function ka(e,t,n,r,s){const{type:o,required:i,validator:l,skipCheck:a}=n;if(i&&s){V('Missing required prop: "'+e+'"');return}if(!(t==null&&!i)){if(o!=null&&o!==!0&&!a){let f=!1;const d=S(o)?o:[o],u=[];for(let g=0;g<d.length&&!f;g++){const{valid:b,expectedType:x}=Ka(t,d[g]);u.push(x||""),f=b}if(!f){V(Wa(e,t,u));return}}l&&!l(t,r)&&V('Invalid prop: custom validator check failed for prop "'+e+'".')}}const qa=it("String,Number,Boolean,Function,Symbol,BigInt");function Ka(e,t){let n;const r=Ba(t);if(r==="null")n=e===null;else if(qa(r)){const s=typeof e;n=s===r.toLowerCase(),!n&&s==="object"&&(n=e instanceof t)}else r==="Object"?n=ee(e):r==="Array"?n=S(e):n=e instanceof t;return{valid:n,expectedType:r}}function Wa(e,t,n){if(n.length===0)return`Prop type [] for prop "${e}" won't match anything. Did you mean to use type Array instead?`;let r=`Invalid prop: type check failed for prop "${e}". Expected ${n.map(Yn).join(" | ")}`;const s=n[0],o=Jr(t),i=Ss(t,s),l=Ss(t,o);return n.length===1&&Fs(s)&&!Qa(s,o)&&(r+=` with value ${i}`),r+=`, got ${o} `,Fs(o)&&(r+=`with value ${l}.`),r}function Ss(e,t){return t==="String"?`"${e}"`:t==="Number"?`${Number(e)}`:`${e}`}function Fs(e){return["string","number","boolean"].some(n=>e.toLowerCase()===n)}function Qa(...e){return e.some(t=>t.toLowerCase()==="boolean")}const ui=e=>e[0]==="_"||e==="$stable",us=e=>S(e)?e.map(Fe):[Fe(e)],Ga=(e,t,n)=>{if(t._n)return t;const r=aa((...s)=>(h.env.NODE_ENV!=="production"&&ue&&(!n||n.root===ue.root)&&V(`Slot "${e}" invoked outside of the render function: this will not track dependencies used in the slot. Invoke the slot function inside the render function instead.`),us(t(...s))),n);return r._c=!1,r},fi=(e,t,n)=>{const r=e._ctx;for(const s in e){if(ui(s))continue;const o=e[s];if(A(o))t[s]=Ga(s,o,r);else if(o!=null){h.env.NODE_ENV!=="production"&&V(`Non-function value encountered for slot "${s}". Prefer function slots for better performance.`);const i=us(o);t[s]=()=>i}}},di=(e,t)=>{h.env.NODE_ENV!=="production"&&!as(e.vnode)&&V("Non-function value encountered for default slot. Prefer function slots for better performance.");const n=us(t);e.slots.default=()=>n},$r=(e,t,n)=>{for(const r in t)(n||r!=="_")&&(e[r]=t[r])},Ja=(e,t,n)=>{const r=e.slots=oi();if(e.vnode.shapeFlag&32){const s=t._;s?($r(r,t,n),n&&In(r,"_",s,!0)):fi(t,r)}else t&&di(e,t)},Ya=(e,t,n)=>{const{vnode:r,slots:s}=e;let o=!0,i=H;if(r.shapeFlag&32){const l=t._;l?h.env.NODE_ENV!=="production"&&Qe?($r(s,t,n),ke(e,"set","$slots")):n&&l===1?o=!1:$r(s,t,n):(o=!t.$stable,fi(t,s)),i=t}else t&&(di(e,t),i={default:1});if(o)for(const l in s)!ui(l)&&i[l]==null&&delete s[l]};let Jt,mt;function Rt(e,t){e.appContext.config.performance&&kn()&&mt.mark(`vue-${t}-${e.uid}`),h.env.NODE_ENV!=="production"&&oa(e,t,kn()?mt.now():Date.now())}function It(e,t){if(e.appContext.config.performance&&kn()){const n=`vue-${t}-${e.uid}`,r=n+":end";mt.mark(r),mt.measure(`<${ir(e,e.type)}> ${t}`,n,r),mt.clearMarks(n),mt.clearMarks(r)}h.env.NODE_ENV!=="production"&&ia(e,t,kn()?mt.now():Date.now())}function kn(){return Jt!==void 0||(typeof window<"u"&&window.performance?(Jt=!0,mt=window.performance):Jt=!1),Jt}function za(){const e=[];if(h.env.NODE_ENV!=="production"&&e.length){const t=e.length>1;console.warn(`Feature flag${t?"s":""} ${e.join(", ")} ${t?"are":"is"} not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.
+**/
+/*! #__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
+function makeMap(str) {
+  const map2 = /* @__PURE__ */ Object.create(null);
+  for (const key of str.split(",")) map2[key] = 1;
+  return (val) => val in map2;
+}
+const EMPTY_OBJ = !!(define_process_default$4.env.NODE_ENV !== "production") ? Object.freeze({}) : {};
+const EMPTY_ARR = !!(define_process_default$4.env.NODE_ENV !== "production") ? Object.freeze([]) : [];
+const NOOP = () => {
+};
+const NO = () => false;
+const isOn = (key) => key.charCodeAt(0) === 111 && key.charCodeAt(1) === 110 && // uppercase letter
+(key.charCodeAt(2) > 122 || key.charCodeAt(2) < 97);
+const isModelListener = (key) => key.startsWith("onUpdate:");
+const extend = Object.assign;
+const remove = (arr, el) => {
+  const i = arr.indexOf(el);
+  if (i > -1) {
+    arr.splice(i, 1);
+  }
+};
+const hasOwnProperty$1 = Object.prototype.hasOwnProperty;
+const hasOwn = (val, key) => hasOwnProperty$1.call(val, key);
+const isArray = Array.isArray;
+const isMap = (val) => toTypeString(val) === "[object Map]";
+const isSet = (val) => toTypeString(val) === "[object Set]";
+const isFunction = (val) => typeof val === "function";
+const isString = (val) => typeof val === "string";
+const isSymbol = (val) => typeof val === "symbol";
+const isObject = (val) => val !== null && typeof val === "object";
+const isPromise = (val) => {
+  return (isObject(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
+};
+const objectToString = Object.prototype.toString;
+const toTypeString = (value) => objectToString.call(value);
+const toRawType = (value) => {
+  return toTypeString(value).slice(8, -1);
+};
+const isPlainObject = (val) => toTypeString(val) === "[object Object]";
+const isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
+const isReservedProp = /* @__PURE__ */ makeMap(
+  // the leading comma is intentional so empty string "" is also included
+  ",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted"
+);
+const isBuiltInDirective = /* @__PURE__ */ makeMap(
+  "bind,cloak,else-if,else,for,html,if,model,on,once,pre,show,slot,text,memo"
+);
+const cacheStringFunction = (fn) => {
+  const cache = /* @__PURE__ */ Object.create(null);
+  return (str) => {
+    const hit = cache[str];
+    return hit || (cache[str] = fn(str));
+  };
+};
+const camelizeRE = /-(\w)/g;
+const camelize = cacheStringFunction(
+  (str) => {
+    return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
+  }
+);
+const hyphenateRE = /\B([A-Z])/g;
+const hyphenate = cacheStringFunction(
+  (str) => str.replace(hyphenateRE, "-$1").toLowerCase()
+);
+const capitalize = cacheStringFunction((str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+});
+const toHandlerKey = cacheStringFunction(
+  (str) => {
+    const s = str ? `on${capitalize(str)}` : ``;
+    return s;
+  }
+);
+const hasChanged = (value, oldValue) => !Object.is(value, oldValue);
+const invokeArrayFns = (fns, ...arg) => {
+  for (let i = 0; i < fns.length; i++) {
+    fns[i](...arg);
+  }
+};
+const def = (obj, key, value, writable = false) => {
+  Object.defineProperty(obj, key, {
+    configurable: true,
+    enumerable: false,
+    writable,
+    value
+  });
+};
+const looseToNumber = (val) => {
+  const n = parseFloat(val);
+  return isNaN(n) ? val : n;
+};
+let _globalThis;
+const getGlobalThis = () => {
+  return _globalThis || (_globalThis = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : {});
+};
+function normalizeStyle(value) {
+  if (isArray(value)) {
+    const res = {};
+    for (let i = 0; i < value.length; i++) {
+      const item = value[i];
+      const normalized = isString(item) ? parseStringStyle(item) : normalizeStyle(item);
+      if (normalized) {
+        for (const key in normalized) {
+          res[key] = normalized[key];
+        }
+      }
+    }
+    return res;
+  } else if (isString(value) || isObject(value)) {
+    return value;
+  }
+}
+const listDelimiterRE = /;(?![^(]*\))/g;
+const propertyDelimiterRE = /:([^]+)/;
+const styleCommentRE = /\/\*[^]*?\*\//g;
+function parseStringStyle(cssText) {
+  const ret = {};
+  cssText.replace(styleCommentRE, "").split(listDelimiterRE).forEach((item) => {
+    if (item) {
+      const tmp = item.split(propertyDelimiterRE);
+      tmp.length > 1 && (ret[tmp[0].trim()] = tmp[1].trim());
+    }
+  });
+  return ret;
+}
+function normalizeClass(value) {
+  let res = "";
+  if (isString(value)) {
+    res = value;
+  } else if (isArray(value)) {
+    for (let i = 0; i < value.length; i++) {
+      const normalized = normalizeClass(value[i]);
+      if (normalized) {
+        res += normalized + " ";
+      }
+    }
+  } else if (isObject(value)) {
+    for (const name in value) {
+      if (value[name]) {
+        res += name + " ";
+      }
+    }
+  }
+  return res.trim();
+}
+const HTML_TAGS = "html,body,base,head,link,meta,style,title,address,article,aside,footer,header,hgroup,h1,h2,h3,h4,h5,h6,nav,section,div,dd,dl,dt,figcaption,figure,picture,hr,img,li,main,ol,p,pre,ul,a,b,abbr,bdi,bdo,br,cite,code,data,dfn,em,i,kbd,mark,q,rp,rt,ruby,s,samp,small,span,strong,sub,sup,time,u,var,wbr,area,audio,map,track,video,embed,object,param,source,canvas,script,noscript,del,ins,caption,col,colgroup,table,thead,tbody,td,th,tr,button,datalist,fieldset,form,input,label,legend,meter,optgroup,option,output,progress,select,textarea,details,dialog,menu,summary,template,blockquote,iframe,tfoot";
+const SVG_TAGS = "svg,animate,animateMotion,animateTransform,circle,clipPath,color-profile,defs,desc,discard,ellipse,feBlend,feColorMatrix,feComponentTransfer,feComposite,feConvolveMatrix,feDiffuseLighting,feDisplacementMap,feDistantLight,feDropShadow,feFlood,feFuncA,feFuncB,feFuncG,feFuncR,feGaussianBlur,feImage,feMerge,feMergeNode,feMorphology,feOffset,fePointLight,feSpecularLighting,feSpotLight,feTile,feTurbulence,filter,foreignObject,g,hatch,hatchpath,image,line,linearGradient,marker,mask,mesh,meshgradient,meshpatch,meshrow,metadata,mpath,path,pattern,polygon,polyline,radialGradient,rect,set,solidcolor,stop,switch,symbol,text,textPath,title,tspan,unknown,use,view";
+const MATH_TAGS = "annotation,annotation-xml,maction,maligngroup,malignmark,math,menclose,merror,mfenced,mfrac,mfraction,mglyph,mi,mlabeledtr,mlongdiv,mmultiscripts,mn,mo,mover,mpadded,mphantom,mprescripts,mroot,mrow,ms,mscarries,mscarry,msgroup,msline,mspace,msqrt,msrow,mstack,mstyle,msub,msubsup,msup,mtable,mtd,mtext,mtr,munder,munderover,none,semantics";
+const isHTMLTag = /* @__PURE__ */ makeMap(HTML_TAGS);
+const isSVGTag = /* @__PURE__ */ makeMap(SVG_TAGS);
+const isMathMLTag = /* @__PURE__ */ makeMap(MATH_TAGS);
+const specialBooleanAttrs = `itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,readonly`;
+const isSpecialBooleanAttr = /* @__PURE__ */ makeMap(specialBooleanAttrs);
+function includeBooleanAttr(value) {
+  return !!value || value === "";
+}
+const isRef$1 = (val) => {
+  return !!(val && val["__v_isRef"] === true);
+};
+const toDisplayString = (val) => {
+  return isString(val) ? val : val == null ? "" : isArray(val) || isObject(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
+};
+const replacer = (_key, val) => {
+  if (isRef$1(val)) {
+    return replacer(_key, val.value);
+  } else if (isMap(val)) {
+    return {
+      [`Map(${val.size})`]: [...val.entries()].reduce(
+        (entries, [key, val2], i) => {
+          entries[stringifySymbol(key, i) + " =>"] = val2;
+          return entries;
+        },
+        {}
+      )
+    };
+  } else if (isSet(val)) {
+    return {
+      [`Set(${val.size})`]: [...val.values()].map((v) => stringifySymbol(v))
+    };
+  } else if (isSymbol(val)) {
+    return stringifySymbol(val);
+  } else if (isObject(val) && !isArray(val) && !isPlainObject(val)) {
+    return String(val);
+  }
+  return val;
+};
+const stringifySymbol = (v, i = "") => {
+  var _a;
+  return (
+    // Symbol.description in es2019+ so we need to cast here to pass
+    // the lib: es2016 check
+    isSymbol(v) ? `Symbol(${(_a = v.description) != null ? _a : i})` : v
+  );
+};
+var define_process_default$3 = { env: { DEV_MODE: "production" } };
+function warn$2(msg, ...args) {
+  console.warn(`[Vue warn] ${msg}`, ...args);
+}
+let activeEffectScope;
+class EffectScope {
+  constructor(detached = false) {
+    this.detached = detached;
+    this._active = true;
+    this.effects = [];
+    this.cleanups = [];
+    this._isPaused = false;
+    this.parent = activeEffectScope;
+    if (!detached && activeEffectScope) {
+      this.index = (activeEffectScope.scopes || (activeEffectScope.scopes = [])).push(
+        this
+      ) - 1;
+    }
+  }
+  get active() {
+    return this._active;
+  }
+  pause() {
+    if (this._active) {
+      this._isPaused = true;
+      let i, l;
+      if (this.scopes) {
+        for (i = 0, l = this.scopes.length; i < l; i++) {
+          this.scopes[i].pause();
+        }
+      }
+      for (i = 0, l = this.effects.length; i < l; i++) {
+        this.effects[i].pause();
+      }
+    }
+  }
+  /**
+   * Resumes the effect scope, including all child scopes and effects.
+   */
+  resume() {
+    if (this._active) {
+      if (this._isPaused) {
+        this._isPaused = false;
+        let i, l;
+        if (this.scopes) {
+          for (i = 0, l = this.scopes.length; i < l; i++) {
+            this.scopes[i].resume();
+          }
+        }
+        for (i = 0, l = this.effects.length; i < l; i++) {
+          this.effects[i].resume();
+        }
+      }
+    }
+  }
+  run(fn) {
+    if (this._active) {
+      const currentEffectScope = activeEffectScope;
+      try {
+        activeEffectScope = this;
+        return fn();
+      } finally {
+        activeEffectScope = currentEffectScope;
+      }
+    } else if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+      warn$2(`cannot run an inactive effect scope.`);
+    }
+  }
+  /**
+   * This should only be called on non-detached scopes
+   * @internal
+   */
+  on() {
+    activeEffectScope = this;
+  }
+  /**
+   * This should only be called on non-detached scopes
+   * @internal
+   */
+  off() {
+    activeEffectScope = this.parent;
+  }
+  stop(fromParent) {
+    if (this._active) {
+      this._active = false;
+      let i, l;
+      for (i = 0, l = this.effects.length; i < l; i++) {
+        this.effects[i].stop();
+      }
+      this.effects.length = 0;
+      for (i = 0, l = this.cleanups.length; i < l; i++) {
+        this.cleanups[i]();
+      }
+      this.cleanups.length = 0;
+      if (this.scopes) {
+        for (i = 0, l = this.scopes.length; i < l; i++) {
+          this.scopes[i].stop(true);
+        }
+        this.scopes.length = 0;
+      }
+      if (!this.detached && this.parent && !fromParent) {
+        const last = this.parent.scopes.pop();
+        if (last && last !== this) {
+          this.parent.scopes[this.index] = last;
+          last.index = this.index;
+        }
+      }
+      this.parent = void 0;
+    }
+  }
+}
+function getCurrentScope() {
+  return activeEffectScope;
+}
+let activeSub;
+const pausedQueueEffects = /* @__PURE__ */ new WeakSet();
+class ReactiveEffect {
+  constructor(fn) {
+    this.fn = fn;
+    this.deps = void 0;
+    this.depsTail = void 0;
+    this.flags = 1 | 4;
+    this.next = void 0;
+    this.cleanup = void 0;
+    this.scheduler = void 0;
+    if (activeEffectScope && activeEffectScope.active) {
+      activeEffectScope.effects.push(this);
+    }
+  }
+  pause() {
+    this.flags |= 64;
+  }
+  resume() {
+    if (this.flags & 64) {
+      this.flags &= -65;
+      if (pausedQueueEffects.has(this)) {
+        pausedQueueEffects.delete(this);
+        this.trigger();
+      }
+    }
+  }
+  /**
+   * @internal
+   */
+  notify() {
+    if (this.flags & 2 && !(this.flags & 32)) {
+      return;
+    }
+    if (!(this.flags & 8)) {
+      batch(this);
+    }
+  }
+  run() {
+    if (!(this.flags & 1)) {
+      return this.fn();
+    }
+    this.flags |= 2;
+    cleanupEffect(this);
+    prepareDeps(this);
+    const prevEffect = activeSub;
+    const prevShouldTrack = shouldTrack;
+    activeSub = this;
+    shouldTrack = true;
+    try {
+      return this.fn();
+    } finally {
+      if (!!(define_process_default$3.env.NODE_ENV !== "production") && activeSub !== this) {
+        warn$2(
+          "Active effect was not restored correctly - this is likely a Vue internal bug."
+        );
+      }
+      cleanupDeps(this);
+      activeSub = prevEffect;
+      shouldTrack = prevShouldTrack;
+      this.flags &= -3;
+    }
+  }
+  stop() {
+    if (this.flags & 1) {
+      for (let link = this.deps; link; link = link.nextDep) {
+        removeSub(link);
+      }
+      this.deps = this.depsTail = void 0;
+      cleanupEffect(this);
+      this.onStop && this.onStop();
+      this.flags &= -2;
+    }
+  }
+  trigger() {
+    if (this.flags & 64) {
+      pausedQueueEffects.add(this);
+    } else if (this.scheduler) {
+      this.scheduler();
+    } else {
+      this.runIfDirty();
+    }
+  }
+  /**
+   * @internal
+   */
+  runIfDirty() {
+    if (isDirty(this)) {
+      this.run();
+    }
+  }
+  get dirty() {
+    return isDirty(this);
+  }
+}
+let batchDepth = 0;
+let batchedSub;
+let batchedComputed;
+function batch(sub, isComputed = false) {
+  sub.flags |= 8;
+  if (isComputed) {
+    sub.next = batchedComputed;
+    batchedComputed = sub;
+    return;
+  }
+  sub.next = batchedSub;
+  batchedSub = sub;
+}
+function startBatch() {
+  batchDepth++;
+}
+function endBatch() {
+  if (--batchDepth > 0) {
+    return;
+  }
+  if (batchedComputed) {
+    let e = batchedComputed;
+    batchedComputed = void 0;
+    while (e) {
+      const next = e.next;
+      e.next = void 0;
+      e.flags &= -9;
+      e = next;
+    }
+  }
+  let error;
+  while (batchedSub) {
+    let e = batchedSub;
+    batchedSub = void 0;
+    while (e) {
+      const next = e.next;
+      e.next = void 0;
+      e.flags &= -9;
+      if (e.flags & 1) {
+        try {
+          ;
+          e.trigger();
+        } catch (err) {
+          if (!error) error = err;
+        }
+      }
+      e = next;
+    }
+  }
+  if (error) throw error;
+}
+function prepareDeps(sub) {
+  for (let link = sub.deps; link; link = link.nextDep) {
+    link.version = -1;
+    link.prevActiveLink = link.dep.activeLink;
+    link.dep.activeLink = link;
+  }
+}
+function cleanupDeps(sub) {
+  let head;
+  let tail = sub.depsTail;
+  let link = tail;
+  while (link) {
+    const prev = link.prevDep;
+    if (link.version === -1) {
+      if (link === tail) tail = prev;
+      removeSub(link);
+      removeDep(link);
+    } else {
+      head = link;
+    }
+    link.dep.activeLink = link.prevActiveLink;
+    link.prevActiveLink = void 0;
+    link = prev;
+  }
+  sub.deps = head;
+  sub.depsTail = tail;
+}
+function isDirty(sub) {
+  for (let link = sub.deps; link; link = link.nextDep) {
+    if (link.dep.version !== link.version || link.dep.computed && (refreshComputed(link.dep.computed) || link.dep.version !== link.version)) {
+      return true;
+    }
+  }
+  if (sub._dirty) {
+    return true;
+  }
+  return false;
+}
+function refreshComputed(computed2) {
+  if (computed2.flags & 4 && !(computed2.flags & 16)) {
+    return;
+  }
+  computed2.flags &= -17;
+  if (computed2.globalVersion === globalVersion) {
+    return;
+  }
+  computed2.globalVersion = globalVersion;
+  const dep = computed2.dep;
+  computed2.flags |= 2;
+  if (dep.version > 0 && !computed2.isSSR && computed2.deps && !isDirty(computed2)) {
+    computed2.flags &= -3;
+    return;
+  }
+  const prevSub = activeSub;
+  const prevShouldTrack = shouldTrack;
+  activeSub = computed2;
+  shouldTrack = true;
+  try {
+    prepareDeps(computed2);
+    const value = computed2.fn(computed2._value);
+    if (dep.version === 0 || hasChanged(value, computed2._value)) {
+      computed2._value = value;
+      dep.version++;
+    }
+  } catch (err) {
+    dep.version++;
+    throw err;
+  } finally {
+    activeSub = prevSub;
+    shouldTrack = prevShouldTrack;
+    cleanupDeps(computed2);
+    computed2.flags &= -3;
+  }
+}
+function removeSub(link, soft = false) {
+  const { dep, prevSub, nextSub } = link;
+  if (prevSub) {
+    prevSub.nextSub = nextSub;
+    link.prevSub = void 0;
+  }
+  if (nextSub) {
+    nextSub.prevSub = prevSub;
+    link.nextSub = void 0;
+  }
+  if (!!(define_process_default$3.env.NODE_ENV !== "production") && dep.subsHead === link) {
+    dep.subsHead = nextSub;
+  }
+  if (dep.subs === link) {
+    dep.subs = prevSub;
+    if (!prevSub && dep.computed) {
+      dep.computed.flags &= -5;
+      for (let l = dep.computed.deps; l; l = l.nextDep) {
+        removeSub(l, true);
+      }
+    }
+  }
+  if (!soft && !--dep.sc && dep.map) {
+    dep.map.delete(dep.key);
+  }
+}
+function removeDep(link) {
+  const { prevDep, nextDep } = link;
+  if (prevDep) {
+    prevDep.nextDep = nextDep;
+    link.prevDep = void 0;
+  }
+  if (nextDep) {
+    nextDep.prevDep = prevDep;
+    link.nextDep = void 0;
+  }
+}
+let shouldTrack = true;
+const trackStack = [];
+function pauseTracking() {
+  trackStack.push(shouldTrack);
+  shouldTrack = false;
+}
+function resetTracking() {
+  const last = trackStack.pop();
+  shouldTrack = last === void 0 ? true : last;
+}
+function cleanupEffect(e) {
+  const { cleanup } = e;
+  e.cleanup = void 0;
+  if (cleanup) {
+    const prevSub = activeSub;
+    activeSub = void 0;
+    try {
+      cleanup();
+    } finally {
+      activeSub = prevSub;
+    }
+  }
+}
+let globalVersion = 0;
+class Link {
+  constructor(sub, dep) {
+    this.sub = sub;
+    this.dep = dep;
+    this.version = dep.version;
+    this.nextDep = this.prevDep = this.nextSub = this.prevSub = this.prevActiveLink = void 0;
+  }
+}
+class Dep {
+  constructor(computed2) {
+    this.computed = computed2;
+    this.version = 0;
+    this.activeLink = void 0;
+    this.subs = void 0;
+    this.map = void 0;
+    this.key = void 0;
+    this.sc = 0;
+    if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+      this.subsHead = void 0;
+    }
+  }
+  track(debugInfo) {
+    if (!activeSub || !shouldTrack || activeSub === this.computed) {
+      return;
+    }
+    let link = this.activeLink;
+    if (link === void 0 || link.sub !== activeSub) {
+      link = this.activeLink = new Link(activeSub, this);
+      if (!activeSub.deps) {
+        activeSub.deps = activeSub.depsTail = link;
+      } else {
+        link.prevDep = activeSub.depsTail;
+        activeSub.depsTail.nextDep = link;
+        activeSub.depsTail = link;
+      }
+      addSub(link);
+    } else if (link.version === -1) {
+      link.version = this.version;
+      if (link.nextDep) {
+        const next = link.nextDep;
+        next.prevDep = link.prevDep;
+        if (link.prevDep) {
+          link.prevDep.nextDep = next;
+        }
+        link.prevDep = activeSub.depsTail;
+        link.nextDep = void 0;
+        activeSub.depsTail.nextDep = link;
+        activeSub.depsTail = link;
+        if (activeSub.deps === link) {
+          activeSub.deps = next;
+        }
+      }
+    }
+    if (!!(define_process_default$3.env.NODE_ENV !== "production") && activeSub.onTrack) {
+      activeSub.onTrack(
+        extend(
+          {
+            effect: activeSub
+          },
+          debugInfo
+        )
+      );
+    }
+    return link;
+  }
+  trigger(debugInfo) {
+    this.version++;
+    globalVersion++;
+    this.notify(debugInfo);
+  }
+  notify(debugInfo) {
+    startBatch();
+    try {
+      if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+        for (let head = this.subsHead; head; head = head.nextSub) {
+          if (head.sub.onTrigger && !(head.sub.flags & 8)) {
+            head.sub.onTrigger(
+              extend(
+                {
+                  effect: head.sub
+                },
+                debugInfo
+              )
+            );
+          }
+        }
+      }
+      for (let link = this.subs; link; link = link.prevSub) {
+        if (link.sub.notify()) {
+          ;
+          link.sub.dep.notify();
+        }
+      }
+    } finally {
+      endBatch();
+    }
+  }
+}
+function addSub(link) {
+  link.dep.sc++;
+  if (link.sub.flags & 4) {
+    const computed2 = link.dep.computed;
+    if (computed2 && !link.dep.subs) {
+      computed2.flags |= 4 | 16;
+      for (let l = computed2.deps; l; l = l.nextDep) {
+        addSub(l);
+      }
+    }
+    const currentTail = link.dep.subs;
+    if (currentTail !== link) {
+      link.prevSub = currentTail;
+      if (currentTail) currentTail.nextSub = link;
+    }
+    if (!!(define_process_default$3.env.NODE_ENV !== "production") && link.dep.subsHead === void 0) {
+      link.dep.subsHead = link;
+    }
+    link.dep.subs = link;
+  }
+}
+const targetMap = /* @__PURE__ */ new WeakMap();
+const ITERATE_KEY = Symbol(
+  !!(define_process_default$3.env.NODE_ENV !== "production") ? "Object iterate" : ""
+);
+const MAP_KEY_ITERATE_KEY = Symbol(
+  !!(define_process_default$3.env.NODE_ENV !== "production") ? "Map keys iterate" : ""
+);
+const ARRAY_ITERATE_KEY = Symbol(
+  !!(define_process_default$3.env.NODE_ENV !== "production") ? "Array iterate" : ""
+);
+function track(target, type, key) {
+  if (shouldTrack && activeSub) {
+    let depsMap = targetMap.get(target);
+    if (!depsMap) {
+      targetMap.set(target, depsMap = /* @__PURE__ */ new Map());
+    }
+    let dep = depsMap.get(key);
+    if (!dep) {
+      depsMap.set(key, dep = new Dep());
+      dep.map = depsMap;
+      dep.key = key;
+    }
+    if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+      dep.track({
+        target,
+        type,
+        key
+      });
+    } else {
+      dep.track();
+    }
+  }
+}
+function trigger(target, type, key, newValue, oldValue, oldTarget) {
+  const depsMap = targetMap.get(target);
+  if (!depsMap) {
+    globalVersion++;
+    return;
+  }
+  const run = (dep) => {
+    if (dep) {
+      if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+        dep.trigger({
+          target,
+          type,
+          key,
+          newValue,
+          oldValue,
+          oldTarget
+        });
+      } else {
+        dep.trigger();
+      }
+    }
+  };
+  startBatch();
+  if (type === "clear") {
+    depsMap.forEach(run);
+  } else {
+    const targetIsArray = isArray(target);
+    const isArrayIndex = targetIsArray && isIntegerKey(key);
+    if (targetIsArray && key === "length") {
+      const newLength = Number(newValue);
+      depsMap.forEach((dep, key2) => {
+        if (key2 === "length" || key2 === ARRAY_ITERATE_KEY || !isSymbol(key2) && key2 >= newLength) {
+          run(dep);
+        }
+      });
+    } else {
+      if (key !== void 0 || depsMap.has(void 0)) {
+        run(depsMap.get(key));
+      }
+      if (isArrayIndex) {
+        run(depsMap.get(ARRAY_ITERATE_KEY));
+      }
+      switch (type) {
+        case "add":
+          if (!targetIsArray) {
+            run(depsMap.get(ITERATE_KEY));
+            if (isMap(target)) {
+              run(depsMap.get(MAP_KEY_ITERATE_KEY));
+            }
+          } else if (isArrayIndex) {
+            run(depsMap.get("length"));
+          }
+          break;
+        case "delete":
+          if (!targetIsArray) {
+            run(depsMap.get(ITERATE_KEY));
+            if (isMap(target)) {
+              run(depsMap.get(MAP_KEY_ITERATE_KEY));
+            }
+          }
+          break;
+        case "set":
+          if (isMap(target)) {
+            run(depsMap.get(ITERATE_KEY));
+          }
+          break;
+      }
+    }
+  }
+  endBatch();
+}
+function reactiveReadArray(array) {
+  const raw = toRaw(array);
+  if (raw === array) return raw;
+  track(raw, "iterate", ARRAY_ITERATE_KEY);
+  return isShallow(array) ? raw : raw.map(toReactive);
+}
+function shallowReadArray(arr) {
+  track(arr = toRaw(arr), "iterate", ARRAY_ITERATE_KEY);
+  return arr;
+}
+const arrayInstrumentations = {
+  __proto__: null,
+  [Symbol.iterator]() {
+    return iterator(this, Symbol.iterator, toReactive);
+  },
+  concat(...args) {
+    return reactiveReadArray(this).concat(
+      ...args.map((x) => isArray(x) ? reactiveReadArray(x) : x)
+    );
+  },
+  entries() {
+    return iterator(this, "entries", (value) => {
+      value[1] = toReactive(value[1]);
+      return value;
+    });
+  },
+  every(fn, thisArg) {
+    return apply(this, "every", fn, thisArg, void 0, arguments);
+  },
+  filter(fn, thisArg) {
+    return apply(this, "filter", fn, thisArg, (v) => v.map(toReactive), arguments);
+  },
+  find(fn, thisArg) {
+    return apply(this, "find", fn, thisArg, toReactive, arguments);
+  },
+  findIndex(fn, thisArg) {
+    return apply(this, "findIndex", fn, thisArg, void 0, arguments);
+  },
+  findLast(fn, thisArg) {
+    return apply(this, "findLast", fn, thisArg, toReactive, arguments);
+  },
+  findLastIndex(fn, thisArg) {
+    return apply(this, "findLastIndex", fn, thisArg, void 0, arguments);
+  },
+  // flat, flatMap could benefit from ARRAY_ITERATE but are not straight-forward to implement
+  forEach(fn, thisArg) {
+    return apply(this, "forEach", fn, thisArg, void 0, arguments);
+  },
+  includes(...args) {
+    return searchProxy(this, "includes", args);
+  },
+  indexOf(...args) {
+    return searchProxy(this, "indexOf", args);
+  },
+  join(separator) {
+    return reactiveReadArray(this).join(separator);
+  },
+  // keys() iterator only reads `length`, no optimisation required
+  lastIndexOf(...args) {
+    return searchProxy(this, "lastIndexOf", args);
+  },
+  map(fn, thisArg) {
+    return apply(this, "map", fn, thisArg, void 0, arguments);
+  },
+  pop() {
+    return noTracking(this, "pop");
+  },
+  push(...args) {
+    return noTracking(this, "push", args);
+  },
+  reduce(fn, ...args) {
+    return reduce(this, "reduce", fn, args);
+  },
+  reduceRight(fn, ...args) {
+    return reduce(this, "reduceRight", fn, args);
+  },
+  shift() {
+    return noTracking(this, "shift");
+  },
+  // slice could use ARRAY_ITERATE but also seems to beg for range tracking
+  some(fn, thisArg) {
+    return apply(this, "some", fn, thisArg, void 0, arguments);
+  },
+  splice(...args) {
+    return noTracking(this, "splice", args);
+  },
+  toReversed() {
+    return reactiveReadArray(this).toReversed();
+  },
+  toSorted(comparer) {
+    return reactiveReadArray(this).toSorted(comparer);
+  },
+  toSpliced(...args) {
+    return reactiveReadArray(this).toSpliced(...args);
+  },
+  unshift(...args) {
+    return noTracking(this, "unshift", args);
+  },
+  values() {
+    return iterator(this, "values", toReactive);
+  }
+};
+function iterator(self2, method, wrapValue) {
+  const arr = shallowReadArray(self2);
+  const iter = arr[method]();
+  if (arr !== self2 && !isShallow(self2)) {
+    iter._next = iter.next;
+    iter.next = () => {
+      const result = iter._next();
+      if (result.value) {
+        result.value = wrapValue(result.value);
+      }
+      return result;
+    };
+  }
+  return iter;
+}
+const arrayProto = Array.prototype;
+function apply(self2, method, fn, thisArg, wrappedRetFn, args) {
+  const arr = shallowReadArray(self2);
+  const needsWrap = arr !== self2 && !isShallow(self2);
+  const methodFn = arr[method];
+  if (methodFn !== arrayProto[method]) {
+    const result2 = methodFn.apply(self2, args);
+    return needsWrap ? toReactive(result2) : result2;
+  }
+  let wrappedFn = fn;
+  if (arr !== self2) {
+    if (needsWrap) {
+      wrappedFn = function(item, index) {
+        return fn.call(this, toReactive(item), index, self2);
+      };
+    } else if (fn.length > 2) {
+      wrappedFn = function(item, index) {
+        return fn.call(this, item, index, self2);
+      };
+    }
+  }
+  const result = methodFn.call(arr, wrappedFn, thisArg);
+  return needsWrap && wrappedRetFn ? wrappedRetFn(result) : result;
+}
+function reduce(self2, method, fn, args) {
+  const arr = shallowReadArray(self2);
+  let wrappedFn = fn;
+  if (arr !== self2) {
+    if (!isShallow(self2)) {
+      wrappedFn = function(acc, item, index) {
+        return fn.call(this, acc, toReactive(item), index, self2);
+      };
+    } else if (fn.length > 3) {
+      wrappedFn = function(acc, item, index) {
+        return fn.call(this, acc, item, index, self2);
+      };
+    }
+  }
+  return arr[method](wrappedFn, ...args);
+}
+function searchProxy(self2, method, args) {
+  const arr = toRaw(self2);
+  track(arr, "iterate", ARRAY_ITERATE_KEY);
+  const res = arr[method](...args);
+  if ((res === -1 || res === false) && isProxy(args[0])) {
+    args[0] = toRaw(args[0]);
+    return arr[method](...args);
+  }
+  return res;
+}
+function noTracking(self2, method, args = []) {
+  pauseTracking();
+  startBatch();
+  const res = toRaw(self2)[method].apply(self2, args);
+  endBatch();
+  resetTracking();
+  return res;
+}
+const isNonTrackableKeys = /* @__PURE__ */ makeMap(`__proto__,__v_isRef,__isVue`);
+const builtInSymbols = new Set(
+  /* @__PURE__ */ Object.getOwnPropertyNames(Symbol).filter((key) => key !== "arguments" && key !== "caller").map((key) => Symbol[key]).filter(isSymbol)
+);
+function hasOwnProperty(key) {
+  if (!isSymbol(key)) key = String(key);
+  const obj = toRaw(this);
+  track(obj, "has", key);
+  return obj.hasOwnProperty(key);
+}
+class BaseReactiveHandler {
+  constructor(_isReadonly = false, _isShallow = false) {
+    this._isReadonly = _isReadonly;
+    this._isShallow = _isShallow;
+  }
+  get(target, key, receiver) {
+    if (key === "__v_skip") return target["__v_skip"];
+    const isReadonly2 = this._isReadonly, isShallow2 = this._isShallow;
+    if (key === "__v_isReactive") {
+      return !isReadonly2;
+    } else if (key === "__v_isReadonly") {
+      return isReadonly2;
+    } else if (key === "__v_isShallow") {
+      return isShallow2;
+    } else if (key === "__v_raw") {
+      if (receiver === (isReadonly2 ? isShallow2 ? shallowReadonlyMap : readonlyMap : isShallow2 ? shallowReactiveMap : reactiveMap).get(target) || // receiver is not the reactive proxy, but has the same prototype
+      // this means the receiver is a user proxy of the reactive proxy
+      Object.getPrototypeOf(target) === Object.getPrototypeOf(receiver)) {
+        return target;
+      }
+      return;
+    }
+    const targetIsArray = isArray(target);
+    if (!isReadonly2) {
+      let fn;
+      if (targetIsArray && (fn = arrayInstrumentations[key])) {
+        return fn;
+      }
+      if (key === "hasOwnProperty") {
+        return hasOwnProperty;
+      }
+    }
+    const res = Reflect.get(
+      target,
+      key,
+      // if this is a proxy wrapping a ref, return methods using the raw ref
+      // as receiver so that we don't have to call `toRaw` on the ref in all
+      // its class methods
+      isRef(target) ? target : receiver
+    );
+    if (isSymbol(key) ? builtInSymbols.has(key) : isNonTrackableKeys(key)) {
+      return res;
+    }
+    if (!isReadonly2) {
+      track(target, "get", key);
+    }
+    if (isShallow2) {
+      return res;
+    }
+    if (isRef(res)) {
+      return targetIsArray && isIntegerKey(key) ? res : res.value;
+    }
+    if (isObject(res)) {
+      return isReadonly2 ? readonly(res) : reactive(res);
+    }
+    return res;
+  }
+}
+class MutableReactiveHandler extends BaseReactiveHandler {
+  constructor(isShallow2 = false) {
+    super(false, isShallow2);
+  }
+  set(target, key, value, receiver) {
+    let oldValue = target[key];
+    if (!this._isShallow) {
+      const isOldValueReadonly = isReadonly(oldValue);
+      if (!isShallow(value) && !isReadonly(value)) {
+        oldValue = toRaw(oldValue);
+        value = toRaw(value);
+      }
+      if (!isArray(target) && isRef(oldValue) && !isRef(value)) {
+        if (isOldValueReadonly) {
+          return false;
+        } else {
+          oldValue.value = value;
+          return true;
+        }
+      }
+    }
+    const hadKey = isArray(target) && isIntegerKey(key) ? Number(key) < target.length : hasOwn(target, key);
+    const result = Reflect.set(
+      target,
+      key,
+      value,
+      isRef(target) ? target : receiver
+    );
+    if (target === toRaw(receiver)) {
+      if (!hadKey) {
+        trigger(target, "add", key, value);
+      } else if (hasChanged(value, oldValue)) {
+        trigger(target, "set", key, value, oldValue);
+      }
+    }
+    return result;
+  }
+  deleteProperty(target, key) {
+    const hadKey = hasOwn(target, key);
+    const oldValue = target[key];
+    const result = Reflect.deleteProperty(target, key);
+    if (result && hadKey) {
+      trigger(target, "delete", key, void 0, oldValue);
+    }
+    return result;
+  }
+  has(target, key) {
+    const result = Reflect.has(target, key);
+    if (!isSymbol(key) || !builtInSymbols.has(key)) {
+      track(target, "has", key);
+    }
+    return result;
+  }
+  ownKeys(target) {
+    track(
+      target,
+      "iterate",
+      isArray(target) ? "length" : ITERATE_KEY
+    );
+    return Reflect.ownKeys(target);
+  }
+}
+class ReadonlyReactiveHandler extends BaseReactiveHandler {
+  constructor(isShallow2 = false) {
+    super(true, isShallow2);
+  }
+  set(target, key) {
+    if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+      warn$2(
+        `Set operation on key "${String(key)}" failed: target is readonly.`,
+        target
+      );
+    }
+    return true;
+  }
+  deleteProperty(target, key) {
+    if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+      warn$2(
+        `Delete operation on key "${String(key)}" failed: target is readonly.`,
+        target
+      );
+    }
+    return true;
+  }
+}
+const mutableHandlers = /* @__PURE__ */ new MutableReactiveHandler();
+const readonlyHandlers = /* @__PURE__ */ new ReadonlyReactiveHandler();
+const shallowReactiveHandlers = /* @__PURE__ */ new MutableReactiveHandler(true);
+const shallowReadonlyHandlers = /* @__PURE__ */ new ReadonlyReactiveHandler(true);
+const toShallow = (value) => value;
+const getProto = (v) => Reflect.getPrototypeOf(v);
+function createIterableMethod(method, isReadonly2, isShallow2) {
+  return function(...args) {
+    const target = this["__v_raw"];
+    const rawTarget = toRaw(target);
+    const targetIsMap = isMap(rawTarget);
+    const isPair = method === "entries" || method === Symbol.iterator && targetIsMap;
+    const isKeyOnly = method === "keys" && targetIsMap;
+    const innerIterator = target[method](...args);
+    const wrap = isShallow2 ? toShallow : isReadonly2 ? toReadonly : toReactive;
+    !isReadonly2 && track(
+      rawTarget,
+      "iterate",
+      isKeyOnly ? MAP_KEY_ITERATE_KEY : ITERATE_KEY
+    );
+    return {
+      // iterator protocol
+      next() {
+        const { value, done } = innerIterator.next();
+        return done ? { value, done } : {
+          value: isPair ? [wrap(value[0]), wrap(value[1])] : wrap(value),
+          done
+        };
+      },
+      // iterable protocol
+      [Symbol.iterator]() {
+        return this;
+      }
+    };
+  };
+}
+function createReadonlyMethod(type) {
+  return function(...args) {
+    if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+      const key = args[0] ? `on key "${args[0]}" ` : ``;
+      warn$2(
+        `${capitalize(type)} operation ${key}failed: target is readonly.`,
+        toRaw(this)
+      );
+    }
+    return type === "delete" ? false : type === "clear" ? void 0 : this;
+  };
+}
+function createInstrumentations(readonly2, shallow) {
+  const instrumentations = {
+    get(key) {
+      const target = this["__v_raw"];
+      const rawTarget = toRaw(target);
+      const rawKey = toRaw(key);
+      if (!readonly2) {
+        if (hasChanged(key, rawKey)) {
+          track(rawTarget, "get", key);
+        }
+        track(rawTarget, "get", rawKey);
+      }
+      const { has } = getProto(rawTarget);
+      const wrap = shallow ? toShallow : readonly2 ? toReadonly : toReactive;
+      if (has.call(rawTarget, key)) {
+        return wrap(target.get(key));
+      } else if (has.call(rawTarget, rawKey)) {
+        return wrap(target.get(rawKey));
+      } else if (target !== rawTarget) {
+        target.get(key);
+      }
+    },
+    get size() {
+      const target = this["__v_raw"];
+      !readonly2 && track(toRaw(target), "iterate", ITERATE_KEY);
+      return Reflect.get(target, "size", target);
+    },
+    has(key) {
+      const target = this["__v_raw"];
+      const rawTarget = toRaw(target);
+      const rawKey = toRaw(key);
+      if (!readonly2) {
+        if (hasChanged(key, rawKey)) {
+          track(rawTarget, "has", key);
+        }
+        track(rawTarget, "has", rawKey);
+      }
+      return key === rawKey ? target.has(key) : target.has(key) || target.has(rawKey);
+    },
+    forEach(callback, thisArg) {
+      const observed = this;
+      const target = observed["__v_raw"];
+      const rawTarget = toRaw(target);
+      const wrap = shallow ? toShallow : readonly2 ? toReadonly : toReactive;
+      !readonly2 && track(rawTarget, "iterate", ITERATE_KEY);
+      return target.forEach((value, key) => {
+        return callback.call(thisArg, wrap(value), wrap(key), observed);
+      });
+    }
+  };
+  extend(
+    instrumentations,
+    readonly2 ? {
+      add: createReadonlyMethod("add"),
+      set: createReadonlyMethod("set"),
+      delete: createReadonlyMethod("delete"),
+      clear: createReadonlyMethod("clear")
+    } : {
+      add(value) {
+        if (!shallow && !isShallow(value) && !isReadonly(value)) {
+          value = toRaw(value);
+        }
+        const target = toRaw(this);
+        const proto = getProto(target);
+        const hadKey = proto.has.call(target, value);
+        if (!hadKey) {
+          target.add(value);
+          trigger(target, "add", value, value);
+        }
+        return this;
+      },
+      set(key, value) {
+        if (!shallow && !isShallow(value) && !isReadonly(value)) {
+          value = toRaw(value);
+        }
+        const target = toRaw(this);
+        const { has, get } = getProto(target);
+        let hadKey = has.call(target, key);
+        if (!hadKey) {
+          key = toRaw(key);
+          hadKey = has.call(target, key);
+        } else if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+          checkIdentityKeys(target, has, key);
+        }
+        const oldValue = get.call(target, key);
+        target.set(key, value);
+        if (!hadKey) {
+          trigger(target, "add", key, value);
+        } else if (hasChanged(value, oldValue)) {
+          trigger(target, "set", key, value, oldValue);
+        }
+        return this;
+      },
+      delete(key) {
+        const target = toRaw(this);
+        const { has, get } = getProto(target);
+        let hadKey = has.call(target, key);
+        if (!hadKey) {
+          key = toRaw(key);
+          hadKey = has.call(target, key);
+        } else if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+          checkIdentityKeys(target, has, key);
+        }
+        const oldValue = get ? get.call(target, key) : void 0;
+        const result = target.delete(key);
+        if (hadKey) {
+          trigger(target, "delete", key, void 0, oldValue);
+        }
+        return result;
+      },
+      clear() {
+        const target = toRaw(this);
+        const hadItems = target.size !== 0;
+        const oldTarget = !!(define_process_default$3.env.NODE_ENV !== "production") ? isMap(target) ? new Map(target) : new Set(target) : void 0;
+        const result = target.clear();
+        if (hadItems) {
+          trigger(
+            target,
+            "clear",
+            void 0,
+            void 0,
+            oldTarget
+          );
+        }
+        return result;
+      }
+    }
+  );
+  const iteratorMethods = [
+    "keys",
+    "values",
+    "entries",
+    Symbol.iterator
+  ];
+  iteratorMethods.forEach((method) => {
+    instrumentations[method] = createIterableMethod(method, readonly2, shallow);
+  });
+  return instrumentations;
+}
+function createInstrumentationGetter(isReadonly2, shallow) {
+  const instrumentations = createInstrumentations(isReadonly2, shallow);
+  return (target, key, receiver) => {
+    if (key === "__v_isReactive") {
+      return !isReadonly2;
+    } else if (key === "__v_isReadonly") {
+      return isReadonly2;
+    } else if (key === "__v_raw") {
+      return target;
+    }
+    return Reflect.get(
+      hasOwn(instrumentations, key) && key in target ? instrumentations : target,
+      key,
+      receiver
+    );
+  };
+}
+const mutableCollectionHandlers = {
+  get: /* @__PURE__ */ createInstrumentationGetter(false, false)
+};
+const shallowCollectionHandlers = {
+  get: /* @__PURE__ */ createInstrumentationGetter(false, true)
+};
+const readonlyCollectionHandlers = {
+  get: /* @__PURE__ */ createInstrumentationGetter(true, false)
+};
+const shallowReadonlyCollectionHandlers = {
+  get: /* @__PURE__ */ createInstrumentationGetter(true, true)
+};
+function checkIdentityKeys(target, has, key) {
+  const rawKey = toRaw(key);
+  if (rawKey !== key && has.call(target, rawKey)) {
+    const type = toRawType(target);
+    warn$2(
+      `Reactive ${type} contains both the raw and reactive versions of the same object${type === `Map` ? ` as keys` : ``}, which can lead to inconsistencies. Avoid differentiating between the raw and reactive versions of an object and only use the reactive version if possible.`
+    );
+  }
+}
+const reactiveMap = /* @__PURE__ */ new WeakMap();
+const shallowReactiveMap = /* @__PURE__ */ new WeakMap();
+const readonlyMap = /* @__PURE__ */ new WeakMap();
+const shallowReadonlyMap = /* @__PURE__ */ new WeakMap();
+function targetTypeMap(rawType) {
+  switch (rawType) {
+    case "Object":
+    case "Array":
+      return 1;
+    case "Map":
+    case "Set":
+    case "WeakMap":
+    case "WeakSet":
+      return 2;
+    default:
+      return 0;
+  }
+}
+function getTargetType(value) {
+  return value["__v_skip"] || !Object.isExtensible(value) ? 0 : targetTypeMap(toRawType(value));
+}
+function reactive(target) {
+  if (isReadonly(target)) {
+    return target;
+  }
+  return createReactiveObject(
+    target,
+    false,
+    mutableHandlers,
+    mutableCollectionHandlers,
+    reactiveMap
+  );
+}
+function shallowReactive(target) {
+  return createReactiveObject(
+    target,
+    false,
+    shallowReactiveHandlers,
+    shallowCollectionHandlers,
+    shallowReactiveMap
+  );
+}
+function readonly(target) {
+  return createReactiveObject(
+    target,
+    true,
+    readonlyHandlers,
+    readonlyCollectionHandlers,
+    readonlyMap
+  );
+}
+function shallowReadonly(target) {
+  return createReactiveObject(
+    target,
+    true,
+    shallowReadonlyHandlers,
+    shallowReadonlyCollectionHandlers,
+    shallowReadonlyMap
+  );
+}
+function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandlers, proxyMap) {
+  if (!isObject(target)) {
+    if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+      warn$2(
+        `value cannot be made ${isReadonly2 ? "readonly" : "reactive"}: ${String(
+          target
+        )}`
+      );
+    }
+    return target;
+  }
+  if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) {
+    return target;
+  }
+  const existingProxy = proxyMap.get(target);
+  if (existingProxy) {
+    return existingProxy;
+  }
+  const targetType = getTargetType(target);
+  if (targetType === 0) {
+    return target;
+  }
+  const proxy = new Proxy(
+    target,
+    targetType === 2 ? collectionHandlers : baseHandlers
+  );
+  proxyMap.set(target, proxy);
+  return proxy;
+}
+function isReactive(value) {
+  if (isReadonly(value)) {
+    return isReactive(value["__v_raw"]);
+  }
+  return !!(value && value["__v_isReactive"]);
+}
+function isReadonly(value) {
+  return !!(value && value["__v_isReadonly"]);
+}
+function isShallow(value) {
+  return !!(value && value["__v_isShallow"]);
+}
+function isProxy(value) {
+  return value ? !!value["__v_raw"] : false;
+}
+function toRaw(observed) {
+  const raw = observed && observed["__v_raw"];
+  return raw ? toRaw(raw) : observed;
+}
+function markRaw(value) {
+  if (!hasOwn(value, "__v_skip") && Object.isExtensible(value)) {
+    def(value, "__v_skip", true);
+  }
+  return value;
+}
+const toReactive = (value) => isObject(value) ? reactive(value) : value;
+const toReadonly = (value) => isObject(value) ? readonly(value) : value;
+function isRef(r) {
+  return r ? r["__v_isRef"] === true : false;
+}
+function shallowRef(value) {
+  return createRef(value, true);
+}
+function createRef(rawValue, shallow) {
+  if (isRef(rawValue)) {
+    return rawValue;
+  }
+  return new RefImpl(rawValue, shallow);
+}
+class RefImpl {
+  constructor(value, isShallow2) {
+    this.dep = new Dep();
+    this["__v_isRef"] = true;
+    this["__v_isShallow"] = false;
+    this._rawValue = isShallow2 ? value : toRaw(value);
+    this._value = isShallow2 ? value : toReactive(value);
+    this["__v_isShallow"] = isShallow2;
+  }
+  get value() {
+    if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+      this.dep.track({
+        target: this,
+        type: "get",
+        key: "value"
+      });
+    } else {
+      this.dep.track();
+    }
+    return this._value;
+  }
+  set value(newValue) {
+    const oldValue = this._rawValue;
+    const useDirectValue = this["__v_isShallow"] || isShallow(newValue) || isReadonly(newValue);
+    newValue = useDirectValue ? newValue : toRaw(newValue);
+    if (hasChanged(newValue, oldValue)) {
+      this._rawValue = newValue;
+      this._value = useDirectValue ? newValue : toReactive(newValue);
+      if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+        this.dep.trigger({
+          target: this,
+          type: "set",
+          key: "value",
+          newValue,
+          oldValue
+        });
+      } else {
+        this.dep.trigger();
+      }
+    }
+  }
+}
+function unref(ref2) {
+  return isRef(ref2) ? ref2.value : ref2;
+}
+const shallowUnwrapHandlers = {
+  get: (target, key, receiver) => key === "__v_raw" ? target : unref(Reflect.get(target, key, receiver)),
+  set: (target, key, value, receiver) => {
+    const oldValue = target[key];
+    if (isRef(oldValue) && !isRef(value)) {
+      oldValue.value = value;
+      return true;
+    } else {
+      return Reflect.set(target, key, value, receiver);
+    }
+  }
+};
+function proxyRefs(objectWithRefs) {
+  return isReactive(objectWithRefs) ? objectWithRefs : new Proxy(objectWithRefs, shallowUnwrapHandlers);
+}
+class ComputedRefImpl {
+  constructor(fn, setter, isSSR) {
+    this.fn = fn;
+    this.setter = setter;
+    this._value = void 0;
+    this.dep = new Dep(this);
+    this.__v_isRef = true;
+    this.deps = void 0;
+    this.depsTail = void 0;
+    this.flags = 16;
+    this.globalVersion = globalVersion - 1;
+    this.next = void 0;
+    this.effect = this;
+    this["__v_isReadonly"] = !setter;
+    this.isSSR = isSSR;
+  }
+  /**
+   * @internal
+   */
+  notify() {
+    this.flags |= 16;
+    if (!(this.flags & 8) && // avoid infinite self recursion
+    activeSub !== this) {
+      batch(this, true);
+      return true;
+    }
+  }
+  get value() {
+    const link = !!(define_process_default$3.env.NODE_ENV !== "production") ? this.dep.track({
+      target: this,
+      type: "get",
+      key: "value"
+    }) : this.dep.track();
+    refreshComputed(this);
+    if (link) {
+      link.version = this.dep.version;
+    }
+    return this._value;
+  }
+  set value(newValue) {
+    if (this.setter) {
+      this.setter(newValue);
+    } else if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+      warn$2("Write operation failed: computed value is readonly");
+    }
+  }
+}
+function computed$1(getterOrOptions, debugOptions, isSSR = false) {
+  let getter;
+  let setter;
+  if (isFunction(getterOrOptions)) {
+    getter = getterOrOptions;
+  } else {
+    getter = getterOrOptions.get;
+    setter = getterOrOptions.set;
+  }
+  const cRef = new ComputedRefImpl(getter, setter, isSSR);
+  return cRef;
+}
+const INITIAL_WATCHER_VALUE = {};
+const cleanupMap = /* @__PURE__ */ new WeakMap();
+let activeWatcher = void 0;
+function onWatcherCleanup(cleanupFn, failSilently = false, owner = activeWatcher) {
+  if (owner) {
+    let cleanups = cleanupMap.get(owner);
+    if (!cleanups) cleanupMap.set(owner, cleanups = []);
+    cleanups.push(cleanupFn);
+  } else if (!!(define_process_default$3.env.NODE_ENV !== "production") && !failSilently) {
+    warn$2(
+      `onWatcherCleanup() was called when there was no active watcher to associate with.`
+    );
+  }
+}
+function watch$1(source, cb, options = EMPTY_OBJ) {
+  const { immediate, deep, once, scheduler, augmentJob, call } = options;
+  const warnInvalidSource = (s) => {
+    (options.onWarn || warn$2)(
+      `Invalid watch source: `,
+      s,
+      `A watch source can only be a getter/effect function, a ref, a reactive object, or an array of these types.`
+    );
+  };
+  const reactiveGetter = (source2) => {
+    if (deep) return source2;
+    if (isShallow(source2) || deep === false || deep === 0)
+      return traverse(source2, 1);
+    return traverse(source2);
+  };
+  let effect2;
+  let getter;
+  let cleanup;
+  let boundCleanup;
+  let forceTrigger = false;
+  let isMultiSource = false;
+  if (isRef(source)) {
+    getter = () => source.value;
+    forceTrigger = isShallow(source);
+  } else if (isReactive(source)) {
+    getter = () => reactiveGetter(source);
+    forceTrigger = true;
+  } else if (isArray(source)) {
+    isMultiSource = true;
+    forceTrigger = source.some((s) => isReactive(s) || isShallow(s));
+    getter = () => source.map((s) => {
+      if (isRef(s)) {
+        return s.value;
+      } else if (isReactive(s)) {
+        return reactiveGetter(s);
+      } else if (isFunction(s)) {
+        return call ? call(s, 2) : s();
+      } else {
+        !!(define_process_default$3.env.NODE_ENV !== "production") && warnInvalidSource(s);
+      }
+    });
+  } else if (isFunction(source)) {
+    if (cb) {
+      getter = call ? () => call(source, 2) : source;
+    } else {
+      getter = () => {
+        if (cleanup) {
+          pauseTracking();
+          try {
+            cleanup();
+          } finally {
+            resetTracking();
+          }
+        }
+        const currentEffect = activeWatcher;
+        activeWatcher = effect2;
+        try {
+          return call ? call(source, 3, [boundCleanup]) : source(boundCleanup);
+        } finally {
+          activeWatcher = currentEffect;
+        }
+      };
+    }
+  } else {
+    getter = NOOP;
+    !!(define_process_default$3.env.NODE_ENV !== "production") && warnInvalidSource(source);
+  }
+  if (cb && deep) {
+    const baseGetter = getter;
+    const depth = deep === true ? Infinity : deep;
+    getter = () => traverse(baseGetter(), depth);
+  }
+  const scope = getCurrentScope();
+  const watchHandle = () => {
+    effect2.stop();
+    if (scope && scope.active) {
+      remove(scope.effects, effect2);
+    }
+  };
+  if (once && cb) {
+    const _cb = cb;
+    cb = (...args) => {
+      _cb(...args);
+      watchHandle();
+    };
+  }
+  let oldValue = isMultiSource ? new Array(source.length).fill(INITIAL_WATCHER_VALUE) : INITIAL_WATCHER_VALUE;
+  const job = (immediateFirstRun) => {
+    if (!(effect2.flags & 1) || !effect2.dirty && !immediateFirstRun) {
+      return;
+    }
+    if (cb) {
+      const newValue = effect2.run();
+      if (deep || forceTrigger || (isMultiSource ? newValue.some((v, i) => hasChanged(v, oldValue[i])) : hasChanged(newValue, oldValue))) {
+        if (cleanup) {
+          cleanup();
+        }
+        const currentWatcher = activeWatcher;
+        activeWatcher = effect2;
+        try {
+          const args = [
+            newValue,
+            // pass undefined as the old value when it's changed for the first time
+            oldValue === INITIAL_WATCHER_VALUE ? void 0 : isMultiSource && oldValue[0] === INITIAL_WATCHER_VALUE ? [] : oldValue,
+            boundCleanup
+          ];
+          call ? call(cb, 3, args) : (
+            // @ts-expect-error
+            cb(...args)
+          );
+          oldValue = newValue;
+        } finally {
+          activeWatcher = currentWatcher;
+        }
+      }
+    } else {
+      effect2.run();
+    }
+  };
+  if (augmentJob) {
+    augmentJob(job);
+  }
+  effect2 = new ReactiveEffect(getter);
+  effect2.scheduler = scheduler ? () => scheduler(job, false) : job;
+  boundCleanup = (fn) => onWatcherCleanup(fn, false, effect2);
+  cleanup = effect2.onStop = () => {
+    const cleanups = cleanupMap.get(effect2);
+    if (cleanups) {
+      if (call) {
+        call(cleanups, 4);
+      } else {
+        for (const cleanup2 of cleanups) cleanup2();
+      }
+      cleanupMap.delete(effect2);
+    }
+  };
+  if (!!(define_process_default$3.env.NODE_ENV !== "production")) {
+    effect2.onTrack = options.onTrack;
+    effect2.onTrigger = options.onTrigger;
+  }
+  if (cb) {
+    if (immediate) {
+      job(true);
+    } else {
+      oldValue = effect2.run();
+    }
+  } else if (scheduler) {
+    scheduler(job.bind(null, true), true);
+  } else {
+    effect2.run();
+  }
+  watchHandle.pause = effect2.pause.bind(effect2);
+  watchHandle.resume = effect2.resume.bind(effect2);
+  watchHandle.stop = watchHandle;
+  return watchHandle;
+}
+function traverse(value, depth = Infinity, seen) {
+  if (depth <= 0 || !isObject(value) || value["__v_skip"]) {
+    return value;
+  }
+  seen = seen || /* @__PURE__ */ new Set();
+  if (seen.has(value)) {
+    return value;
+  }
+  seen.add(value);
+  depth--;
+  if (isRef(value)) {
+    traverse(value.value, depth, seen);
+  } else if (isArray(value)) {
+    for (let i = 0; i < value.length; i++) {
+      traverse(value[i], depth, seen);
+    }
+  } else if (isSet(value) || isMap(value)) {
+    value.forEach((v) => {
+      traverse(v, depth, seen);
+    });
+  } else if (isPlainObject(value)) {
+    for (const key in value) {
+      traverse(value[key], depth, seen);
+    }
+    for (const key of Object.getOwnPropertySymbols(value)) {
+      if (Object.prototype.propertyIsEnumerable.call(value, key)) {
+        traverse(value[key], depth, seen);
+      }
+    }
+  }
+  return value;
+}
+var define_process_default$2 = { env: { DEV_MODE: "production" } };
+const stack = [];
+function pushWarningContext(vnode) {
+  stack.push(vnode);
+}
+function popWarningContext() {
+  stack.pop();
+}
+let isWarning = false;
+function warn$1(msg, ...args) {
+  if (isWarning) return;
+  isWarning = true;
+  pauseTracking();
+  const instance = stack.length ? stack[stack.length - 1].component : null;
+  const appWarnHandler = instance && instance.appContext.config.warnHandler;
+  const trace = getComponentTrace();
+  if (appWarnHandler) {
+    callWithErrorHandling(
+      appWarnHandler,
+      instance,
+      11,
+      [
+        // eslint-disable-next-line no-restricted-syntax
+        msg + args.map((a) => {
+          var _a, _b;
+          return (_b = (_a = a.toString) == null ? void 0 : _a.call(a)) != null ? _b : JSON.stringify(a);
+        }).join(""),
+        instance && instance.proxy,
+        trace.map(
+          ({ vnode }) => `at <${formatComponentName(instance, vnode.type)}>`
+        ).join("\n"),
+        trace
+      ]
+    );
+  } else {
+    const warnArgs = [`[Vue warn]: ${msg}`, ...args];
+    if (trace.length && // avoid spamming console during tests
+    true) {
+      warnArgs.push(`
+`, ...formatTrace(trace));
+    }
+    console.warn(...warnArgs);
+  }
+  resetTracking();
+  isWarning = false;
+}
+function getComponentTrace() {
+  let currentVNode = stack[stack.length - 1];
+  if (!currentVNode) {
+    return [];
+  }
+  const normalizedStack = [];
+  while (currentVNode) {
+    const last = normalizedStack[0];
+    if (last && last.vnode === currentVNode) {
+      last.recurseCount++;
+    } else {
+      normalizedStack.push({
+        vnode: currentVNode,
+        recurseCount: 0
+      });
+    }
+    const parentInstance = currentVNode.component && currentVNode.component.parent;
+    currentVNode = parentInstance && parentInstance.vnode;
+  }
+  return normalizedStack;
+}
+function formatTrace(trace) {
+  const logs = [];
+  trace.forEach((entry, i) => {
+    logs.push(...i === 0 ? [] : [`
+`], ...formatTraceEntry(entry));
+  });
+  return logs;
+}
+function formatTraceEntry({ vnode, recurseCount }) {
+  const postfix = recurseCount > 0 ? `... (${recurseCount} recursive calls)` : ``;
+  const isRoot = vnode.component ? vnode.component.parent == null : false;
+  const open = ` at <${formatComponentName(
+    vnode.component,
+    vnode.type,
+    isRoot
+  )}`;
+  const close = `>` + postfix;
+  return vnode.props ? [open, ...formatProps(vnode.props), close] : [open + close];
+}
+function formatProps(props) {
+  const res = [];
+  const keys = Object.keys(props);
+  keys.slice(0, 3).forEach((key) => {
+    res.push(...formatProp(key, props[key]));
+  });
+  if (keys.length > 3) {
+    res.push(` ...`);
+  }
+  return res;
+}
+function formatProp(key, value, raw) {
+  if (isString(value)) {
+    value = JSON.stringify(value);
+    return raw ? value : [`${key}=${value}`];
+  } else if (typeof value === "number" || typeof value === "boolean" || value == null) {
+    return raw ? value : [`${key}=${value}`];
+  } else if (isRef(value)) {
+    value = formatProp(key, toRaw(value.value), true);
+    return raw ? value : [`${key}=Ref<`, value, `>`];
+  } else if (isFunction(value)) {
+    return [`${key}=fn${value.name ? `<${value.name}>` : ``}`];
+  } else {
+    value = toRaw(value);
+    return raw ? value : [`${key}=`, value];
+  }
+}
+const ErrorTypeStrings$1 = {
+  ["sp"]: "serverPrefetch hook",
+  ["bc"]: "beforeCreate hook",
+  ["c"]: "created hook",
+  ["bm"]: "beforeMount hook",
+  ["m"]: "mounted hook",
+  ["bu"]: "beforeUpdate hook",
+  ["u"]: "updated",
+  ["bum"]: "beforeUnmount hook",
+  ["um"]: "unmounted hook",
+  ["a"]: "activated hook",
+  ["da"]: "deactivated hook",
+  ["ec"]: "errorCaptured hook",
+  ["rtc"]: "renderTracked hook",
+  ["rtg"]: "renderTriggered hook",
+  [0]: "setup function",
+  [1]: "render function",
+  [2]: "watcher getter",
+  [3]: "watcher callback",
+  [4]: "watcher cleanup function",
+  [5]: "native event handler",
+  [6]: "component event handler",
+  [7]: "vnode hook",
+  [8]: "directive hook",
+  [9]: "transition hook",
+  [10]: "app errorHandler",
+  [11]: "app warnHandler",
+  [12]: "ref function",
+  [13]: "async component loader",
+  [14]: "scheduler flush",
+  [15]: "component update",
+  [16]: "app unmount cleanup function"
+};
+function callWithErrorHandling(fn, instance, type, args) {
+  try {
+    return args ? fn(...args) : fn();
+  } catch (err) {
+    handleError(err, instance, type);
+  }
+}
+function callWithAsyncErrorHandling(fn, instance, type, args) {
+  if (isFunction(fn)) {
+    const res = callWithErrorHandling(fn, instance, type, args);
+    if (res && isPromise(res)) {
+      res.catch((err) => {
+        handleError(err, instance, type);
+      });
+    }
+    return res;
+  }
+  if (isArray(fn)) {
+    const values = [];
+    for (let i = 0; i < fn.length; i++) {
+      values.push(callWithAsyncErrorHandling(fn[i], instance, type, args));
+    }
+    return values;
+  } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    warn$1(
+      `Invalid value type passed to callWithAsyncErrorHandling(): ${typeof fn}`
+    );
+  }
+}
+function handleError(err, instance, type, throwInDev = true) {
+  const contextVNode = instance ? instance.vnode : null;
+  const { errorHandler, throwUnhandledErrorInProduction } = instance && instance.appContext.config || EMPTY_OBJ;
+  if (instance) {
+    let cur = instance.parent;
+    const exposedInstance = instance.proxy;
+    const errorInfo = !!(define_process_default$2.env.NODE_ENV !== "production") ? ErrorTypeStrings$1[type] : `https://vuejs.org/error-reference/#runtime-${type}`;
+    while (cur) {
+      const errorCapturedHooks = cur.ec;
+      if (errorCapturedHooks) {
+        for (let i = 0; i < errorCapturedHooks.length; i++) {
+          if (errorCapturedHooks[i](err, exposedInstance, errorInfo) === false) {
+            return;
+          }
+        }
+      }
+      cur = cur.parent;
+    }
+    if (errorHandler) {
+      pauseTracking();
+      callWithErrorHandling(errorHandler, null, 10, [
+        err,
+        exposedInstance,
+        errorInfo
+      ]);
+      resetTracking();
+      return;
+    }
+  }
+  logError(err, type, contextVNode, throwInDev, throwUnhandledErrorInProduction);
+}
+function logError(err, type, contextVNode, throwInDev = true, throwInProd = false) {
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    const info = ErrorTypeStrings$1[type];
+    if (contextVNode) {
+      pushWarningContext(contextVNode);
+    }
+    warn$1(`Unhandled error${info ? ` during execution of ${info}` : ``}`);
+    if (contextVNode) {
+      popWarningContext();
+    }
+    if (throwInDev) {
+      throw err;
+    } else {
+      console.error(err);
+    }
+  } else if (throwInProd) {
+    throw err;
+  } else {
+    console.error(err);
+  }
+}
+const queue = [];
+let flushIndex = -1;
+const pendingPostFlushCbs = [];
+let activePostFlushCbs = null;
+let postFlushIndex = 0;
+const resolvedPromise = /* @__PURE__ */ Promise.resolve();
+let currentFlushPromise = null;
+const RECURSION_LIMIT = 100;
+function nextTick(fn) {
+  const p2 = currentFlushPromise || resolvedPromise;
+  return fn ? p2.then(this ? fn.bind(this) : fn) : p2;
+}
+function findInsertionIndex(id) {
+  let start = flushIndex + 1;
+  let end = queue.length;
+  while (start < end) {
+    const middle = start + end >>> 1;
+    const middleJob = queue[middle];
+    const middleJobId = getId(middleJob);
+    if (middleJobId < id || middleJobId === id && middleJob.flags & 2) {
+      start = middle + 1;
+    } else {
+      end = middle;
+    }
+  }
+  return start;
+}
+function queueJob(job) {
+  if (!(job.flags & 1)) {
+    const jobId = getId(job);
+    const lastJob = queue[queue.length - 1];
+    if (!lastJob || // fast path when the job id is larger than the tail
+    !(job.flags & 2) && jobId >= getId(lastJob)) {
+      queue.push(job);
+    } else {
+      queue.splice(findInsertionIndex(jobId), 0, job);
+    }
+    job.flags |= 1;
+    queueFlush();
+  }
+}
+function queueFlush() {
+  if (!currentFlushPromise) {
+    currentFlushPromise = resolvedPromise.then(flushJobs);
+  }
+}
+function queuePostFlushCb(cb) {
+  if (!isArray(cb)) {
+    if (activePostFlushCbs && cb.id === -1) {
+      activePostFlushCbs.splice(postFlushIndex + 1, 0, cb);
+    } else if (!(cb.flags & 1)) {
+      pendingPostFlushCbs.push(cb);
+      cb.flags |= 1;
+    }
+  } else {
+    pendingPostFlushCbs.push(...cb);
+  }
+  queueFlush();
+}
+function flushPreFlushCbs(instance, seen, i = flushIndex + 1) {
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    seen = seen || /* @__PURE__ */ new Map();
+  }
+  for (; i < queue.length; i++) {
+    const cb = queue[i];
+    if (cb && cb.flags & 2) {
+      if (instance && cb.id !== instance.uid) {
+        continue;
+      }
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && checkRecursiveUpdates(seen, cb)) {
+        continue;
+      }
+      queue.splice(i, 1);
+      i--;
+      if (cb.flags & 4) {
+        cb.flags &= -2;
+      }
+      cb();
+      if (!(cb.flags & 4)) {
+        cb.flags &= -2;
+      }
+    }
+  }
+}
+function flushPostFlushCbs(seen) {
+  if (pendingPostFlushCbs.length) {
+    const deduped = [...new Set(pendingPostFlushCbs)].sort(
+      (a, b) => getId(a) - getId(b)
+    );
+    pendingPostFlushCbs.length = 0;
+    if (activePostFlushCbs) {
+      activePostFlushCbs.push(...deduped);
+      return;
+    }
+    activePostFlushCbs = deduped;
+    if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      seen = seen || /* @__PURE__ */ new Map();
+    }
+    for (postFlushIndex = 0; postFlushIndex < activePostFlushCbs.length; postFlushIndex++) {
+      const cb = activePostFlushCbs[postFlushIndex];
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && checkRecursiveUpdates(seen, cb)) {
+        continue;
+      }
+      if (cb.flags & 4) {
+        cb.flags &= -2;
+      }
+      if (!(cb.flags & 8)) cb();
+      cb.flags &= -2;
+    }
+    activePostFlushCbs = null;
+    postFlushIndex = 0;
+  }
+}
+const getId = (job) => job.id == null ? job.flags & 2 ? -1 : Infinity : job.id;
+function flushJobs(seen) {
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    seen = seen || /* @__PURE__ */ new Map();
+  }
+  const check = !!(define_process_default$2.env.NODE_ENV !== "production") ? (job) => checkRecursiveUpdates(seen, job) : NOOP;
+  try {
+    for (flushIndex = 0; flushIndex < queue.length; flushIndex++) {
+      const job = queue[flushIndex];
+      if (job && !(job.flags & 8)) {
+        if (!!(define_process_default$2.env.NODE_ENV !== "production") && check(job)) {
+          continue;
+        }
+        if (job.flags & 4) {
+          job.flags &= ~1;
+        }
+        callWithErrorHandling(
+          job,
+          job.i,
+          job.i ? 15 : 14
+        );
+        if (!(job.flags & 4)) {
+          job.flags &= ~1;
+        }
+      }
+    }
+  } finally {
+    for (; flushIndex < queue.length; flushIndex++) {
+      const job = queue[flushIndex];
+      if (job) {
+        job.flags &= -2;
+      }
+    }
+    flushIndex = -1;
+    queue.length = 0;
+    flushPostFlushCbs(seen);
+    currentFlushPromise = null;
+    if (queue.length || pendingPostFlushCbs.length) {
+      flushJobs(seen);
+    }
+  }
+}
+function checkRecursiveUpdates(seen, fn) {
+  const count = seen.get(fn) || 0;
+  if (count > RECURSION_LIMIT) {
+    const instance = fn.i;
+    const componentName = instance && getComponentName(instance.type);
+    handleError(
+      `Maximum recursive updates exceeded${componentName ? ` in component <${componentName}>` : ``}. This means you have a reactive effect that is mutating its own dependencies and thus recursively triggering itself. Possible sources include component template, render function, updated hook or watcher source function.`,
+      null,
+      10
+    );
+    return true;
+  }
+  seen.set(fn, count + 1);
+  return false;
+}
+let isHmrUpdating = false;
+const hmrDirtyComponents = /* @__PURE__ */ new Map();
+if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+  getGlobalThis().__VUE_HMR_RUNTIME__ = {
+    createRecord: tryWrap(createRecord),
+    rerender: tryWrap(rerender),
+    reload: tryWrap(reload)
+  };
+}
+const map = /* @__PURE__ */ new Map();
+function registerHMR(instance) {
+  const id = instance.type.__hmrId;
+  let record = map.get(id);
+  if (!record) {
+    createRecord(id, instance.type);
+    record = map.get(id);
+  }
+  record.instances.add(instance);
+}
+function unregisterHMR(instance) {
+  map.get(instance.type.__hmrId).instances.delete(instance);
+}
+function createRecord(id, initialDef) {
+  if (map.has(id)) {
+    return false;
+  }
+  map.set(id, {
+    initialDef: normalizeClassComponent(initialDef),
+    instances: /* @__PURE__ */ new Set()
+  });
+  return true;
+}
+function normalizeClassComponent(component) {
+  return isClassComponent(component) ? component.__vccOpts : component;
+}
+function rerender(id, newRender) {
+  const record = map.get(id);
+  if (!record) {
+    return;
+  }
+  record.initialDef.render = newRender;
+  [...record.instances].forEach((instance) => {
+    if (newRender) {
+      instance.render = newRender;
+      normalizeClassComponent(instance.type).render = newRender;
+    }
+    instance.renderCache = [];
+    isHmrUpdating = true;
+    instance.update();
+    isHmrUpdating = false;
+  });
+}
+function reload(id, newComp) {
+  const record = map.get(id);
+  if (!record) return;
+  newComp = normalizeClassComponent(newComp);
+  updateComponentDef(record.initialDef, newComp);
+  const instances = [...record.instances];
+  for (let i = 0; i < instances.length; i++) {
+    const instance = instances[i];
+    const oldComp = normalizeClassComponent(instance.type);
+    let dirtyInstances = hmrDirtyComponents.get(oldComp);
+    if (!dirtyInstances) {
+      if (oldComp !== record.initialDef) {
+        updateComponentDef(oldComp, newComp);
+      }
+      hmrDirtyComponents.set(oldComp, dirtyInstances = /* @__PURE__ */ new Set());
+    }
+    dirtyInstances.add(instance);
+    instance.appContext.propsCache.delete(instance.type);
+    instance.appContext.emitsCache.delete(instance.type);
+    instance.appContext.optionsCache.delete(instance.type);
+    if (instance.ceReload) {
+      dirtyInstances.add(instance);
+      instance.ceReload(newComp.styles);
+      dirtyInstances.delete(instance);
+    } else if (instance.parent) {
+      queueJob(() => {
+        isHmrUpdating = true;
+        instance.parent.update();
+        isHmrUpdating = false;
+        dirtyInstances.delete(instance);
+      });
+    } else if (instance.appContext.reload) {
+      instance.appContext.reload();
+    } else if (typeof window !== "undefined") {
+      window.location.reload();
+    } else {
+      console.warn(
+        "[HMR] Root or manually mounted instance modified. Full reload required."
+      );
+    }
+    if (instance.root.ce && instance !== instance.root) {
+      instance.root.ce._removeChildStyle(oldComp);
+    }
+  }
+  queuePostFlushCb(() => {
+    hmrDirtyComponents.clear();
+  });
+}
+function updateComponentDef(oldComp, newComp) {
+  extend(oldComp, newComp);
+  for (const key in oldComp) {
+    if (key !== "__file" && !(key in newComp)) {
+      delete oldComp[key];
+    }
+  }
+}
+function tryWrap(fn) {
+  return (id, arg) => {
+    try {
+      return fn(id, arg);
+    } catch (e) {
+      console.error(e);
+      console.warn(
+        `[HMR] Something went wrong during Vue component hot-reload. Full reload required.`
+      );
+    }
+  };
+}
+let devtools$1;
+let buffer = [];
+let devtoolsNotInstalled = false;
+function emit$1(event, ...args) {
+  if (devtools$1) {
+    devtools$1.emit(event, ...args);
+  } else if (!devtoolsNotInstalled) {
+    buffer.push({ event, args });
+  }
+}
+function setDevtoolsHook$1(hook, target) {
+  var _a, _b;
+  devtools$1 = hook;
+  if (devtools$1) {
+    devtools$1.enabled = true;
+    buffer.forEach(({ event, args }) => devtools$1.emit(event, ...args));
+    buffer = [];
+  } else if (
+    // handle late devtools injection - only do this if we are in an actual
+    // browser environment to avoid the timer handle stalling test runner exit
+    // (#4815)
+    typeof window !== "undefined" && // some envs mock window but not fully
+    window.HTMLElement && // also exclude jsdom
+    // eslint-disable-next-line no-restricted-syntax
+    !((_b = (_a = window.navigator) == null ? void 0 : _a.userAgent) == null ? void 0 : _b.includes("jsdom"))
+  ) {
+    const replay = target.__VUE_DEVTOOLS_HOOK_REPLAY__ = target.__VUE_DEVTOOLS_HOOK_REPLAY__ || [];
+    replay.push((newHook) => {
+      setDevtoolsHook$1(newHook, target);
+    });
+    setTimeout(() => {
+      if (!devtools$1) {
+        target.__VUE_DEVTOOLS_HOOK_REPLAY__ = null;
+        devtoolsNotInstalled = true;
+        buffer = [];
+      }
+    }, 3e3);
+  } else {
+    devtoolsNotInstalled = true;
+    buffer = [];
+  }
+}
+function devtoolsInitApp(app, version2) {
+  emit$1("app:init", app, version2, {
+    Fragment,
+    Text,
+    Comment,
+    Static
+  });
+}
+function devtoolsUnmountApp(app) {
+  emit$1("app:unmount", app);
+}
+const devtoolsComponentAdded = /* @__PURE__ */ createDevtoolsComponentHook(
+  "component:added"
+  /* COMPONENT_ADDED */
+);
+const devtoolsComponentUpdated = /* @__PURE__ */ createDevtoolsComponentHook(
+  "component:updated"
+  /* COMPONENT_UPDATED */
+);
+const _devtoolsComponentRemoved = /* @__PURE__ */ createDevtoolsComponentHook(
+  "component:removed"
+  /* COMPONENT_REMOVED */
+);
+const devtoolsComponentRemoved = (component) => {
+  if (devtools$1 && typeof devtools$1.cleanupBuffer === "function" && // remove the component if it wasn't buffered
+  !devtools$1.cleanupBuffer(component)) {
+    _devtoolsComponentRemoved(component);
+  }
+};
+/*! #__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
+function createDevtoolsComponentHook(hook) {
+  return (component) => {
+    emit$1(
+      hook,
+      component.appContext.app,
+      component.uid,
+      component.parent ? component.parent.uid : void 0,
+      component
+    );
+  };
+}
+const devtoolsPerfStart = /* @__PURE__ */ createDevtoolsPerformanceHook(
+  "perf:start"
+  /* PERFORMANCE_START */
+);
+const devtoolsPerfEnd = /* @__PURE__ */ createDevtoolsPerformanceHook(
+  "perf:end"
+  /* PERFORMANCE_END */
+);
+function createDevtoolsPerformanceHook(hook) {
+  return (component, type, time) => {
+    emit$1(hook, component.appContext.app, component.uid, component, type, time);
+  };
+}
+function devtoolsComponentEmit(component, event, params) {
+  emit$1(
+    "component:emit",
+    component.appContext.app,
+    component,
+    event,
+    params
+  );
+}
+let currentRenderingInstance = null;
+let currentScopeId = null;
+function setCurrentRenderingInstance(instance) {
+  const prev = currentRenderingInstance;
+  currentRenderingInstance = instance;
+  currentScopeId = instance && instance.type.__scopeId || null;
+  return prev;
+}
+function withCtx(fn, ctx = currentRenderingInstance, isNonScopedSlot) {
+  if (!ctx) return fn;
+  if (fn._n) {
+    return fn;
+  }
+  const renderFnWithContext = (...args) => {
+    if (renderFnWithContext._d) {
+      setBlockTracking(-1);
+    }
+    const prevInstance = setCurrentRenderingInstance(ctx);
+    let res;
+    try {
+      res = fn(...args);
+    } finally {
+      setCurrentRenderingInstance(prevInstance);
+      if (renderFnWithContext._d) {
+        setBlockTracking(1);
+      }
+    }
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+      devtoolsComponentUpdated(ctx);
+    }
+    return res;
+  };
+  renderFnWithContext._n = true;
+  renderFnWithContext._c = true;
+  renderFnWithContext._d = true;
+  return renderFnWithContext;
+}
+function validateDirectiveName(name) {
+  if (isBuiltInDirective(name)) {
+    warn$1("Do not use built-in directive ids as custom directive id: " + name);
+  }
+}
+function withDirectives(vnode, directives) {
+  if (currentRenderingInstance === null) {
+    !!(define_process_default$2.env.NODE_ENV !== "production") && warn$1(`withDirectives can only be used inside render functions.`);
+    return vnode;
+  }
+  const instance = getComponentPublicInstance(currentRenderingInstance);
+  const bindings = vnode.dirs || (vnode.dirs = []);
+  for (let i = 0; i < directives.length; i++) {
+    let [dir, value, arg, modifiers = EMPTY_OBJ] = directives[i];
+    if (dir) {
+      if (isFunction(dir)) {
+        dir = {
+          mounted: dir,
+          updated: dir
+        };
+      }
+      if (dir.deep) {
+        traverse(value);
+      }
+      bindings.push({
+        dir,
+        instance,
+        value,
+        oldValue: void 0,
+        arg,
+        modifiers
+      });
+    }
+  }
+  return vnode;
+}
+function invokeDirectiveHook(vnode, prevVNode, instance, name) {
+  const bindings = vnode.dirs;
+  const oldBindings = prevVNode && prevVNode.dirs;
+  for (let i = 0; i < bindings.length; i++) {
+    const binding = bindings[i];
+    if (oldBindings) {
+      binding.oldValue = oldBindings[i].value;
+    }
+    let hook = binding.dir[name];
+    if (hook) {
+      pauseTracking();
+      callWithAsyncErrorHandling(hook, instance, 8, [
+        vnode.el,
+        binding,
+        vnode,
+        prevVNode
+      ]);
+      resetTracking();
+    }
+  }
+}
+const TeleportEndKey = Symbol("_vte");
+const isTeleport = (type) => type.__isTeleport;
+function setTransitionHooks(vnode, hooks) {
+  if (vnode.shapeFlag & 6 && vnode.component) {
+    vnode.transition = hooks;
+    setTransitionHooks(vnode.component.subTree, hooks);
+  } else if (vnode.shapeFlag & 128) {
+    vnode.ssContent.transition = hooks.clone(vnode.ssContent);
+    vnode.ssFallback.transition = hooks.clone(vnode.ssFallback);
+  } else {
+    vnode.transition = hooks;
+  }
+}
+/*! #__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
+function defineComponent(options, extraOptions) {
+  return isFunction(options) ? (
+    // #8236: extend call and options.name access are considered side-effects
+    // by Rollup, so we have to wrap it in a pure-annotated IIFE.
+    /* @__PURE__ */ (() => extend({ name: options.name }, extraOptions, { setup: options }))()
+  ) : options;
+}
+function markAsyncBoundary(instance) {
+  instance.ids = [instance.ids[0] + instance.ids[2]++ + "-", 0, 0];
+}
+const knownTemplateRefs = /* @__PURE__ */ new WeakSet();
+function useTemplateRef(key) {
+  const i = getCurrentInstance();
+  const r = shallowRef(null);
+  if (i) {
+    const refs = i.refs === EMPTY_OBJ ? i.refs = {} : i.refs;
+    let desc;
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && (desc = Object.getOwnPropertyDescriptor(refs, key)) && !desc.configurable) {
+      warn$1(`useTemplateRef('${key}') already exists.`);
+    } else {
+      Object.defineProperty(refs, key, {
+        enumerable: true,
+        get: () => r.value,
+        set: (val) => r.value = val
+      });
+    }
+  } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    warn$1(
+      `useTemplateRef() is called when there is no active component instance to be associated with.`
+    );
+  }
+  const ret = !!(define_process_default$2.env.NODE_ENV !== "production") ? readonly(r) : r;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    knownTemplateRefs.add(ret);
+  }
+  return ret;
+}
+function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
+  if (isArray(rawRef)) {
+    rawRef.forEach(
+      (r, i) => setRef(
+        r,
+        oldRawRef && (isArray(oldRawRef) ? oldRawRef[i] : oldRawRef),
+        parentSuspense,
+        vnode,
+        isUnmount
+      )
+    );
+    return;
+  }
+  if (isAsyncWrapper(vnode) && !isUnmount) {
+    if (vnode.shapeFlag & 512 && vnode.type.__asyncResolved && vnode.component.subTree.component) {
+      setRef(rawRef, oldRawRef, parentSuspense, vnode.component.subTree);
+    }
+    return;
+  }
+  const refValue = vnode.shapeFlag & 4 ? getComponentPublicInstance(vnode.component) : vnode.el;
+  const value = isUnmount ? null : refValue;
+  const { i: owner, r: ref3 } = rawRef;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && !owner) {
+    warn$1(
+      `Missing ref owner context. ref cannot be used on hoisted vnodes. A vnode with ref must be created inside the render function.`
+    );
+    return;
+  }
+  const oldRef = oldRawRef && oldRawRef.r;
+  const refs = owner.refs === EMPTY_OBJ ? owner.refs = {} : owner.refs;
+  const setupState = owner.setupState;
+  const rawSetupState = toRaw(setupState);
+  const canSetSetupRef = setupState === EMPTY_OBJ ? () => false : (key) => {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      if (hasOwn(rawSetupState, key) && !isRef(rawSetupState[key])) {
+        warn$1(
+          `Template ref "${key}" used on a non-ref value. It will not work in the production build.`
+        );
+      }
+      if (knownTemplateRefs.has(rawSetupState[key])) {
+        return false;
+      }
+    }
+    return hasOwn(rawSetupState, key);
+  };
+  if (oldRef != null && oldRef !== ref3) {
+    if (isString(oldRef)) {
+      refs[oldRef] = null;
+      if (canSetSetupRef(oldRef)) {
+        setupState[oldRef] = null;
+      }
+    } else if (isRef(oldRef)) {
+      oldRef.value = null;
+    }
+  }
+  if (isFunction(ref3)) {
+    callWithErrorHandling(ref3, owner, 12, [value, refs]);
+  } else {
+    const _isString = isString(ref3);
+    const _isRef = isRef(ref3);
+    if (_isString || _isRef) {
+      const doSet = () => {
+        if (rawRef.f) {
+          const existing = _isString ? canSetSetupRef(ref3) ? setupState[ref3] : refs[ref3] : ref3.value;
+          if (isUnmount) {
+            isArray(existing) && remove(existing, refValue);
+          } else {
+            if (!isArray(existing)) {
+              if (_isString) {
+                refs[ref3] = [refValue];
+                if (canSetSetupRef(ref3)) {
+                  setupState[ref3] = refs[ref3];
+                }
+              } else {
+                ref3.value = [refValue];
+                if (rawRef.k) refs[rawRef.k] = ref3.value;
+              }
+            } else if (!existing.includes(refValue)) {
+              existing.push(refValue);
+            }
+          }
+        } else if (_isString) {
+          refs[ref3] = value;
+          if (canSetSetupRef(ref3)) {
+            setupState[ref3] = value;
+          }
+        } else if (_isRef) {
+          ref3.value = value;
+          if (rawRef.k) refs[rawRef.k] = value;
+        } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          warn$1("Invalid template ref type:", ref3, `(${typeof ref3})`);
+        }
+      };
+      if (value) {
+        doSet.id = -1;
+        queuePostRenderEffect(doSet, parentSuspense);
+      } else {
+        doSet();
+      }
+    } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      warn$1("Invalid template ref type:", ref3, `(${typeof ref3})`);
+    }
+  }
+}
+getGlobalThis().requestIdleCallback || ((cb) => setTimeout(cb, 1));
+getGlobalThis().cancelIdleCallback || ((id) => clearTimeout(id));
+const isAsyncWrapper = (i) => !!i.type.__asyncLoader;
+const isKeepAlive = (vnode) => vnode.type.__isKeepAlive;
+function onActivated(hook, target) {
+  registerKeepAliveHook(hook, "a", target);
+}
+function onDeactivated(hook, target) {
+  registerKeepAliveHook(hook, "da", target);
+}
+function registerKeepAliveHook(hook, type, target = currentInstance) {
+  const wrappedHook = hook.__wdc || (hook.__wdc = () => {
+    let current = target;
+    while (current) {
+      if (current.isDeactivated) {
+        return;
+      }
+      current = current.parent;
+    }
+    return hook();
+  });
+  injectHook(type, wrappedHook, target);
+  if (target) {
+    let current = target.parent;
+    while (current && current.parent) {
+      if (isKeepAlive(current.parent.vnode)) {
+        injectToKeepAliveRoot(wrappedHook, type, target, current);
+      }
+      current = current.parent;
+    }
+  }
+}
+function injectToKeepAliveRoot(hook, type, target, keepAliveRoot) {
+  const injected = injectHook(
+    type,
+    hook,
+    keepAliveRoot,
+    true
+    /* prepend */
+  );
+  onUnmounted(() => {
+    remove(keepAliveRoot[type], injected);
+  }, target);
+}
+function injectHook(type, hook, target = currentInstance, prepend = false) {
+  if (target) {
+    const hooks = target[type] || (target[type] = []);
+    const wrappedHook = hook.__weh || (hook.__weh = (...args) => {
+      pauseTracking();
+      const reset = setCurrentInstance(target);
+      const res = callWithAsyncErrorHandling(hook, target, type, args);
+      reset();
+      resetTracking();
+      return res;
+    });
+    if (prepend) {
+      hooks.unshift(wrappedHook);
+    } else {
+      hooks.push(wrappedHook);
+    }
+    return wrappedHook;
+  } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    const apiName = toHandlerKey(ErrorTypeStrings$1[type].replace(/ hook$/, ""));
+    warn$1(
+      `${apiName} is called when there is no active component instance to be associated with. Lifecycle injection APIs can only be used during execution of setup(). If you are using async setup(), make sure to register lifecycle hooks before the first await statement.`
+    );
+  }
+}
+const createHook = (lifecycle) => (hook, target = currentInstance) => {
+  if (!isInSSRComponentSetup || lifecycle === "sp") {
+    injectHook(lifecycle, (...args) => hook(...args), target);
+  }
+};
+const onBeforeMount = createHook("bm");
+const onMounted = createHook("m");
+const onBeforeUpdate = createHook(
+  "bu"
+);
+const onUpdated = createHook("u");
+const onBeforeUnmount = createHook(
+  "bum"
+);
+const onUnmounted = createHook("um");
+const onServerPrefetch = createHook(
+  "sp"
+);
+const onRenderTriggered = createHook("rtg");
+const onRenderTracked = createHook("rtc");
+function onErrorCaptured(hook, target = currentInstance) {
+  injectHook("ec", hook, target);
+}
+const NULL_DYNAMIC_COMPONENT = Symbol.for("v-ndc");
+const getPublicInstance = (i) => {
+  if (!i) return null;
+  if (isStatefulComponent(i)) return getComponentPublicInstance(i);
+  return getPublicInstance(i.parent);
+};
+const publicPropertiesMap = (
+  // Move PURE marker to new line to workaround compiler discarding it
+  // due to type annotation
+  /* @__PURE__ */ extend(/* @__PURE__ */ Object.create(null), {
+    $: (i) => i,
+    $el: (i) => i.vnode.el,
+    $data: (i) => i.data,
+    $props: (i) => !!(define_process_default$2.env.NODE_ENV !== "production") ? shallowReadonly(i.props) : i.props,
+    $attrs: (i) => !!(define_process_default$2.env.NODE_ENV !== "production") ? shallowReadonly(i.attrs) : i.attrs,
+    $slots: (i) => !!(define_process_default$2.env.NODE_ENV !== "production") ? shallowReadonly(i.slots) : i.slots,
+    $refs: (i) => !!(define_process_default$2.env.NODE_ENV !== "production") ? shallowReadonly(i.refs) : i.refs,
+    $parent: (i) => getPublicInstance(i.parent),
+    $root: (i) => getPublicInstance(i.root),
+    $host: (i) => i.ce,
+    $emit: (i) => i.emit,
+    $options: (i) => resolveMergedOptions(i),
+    $forceUpdate: (i) => i.f || (i.f = () => {
+      queueJob(i.update);
+    }),
+    $nextTick: (i) => i.n || (i.n = nextTick.bind(i.proxy)),
+    $watch: (i) => instanceWatch.bind(i)
+  })
+);
+const isReservedPrefix = (key) => key === "_" || key === "$";
+const hasSetupBinding = (state, key) => state !== EMPTY_OBJ && !state.__isScriptSetup && hasOwn(state, key);
+const PublicInstanceProxyHandlers = {
+  get({ _: instance }, key) {
+    if (key === "__v_skip") {
+      return true;
+    }
+    const { ctx, setupState, data, props, accessCache, type, appContext } = instance;
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && key === "__isVue") {
+      return true;
+    }
+    let normalizedProps;
+    if (key[0] !== "$") {
+      const n = accessCache[key];
+      if (n !== void 0) {
+        switch (n) {
+          case 1:
+            return setupState[key];
+          case 2:
+            return data[key];
+          case 4:
+            return ctx[key];
+          case 3:
+            return props[key];
+        }
+      } else if (hasSetupBinding(setupState, key)) {
+        accessCache[key] = 1;
+        return setupState[key];
+      } else if (data !== EMPTY_OBJ && hasOwn(data, key)) {
+        accessCache[key] = 2;
+        return data[key];
+      } else if (
+        // only cache other properties when instance has declared (thus stable)
+        // props
+        (normalizedProps = instance.propsOptions[0]) && hasOwn(normalizedProps, key)
+      ) {
+        accessCache[key] = 3;
+        return props[key];
+      } else if (ctx !== EMPTY_OBJ && hasOwn(ctx, key)) {
+        accessCache[key] = 4;
+        return ctx[key];
+      } else if (shouldCacheAccess) {
+        accessCache[key] = 0;
+      }
+    }
+    const publicGetter = publicPropertiesMap[key];
+    let cssModule, globalProperties;
+    if (publicGetter) {
+      if (key === "$attrs") {
+        track(instance.attrs, "get", "");
+        !!(define_process_default$2.env.NODE_ENV !== "production") && markAttrsAccessed();
+      } else if (!!(define_process_default$2.env.NODE_ENV !== "production") && key === "$slots") {
+        track(instance, "get", key);
+      }
+      return publicGetter(instance);
+    } else if (
+      // css module (injected by vue-loader)
+      (cssModule = type.__cssModules) && (cssModule = cssModule[key])
+    ) {
+      return cssModule;
+    } else if (ctx !== EMPTY_OBJ && hasOwn(ctx, key)) {
+      accessCache[key] = 4;
+      return ctx[key];
+    } else if (
+      // global properties
+      globalProperties = appContext.config.globalProperties, hasOwn(globalProperties, key)
+    ) {
+      {
+        return globalProperties[key];
+      }
+    } else if (!!(define_process_default$2.env.NODE_ENV !== "production") && currentRenderingInstance && (!isString(key) || // #1091 avoid internal isRef/isVNode checks on component instance leading
+    // to infinite warning loop
+    key.indexOf("__v") !== 0)) {
+      if (data !== EMPTY_OBJ && isReservedPrefix(key[0]) && hasOwn(data, key)) {
+        warn$1(
+          `Property ${JSON.stringify(
+            key
+          )} must be accessed via $data because it starts with a reserved character ("$" or "_") and is not proxied on the render context.`
+        );
+      } else if (instance === currentRenderingInstance) {
+        warn$1(
+          `Property ${JSON.stringify(key)} was accessed during render but is not defined on instance.`
+        );
+      }
+    }
+  },
+  set({ _: instance }, key, value) {
+    const { data, setupState, ctx } = instance;
+    if (hasSetupBinding(setupState, key)) {
+      setupState[key] = value;
+      return true;
+    } else if (!!(define_process_default$2.env.NODE_ENV !== "production") && setupState.__isScriptSetup && hasOwn(setupState, key)) {
+      warn$1(`Cannot mutate <script setup> binding "${key}" from Options API.`);
+      return false;
+    } else if (data !== EMPTY_OBJ && hasOwn(data, key)) {
+      data[key] = value;
+      return true;
+    } else if (hasOwn(instance.props, key)) {
+      !!(define_process_default$2.env.NODE_ENV !== "production") && warn$1(`Attempting to mutate prop "${key}". Props are readonly.`);
+      return false;
+    }
+    if (key[0] === "$" && key.slice(1) in instance) {
+      !!(define_process_default$2.env.NODE_ENV !== "production") && warn$1(
+        `Attempting to mutate public property "${key}". Properties starting with $ are reserved and readonly.`
+      );
+      return false;
+    } else {
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && key in instance.appContext.config.globalProperties) {
+        Object.defineProperty(ctx, key, {
+          enumerable: true,
+          configurable: true,
+          value
+        });
+      } else {
+        ctx[key] = value;
+      }
+    }
+    return true;
+  },
+  has({
+    _: { data, setupState, accessCache, ctx, appContext, propsOptions }
+  }, key) {
+    let normalizedProps;
+    return !!accessCache[key] || data !== EMPTY_OBJ && hasOwn(data, key) || hasSetupBinding(setupState, key) || (normalizedProps = propsOptions[0]) && hasOwn(normalizedProps, key) || hasOwn(ctx, key) || hasOwn(publicPropertiesMap, key) || hasOwn(appContext.config.globalProperties, key);
+  },
+  defineProperty(target, key, descriptor) {
+    if (descriptor.get != null) {
+      target._.accessCache[key] = 0;
+    } else if (hasOwn(descriptor, "value")) {
+      this.set(target, key, descriptor.value, null);
+    }
+    return Reflect.defineProperty(target, key, descriptor);
+  }
+};
+if (!!(define_process_default$2.env.NODE_ENV !== "production") && true) {
+  PublicInstanceProxyHandlers.ownKeys = (target) => {
+    warn$1(
+      `Avoid app logic that relies on enumerating keys on a component instance. The keys will be empty in production mode to avoid performance overhead.`
+    );
+    return Reflect.ownKeys(target);
+  };
+}
+function createDevRenderContext(instance) {
+  const target = {};
+  Object.defineProperty(target, `_`, {
+    configurable: true,
+    enumerable: false,
+    get: () => instance
+  });
+  Object.keys(publicPropertiesMap).forEach((key) => {
+    Object.defineProperty(target, key, {
+      configurable: true,
+      enumerable: false,
+      get: () => publicPropertiesMap[key](instance),
+      // intercepted by the proxy so no need for implementation,
+      // but needed to prevent set errors
+      set: NOOP
+    });
+  });
+  return target;
+}
+function exposePropsOnRenderContext(instance) {
+  const {
+    ctx,
+    propsOptions: [propsOptions]
+  } = instance;
+  if (propsOptions) {
+    Object.keys(propsOptions).forEach((key) => {
+      Object.defineProperty(ctx, key, {
+        enumerable: true,
+        configurable: true,
+        get: () => instance.props[key],
+        set: NOOP
+      });
+    });
+  }
+}
+function exposeSetupStateOnRenderContext(instance) {
+  const { ctx, setupState } = instance;
+  Object.keys(toRaw(setupState)).forEach((key) => {
+    if (!setupState.__isScriptSetup) {
+      if (isReservedPrefix(key[0])) {
+        warn$1(
+          `setup() return property ${JSON.stringify(
+            key
+          )} should not start with "$" or "_" which are reserved prefixes for Vue internals.`
+        );
+        return;
+      }
+      Object.defineProperty(ctx, key, {
+        enumerable: true,
+        configurable: true,
+        get: () => setupState[key],
+        set: NOOP
+      });
+    }
+  });
+}
+function normalizePropsOrEmits(props) {
+  return isArray(props) ? props.reduce(
+    (normalized, p2) => (normalized[p2] = null, normalized),
+    {}
+  ) : props;
+}
+function createDuplicateChecker() {
+  const cache = /* @__PURE__ */ Object.create(null);
+  return (type, key) => {
+    if (cache[key]) {
+      warn$1(`${type} property "${key}" is already defined in ${cache[key]}.`);
+    } else {
+      cache[key] = type;
+    }
+  };
+}
+let shouldCacheAccess = true;
+function applyOptions(instance) {
+  const options = resolveMergedOptions(instance);
+  const publicThis = instance.proxy;
+  const ctx = instance.ctx;
+  shouldCacheAccess = false;
+  if (options.beforeCreate) {
+    callHook(options.beforeCreate, instance, "bc");
+  }
+  const {
+    // state
+    data: dataOptions,
+    computed: computedOptions,
+    methods,
+    watch: watchOptions,
+    provide: provideOptions,
+    inject: injectOptions,
+    // lifecycle
+    created,
+    beforeMount,
+    mounted,
+    beforeUpdate,
+    updated,
+    activated,
+    deactivated,
+    beforeDestroy,
+    beforeUnmount,
+    destroyed,
+    unmounted,
+    render: render2,
+    renderTracked,
+    renderTriggered,
+    errorCaptured,
+    serverPrefetch,
+    // public API
+    expose,
+    inheritAttrs,
+    // assets
+    components,
+    directives,
+    filters
+  } = options;
+  const checkDuplicateProperties = !!(define_process_default$2.env.NODE_ENV !== "production") ? createDuplicateChecker() : null;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    const [propsOptions] = instance.propsOptions;
+    if (propsOptions) {
+      for (const key in propsOptions) {
+        checkDuplicateProperties("Props", key);
+      }
+    }
+  }
+  if (injectOptions) {
+    resolveInjections(injectOptions, ctx, checkDuplicateProperties);
+  }
+  if (methods) {
+    for (const key in methods) {
+      const methodHandler = methods[key];
+      if (isFunction(methodHandler)) {
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          Object.defineProperty(ctx, key, {
+            value: methodHandler.bind(publicThis),
+            configurable: true,
+            enumerable: true,
+            writable: true
+          });
+        } else {
+          ctx[key] = methodHandler.bind(publicThis);
+        }
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          checkDuplicateProperties("Methods", key);
+        }
+      } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+        warn$1(
+          `Method "${key}" has type "${typeof methodHandler}" in the component definition. Did you reference the function correctly?`
+        );
+      }
+    }
+  }
+  if (dataOptions) {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && !isFunction(dataOptions)) {
+      warn$1(
+        `The data option must be a function. Plain object usage is no longer supported.`
+      );
+    }
+    const data = dataOptions.call(publicThis, publicThis);
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && isPromise(data)) {
+      warn$1(
+        `data() returned a Promise - note data() cannot be async; If you intend to perform data fetching before component renders, use async setup() + <Suspense>.`
+      );
+    }
+    if (!isObject(data)) {
+      !!(define_process_default$2.env.NODE_ENV !== "production") && warn$1(`data() should return an object.`);
+    } else {
+      instance.data = reactive(data);
+      if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+        for (const key in data) {
+          checkDuplicateProperties("Data", key);
+          if (!isReservedPrefix(key[0])) {
+            Object.defineProperty(ctx, key, {
+              configurable: true,
+              enumerable: true,
+              get: () => data[key],
+              set: NOOP
+            });
+          }
+        }
+      }
+    }
+  }
+  shouldCacheAccess = true;
+  if (computedOptions) {
+    for (const key in computedOptions) {
+      const opt = computedOptions[key];
+      const get = isFunction(opt) ? opt.bind(publicThis, publicThis) : isFunction(opt.get) ? opt.get.bind(publicThis, publicThis) : NOOP;
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && get === NOOP) {
+        warn$1(`Computed property "${key}" has no getter.`);
+      }
+      const set = !isFunction(opt) && isFunction(opt.set) ? opt.set.bind(publicThis) : !!(define_process_default$2.env.NODE_ENV !== "production") ? () => {
+        warn$1(
+          `Write operation failed: computed property "${key}" is readonly.`
+        );
+      } : NOOP;
+      const c = computed({
+        get,
+        set
+      });
+      Object.defineProperty(ctx, key, {
+        enumerable: true,
+        configurable: true,
+        get: () => c.value,
+        set: (v) => c.value = v
+      });
+      if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+        checkDuplicateProperties("Computed", key);
+      }
+    }
+  }
+  if (watchOptions) {
+    for (const key in watchOptions) {
+      createWatcher(watchOptions[key], ctx, publicThis, key);
+    }
+  }
+  if (provideOptions) {
+    const provides = isFunction(provideOptions) ? provideOptions.call(publicThis) : provideOptions;
+    Reflect.ownKeys(provides).forEach((key) => {
+      provide(key, provides[key]);
+    });
+  }
+  if (created) {
+    callHook(created, instance, "c");
+  }
+  function registerLifecycleHook(register, hook) {
+    if (isArray(hook)) {
+      hook.forEach((_hook) => register(_hook.bind(publicThis)));
+    } else if (hook) {
+      register(hook.bind(publicThis));
+    }
+  }
+  registerLifecycleHook(onBeforeMount, beforeMount);
+  registerLifecycleHook(onMounted, mounted);
+  registerLifecycleHook(onBeforeUpdate, beforeUpdate);
+  registerLifecycleHook(onUpdated, updated);
+  registerLifecycleHook(onActivated, activated);
+  registerLifecycleHook(onDeactivated, deactivated);
+  registerLifecycleHook(onErrorCaptured, errorCaptured);
+  registerLifecycleHook(onRenderTracked, renderTracked);
+  registerLifecycleHook(onRenderTriggered, renderTriggered);
+  registerLifecycleHook(onBeforeUnmount, beforeUnmount);
+  registerLifecycleHook(onUnmounted, unmounted);
+  registerLifecycleHook(onServerPrefetch, serverPrefetch);
+  if (isArray(expose)) {
+    if (expose.length) {
+      const exposed = instance.exposed || (instance.exposed = {});
+      expose.forEach((key) => {
+        Object.defineProperty(exposed, key, {
+          get: () => publicThis[key],
+          set: (val) => publicThis[key] = val
+        });
+      });
+    } else if (!instance.exposed) {
+      instance.exposed = {};
+    }
+  }
+  if (render2 && instance.render === NOOP) {
+    instance.render = render2;
+  }
+  if (inheritAttrs != null) {
+    instance.inheritAttrs = inheritAttrs;
+  }
+  if (components) instance.components = components;
+  if (directives) instance.directives = directives;
+  if (serverPrefetch) {
+    markAsyncBoundary(instance);
+  }
+}
+function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) {
+  if (isArray(injectOptions)) {
+    injectOptions = normalizeInject(injectOptions);
+  }
+  for (const key in injectOptions) {
+    const opt = injectOptions[key];
+    let injected;
+    if (isObject(opt)) {
+      if ("default" in opt) {
+        injected = inject(
+          opt.from || key,
+          opt.default,
+          true
+        );
+      } else {
+        injected = inject(opt.from || key);
+      }
+    } else {
+      injected = inject(opt);
+    }
+    if (isRef(injected)) {
+      Object.defineProperty(ctx, key, {
+        enumerable: true,
+        configurable: true,
+        get: () => injected.value,
+        set: (v) => injected.value = v
+      });
+    } else {
+      ctx[key] = injected;
+    }
+    if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      checkDuplicateProperties("Inject", key);
+    }
+  }
+}
+function callHook(hook, instance, type) {
+  callWithAsyncErrorHandling(
+    isArray(hook) ? hook.map((h2) => h2.bind(instance.proxy)) : hook.bind(instance.proxy),
+    instance,
+    type
+  );
+}
+function createWatcher(raw, ctx, publicThis, key) {
+  let getter = key.includes(".") ? createPathGetter(publicThis, key) : () => publicThis[key];
+  if (isString(raw)) {
+    const handler = ctx[raw];
+    if (isFunction(handler)) {
+      {
+        watch(getter, handler);
+      }
+    } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      warn$1(`Invalid watch handler specified by key "${raw}"`, handler);
+    }
+  } else if (isFunction(raw)) {
+    {
+      watch(getter, raw.bind(publicThis));
+    }
+  } else if (isObject(raw)) {
+    if (isArray(raw)) {
+      raw.forEach((r) => createWatcher(r, ctx, publicThis, key));
+    } else {
+      const handler = isFunction(raw.handler) ? raw.handler.bind(publicThis) : ctx[raw.handler];
+      if (isFunction(handler)) {
+        watch(getter, handler, raw);
+      } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+        warn$1(`Invalid watch handler specified by key "${raw.handler}"`, handler);
+      }
+    }
+  } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    warn$1(`Invalid watch option: "${key}"`, raw);
+  }
+}
+function resolveMergedOptions(instance) {
+  const base = instance.type;
+  const { mixins, extends: extendsOptions } = base;
+  const {
+    mixins: globalMixins,
+    optionsCache: cache,
+    config: { optionMergeStrategies }
+  } = instance.appContext;
+  const cached = cache.get(base);
+  let resolved;
+  if (cached) {
+    resolved = cached;
+  } else if (!globalMixins.length && !mixins && !extendsOptions) {
+    {
+      resolved = base;
+    }
+  } else {
+    resolved = {};
+    if (globalMixins.length) {
+      globalMixins.forEach(
+        (m) => mergeOptions(resolved, m, optionMergeStrategies, true)
+      );
+    }
+    mergeOptions(resolved, base, optionMergeStrategies);
+  }
+  if (isObject(base)) {
+    cache.set(base, resolved);
+  }
+  return resolved;
+}
+function mergeOptions(to, from, strats, asMixin = false) {
+  const { mixins, extends: extendsOptions } = from;
+  if (extendsOptions) {
+    mergeOptions(to, extendsOptions, strats, true);
+  }
+  if (mixins) {
+    mixins.forEach(
+      (m) => mergeOptions(to, m, strats, true)
+    );
+  }
+  for (const key in from) {
+    if (asMixin && key === "expose") {
+      !!(define_process_default$2.env.NODE_ENV !== "production") && warn$1(
+        `"expose" option is ignored when declared in mixins or extends. It should only be declared in the base component itself.`
+      );
+    } else {
+      const strat = internalOptionMergeStrats[key] || strats && strats[key];
+      to[key] = strat ? strat(to[key], from[key]) : from[key];
+    }
+  }
+  return to;
+}
+const internalOptionMergeStrats = {
+  data: mergeDataFn,
+  props: mergeEmitsOrPropsOptions,
+  emits: mergeEmitsOrPropsOptions,
+  // objects
+  methods: mergeObjectOptions,
+  computed: mergeObjectOptions,
+  // lifecycle
+  beforeCreate: mergeAsArray,
+  created: mergeAsArray,
+  beforeMount: mergeAsArray,
+  mounted: mergeAsArray,
+  beforeUpdate: mergeAsArray,
+  updated: mergeAsArray,
+  beforeDestroy: mergeAsArray,
+  beforeUnmount: mergeAsArray,
+  destroyed: mergeAsArray,
+  unmounted: mergeAsArray,
+  activated: mergeAsArray,
+  deactivated: mergeAsArray,
+  errorCaptured: mergeAsArray,
+  serverPrefetch: mergeAsArray,
+  // assets
+  components: mergeObjectOptions,
+  directives: mergeObjectOptions,
+  // watch
+  watch: mergeWatchOptions,
+  // provide / inject
+  provide: mergeDataFn,
+  inject: mergeInject
+};
+function mergeDataFn(to, from) {
+  if (!from) {
+    return to;
+  }
+  if (!to) {
+    return from;
+  }
+  return function mergedDataFn() {
+    return extend(
+      isFunction(to) ? to.call(this, this) : to,
+      isFunction(from) ? from.call(this, this) : from
+    );
+  };
+}
+function mergeInject(to, from) {
+  return mergeObjectOptions(normalizeInject(to), normalizeInject(from));
+}
+function normalizeInject(raw) {
+  if (isArray(raw)) {
+    const res = {};
+    for (let i = 0; i < raw.length; i++) {
+      res[raw[i]] = raw[i];
+    }
+    return res;
+  }
+  return raw;
+}
+function mergeAsArray(to, from) {
+  return to ? [...new Set([].concat(to, from))] : from;
+}
+function mergeObjectOptions(to, from) {
+  return to ? extend(/* @__PURE__ */ Object.create(null), to, from) : from;
+}
+function mergeEmitsOrPropsOptions(to, from) {
+  if (to) {
+    if (isArray(to) && isArray(from)) {
+      return [.../* @__PURE__ */ new Set([...to, ...from])];
+    }
+    return extend(
+      /* @__PURE__ */ Object.create(null),
+      normalizePropsOrEmits(to),
+      normalizePropsOrEmits(from != null ? from : {})
+    );
+  } else {
+    return from;
+  }
+}
+function mergeWatchOptions(to, from) {
+  if (!to) return from;
+  if (!from) return to;
+  const merged = extend(/* @__PURE__ */ Object.create(null), to);
+  for (const key in from) {
+    merged[key] = mergeAsArray(to[key], from[key]);
+  }
+  return merged;
+}
+function createAppContext() {
+  return {
+    app: null,
+    config: {
+      isNativeTag: NO,
+      performance: false,
+      globalProperties: {},
+      optionMergeStrategies: {},
+      errorHandler: void 0,
+      warnHandler: void 0,
+      compilerOptions: {}
+    },
+    mixins: [],
+    components: {},
+    directives: {},
+    provides: /* @__PURE__ */ Object.create(null),
+    optionsCache: /* @__PURE__ */ new WeakMap(),
+    propsCache: /* @__PURE__ */ new WeakMap(),
+    emitsCache: /* @__PURE__ */ new WeakMap()
+  };
+}
+let uid$1 = 0;
+function createAppAPI(render2, hydrate) {
+  return function createApp2(rootComponent, rootProps = null) {
+    if (!isFunction(rootComponent)) {
+      rootComponent = extend({}, rootComponent);
+    }
+    if (rootProps != null && !isObject(rootProps)) {
+      !!(define_process_default$2.env.NODE_ENV !== "production") && warn$1(`root props passed to app.mount() must be an object.`);
+      rootProps = null;
+    }
+    const context = createAppContext();
+    const installedPlugins = /* @__PURE__ */ new WeakSet();
+    const pluginCleanupFns = [];
+    let isMounted = false;
+    const app = context.app = {
+      _uid: uid$1++,
+      _component: rootComponent,
+      _props: rootProps,
+      _container: null,
+      _context: context,
+      _instance: null,
+      version,
+      get config() {
+        return context.config;
+      },
+      set config(v) {
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          warn$1(
+            `app.config cannot be replaced. Modify individual options instead.`
+          );
+        }
+      },
+      use(plugin, ...options) {
+        if (installedPlugins.has(plugin)) {
+          !!(define_process_default$2.env.NODE_ENV !== "production") && warn$1(`Plugin has already been applied to target app.`);
+        } else if (plugin && isFunction(plugin.install)) {
+          installedPlugins.add(plugin);
+          plugin.install(app, ...options);
+        } else if (isFunction(plugin)) {
+          installedPlugins.add(plugin);
+          plugin(app, ...options);
+        } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          warn$1(
+            `A plugin must either be a function or an object with an "install" function.`
+          );
+        }
+        return app;
+      },
+      mixin(mixin) {
+        {
+          if (!context.mixins.includes(mixin)) {
+            context.mixins.push(mixin);
+          } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+            warn$1(
+              "Mixin has already been applied to target app" + (mixin.name ? `: ${mixin.name}` : "")
+            );
+          }
+        }
+        return app;
+      },
+      component(name, component) {
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          validateComponentName(name, context.config);
+        }
+        if (!component) {
+          return context.components[name];
+        }
+        if (!!(define_process_default$2.env.NODE_ENV !== "production") && context.components[name]) {
+          warn$1(`Component "${name}" has already been registered in target app.`);
+        }
+        context.components[name] = component;
+        return app;
+      },
+      directive(name, directive) {
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          validateDirectiveName(name);
+        }
+        if (!directive) {
+          return context.directives[name];
+        }
+        if (!!(define_process_default$2.env.NODE_ENV !== "production") && context.directives[name]) {
+          warn$1(`Directive "${name}" has already been registered in target app.`);
+        }
+        context.directives[name] = directive;
+        return app;
+      },
+      mount(rootContainer, isHydrate, namespace) {
+        if (!isMounted) {
+          if (!!(define_process_default$2.env.NODE_ENV !== "production") && rootContainer.__vue_app__) {
+            warn$1(
+              `There is already an app instance mounted on the host container.
+ If you want to mount another app on the same host container, you need to unmount the previous app by calling \`app.unmount()\` first.`
+            );
+          }
+          const vnode = app._ceVNode || createVNode(rootComponent, rootProps);
+          vnode.appContext = context;
+          if (namespace === true) {
+            namespace = "svg";
+          } else if (namespace === false) {
+            namespace = void 0;
+          }
+          if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+            context.reload = () => {
+              render2(
+                cloneVNode(vnode),
+                rootContainer,
+                namespace
+              );
+            };
+          }
+          {
+            render2(vnode, rootContainer, namespace);
+          }
+          isMounted = true;
+          app._container = rootContainer;
+          rootContainer.__vue_app__ = app;
+          if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+            app._instance = vnode.component;
+            devtoolsInitApp(app, version);
+          }
+          return getComponentPublicInstance(vnode.component);
+        } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          warn$1(
+            `App has already been mounted.
+If you want to remount the same app, move your app creation logic into a factory function and create fresh app instances for each mount - e.g. \`const createMyApp = () => createApp(App)\``
+          );
+        }
+      },
+      onUnmount(cleanupFn) {
+        if (!!(define_process_default$2.env.NODE_ENV !== "production") && typeof cleanupFn !== "function") {
+          warn$1(
+            `Expected function as first argument to app.onUnmount(), but got ${typeof cleanupFn}`
+          );
+        }
+        pluginCleanupFns.push(cleanupFn);
+      },
+      unmount() {
+        if (isMounted) {
+          callWithAsyncErrorHandling(
+            pluginCleanupFns,
+            app._instance,
+            16
+          );
+          render2(null, app._container);
+          if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+            app._instance = null;
+            devtoolsUnmountApp(app);
+          }
+          delete app._container.__vue_app__;
+        } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          warn$1(`Cannot unmount an app that is not mounted.`);
+        }
+      },
+      provide(key, value) {
+        if (!!(define_process_default$2.env.NODE_ENV !== "production") && key in context.provides) {
+          warn$1(
+            `App already provides property with key "${String(key)}". It will be overwritten with the new value.`
+          );
+        }
+        context.provides[key] = value;
+        return app;
+      },
+      runWithContext(fn) {
+        const lastApp = currentApp;
+        currentApp = app;
+        try {
+          return fn();
+        } finally {
+          currentApp = lastApp;
+        }
+      }
+    };
+    return app;
+  };
+}
+let currentApp = null;
+function provide(key, value) {
+  if (!currentInstance) {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      warn$1(`provide() can only be used inside setup().`);
+    }
+  } else {
+    let provides = currentInstance.provides;
+    const parentProvides = currentInstance.parent && currentInstance.parent.provides;
+    if (parentProvides === provides) {
+      provides = currentInstance.provides = Object.create(parentProvides);
+    }
+    provides[key] = value;
+  }
+}
+function inject(key, defaultValue, treatDefaultAsFactory = false) {
+  const instance = currentInstance || currentRenderingInstance;
+  if (instance || currentApp) {
+    const provides = currentApp ? currentApp._context.provides : instance ? instance.parent == null ? instance.vnode.appContext && instance.vnode.appContext.provides : instance.parent.provides : void 0;
+    if (provides && key in provides) {
+      return provides[key];
+    } else if (arguments.length > 1) {
+      return treatDefaultAsFactory && isFunction(defaultValue) ? defaultValue.call(instance && instance.proxy) : defaultValue;
+    } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      warn$1(`injection "${String(key)}" not found.`);
+    }
+  } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    warn$1(`inject() can only be used inside setup() or functional components.`);
+  }
+}
+const internalObjectProto = {};
+const createInternalObject = () => Object.create(internalObjectProto);
+const isInternalObject = (obj) => Object.getPrototypeOf(obj) === internalObjectProto;
+function initProps(instance, rawProps, isStateful, isSSR = false) {
+  const props = {};
+  const attrs = createInternalObject();
+  instance.propsDefaults = /* @__PURE__ */ Object.create(null);
+  setFullProps(instance, rawProps, props, attrs);
+  for (const key in instance.propsOptions[0]) {
+    if (!(key in props)) {
+      props[key] = void 0;
+    }
+  }
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    validateProps(rawProps || {}, props, instance);
+  }
+  if (isStateful) {
+    instance.props = isSSR ? props : shallowReactive(props);
+  } else {
+    if (!instance.type.props) {
+      instance.props = attrs;
+    } else {
+      instance.props = props;
+    }
+  }
+  instance.attrs = attrs;
+}
+function isInHmrContext(instance) {
+  while (instance) {
+    if (instance.type.__hmrId) return true;
+    instance = instance.parent;
+  }
+}
+function updateProps(instance, rawProps, rawPrevProps, optimized) {
+  const {
+    props,
+    attrs,
+    vnode: { patchFlag }
+  } = instance;
+  const rawCurrentProps = toRaw(props);
+  const [options] = instance.propsOptions;
+  let hasAttrsChanged = false;
+  if (
+    // always force full diff in dev
+    // - #1942 if hmr is enabled with sfc component
+    // - vite#872 non-sfc component used by sfc component
+    !(!!(define_process_default$2.env.NODE_ENV !== "production") && isInHmrContext(instance)) && (optimized || patchFlag > 0) && !(patchFlag & 16)
+  ) {
+    if (patchFlag & 8) {
+      const propsToUpdate = instance.vnode.dynamicProps;
+      for (let i = 0; i < propsToUpdate.length; i++) {
+        let key = propsToUpdate[i];
+        if (isEmitListener(instance.emitsOptions, key)) {
+          continue;
+        }
+        const value = rawProps[key];
+        if (options) {
+          if (hasOwn(attrs, key)) {
+            if (value !== attrs[key]) {
+              attrs[key] = value;
+              hasAttrsChanged = true;
+            }
+          } else {
+            const camelizedKey = camelize(key);
+            props[camelizedKey] = resolvePropValue(
+              options,
+              rawCurrentProps,
+              camelizedKey,
+              value,
+              instance,
+              false
+            );
+          }
+        } else {
+          if (value !== attrs[key]) {
+            attrs[key] = value;
+            hasAttrsChanged = true;
+          }
+        }
+      }
+    }
+  } else {
+    if (setFullProps(instance, rawProps, props, attrs)) {
+      hasAttrsChanged = true;
+    }
+    let kebabKey;
+    for (const key in rawCurrentProps) {
+      if (!rawProps || // for camelCase
+      !hasOwn(rawProps, key) && // it's possible the original props was passed in as kebab-case
+      // and converted to camelCase (#955)
+      ((kebabKey = hyphenate(key)) === key || !hasOwn(rawProps, kebabKey))) {
+        if (options) {
+          if (rawPrevProps && // for camelCase
+          (rawPrevProps[key] !== void 0 || // for kebab-case
+          rawPrevProps[kebabKey] !== void 0)) {
+            props[key] = resolvePropValue(
+              options,
+              rawCurrentProps,
+              key,
+              void 0,
+              instance,
+              true
+            );
+          }
+        } else {
+          delete props[key];
+        }
+      }
+    }
+    if (attrs !== rawCurrentProps) {
+      for (const key in attrs) {
+        if (!rawProps || !hasOwn(rawProps, key) && true) {
+          delete attrs[key];
+          hasAttrsChanged = true;
+        }
+      }
+    }
+  }
+  if (hasAttrsChanged) {
+    trigger(instance.attrs, "set", "");
+  }
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    validateProps(rawProps || {}, props, instance);
+  }
+}
+function setFullProps(instance, rawProps, props, attrs) {
+  const [options, needCastKeys] = instance.propsOptions;
+  let hasAttrsChanged = false;
+  let rawCastValues;
+  if (rawProps) {
+    for (let key in rawProps) {
+      if (isReservedProp(key)) {
+        continue;
+      }
+      const value = rawProps[key];
+      let camelKey;
+      if (options && hasOwn(options, camelKey = camelize(key))) {
+        if (!needCastKeys || !needCastKeys.includes(camelKey)) {
+          props[camelKey] = value;
+        } else {
+          (rawCastValues || (rawCastValues = {}))[camelKey] = value;
+        }
+      } else if (!isEmitListener(instance.emitsOptions, key)) {
+        if (!(key in attrs) || value !== attrs[key]) {
+          attrs[key] = value;
+          hasAttrsChanged = true;
+        }
+      }
+    }
+  }
+  if (needCastKeys) {
+    const rawCurrentProps = toRaw(props);
+    const castValues = rawCastValues || EMPTY_OBJ;
+    for (let i = 0; i < needCastKeys.length; i++) {
+      const key = needCastKeys[i];
+      props[key] = resolvePropValue(
+        options,
+        rawCurrentProps,
+        key,
+        castValues[key],
+        instance,
+        !hasOwn(castValues, key)
+      );
+    }
+  }
+  return hasAttrsChanged;
+}
+function resolvePropValue(options, props, key, value, instance, isAbsent) {
+  const opt = options[key];
+  if (opt != null) {
+    const hasDefault = hasOwn(opt, "default");
+    if (hasDefault && value === void 0) {
+      const defaultValue = opt.default;
+      if (opt.type !== Function && !opt.skipFactory && isFunction(defaultValue)) {
+        const { propsDefaults } = instance;
+        if (key in propsDefaults) {
+          value = propsDefaults[key];
+        } else {
+          const reset = setCurrentInstance(instance);
+          value = propsDefaults[key] = defaultValue.call(
+            null,
+            props
+          );
+          reset();
+        }
+      } else {
+        value = defaultValue;
+      }
+      if (instance.ce) {
+        instance.ce._setProp(key, value);
+      }
+    }
+    if (opt[
+      0
+      /* shouldCast */
+    ]) {
+      if (isAbsent && !hasDefault) {
+        value = false;
+      } else if (opt[
+        1
+        /* shouldCastTrue */
+      ] && (value === "" || value === hyphenate(key))) {
+        value = true;
+      }
+    }
+  }
+  return value;
+}
+const mixinPropsCache = /* @__PURE__ */ new WeakMap();
+function normalizePropsOptions(comp, appContext, asMixin = false) {
+  const cache = asMixin ? mixinPropsCache : appContext.propsCache;
+  const cached = cache.get(comp);
+  if (cached) {
+    return cached;
+  }
+  const raw = comp.props;
+  const normalized = {};
+  const needCastKeys = [];
+  let hasExtends = false;
+  if (!isFunction(comp)) {
+    const extendProps = (raw2) => {
+      hasExtends = true;
+      const [props, keys] = normalizePropsOptions(raw2, appContext, true);
+      extend(normalized, props);
+      if (keys) needCastKeys.push(...keys);
+    };
+    if (!asMixin && appContext.mixins.length) {
+      appContext.mixins.forEach(extendProps);
+    }
+    if (comp.extends) {
+      extendProps(comp.extends);
+    }
+    if (comp.mixins) {
+      comp.mixins.forEach(extendProps);
+    }
+  }
+  if (!raw && !hasExtends) {
+    if (isObject(comp)) {
+      cache.set(comp, EMPTY_ARR);
+    }
+    return EMPTY_ARR;
+  }
+  if (isArray(raw)) {
+    for (let i = 0; i < raw.length; i++) {
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && !isString(raw[i])) {
+        warn$1(`props must be strings when using array syntax.`, raw[i]);
+      }
+      const normalizedKey = camelize(raw[i]);
+      if (validatePropName(normalizedKey)) {
+        normalized[normalizedKey] = EMPTY_OBJ;
+      }
+    }
+  } else if (raw) {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && !isObject(raw)) {
+      warn$1(`invalid props options`, raw);
+    }
+    for (const key in raw) {
+      const normalizedKey = camelize(key);
+      if (validatePropName(normalizedKey)) {
+        const opt = raw[key];
+        const prop = normalized[normalizedKey] = isArray(opt) || isFunction(opt) ? { type: opt } : extend({}, opt);
+        const propType = prop.type;
+        let shouldCast = false;
+        let shouldCastTrue = true;
+        if (isArray(propType)) {
+          for (let index = 0; index < propType.length; ++index) {
+            const type = propType[index];
+            const typeName = isFunction(type) && type.name;
+            if (typeName === "Boolean") {
+              shouldCast = true;
+              break;
+            } else if (typeName === "String") {
+              shouldCastTrue = false;
+            }
+          }
+        } else {
+          shouldCast = isFunction(propType) && propType.name === "Boolean";
+        }
+        prop[
+          0
+          /* shouldCast */
+        ] = shouldCast;
+        prop[
+          1
+          /* shouldCastTrue */
+        ] = shouldCastTrue;
+        if (shouldCast || hasOwn(prop, "default")) {
+          needCastKeys.push(normalizedKey);
+        }
+      }
+    }
+  }
+  const res = [normalized, needCastKeys];
+  if (isObject(comp)) {
+    cache.set(comp, res);
+  }
+  return res;
+}
+function validatePropName(key) {
+  if (key[0] !== "$" && !isReservedProp(key)) {
+    return true;
+  } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    warn$1(`Invalid prop name: "${key}" is a reserved property.`);
+  }
+  return false;
+}
+function getType(ctor) {
+  if (ctor === null) {
+    return "null";
+  }
+  if (typeof ctor === "function") {
+    return ctor.name || "";
+  } else if (typeof ctor === "object") {
+    const name = ctor.constructor && ctor.constructor.name;
+    return name || "";
+  }
+  return "";
+}
+function validateProps(rawProps, props, instance) {
+  const resolvedValues = toRaw(props);
+  const options = instance.propsOptions[0];
+  const camelizePropsKey = Object.keys(rawProps).map((key) => camelize(key));
+  for (const key in options) {
+    let opt = options[key];
+    if (opt == null) continue;
+    validateProp(
+      key,
+      resolvedValues[key],
+      opt,
+      !!(define_process_default$2.env.NODE_ENV !== "production") ? shallowReadonly(resolvedValues) : resolvedValues,
+      !camelizePropsKey.includes(key)
+    );
+  }
+}
+function validateProp(name, value, prop, props, isAbsent) {
+  const { type, required, validator, skipCheck } = prop;
+  if (required && isAbsent) {
+    warn$1('Missing required prop: "' + name + '"');
+    return;
+  }
+  if (value == null && !required) {
+    return;
+  }
+  if (type != null && type !== true && !skipCheck) {
+    let isValid = false;
+    const types = isArray(type) ? type : [type];
+    const expectedTypes = [];
+    for (let i = 0; i < types.length && !isValid; i++) {
+      const { valid, expectedType } = assertType(value, types[i]);
+      expectedTypes.push(expectedType || "");
+      isValid = valid;
+    }
+    if (!isValid) {
+      warn$1(getInvalidTypeMessage(name, value, expectedTypes));
+      return;
+    }
+  }
+  if (validator && !validator(value, props)) {
+    warn$1('Invalid prop: custom validator check failed for prop "' + name + '".');
+  }
+}
+const isSimpleType = /* @__PURE__ */ makeMap(
+  "String,Number,Boolean,Function,Symbol,BigInt"
+);
+function assertType(value, type) {
+  let valid;
+  const expectedType = getType(type);
+  if (expectedType === "null") {
+    valid = value === null;
+  } else if (isSimpleType(expectedType)) {
+    const t = typeof value;
+    valid = t === expectedType.toLowerCase();
+    if (!valid && t === "object") {
+      valid = value instanceof type;
+    }
+  } else if (expectedType === "Object") {
+    valid = isObject(value);
+  } else if (expectedType === "Array") {
+    valid = isArray(value);
+  } else {
+    valid = value instanceof type;
+  }
+  return {
+    valid,
+    expectedType
+  };
+}
+function getInvalidTypeMessage(name, value, expectedTypes) {
+  if (expectedTypes.length === 0) {
+    return `Prop type [] for prop "${name}" won't match anything. Did you mean to use type Array instead?`;
+  }
+  let message = `Invalid prop: type check failed for prop "${name}". Expected ${expectedTypes.map(capitalize).join(" | ")}`;
+  const expectedType = expectedTypes[0];
+  const receivedType = toRawType(value);
+  const expectedValue = styleValue(value, expectedType);
+  const receivedValue = styleValue(value, receivedType);
+  if (expectedTypes.length === 1 && isExplicable(expectedType) && !isBoolean(expectedType, receivedType)) {
+    message += ` with value ${expectedValue}`;
+  }
+  message += `, got ${receivedType} `;
+  if (isExplicable(receivedType)) {
+    message += `with value ${receivedValue}.`;
+  }
+  return message;
+}
+function styleValue(value, type) {
+  if (type === "String") {
+    return `"${value}"`;
+  } else if (type === "Number") {
+    return `${Number(value)}`;
+  } else {
+    return `${value}`;
+  }
+}
+function isExplicable(type) {
+  const explicitTypes = ["string", "number", "boolean"];
+  return explicitTypes.some((elem) => type.toLowerCase() === elem);
+}
+function isBoolean(...args) {
+  return args.some((elem) => elem.toLowerCase() === "boolean");
+}
+const isInternalKey = (key) => key[0] === "_" || key === "$stable";
+const normalizeSlotValue = (value) => isArray(value) ? value.map(normalizeVNode) : [normalizeVNode(value)];
+const normalizeSlot = (key, rawSlot, ctx) => {
+  if (rawSlot._n) {
+    return rawSlot;
+  }
+  const normalized = withCtx((...args) => {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && currentInstance && (!ctx || ctx.root === currentInstance.root)) {
+      warn$1(
+        `Slot "${key}" invoked outside of the render function: this will not track dependencies used in the slot. Invoke the slot function inside the render function instead.`
+      );
+    }
+    return normalizeSlotValue(rawSlot(...args));
+  }, ctx);
+  normalized._c = false;
+  return normalized;
+};
+const normalizeObjectSlots = (rawSlots, slots, instance) => {
+  const ctx = rawSlots._ctx;
+  for (const key in rawSlots) {
+    if (isInternalKey(key)) continue;
+    const value = rawSlots[key];
+    if (isFunction(value)) {
+      slots[key] = normalizeSlot(key, value, ctx);
+    } else if (value != null) {
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && true) {
+        warn$1(
+          `Non-function value encountered for slot "${key}". Prefer function slots for better performance.`
+        );
+      }
+      const normalized = normalizeSlotValue(value);
+      slots[key] = () => normalized;
+    }
+  }
+};
+const normalizeVNodeSlots = (instance, children) => {
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && !isKeepAlive(instance.vnode) && true) {
+    warn$1(
+      `Non-function value encountered for default slot. Prefer function slots for better performance.`
+    );
+  }
+  const normalized = normalizeSlotValue(children);
+  instance.slots.default = () => normalized;
+};
+const assignSlots = (slots, children, optimized) => {
+  for (const key in children) {
+    if (optimized || key !== "_") {
+      slots[key] = children[key];
+    }
+  }
+};
+const initSlots = (instance, children, optimized) => {
+  const slots = instance.slots = createInternalObject();
+  if (instance.vnode.shapeFlag & 32) {
+    const type = children._;
+    if (type) {
+      assignSlots(slots, children, optimized);
+      if (optimized) {
+        def(slots, "_", type, true);
+      }
+    } else {
+      normalizeObjectSlots(children, slots);
+    }
+  } else if (children) {
+    normalizeVNodeSlots(instance, children);
+  }
+};
+const updateSlots = (instance, children, optimized) => {
+  const { vnode, slots } = instance;
+  let needDeletionCheck = true;
+  let deletionComparisonTarget = EMPTY_OBJ;
+  if (vnode.shapeFlag & 32) {
+    const type = children._;
+    if (type) {
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && isHmrUpdating) {
+        assignSlots(slots, children, optimized);
+        trigger(instance, "set", "$slots");
+      } else if (optimized && type === 1) {
+        needDeletionCheck = false;
+      } else {
+        assignSlots(slots, children, optimized);
+      }
+    } else {
+      needDeletionCheck = !children.$stable;
+      normalizeObjectSlots(children, slots);
+    }
+    deletionComparisonTarget = children;
+  } else if (children) {
+    normalizeVNodeSlots(instance, children);
+    deletionComparisonTarget = { default: 1 };
+  }
+  if (needDeletionCheck) {
+    for (const key in slots) {
+      if (!isInternalKey(key) && deletionComparisonTarget[key] == null) {
+        delete slots[key];
+      }
+    }
+  }
+};
+let supported;
+let perf;
+function startMeasure(instance, type) {
+  if (instance.appContext.config.performance && isSupported()) {
+    perf.mark(`vue-${type}-${instance.uid}`);
+  }
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+    devtoolsPerfStart(instance, type, isSupported() ? perf.now() : Date.now());
+  }
+}
+function endMeasure(instance, type) {
+  if (instance.appContext.config.performance && isSupported()) {
+    const startTag = `vue-${type}-${instance.uid}`;
+    const endTag = startTag + `:end`;
+    perf.mark(endTag);
+    perf.measure(
+      `<${formatComponentName(instance, instance.type)}> ${type}`,
+      startTag,
+      endTag
+    );
+    perf.clearMarks(startTag);
+    perf.clearMarks(endTag);
+  }
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+    devtoolsPerfEnd(instance, type, isSupported() ? perf.now() : Date.now());
+  }
+}
+function isSupported() {
+  if (supported !== void 0) {
+    return supported;
+  }
+  if (typeof window !== "undefined" && window.performance) {
+    supported = true;
+    perf = window.performance;
+  } else {
+    supported = false;
+  }
+  return supported;
+}
+function initFeatureFlags() {
+  const needWarn = [];
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && needWarn.length) {
+    const multi = needWarn.length > 1;
+    console.warn(
+      `Feature flag${multi ? `s` : ``} ${needWarn.join(", ")} ${multi ? `are` : `is`} not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.
 
-For more details, see https://link.vuejs.org/feature-flags.`)}}const we=dc;function Xa(e){return Za(e)}function Za(e,t){za();const n=dn();n.__VUE__=!0,h.env.NODE_ENV!=="production"&&Ko(n.__VUE_DEVTOOLS_GLOBAL_HOOK__,n);const{insert:r,remove:s,patchProp:o,createElement:i,createText:l,createComment:a,setText:f,setElementText:d,parentNode:u,nextSibling:g,setScopeId:b=ae,insertStaticContent:x}=e,T=(c,p,m,E=null,_=null,v=null,w=void 0,N=null,O=h.env.NODE_ENV!=="production"&&Qe?!1:!!p.dynamicChildren)=>{if(c===p)return;c&&!Yt(c,p)&&(E=_n(c),dt(c,_,v,!0),c=null),p.patchFlag===-2&&(O=!1,p.dynamicChildren=null);const{type:y,ref:F,shapeFlag:D}=p;switch(y){case mn:ie(c,p,m,E);break;case Te:X(c,p,m,E);break;case xn:c==null?re(p,m,E,w):h.env.NODE_ENV!=="production"&&B(c,p,m,w);break;case Be:bn(c,p,m,E,_,v,w,N,O);break;default:D&1?ce(c,p,m,E,_,v,w,N,O):D&6?hs(c,p,m,E,_,v,w,N,O):D&64||D&128?y.process(c,p,m,E,_,v,w,N,O,Wt):h.env.NODE_ENV!=="production"&&V("Invalid VNode type:",y,`(${typeof y})`)}F!=null&&_&&Ln(F,c&&c.ref,v,p||c,!p)},ie=(c,p,m,E)=>{if(c==null)r(p.el=l(p.children),m,E);else{const _=p.el=c.el;p.children!==c.children&&f(_,p.children)}},X=(c,p,m,E)=>{c==null?r(p.el=a(p.children||""),m,E):p.el=c.el},re=(c,p,m,E)=>{[c.el,c.anchor]=x(c.children,p,m,E,c.el,c.anchor)},B=(c,p,m,E)=>{if(p.children!==c.children){const _=g(c.anchor);C(c),[p.el,p.anchor]=x(p.children,m,_,E)}else p.el=c.el,p.anchor=c.anchor},Ne=({el:c,anchor:p},m,E)=>{let _;for(;c&&c!==p;)_=g(c),r(c,m,E),c=_;r(p,m,E)},C=({el:c,anchor:p})=>{let m;for(;c&&c!==p;)m=g(c),s(c),c=m;s(p)},ce=(c,p,m,E,_,v,w,N,O)=>{p.type==="svg"?w="svg":p.type==="math"&&(w="mathml"),c==null?Ce(p,m,E,_,v,w,N,O):Ye(c,p,_,v,w,N,O)},Ce=(c,p,m,E,_,v,w,N)=>{let O,y;const{props:F,shapeFlag:D,transition:P,dirs:R}=c;if(O=c.el=i(c.type,v,F&&F.is,F),D&8?d(O,c.children):D&16&&ve(c.children,O,null,E,_,_r(c,v),w,N),R&&Et(c,null,E,"created"),de(O,c,c.scopeId,w,E),F){for(const Z in F)Z!=="value"&&!Zt(Z)&&o(O,Z,null,F[Z],v,E);"value"in F&&o(O,"value",null,F.value,v),(y=F.onVnodeBeforeMount)&&Ue(y,E,c)}h.env.NODE_ENV!=="production"&&(In(O,"__vnode",c,!0),In(O,"__vueParentComponent",E,!0)),R&&Et(c,null,E,"beforeMount");const j=ec(_,P);j&&P.beforeEnter(O),r(O,p,m),((y=F&&F.onVnodeMounted)||j||R)&&we(()=>{y&&Ue(y,E,c),j&&P.enter(O),R&&Et(c,null,E,"mounted")},_)},de=(c,p,m,E,_)=>{if(m&&b(c,m),E)for(let v=0;v<E.length;v++)b(c,E[v]);if(_){let v=_.subTree;if(h.env.NODE_ENV!=="production"&&v.patchFlag>0&&v.patchFlag&2048&&(v=ds(v.children)||v),p===v||bi(v.type)&&(v.ssContent===p||v.ssFallback===p)){const w=_.vnode;de(c,w,w.scopeId,w.slotScopeIds,_.parent)}}},ve=(c,p,m,E,_,v,w,N,O=0)=>{for(let y=O;y<c.length;y++){const F=c[y]=N?ht(c[y]):Fe(c[y]);T(null,F,p,m,E,_,v,w,N)}},Ye=(c,p,m,E,_,v,w)=>{const N=p.el=c.el;h.env.NODE_ENV!=="production"&&(N.__vnode=p);let{patchFlag:O,dynamicChildren:y,dirs:F}=p;O|=c.patchFlag&16;const D=c.props||H,P=p.props||H;let R;if(m&&yt(m,!1),(R=P.onVnodeBeforeUpdate)&&Ue(R,m,p,c),F&&Et(p,c,m,"beforeUpdate"),m&&yt(m,!0),h.env.NODE_ENV!=="production"&&Qe&&(O=0,w=!1,y=null),(D.innerHTML&&P.innerHTML==null||D.textContent&&P.textContent==null)&&d(N,""),y?(ut(c.dynamicChildren,y,N,m,E,_r(p,_),v),h.env.NODE_ENV!=="production"&&Dn(c,p)):w||Ie(c,p,N,null,m,E,_r(p,_),v,!1),O>0){if(O&16)Se(N,D,P,m,_);else if(O&2&&D.class!==P.class&&o(N,"class",null,P.class,_),O&4&&o(N,"style",D.style,P.style,_),O&8){const j=p.dynamicProps;for(let Z=0;Z<j.length;Z++){const k=j[Z],Ve=D[k],ye=P[k];(ye!==Ve||k==="value")&&o(N,k,Ve,ye,_,m)}}O&1&&c.children!==p.children&&d(N,p.children)}else!w&&y==null&&Se(N,D,P,m,_);((R=P.onVnodeUpdated)||F)&&we(()=>{R&&Ue(R,m,p,c),F&&Et(p,c,m,"updated")},E)},ut=(c,p,m,E,_,v,w)=>{for(let N=0;N<p.length;N++){const O=c[N],y=p[N],F=O.el&&(O.type===Be||!Yt(O,y)||O.shapeFlag&70)?u(O.el):m;T(O,y,F,null,E,_,v,w,!0)}},Se=(c,p,m,E,_)=>{if(p!==m){if(p!==H)for(const v in p)!Zt(v)&&!(v in m)&&o(c,v,p[v],null,_,E);for(const v in m){if(Zt(v))continue;const w=m[v],N=p[v];w!==N&&v!=="value"&&o(c,v,N,w,_,E)}"value"in m&&o(c,"value",p.value,m.value,_)}},bn=(c,p,m,E,_,v,w,N,O)=>{const y=p.el=c?c.el:l(""),F=p.anchor=c?c.anchor:l("");let{patchFlag:D,dynamicChildren:P,slotScopeIds:R}=p;h.env.NODE_ENV!=="production"&&(Qe||D&2048)&&(D=0,O=!1,P=null),R&&(N=N?N.concat(R):R),c==null?(r(y,m,E),r(F,m,E),ve(p.children||[],m,F,_,v,w,N,O)):D>0&&D&64&&P&&c.dynamicChildren?(ut(c.dynamicChildren,P,m,_,v,w,N),h.env.NODE_ENV!=="production"?Dn(c,p):(p.key!=null||_&&p===_.subTree)&&Dn(c,p,!0)):Ie(c,p,m,F,_,v,w,N,O)},hs=(c,p,m,E,_,v,w,N,O)=>{p.slotScopeIds=N,c==null?p.shapeFlag&512?_.ctx.activate(p,m,E,w,O):ft(p,m,E,_,v,w,O):Ee(c,p,O)},ft=(c,p,m,E,_,v,w)=>{const N=c.component=Oc(c,E,_);if(h.env.NODE_ENV!=="production"&&N.type.__hmrId&&Yl(N),h.env.NODE_ENV!=="production"&&(On(c),Rt(N,"mount")),as(c)&&(N.ctx.renderer=Wt),h.env.NODE_ENV!=="production"&&Rt(N,"init"),Vc(N,!1,w),h.env.NODE_ENV!=="production"&&It(N,"init"),N.asyncDep){if(h.env.NODE_ENV!=="production"&&Qe&&(c.el=null),_&&_.registerDep(N,$,w),!c.el){const O=N.subTree=tt(Te);X(null,O,p,m)}}else $(N,c,p,m,_,v,w);h.env.NODE_ENV!=="production"&&(Nn(),It(N,"mount"))},Ee=(c,p,m)=>{const E=p.component=c.component;if(uc(c,p,m))if(E.asyncDep&&!E.asyncResolved){h.env.NODE_ENV!=="production"&&On(p),M(E,p,m),h.env.NODE_ENV!=="production"&&Nn();return}else E.next=p,E.update();else p.el=c.el,E.vnode=p},$=(c,p,m,E,_,v,w)=>{const N=()=>{if(c.isMounted){let{next:D,bu:P,u:R,parent:j,vnode:Z}=c;{const $e=pi(c);if($e){D&&(D.el=Z.el,M(c,D,w)),$e.asyncDep.then(()=>{c.isUnmounted||N()});return}}let k=D,Ve;h.env.NODE_ENV!=="production"&&On(D||c.vnode),yt(c,!1),D?(D.el=Z.el,M(c,D,w)):D=Z,P&&Mt(P),(Ve=D.props&&D.props.onVnodeBeforeUpdate)&&Ue(Ve,j,D,Z),yt(c,!0),h.env.NODE_ENV!=="production"&&Rt(c,"render");const ye=Rs(c);h.env.NODE_ENV!=="production"&&It(c,"render");const Me=c.subTree;c.subTree=ye,h.env.NODE_ENV!=="production"&&Rt(c,"patch"),T(Me,ye,u(Me.el),_n(Me),c,_,v),h.env.NODE_ENV!=="production"&&It(c,"patch"),D.el=ye.el,k===null&&fc(c,ye.el),R&&we(R,_),(Ve=D.props&&D.props.onVnodeUpdated)&&we(()=>Ue(Ve,j,D,Z),_),h.env.NODE_ENV!=="production"&&Wo(c),h.env.NODE_ENV!=="production"&&Nn()}else{let D;const{el:P,props:R}=p,{bm:j,m:Z,parent:k,root:Ve,type:ye}=c,Me=nn(p);yt(c,!1),j&&Mt(j),!Me&&(D=R&&R.onVnodeBeforeMount)&&Ue(D,k,p),yt(c,!0);{Ve.ce&&Ve.ce._injectChildStyle(ye),h.env.NODE_ENV!=="production"&&Rt(c,"render");const $e=c.subTree=Rs(c);h.env.NODE_ENV!=="production"&&It(c,"render"),h.env.NODE_ENV!=="production"&&Rt(c,"patch"),T(null,$e,m,E,c,_,v),h.env.NODE_ENV!=="production"&&It(c,"patch"),p.el=$e.el}if(Z&&we(Z,_),!Me&&(D=R&&R.onVnodeMounted)){const $e=p;we(()=>Ue(D,k,$e),_)}(p.shapeFlag&256||k&&nn(k.vnode)&&k.vnode.shapeFlag&256)&&c.a&&we(c.a,_),c.isMounted=!0,h.env.NODE_ENV!=="production"&&na(c),p=m=E=null}};c.scope.on();const O=c.effect=new Eo(N);c.scope.off();const y=c.update=O.run.bind(O),F=c.job=O.runIfDirty.bind(O);F.i=c,F.id=c.uid,O.scheduler=()=>tr(F),yt(c,!0),h.env.NODE_ENV!=="production"&&(O.onTrack=c.rtc?D=>Mt(c.rtc,D):void 0,O.onTrigger=c.rtg?D=>Mt(c.rtg,D):void 0),y()},M=(c,p,m)=>{p.component=c;const E=c.vnode.props;c.vnode=p,c.next=null,Ha(c,p.props,E,m),Ya(c,p.children,m),lt(),Ns(c),at()},Ie=(c,p,m,E,_,v,w,N,O=!1)=>{const y=c&&c.children,F=c?c.shapeFlag:0,D=p.children,{patchFlag:P,shapeFlag:R}=p;if(P>0){if(P&128){qt(y,D,m,E,_,v,w,N,O);return}else if(P&256){lr(y,D,m,E,_,v,w,N,O);return}}R&8?(F&16&&Kt(y,_,v),D!==y&&d(m,D)):F&16?R&16?qt(y,D,m,E,_,v,w,N,O):Kt(y,_,v,!0):(F&8&&d(m,""),R&16&&ve(D,m,E,_,v,w,N,O))},lr=(c,p,m,E,_,v,w,N,O)=>{c=c||Ut,p=p||Ut;const y=c.length,F=p.length,D=Math.min(y,F);let P;for(P=0;P<D;P++){const R=p[P]=O?ht(p[P]):Fe(p[P]);T(c[P],R,m,null,_,v,w,N,O)}y>F?Kt(c,_,v,!0,!1,D):ve(p,m,E,_,v,w,N,O,D)},qt=(c,p,m,E,_,v,w,N,O)=>{let y=0;const F=p.length;let D=c.length-1,P=F-1;for(;y<=D&&y<=P;){const R=c[y],j=p[y]=O?ht(p[y]):Fe(p[y]);if(Yt(R,j))T(R,j,m,null,_,v,w,N,O);else break;y++}for(;y<=D&&y<=P;){const R=c[D],j=p[P]=O?ht(p[P]):Fe(p[P]);if(Yt(R,j))T(R,j,m,null,_,v,w,N,O);else break;D--,P--}if(y>D){if(y<=P){const R=P+1,j=R<F?p[R].el:E;for(;y<=P;)T(null,p[y]=O?ht(p[y]):Fe(p[y]),m,j,_,v,w,N,O),y++}}else if(y>P)for(;y<=D;)dt(c[y],_,v,!0),y++;else{const R=y,j=y,Z=new Map;for(y=j;y<=P;y++){const pe=p[y]=O?ht(p[y]):Fe(p[y]);pe.key!=null&&(h.env.NODE_ENV!=="production"&&Z.has(pe.key)&&V("Duplicate keys found during update:",JSON.stringify(pe.key),"Make sure keys are unique."),Z.set(pe.key,y))}let k,Ve=0;const ye=P-j+1;let Me=!1,$e=0;const Qt=new Array(ye);for(y=0;y<ye;y++)Qt[y]=0;for(y=R;y<=D;y++){const pe=c[y];if(Ve>=ye){dt(pe,_,v,!0);continue}let je;if(pe.key!=null)je=Z.get(pe.key);else for(k=j;k<=P;k++)if(Qt[k-j]===0&&Yt(pe,p[k])){je=k;break}je===void 0?dt(pe,_,v,!0):(Qt[je-j]=y+1,je>=$e?$e=je:Me=!0,T(pe,p[je],m,null,_,v,w,N,O),Ve++)}const gs=Me?tc(Qt):Ut;for(k=gs.length-1,y=ye-1;y>=0;y--){const pe=j+y,je=p[pe],bs=pe+1<F?p[pe+1].el:E;Qt[y]===0?T(null,je,m,bs,_,v,w,N,O):Me&&(k<0||y!==gs[k]?St(je,m,bs,2):k--)}}},St=(c,p,m,E,_=null)=>{const{el:v,type:w,transition:N,children:O,shapeFlag:y}=c;if(y&6){St(c.component.subTree,p,m,E);return}if(y&128){c.suspense.move(p,m,E);return}if(y&64){w.move(c,p,m,Wt);return}if(w===Be){r(v,p,m);for(let D=0;D<O.length;D++)St(O[D],p,m,E);r(c.anchor,p,m);return}if(w===xn){Ne(c,p,m);return}if(E!==2&&y&1&&N)if(E===0)N.beforeEnter(v),r(v,p,m),we(()=>N.enter(v),_);else{const{leave:D,delayLeave:P,afterLeave:R}=N,j=()=>r(v,p,m),Z=()=>{D(v,()=>{j(),R&&R()})};P?P(v,j,Z):Z()}else r(v,p,m)},dt=(c,p,m,E=!1,_=!1)=>{const{type:v,props:w,ref:N,children:O,dynamicChildren:y,shapeFlag:F,patchFlag:D,dirs:P,cacheIndex:R}=c;if(D===-2&&(_=!1),N!=null&&Ln(N,null,m,c,!0),R!=null&&(p.renderCache[R]=void 0),F&256){p.ctx.deactivate(c);return}const j=F&1&&P,Z=!nn(c);let k;if(Z&&(k=w&&w.onVnodeBeforeUnmount)&&Ue(k,p,c),F&6)Ri(c.component,m,E);else{if(F&128){c.suspense.unmount(m,E);return}j&&Et(c,null,p,"beforeUnmount"),F&64?c.type.remove(c,p,m,Wt,E):y&&!y.hasOnce&&(v!==Be||D>0&&D&64)?Kt(y,p,m,!1,!0):(v===Be&&D&384||!_&&F&16)&&Kt(O,p,m),E&&ar(c)}(Z&&(k=w&&w.onVnodeUnmounted)||j)&&we(()=>{k&&Ue(k,p,c),j&&Et(c,null,p,"unmounted")},m)},ar=c=>{const{type:p,el:m,anchor:E,transition:_}=c;if(p===Be){h.env.NODE_ENV!=="production"&&c.patchFlag>0&&c.patchFlag&2048&&_&&!_.persisted?c.children.forEach(w=>{w.type===Te?s(w.el):ar(w)}):Ai(m,E);return}if(p===xn){C(c);return}const v=()=>{s(m),_&&!_.persisted&&_.afterLeave&&_.afterLeave()};if(c.shapeFlag&1&&_&&!_.persisted){const{leave:w,delayLeave:N}=_,O=()=>w(m,v);N?N(c.el,v,O):O()}else v()},Ai=(c,p)=>{let m;for(;c!==p;)m=g(c),s(c),c=m;s(p)},Ri=(c,p,m)=>{h.env.NODE_ENV!=="production"&&c.type.__hmrId&&zl(c);const{bum:E,scope:_,job:v,subTree:w,um:N,m:O,a:y}=c;As(O),As(y),E&&Mt(E),_.stop(),v&&(v.flags|=8,dt(w,c,p,m)),N&&we(N,p),we(()=>{c.isUnmounted=!0},p),p&&p.pendingBranch&&!p.isUnmounted&&c.asyncDep&&!c.asyncResolved&&c.suspenseId===p.pendingId&&(p.deps--,p.deps===0&&p.resolve()),h.env.NODE_ENV!=="production"&&sa(c)},Kt=(c,p,m,E=!1,_=!1,v=0)=>{for(let w=v;w<c.length;w++)dt(c[w],p,m,E,_)},_n=c=>{if(c.shapeFlag&6)return _n(c.component.subTree);if(c.shapeFlag&128)return c.suspense.next();const p=g(c.anchor||c.el),m=p&&p[ua];return m?g(m):p};let cr=!1;const ms=(c,p,m)=>{c==null?p._vnode&&dt(p._vnode,null,null,!0):T(p._vnode||null,c,p,null,null,null,m),p._vnode=c,cr||(cr=!0,Ns(),Bo(),cr=!1)},Wt={p:T,um:dt,m:St,r:ar,mt:ft,mc:ve,pc:Ie,pbc:ut,n:_n,o:e};return{render:ms,hydrate:void 0,createApp:Ma(ms)}}function _r({type:e,props:t},n){return n==="svg"&&e==="foreignObject"||n==="mathml"&&e==="annotation-xml"&&t&&t.encoding&&t.encoding.includes("html")?void 0:n}function yt({effect:e,job:t},n){n?(e.flags|=32,t.flags|=4):(e.flags&=-33,t.flags&=-5)}function ec(e,t){return(!e||e&&!e.pendingBranch)&&t&&!t.persisted}function Dn(e,t,n=!1){const r=e.children,s=t.children;if(S(r)&&S(s))for(let o=0;o<r.length;o++){const i=r[o];let l=s[o];l.shapeFlag&1&&!l.dynamicChildren&&((l.patchFlag<=0||l.patchFlag===32)&&(l=s[o]=ht(s[o]),l.el=i.el),!n&&l.patchFlag!==-2&&Dn(i,l)),l.type===mn&&(l.el=i.el),h.env.NODE_ENV!=="production"&&l.type===Te&&!l.el&&(l.el=i.el)}}function tc(e){const t=e.slice(),n=[0];let r,s,o,i,l;const a=e.length;for(r=0;r<a;r++){const f=e[r];if(f!==0){if(s=n[n.length-1],e[s]<f){t[r]=s,n.push(r);continue}for(o=0,i=n.length-1;o<i;)l=o+i>>1,e[n[l]]<f?o=l+1:i=l;f<e[n[o]]&&(o>0&&(t[r]=n[o-1]),n[o]=r)}}for(o=n.length,i=n[o-1];o-- >0;)n[o]=i,i=t[i];return n}function pi(e){const t=e.subTree.component;if(t)return t.asyncDep&&!t.asyncResolved?t:pi(t)}function As(e){if(e)for(let t=0;t<e.length;t++)e[t].flags|=8}const nc=Symbol.for("v-scx"),rc=()=>{{const e=wn(nc);return e||h.env.NODE_ENV!=="production"&&V("Server rendering context not provided. Make sure to only call useSSRContext() conditionally in the server build."),e}};function sc(e,t){return fs(e,null,t)}function vr(e,t,n){return h.env.NODE_ENV!=="production"&&!A(t)&&V("`watch(fn, options?)` signature has been moved to a separate API. Use `watchEffect(fn, options?)` instead. `watch` now only supports `watch(source, cb, options?) signature."),fs(e,t,n)}function fs(e,t,n=H){const{immediate:r,deep:s,flush:o,once:i}=n;h.env.NODE_ENV!=="production"&&!t&&(r!==void 0&&V('watch() "immediate" option is only respected when using the watch(source, callback, options?) signature.'),s!==void 0&&V('watch() "deep" option is only respected when using the watch(source, callback, options?) signature.'),i!==void 0&&V('watch() "once" option is only respected when using the watch(source, callback, options?) signature.'));const l=oe({},n);h.env.NODE_ENV!=="production"&&(l.onWarn=V);const a=t&&r||!t&&o!=="post";let f;if(un){if(o==="sync"){const b=rc();f=b.__watcherHandles||(b.__watcherHandles=[])}else if(!a){const b=()=>{};return b.stop=ae,b.resume=ae,b.pause=ae,b}}const d=ue;l.call=(b,x,T)=>Je(b,d,x,T);let u=!1;o==="post"?l.scheduler=b=>{we(b,d&&d.suspense)}:o!=="sync"&&(u=!0,l.scheduler=(b,x)=>{x?b():tr(b)}),l.augmentJob=b=>{t&&(b.flags|=4),u&&(b.flags|=2,d&&(b.id=d.uid,b.i=d))};const g=Ll(e,t,l);return un&&(f?f.push(g):a&&g()),g}function oc(e,t,n){const r=this.proxy,s=ne(e)?e.includes(".")?hi(r,e):()=>r[e]:e.bind(r,r);let o;A(t)?o=t:(o=t.handler,n=t);const i=gn(this),l=fs(s,o.bind(r),n);return i(),l}function hi(e,t){const n=t.split(".");return()=>{let r=e;for(let s=0;s<n.length&&r;s++)r=r[n[s]];return r}}const ic=(e,t)=>t==="modelValue"||t==="model-value"?e.modelModifiers:e[`${t}Modifiers`]||e[`${Ae(t)}Modifiers`]||e[`${bt(t)}Modifiers`];function lc(e,t,...n){if(e.isUnmounted)return;const r=e.vnode.props||H;if(h.env.NODE_ENV!=="production"){const{emitsOptions:d,propsOptions:[u]}=e;if(d)if(!(t in d))(!u||!(Ot(Ae(t))in u))&&V(`Component emitted event "${t}" but it is neither declared in the emits option nor as an "${Ot(Ae(t))}" prop.`);else{const g=d[t];A(g)&&(g(...n)||V(`Invalid event arguments: event validation failed for event "${t}".`))}}let s=n;const o=t.startsWith("update:"),i=o&&ic(r,t.slice(7));if(i&&(i.trim&&(s=n.map(d=>ne(d)?d.trim():d)),i.number&&(s=n.map(Dr))),h.env.NODE_ENV!=="production"&&la(e,t,s),h.env.NODE_ENV!=="production"){const d=t.toLowerCase();d!==t&&r[Ot(d)]&&V(`Event "${d}" is emitted in component ${ir(e,e.type)} but the handler is registered for "${t}". Note that HTML attributes are case-insensitive and you cannot use v-on to listen to camelCase events when using in-DOM templates. You should probably use "${bt(t)}" instead of "${t}".`)}let l,a=r[l=Ot(t)]||r[l=Ot(Ae(t))];!a&&o&&(a=r[l=Ot(bt(t))]),a&&Je(a,e,6,s);const f=r[l+"Once"];if(f){if(!e.emitted)e.emitted={};else if(e.emitted[l])return;e.emitted[l]=!0,Je(f,e,6,s)}}function mi(e,t,n=!1){const r=t.emitsCache,s=r.get(e);if(s!==void 0)return s;const o=e.emits;let i={},l=!1;if(!A(e)){const a=f=>{const d=mi(f,t,!0);d&&(l=!0,oe(i,d))};!n&&t.mixins.length&&t.mixins.forEach(a),e.extends&&a(e.extends),e.mixins&&e.mixins.forEach(a)}return!o&&!l?(ee(e)&&r.set(e,null),null):(S(o)?o.forEach(a=>i[a]=null):oe(i,o),ee(e)&&r.set(e,i),i)}function rr(e,t){return!e||!fn(t)?!1:(t=t.slice(2).replace(/Once$/,""),U(e,t[0].toLowerCase()+t.slice(1))||U(e,bt(t))||U(e,t))}let jr=!1;function qn(){jr=!0}function Rs(e){const{type:t,vnode:n,proxy:r,withProxy:s,propsOptions:[o],slots:i,attrs:l,emit:a,render:f,renderCache:d,props:u,data:g,setupState:b,ctx:x,inheritAttrs:T}=e,ie=Hn(e);let X,re;h.env.NODE_ENV!=="production"&&(jr=!1);try{if(n.shapeFlag&4){const C=s||r,ce=h.env.NODE_ENV!=="production"&&b.__isScriptSetup?new Proxy(C,{get(Ce,de,ve){return V(`Property '${String(de)}' was accessed via 'this'. Avoid using 'this' in templates.`),Reflect.get(Ce,de,ve)}}):C;X=Fe(f.call(ce,C,d,h.env.NODE_ENV!=="production"?We(u):u,b,g,x)),re=l}else{const C=t;h.env.NODE_ENV!=="production"&&l===u&&qn(),X=Fe(C.length>1?C(h.env.NODE_ENV!=="production"?We(u):u,h.env.NODE_ENV!=="production"?{get attrs(){return qn(),We(l)},slots:i,emit:a}:{attrs:l,slots:i,emit:a}):C(h.env.NODE_ENV!=="production"?We(u):u,null)),re=t.props?l:ac(l)}}catch(C){rn.length=0,pn(C,e,1),X=tt(Te)}let B=X,Ne;if(h.env.NODE_ENV!=="production"&&X.patchFlag>0&&X.patchFlag&2048&&([B,Ne]=gi(X)),re&&T!==!1){const C=Object.keys(re),{shapeFlag:ce}=B;if(C.length){if(ce&7)o&&C.some(Rn)&&(re=cc(re,o)),B=_t(B,re,!1,!0);else if(h.env.NODE_ENV!=="production"&&!jr&&B.type!==Te){const Ce=Object.keys(l),de=[],ve=[];for(let Ye=0,ut=Ce.length;Ye<ut;Ye++){const Se=Ce[Ye];fn(Se)?Rn(Se)||de.push(Se[2].toLowerCase()+Se.slice(3)):ve.push(Se)}ve.length&&V(`Extraneous non-props attributes (${ve.join(", ")}) were passed to component but could not be automatically inherited because component renders fragment or text or teleport root nodes.`),de.length&&V(`Extraneous non-emits event listeners (${de.join(", ")}) were passed to component but could not be automatically inherited because component renders fragment or text root nodes. If the listener is intended to be a component custom event listener only, declare it using the "emits" option.`)}}}return n.dirs&&(h.env.NODE_ENV!=="production"&&!Is(B)&&V("Runtime directive used on component with non-element root node. The directives will not function as intended."),B=_t(B,null,!1,!0),B.dirs=B.dirs?B.dirs.concat(n.dirs):n.dirs),n.transition&&(h.env.NODE_ENV!=="production"&&!Is(B)&&V("Component inside <Transition> renders non-element root node that cannot be animated."),ls(B,n.transition)),h.env.NODE_ENV!=="production"&&Ne?Ne(B):X=B,Hn(ie),X}const gi=e=>{const t=e.children,n=e.dynamicChildren,r=ds(t,!1);if(r){if(h.env.NODE_ENV!=="production"&&r.patchFlag>0&&r.patchFlag&2048)return gi(r)}else return[e,void 0];const s=t.indexOf(r),o=n?n.indexOf(r):-1,i=l=>{t[s]=l,n&&(o>-1?n[o]=l:l.patchFlag>0&&(e.dynamicChildren=[...n,l]))};return[Fe(r),i]};function ds(e,t=!0){let n;for(let r=0;r<e.length;r++){const s=e[r];if(sr(s)){if(s.type!==Te||s.children==="v-if"){if(n)return;if(n=s,h.env.NODE_ENV!=="production"&&t&&n.patchFlag>0&&n.patchFlag&2048)return ds(n.children)}}else return}return n}const ac=e=>{let t;for(const n in e)(n==="class"||n==="style"||fn(n))&&((t||(t={}))[n]=e[n]);return t},cc=(e,t)=>{const n={};for(const r in e)(!Rn(r)||!(r.slice(9)in t))&&(n[r]=e[r]);return n},Is=e=>e.shapeFlag&7||e.type===Te;function uc(e,t,n){const{props:r,children:s,component:o}=e,{props:i,children:l,patchFlag:a}=t,f=o.emitsOptions;if(h.env.NODE_ENV!=="production"&&(s||l)&&Qe||t.dirs||t.transition)return!0;if(n&&a>=0){if(a&1024)return!0;if(a&16)return r?Ms(r,i,f):!!i;if(a&8){const d=t.dynamicProps;for(let u=0;u<d.length;u++){const g=d[u];if(i[g]!==r[g]&&!rr(f,g))return!0}}}else return(s||l)&&(!l||!l.$stable)?!0:r===i?!1:r?i?Ms(r,i,f):!0:!!i;return!1}function Ms(e,t,n){const r=Object.keys(t);if(r.length!==Object.keys(e).length)return!0;for(let s=0;s<r.length;s++){const o=r[s];if(t[o]!==e[o]&&!rr(n,o))return!0}return!1}function fc({vnode:e,parent:t},n){for(;t;){const r=t.subTree;if(r.suspense&&r.suspense.activeBranch===e&&(r.el=e.el),r===e)(e=t.vnode).el=n,t=t.parent;else break}}const bi=e=>e.__isSuspense;function dc(e,t){t&&t.pendingBranch?S(e)?t.effects.push(...e):t.effects.push(e):Lo(e)}const Be=Symbol.for("v-fgt"),mn=Symbol.for("v-txt"),Te=Symbol.for("v-cmt"),xn=Symbol.for("v-stc"),rn=[];let xe=null;function Ur(e=!1){rn.push(xe=e?null:[])}function pc(){rn.pop(),xe=rn[rn.length-1]||null}let cn=1;function $s(e,t=!1){cn+=e,e<0&&xe&&t&&(xe.hasOnce=!0)}function _i(e){return e.dynamicChildren=cn>0?xe||Ut:null,pc(),cn>0&&xe&&xe.push(e),e}function js(e,t,n,r,s,o){return _i(Vt(e,t,n,r,s,o,!0))}function hc(e,t,n,r,s){return _i(tt(e,t,n,r,s,!0))}function sr(e){return e?e.__v_isVNode===!0:!1}function Yt(e,t){if(h.env.NODE_ENV!=="production"&&t.shapeFlag&6&&e.component){const n=Vn.get(t.type);if(n&&n.has(e.component))return e.shapeFlag&=-257,t.shapeFlag&=-513,!1}return e.type===t.type&&e.key===t.key}const mc=(...e)=>Ei(...e),vi=({key:e})=>e??null,Pn=({ref:e,ref_key:t,ref_for:n})=>(typeof e=="number"&&(e=""+e),e!=null?ne(e)||se(e)||A(e)?{i:_e,r:e,k:t,f:!!n}:e:null);function Vt(e,t=null,n=null,r=0,s=null,o=e===Be?0:1,i=!1,l=!1){const a={__v_isVNode:!0,__v_skip:!0,type:e,props:t,key:t&&vi(t),ref:t&&Pn(t),scopeId:Go,slotScopeIds:null,children:n,component:null,suspense:null,ssContent:null,ssFallback:null,dirs:null,transition:null,el:null,anchor:null,target:null,targetStart:null,targetAnchor:null,staticCount:0,shapeFlag:o,patchFlag:r,dynamicProps:s,dynamicChildren:null,appContext:null,ctx:_e};return l?(ps(a,n),o&128&&e.normalize(a)):n&&(a.shapeFlag|=ne(n)?8:16),h.env.NODE_ENV!=="production"&&a.key!==a.key&&V("VNode created with invalid key (NaN). VNode type:",a.type),cn>0&&!i&&xe&&(a.patchFlag>0||o&6)&&a.patchFlag!==32&&xe.push(a),a}const tt=h.env.NODE_ENV!=="production"?mc:Ei;function Ei(e,t=null,n=null,r=0,s=null,o=!1){if((!e||e===wa)&&(h.env.NODE_ENV!=="production"&&!e&&V(`Invalid vnode type when creating vnode: ${e}.`),e=Te),sr(e)){const l=_t(e,t,!0);return n&&ps(l,n),cn>0&&!o&&xe&&(l.shapeFlag&6?xe[xe.indexOf(e)]=l:xe.push(l)),l.patchFlag=-2,l}if(Di(e)&&(e=e.__vccOpts),t){t=gc(t);let{class:l,style:a}=t;l&&!ne(l)&&(t.class=zn(l)),ee(a)&&(Mn(a)&&!S(a)&&(a=oe({},a)),t.style=zr(a))}const i=ne(e)?1:bi(e)?128:fa(e)?64:ee(e)?4:A(e)?2:0;return h.env.NODE_ENV!=="production"&&i&4&&Mn(e)&&(e=I(e),V("Vue received a Component that was made a reactive object. This can lead to unnecessary performance overhead and should be avoided by marking the component with `markRaw` or using `shallowRef` instead of `ref`.",`
-Component that was made reactive: `,e)),Vt(e,t,n,r,s,i,o,!0)}function gc(e){return e?Mn(e)||ii(e)?oe({},e):e:null}function _t(e,t,n=!1,r=!1){const{props:s,ref:o,patchFlag:i,children:l,transition:a}=e,f=t?vc(s||{},t):s,d={__v_isVNode:!0,__v_skip:!0,type:e.type,props:f,key:f&&vi(f),ref:t&&t.ref?n&&o?S(o)?o.concat(Pn(t)):[o,Pn(t)]:Pn(t):o,scopeId:e.scopeId,slotScopeIds:e.slotScopeIds,children:h.env.NODE_ENV!=="production"&&i===-1&&S(l)?l.map(yi):l,target:e.target,targetStart:e.targetStart,targetAnchor:e.targetAnchor,staticCount:e.staticCount,shapeFlag:e.shapeFlag,patchFlag:t&&e.type!==Be?i===-1?16:i|16:i,dynamicProps:e.dynamicProps,dynamicChildren:e.dynamicChildren,appContext:e.appContext,dirs:e.dirs,transition:a,component:e.component,suspense:e.suspense,ssContent:e.ssContent&&_t(e.ssContent),ssFallback:e.ssFallback&&_t(e.ssFallback),el:e.el,anchor:e.anchor,ctx:e.ctx,ce:e.ce};return a&&r&&ls(d,a.clone(d)),d}function yi(e){const t=_t(e);return S(e.children)&&(t.children=e.children.map(yi)),t}function bc(e=" ",t=0){return tt(mn,null,e,t)}function _c(e="",t=!1){return t?(Ur(),hc(Te,null,e)):tt(Te,null,e)}function Fe(e){return e==null||typeof e=="boolean"?tt(Te):S(e)?tt(Be,null,e.slice()):sr(e)?ht(e):tt(mn,null,String(e))}function ht(e){return e.el===null&&e.patchFlag!==-1||e.memo?e:_t(e)}function ps(e,t){let n=0;const{shapeFlag:r}=e;if(t==null)t=null;else if(S(t))n=16;else if(typeof t=="object")if(r&65){const s=t.default;s&&(s._c&&(s._d=!1),ps(e,s()),s._c&&(s._d=!0));return}else{n=32;const s=t._;!s&&!ii(t)?t._ctx=_e:s===3&&_e&&(_e.slots._===1?t._=1:(t._=2,e.patchFlag|=1024))}else A(t)?(t={default:t,_ctx:_e},n=32):(t=String(t),r&64?(n=16,t=[bc(t)]):n=8);e.children=t,e.shapeFlag|=n}function vc(...e){const t={};for(let n=0;n<e.length;n++){const r=e[n];for(const s in r)if(s==="class")t.class!==r.class&&(t.class=zn([t.class,r.class]));else if(s==="style")t.style=zr([t.style,r.style]);else if(fn(s)){const o=t[s],i=r[s];i&&o!==i&&!(S(o)&&o.includes(i))&&(t[s]=o?[].concat(o,i):i)}else s!==""&&(t[s]=r[s])}return t}function Ue(e,t,n,r=null){Je(e,t,7,[n,r])}const Ec=ri();let yc=0;function Oc(e,t,n){const r=e.type,s=(t?t.appContext:e.appContext)||Ec,o={uid:yc++,vnode:e,type:r,parent:t,appContext:s,root:null,next:null,subTree:null,effect:null,update:null,job:null,scope:new dl(!0),render:null,proxy:null,exposed:null,exposeProxy:null,withProxy:null,provides:t?t.provides:Object.create(s.provides),ids:t?t.ids:["",0,0],accessCache:null,renderCache:[],components:null,directives:null,propsOptions:ai(r,s),emitsOptions:mi(r,s),emit:null,emitted:null,propsDefaults:H,inheritAttrs:r.inheritAttrs,ctx:H,data:H,props:H,attrs:H,slots:H,refs:H,setupState:H,setupContext:null,suspense:n,suspenseId:n?n.pendingId:0,asyncDep:null,asyncResolved:!1,isMounted:!1,isUnmounted:!1,isDeactivated:!1,bc:null,c:null,bm:null,m:null,bu:null,u:null,um:null,bum:null,da:null,a:null,rtg:null,rtc:null,ec:null,sp:null};return h.env.NODE_ENV!=="production"?o.ctx=Da(o):o.ctx={_:o},o.root=t?t.root:o,o.emit=lc.bind(null,o),e.ce&&e.ce(o),o}let ue=null;const Oi=()=>ue||_e;let Kn,Hr;{const e=dn(),t=(n,r)=>{let s;return(s=e[n])||(s=e[n]=[]),s.push(r),o=>{s.length>1?s.forEach(i=>i(o)):s[0](o)}};Kn=t("__VUE_INSTANCE_SETTERS__",n=>ue=n),Hr=t("__VUE_SSR_SETTERS__",n=>un=n)}const gn=e=>{const t=ue;return Kn(e),e.scope.on(),()=>{e.scope.off(),Kn(t)}},Us=()=>{ue&&ue.scope.off(),Kn(null)},Nc=it("slot,component");function Lr(e,{isNativeTag:t}){(Nc(e)||t(e))&&V("Do not use built-in or reserved HTML elements as component id: "+e)}function Ni(e){return e.vnode.shapeFlag&4}let un=!1;function Vc(e,t=!1,n=!1){t&&Hr(t);const{props:r,children:s}=e.vnode,o=Ni(e);ja(e,r,o,t),Ja(e,s,n);const i=o?wc(e,t):void 0;return t&&Hr(!1),i}function wc(e,t){var n;const r=e.type;if(h.env.NODE_ENV!=="production"){if(r.name&&Lr(r.name,e.appContext.config),r.components){const o=Object.keys(r.components);for(let i=0;i<o.length;i++)Lr(o[i],e.appContext.config)}if(r.directives){const o=Object.keys(r.directives);for(let i=0;i<o.length;i++)Jo(o[i])}r.compilerOptions&&Dc()&&V('"compilerOptions" is only supported when using a build of Vue that includes the runtime compiler. Since you are using a runtime-only build, the options should be passed via your build tool config instead.')}e.accessCache=Object.create(null),e.proxy=new Proxy(e.ctx,ei),h.env.NODE_ENV!=="production"&&xa(e);const{setup:s}=r;if(s){lt();const o=e.setupContext=s.length>1?Pc(e):null,i=gn(e),l=kt(s,e,0,[h.env.NODE_ENV!=="production"?We(e.props):e.props,o]),a=Gr(l);if(at(),i(),(a||e.sp)&&!nn(e)&&Yo(e),a){if(l.then(Us,Us),t)return l.then(f=>{Hs(e,f,t)}).catch(f=>{pn(f,e,0)});if(e.asyncDep=l,h.env.NODE_ENV!=="production"&&!e.suspense){const f=(n=r.name)!=null?n:"Anonymous";V(`Component <${f}>: setup function returned a promise, but no <Suspense> boundary was found in the parent component tree. A component with async setup() must be nested in a <Suspense> in order to be rendered.`)}}else Hs(e,l,t)}else Vi(e,t)}function Hs(e,t,n){A(t)?e.type.__ssrInlineRender?e.ssrRender=t:e.render=t:ee(t)?(h.env.NODE_ENV!=="production"&&sr(t)&&V("setup() should not return VNodes directly - return a render function instead."),h.env.NODE_ENV!=="production"&&(e.devtoolsRawSetupState=t),e.setupState=$o(t),h.env.NODE_ENV!=="production"&&Pa(e)):h.env.NODE_ENV!=="production"&&t!==void 0&&V(`setup() should return an object. Received: ${t===null?"null":typeof t}`),Vi(e,n)}const Dc=()=>!0;function Vi(e,t,n){const r=e.type;e.render||(e.render=r.render||ae);{const s=gn(e);lt();try{Ca(e)}finally{at(),s()}}h.env.NODE_ENV!=="production"&&!r.render&&e.render===ae&&!t&&(r.template?V('Component provided template option but runtime compilation is not supported in this build of Vue. Configure your bundler to alias "vue" to "vue/dist/vue.esm-bundler.js".'):V("Component is missing template or render function: ",r))}const Ls=h.env.NODE_ENV!=="production"?{get(e,t){return qn(),le(e,"get",""),e[t]},set(){return V("setupContext.attrs is readonly."),!1},deleteProperty(){return V("setupContext.attrs is readonly."),!1}}:{get(e,t){return le(e,"get",""),e[t]}};function xc(e){return new Proxy(e.slots,{get(t,n){return le(e,"get","$slots"),t[n]}})}function Pc(e){const t=n=>{if(h.env.NODE_ENV!=="production"&&(e.exposed&&V("expose() should be called only once per setup()."),n!=null)){let r=typeof n;r==="object"&&(S(n)?r="array":se(n)&&(r="ref")),r!=="object"&&V(`expose() should be passed a plain object, received ${r}.`)}e.exposed=n||{}};if(h.env.NODE_ENV!=="production"){let n,r;return Object.freeze({get attrs(){return n||(n=new Proxy(e.attrs,Ls))},get slots(){return r||(r=xc(e))},get emit(){return(s,...o)=>e.emit(s,...o)},expose:t})}else return{attrs:new Proxy(e.attrs,Ls),slots:e.slots,emit:e.emit,expose:t}}function or(e){return e.exposed?e.exposeProxy||(e.exposeProxy=new Proxy($o(Al(e.exposed)),{get(t,n){if(n in t)return t[n];if(n in Pt)return Pt[n](e)},has(t,n){return n in t||n in Pt}})):e.proxy}const Tc=/(?:^|[-_])(\w)/g,Cc=e=>e.replace(Tc,t=>t.toUpperCase()).replace(/[-_]/g,"");function wi(e,t=!0){return A(e)?e.displayName||e.name:e.name||t&&e.__name}function ir(e,t,n=!1){let r=wi(t);if(!r&&t.__file){const s=t.__file.match(/([^/\\]+)\.\w+$/);s&&(r=s[1])}if(!r&&e&&e.parent){const s=o=>{for(const i in o)if(o[i]===t)return i};r=s(e.components||e.parent.type.components)||s(e.appContext.components)}return r?Cc(r):n?"App":"Anonymous"}function Di(e){return A(e)&&"__vccOpts"in e}const Sc=(e,t)=>{const n=Ul(e,t,un);if(h.env.NODE_ENV!=="production"){const r=Oi();r&&r.appContext.config.warnRecursiveComputed&&(n._warnRecursive=!0)}return n};function Fc(){if(h.env.NODE_ENV==="production"||typeof window>"u")return;const e={style:"color:#3ba776"},t={style:"color:#1677ff"},n={style:"color:#f5222d"},r={style:"color:#eb2f96"},s={__vue_custom_formatter:!0,header(u){return ee(u)?u.__isVue?["div",e,"VueInstance"]:se(u)?["div",{},["span",e,d(u)],"<",l("_value"in u?u._value:u),">"]:Ht(u)?["div",{},["span",e,Oe(u)?"ShallowReactive":"Reactive"],"<",l(u),`>${st(u)?" (readonly)":""}`]:st(u)?["div",{},["span",e,Oe(u)?"ShallowReadonly":"Readonly"],"<",l(u),">"]:null:null},hasBody(u){return u&&u.__isVue},body(u){if(u&&u.__isVue)return["div",{},...o(u.$)]}};function o(u){const g=[];u.type.props&&u.props&&g.push(i("props",I(u.props))),u.setupState!==H&&g.push(i("setup",u.setupState)),u.data!==H&&g.push(i("data",I(u.data)));const b=a(u,"computed");b&&g.push(i("computed",b));const x=a(u,"inject");return x&&g.push(i("injected",x)),g.push(["div",{},["span",{style:r.style+";opacity:0.66"},"$ (internal): "],["object",{object:u}]]),g}function i(u,g){return g=oe({},g),Object.keys(g).length?["div",{style:"line-height:1.25em;margin-bottom:0.6em"},["div",{style:"color:#476582"},u],["div",{style:"padding-left:1.25em"},...Object.keys(g).map(b=>["div",{},["span",r,b+": "],l(g[b],!1)])]]:["span",{}]}function l(u,g=!0){return typeof u=="number"?["span",t,u]:typeof u=="string"?["span",n,JSON.stringify(u)]:typeof u=="boolean"?["span",r,u]:ee(u)?["object",{object:g?I(u):u}]:["span",n,String(u)]}function a(u,g){const b=u.type;if(A(b))return;const x={};for(const T in u.ctx)f(b,T,g)&&(x[T]=u.ctx[T]);return x}function f(u,g,b){const x=u[b];if(S(x)&&x.includes(g)||ee(x)&&g in x||u.extends&&f(u.extends,g,b)||u.mixins&&u.mixins.some(T=>f(T,g,b)))return!0}function d(u){return Oe(u)?"ShallowRef":u.effect?"ComputedRef":"Ref"}window.devtoolsFormatters?window.devtoolsFormatters.push(s):window.devtoolsFormatters=[s]}const Bs="3.5.13",nt=h.env.NODE_ENV!=="production"?V:ae;var ot={env:{}};let Br;const ks=typeof window<"u"&&window.trustedTypes;if(ks)try{Br=ks.createPolicy("vue",{createHTML:e=>e})}catch(e){ot.env.NODE_ENV!=="production"&&nt(`Error creating trusted types policy: ${e}`)}const xi=Br?e=>Br.createHTML(e):e=>e,Ac="http://www.w3.org/2000/svg",Rc="http://www.w3.org/1998/Math/MathML",Xe=typeof document<"u"?document:null,qs=Xe&&Xe.createElement("template"),Ic={insert:(e,t,n)=>{t.insertBefore(e,n||null)},remove:e=>{const t=e.parentNode;t&&t.removeChild(e)},createElement:(e,t,n,r)=>{const s=t==="svg"?Xe.createElementNS(Ac,e):t==="mathml"?Xe.createElementNS(Rc,e):n?Xe.createElement(e,{is:n}):Xe.createElement(e);return e==="select"&&r&&r.multiple!=null&&s.setAttribute("multiple",r.multiple),s},createText:e=>Xe.createTextNode(e),createComment:e=>Xe.createComment(e),setText:(e,t)=>{e.nodeValue=t},setElementText:(e,t)=>{e.textContent=t},parentNode:e=>e.parentNode,nextSibling:e=>e.nextSibling,querySelector:e=>Xe.querySelector(e),setScopeId(e,t){e.setAttribute(t,"")},insertStaticContent(e,t,n,r,s,o){const i=n?n.previousSibling:t.lastChild;if(s&&(s===o||s.nextSibling))for(;t.insertBefore(s.cloneNode(!0),n),!(s===o||!(s=s.nextSibling)););else{qs.innerHTML=xi(r==="svg"?`<svg>${e}</svg>`:r==="mathml"?`<math>${e}</math>`:e);const l=qs.content;if(r==="svg"||r==="mathml"){const a=l.firstChild;for(;a.firstChild;)l.appendChild(a.firstChild);l.removeChild(a)}t.insertBefore(l,n)}return[i?i.nextSibling:t.firstChild,n?n.previousSibling:t.lastChild]}},Mc=Symbol("_vtc");function $c(e,t,n){const r=e[Mc];r&&(t=(t?[t,...r]:[...r]).join(" ")),t==null?e.removeAttribute("class"):n?e.setAttribute("class",t):e.className=t}const Ks=Symbol("_vod"),jc=Symbol("_vsh"),Uc=Symbol(ot.env.NODE_ENV!=="production"?"CSS_VAR_TEXT":""),Hc=/(^|;)\s*display\s*:/;function Lc(e,t,n){const r=e.style,s=ne(n);let o=!1;if(n&&!s){if(t)if(ne(t))for(const i of t.split(";")){const l=i.slice(0,i.indexOf(":")).trim();n[l]==null&&Tn(r,l,"")}else for(const i in t)n[i]==null&&Tn(r,i,"");for(const i in n)i==="display"&&(o=!0),Tn(r,i,n[i])}else if(s){if(t!==n){const i=r[Uc];i&&(n+=";"+i),r.cssText=n,o=Hc.test(n)}}else t&&e.removeAttribute("style");Ks in e&&(e[Ks]=o?r.display:"",e[jc]&&(r.display="none"))}const Bc=/[^\\];\s*$/,Ws=/\s*!important$/;function Tn(e,t,n){if(S(n))n.forEach(r=>Tn(e,t,r));else if(n==null&&(n=""),ot.env.NODE_ENV!=="production"&&Bc.test(n)&&nt(`Unexpected semicolon at the end of '${t}' style value: '${n}'`),t.startsWith("--"))e.setProperty(t,n);else{const r=kc(e,t);Ws.test(n)?e.setProperty(bt(r),n.replace(Ws,""),"important"):e[r]=n}}const Qs=["Webkit","Moz","ms"],Er={};function kc(e,t){const n=Er[t];if(n)return n;let r=Ae(t);if(r!=="filter"&&r in e)return Er[t]=r;r=Yn(r);for(let s=0;s<Qs.length;s++){const o=Qs[s]+r;if(o in e)return Er[t]=o}return t}const Gs="http://www.w3.org/1999/xlink";function Js(e,t,n,r,s,o=fl(t)){r&&t.startsWith("xlink:")?n==null?e.removeAttributeNS(Gs,t.slice(6,t.length)):e.setAttributeNS(Gs,t,n):n==null||o&&!go(n)?e.removeAttribute(t):e.setAttribute(t,o?"":vt(n)?String(n):n)}function Ys(e,t,n,r,s){if(t==="innerHTML"||t==="textContent"){n!=null&&(e[t]=t==="innerHTML"?xi(n):n);return}const o=e.tagName;if(t==="value"&&o!=="PROGRESS"&&!o.includes("-")){const l=o==="OPTION"?e.getAttribute("value")||"":e.value,a=n==null?e.type==="checkbox"?"on":"":String(n);(l!==a||!("_value"in e))&&(e.value=a),n==null&&e.removeAttribute(t),e._value=n;return}let i=!1;if(n===""||n==null){const l=typeof e[t];l==="boolean"?n=go(n):n==null&&l==="string"?(n="",i=!0):l==="number"&&(n=0,i=!0)}try{e[t]=n}catch(l){ot.env.NODE_ENV!=="production"&&!i&&nt(`Failed setting prop "${t}" on <${o.toLowerCase()}>: value ${n} is invalid.`,l)}i&&e.removeAttribute(s||t)}function jt(e,t,n,r){e.addEventListener(t,n,r)}function qc(e,t,n,r){e.removeEventListener(t,n,r)}const zs=Symbol("_vei");function Kc(e,t,n,r,s=null){const o=e[zs]||(e[zs]={}),i=o[t];if(r&&i)i.value=ot.env.NODE_ENV!=="production"?Zs(r,t):r;else{const[l,a]=Wc(t);if(r){const f=o[t]=Jc(ot.env.NODE_ENV!=="production"?Zs(r,t):r,s);jt(e,l,f,a)}else i&&(qc(e,l,i,a),o[t]=void 0)}}const Xs=/(?:Once|Passive|Capture)$/;function Wc(e){let t;if(Xs.test(e)){t={};let r;for(;r=e.match(Xs);)e=e.slice(0,e.length-r[0].length),t[r[0].toLowerCase()]=!0}return[e[2]===":"?e.slice(3):bt(e.slice(2)),t]}let yr=0;const Qc=Promise.resolve(),Gc=()=>yr||(Qc.then(()=>yr=0),yr=Date.now());function Jc(e,t){const n=r=>{if(!r._vts)r._vts=Date.now();else if(r._vts<=n.attached)return;Je(Yc(r,n.value),t,5,[r])};return n.value=e,n.attached=Gc(),n}function Zs(e,t){return A(e)||S(e)?e:(nt(`Wrong type passed as event handler to ${t} - did you forget @ or : in front of your prop?
-Expected function or array of functions, received type ${typeof e}.`),ae)}function Yc(e,t){if(S(t)){const n=e.stopImmediatePropagation;return e.stopImmediatePropagation=()=>{n.call(e),e._stopped=!0},t.map(r=>s=>!s._stopped&&r&&r(s))}else return t}const eo=e=>e.charCodeAt(0)===111&&e.charCodeAt(1)===110&&e.charCodeAt(2)>96&&e.charCodeAt(2)<123,zc=(e,t,n,r,s,o)=>{const i=s==="svg";t==="class"?$c(e,r,i):t==="style"?Lc(e,n,r):fn(t)?Rn(t)||Kc(e,t,n,r,o):(t[0]==="."?(t=t.slice(1),!0):t[0]==="^"?(t=t.slice(1),!1):Xc(e,t,r,i))?(Ys(e,t,r),!e.tagName.includes("-")&&(t==="value"||t==="checked"||t==="selected")&&Js(e,t,r,i,o,t!=="value")):e._isVueCE&&(/[A-Z]/.test(t)||!ne(r))?Ys(e,Ae(t),r,o,t):(t==="true-value"?e._trueValue=r:t==="false-value"&&(e._falseValue=r),Js(e,t,r,i))};function Xc(e,t,n,r){if(r)return!!(t==="innerHTML"||t==="textContent"||t in e&&eo(t)&&A(n));if(t==="spellcheck"||t==="draggable"||t==="translate"||t==="form"||t==="list"&&e.tagName==="INPUT"||t==="type"&&e.tagName==="TEXTAREA")return!1;if(t==="width"||t==="height"){const s=e.tagName;if(s==="IMG"||s==="VIDEO"||s==="CANVAS"||s==="SOURCE")return!1}return eo(t)&&ne(n)?!1:t in e}const to=e=>{const t=e.props["onUpdate:modelValue"]||!1;return S(t)?n=>Mt(t,n):t};function Zc(e){e.target.composing=!0}function no(e){const t=e.target;t.composing&&(t.composing=!1,t.dispatchEvent(new Event("input")))}const Or=Symbol("_assign"),eu={created(e,{modifiers:{lazy:t,trim:n,number:r}},s){e[Or]=to(s);const o=r||s.props&&s.props.type==="number";jt(e,t?"change":"input",i=>{if(i.target.composing)return;let l=e.value;n&&(l=l.trim()),o&&(l=Dr(l)),e[Or](l)}),n&&jt(e,"change",()=>{e.value=e.value.trim()}),t||(jt(e,"compositionstart",Zc),jt(e,"compositionend",no),jt(e,"change",no))},mounted(e,{value:t}){e.value=t??""},beforeUpdate(e,{value:t,oldValue:n,modifiers:{lazy:r,trim:s,number:o}},i){if(e[Or]=to(i),e.composing)return;const l=(o||e.type==="number")&&!/^0\d/.test(e.value)?Dr(e.value):e.value,a=t??"";l!==a&&(document.activeElement===e&&e.type!=="range"&&(r&&t===n||s&&e.value.trim()===a)||(e.value=a))}},tu=["ctrl","shift","alt","meta"],nu={stop:e=>e.stopPropagation(),prevent:e=>e.preventDefault(),self:e=>e.target!==e.currentTarget,ctrl:e=>!e.ctrlKey,shift:e=>!e.shiftKey,alt:e=>!e.altKey,meta:e=>!e.metaKey,left:e=>"button"in e&&e.button!==0,middle:e=>"button"in e&&e.button!==1,right:e=>"button"in e&&e.button!==2,exact:(e,t)=>tu.some(n=>e[`${n}Key`]&&!t.includes(n))},ro=(e,t)=>{const n=e._withMods||(e._withMods={}),r=t.join(".");return n[r]||(n[r]=(s,...o)=>{for(let i=0;i<t.length;i++){const l=nu[t[i]];if(l&&l(s,t))return}return e(s,...o)})},ru=oe({patchProp:zc},Ic);let so;function su(){return so||(so=Xa(ru))}const ou=(...e)=>{const t=su().createApp(...e);ot.env.NODE_ENV!=="production"&&(lu(t),au(t));const{mount:n}=t;return t.mount=r=>{const s=cu(r);if(!s)return;const o=t._component;!A(o)&&!o.render&&!o.template&&(o.template=s.innerHTML),s.nodeType===1&&(s.textContent="");const i=n(s,!1,iu(s));return s instanceof Element&&(s.removeAttribute("v-cloak"),s.setAttribute("data-v-app","")),i},t};function iu(e){if(e instanceof SVGElement)return"svg";if(typeof MathMLElement=="function"&&e instanceof MathMLElement)return"mathml"}function lu(e){Object.defineProperty(e.config,"isNativeTag",{value:t=>ll(t)||al(t)||cl(t),writable:!1})}function au(e){{const t=e.config.isCustomElement;Object.defineProperty(e.config,"isCustomElement",{get(){return t},set(){nt("The `isCustomElement` config option is deprecated. Use `compilerOptions.isCustomElement` instead.")}});const n=e.config.compilerOptions,r='The `compilerOptions` config option is only respected when using a build of Vue.js that includes the runtime compiler (aka "full build"). Since you are using the runtime-only build, `compilerOptions` must be passed to `@vue/compiler-dom` in the build setup instead.\n- For vue-loader: pass it via vue-loader\'s `compilerOptions` loader option.\n- For vue-cli: see https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader\n- For vite: pass it via @vitejs/plugin-vue options. See https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#example-for-passing-options-to-vuecompiler-sfc';Object.defineProperty(e.config,"compilerOptions",{get(){return nt(r),n},set(){nt(r)}})}}function cu(e){if(ne(e)){const t=document.querySelector(e);return ot.env.NODE_ENV!=="production"&&!t&&nt(`Failed to mount app: mount target selector "${e}" returned null.`),t}return ot.env.NODE_ENV!=="production"&&window.ShadowRoot&&e instanceof window.ShadowRoot&&e.mode==="closed"&&nt('mounting on a ShadowRoot with `{mode: "closed"}` may lead to unpredictable bugs'),e}var uu={env:{}};function fu(){Fc()}uu.env.NODE_ENV!=="production"&&fu();const Cn="oceanpress_ui_falg",{Plugin:du}=require("siyuan");class pu extends du{constructor(){super(...arguments);fe(this,"onunloadFn",[])}addUnloadFn(n){this.onunloadFn.push(n)}onunload(){this.onunloadFn.forEach(n=>n())}async addUiComponent(n,r){if(n.querySelector("."+Cn))return;const s=document.createElement("div");s.style.pointerEvents="none";const o=Qi(r,s);this.addUnloadFn(()=>(s.remove(),o())),n.appendChild(s)}async addVueUiComponent(n,r){if(n.querySelector(`.${Cn}`))return;const s=n.firstChild,o=d=>{d.stopImmediatePropagation()};["compositionstart","compositionend","mousedown","mouseup","keydown","keyup","input","copy","cut","paste"].forEach(d=>{s.addEventListener(d,o)}),s.classList.add(Cn);const l=n.dataset.nodeId,a=ou(r,{blockId:l}),f=a.mount(s);return this.saveData,this.addUnloadFn(()=>{a.unmount(),s.remove()}),f}}function Pi(){const e=new Date;return[e.getFullYear(),e.getMonth()+1,e.getDate(),e.getHours(),e.getMinutes(),e.getSeconds()].map(t=>t.toString().padStart(2,"0")).join("")}function hu(){const e=Math.random().toString(36).substring(2,9);return`${Pi()}-${e}`}const K="https://api.openai.com/v1".replace(/\/+$/,""),mu=typeof fetch>"u"?void 0:fetch;class gu{constructor(t,n=K,r=mu){fe(this,"basePath");fe(this,"fetch");fe(this,"configuration");this.basePath=n,this.fetch=r,t&&(this.configuration=t,this.basePath=t.basePath||this.basePath)}}class bu extends Error{constructor(n,r){super(r);fe(this,"field");this.field=n,this.name="RequiredError"}}const W="https://example.com",q=function(e,t,n){if(n==null)throw new bu(t,`Required parameter ${t} was null or undefined when calling ${e}.`)};function kr(e,t,n=""){t!=null&&(typeof t=="object"?Array.isArray(t)?t.forEach(r=>kr(e,r,n)):Object.keys(t).forEach(r=>kr(e,t[r],`${n}${n!==""?".":""}${r}`)):e.has(n)?e.append(n,t):e.set(n,t))}const Q=function(e,...t){const n=new URLSearchParams(e.search);kr(n,t),e.search=n.toString()},He=function(e,t,n){const r=typeof e!="string";return(r&&n&&n.isJsonMime?n.isJsonMime(t.headers["Content-Type"]):r)?JSON.stringify(e!==void 0?e:{}):e||""},G=function(e){return e.pathname+e.search+e.hash},J=function(e,t,n,r){return(s=t,o=n)=>{if(typeof s>"u")throw new Error("You must pass a fetch polyfill if you're running in an environment without a global fetch");let i=e.url;if(r!=null&&r.defaultQueryParams){const l=i.indexOf("?")===-1?"?":"&";i+=l+r.defaultQueryParams}return s(((r==null?void 0:r.basePath)||o)+i,e.options)}},Y=typeof fetch>"u"?void 0:fetch,_u=function(e){return{cancelFineTune:async(t,n={})=>{q("cancelFineTune","fineTuneId",t);const r="/fine-tunes/{fine_tune_id}/cancel".replace("{fine_tune_id}",encodeURIComponent(String(t))),s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"POST",...o,...n},l={};Q(s,{});let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},{url:G(s),options:i}},createAnswer:async(t,n={})=>{q("createAnswer","createAnswerRequest",t);const r="/answers",s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"POST",...o,...n},l={},a={};l["Content-Type"]="application/json",Q(s,a);let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},i.body=He(t,i,e),{url:G(s),options:i}},createChatCompletion:async(t,n={})=>{q("createChatCompletion","createChatCompletionRequest",t);const r="/chat/completions",s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"POST",...o,...n},l={},a={};l["Content-Type"]="application/json",Q(s,a);let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},i.body=He(t,i,e),{url:G(s),options:i}},createClassification:async(t,n={})=>{q("createClassification","createClassificationRequest",t);const r="/classifications",s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"POST",...o,...n},l={},a={};l["Content-Type"]="application/json",Q(s,a);let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},i.body=He(t,i,e),{url:G(s),options:i}},createCompletion:async(t,n={})=>{q("createCompletion","createCompletionRequest",t);const r="/completions",s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"POST",...o,...n},l={},a={};l["Content-Type"]="application/json",Q(s,a);let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},i.body=He(t,i,e),{url:G(s),options:i}},createEdit:async(t,n={})=>{q("createEdit","createEditRequest",t);const r="/edits",s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"POST",...o,...n},l={},a={};l["Content-Type"]="application/json",Q(s,a);let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},i.body=He(t,i,e),{url:G(s),options:i}},createEmbedding:async(t,n={})=>{q("createEmbedding","createEmbeddingRequest",t);const r="/embeddings",s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"POST",...o,...n},l={},a={};l["Content-Type"]="application/json",Q(s,a);let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},i.body=He(t,i,e),{url:G(s),options:i}},createFile:async(t,n,r={})=>{q("createFile","file",t),q("createFile","purpose",n);const s="/files",o=new URL(s,W);let i;e&&(i=e.baseOptions);const l={method:"POST",...i,...r},a={},f={},d=new(e&&e.formDataCtor||FormData);t!==void 0&&d.append("file",t),n!==void 0&&d.append("purpose",n),a["Content-Type"]="multipart/form-data",Q(o,f);let u=i&&i.headers?i.headers:{};return l.headers={...a,...d.getHeaders(),...u,...r.headers},l.body=d,{url:G(o),options:l}},createFineTune:async(t,n={})=>{q("createFineTune","createFineTuneRequest",t);const r="/fine-tunes",s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"POST",...o,...n},l={},a={};l["Content-Type"]="application/json",Q(s,a);let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},i.body=He(t,i,e),{url:G(s),options:i}},createImage:async(t,n={})=>{q("createImage","createImageRequest",t);const r="/images/generations",s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"POST",...o,...n},l={},a={};l["Content-Type"]="application/json",Q(s,a);let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},i.body=He(t,i,e),{url:G(s),options:i}},createImageEdit:async(t,n,r,s,o,i,l,a={})=>{q("createImageEdit","image",t),q("createImageEdit","prompt",n);const f="/images/edits",d=new URL(f,W);let u;e&&(u=e.baseOptions);const g={method:"POST",...u,...a},b={},x={},T=new(e&&e.formDataCtor||FormData);t!==void 0&&T.append("image",t),r!==void 0&&T.append("mask",r),n!==void 0&&T.append("prompt",n),s!==void 0&&T.append("n",s),o!==void 0&&T.append("size",o),i!==void 0&&T.append("response_format",i),l!==void 0&&T.append("user",l),b["Content-Type"]="multipart/form-data",Q(d,x);let ie=u&&u.headers?u.headers:{};return g.headers={...b,...T.getHeaders(),...ie,...a.headers},g.body=T,{url:G(d),options:g}},createImageVariation:async(t,n,r,s,o,i={})=>{q("createImageVariation","image",t);const l="/images/variations",a=new URL(l,W);let f;e&&(f=e.baseOptions);const d={method:"POST",...f,...i},u={},g={},b=new(e&&e.formDataCtor||FormData);t!==void 0&&b.append("image",t),n!==void 0&&b.append("n",n),r!==void 0&&b.append("size",r),s!==void 0&&b.append("response_format",s),o!==void 0&&b.append("user",o),u["Content-Type"]="multipart/form-data",Q(a,g);let x=f&&f.headers?f.headers:{};return d.headers={...u,...b.getHeaders(),...x,...i.headers},d.body=b,{url:G(a),options:d}},createModeration:async(t,n={})=>{q("createModeration","createModerationRequest",t);const r="/moderations",s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"POST",...o,...n},l={},a={};l["Content-Type"]="application/json",Q(s,a);let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},i.body=He(t,i,e),{url:G(s),options:i}},createSearch:async(t,n,r={})=>{q("createSearch","engineId",t),q("createSearch","createSearchRequest",n);const s="/engines/{engine_id}/search".replace("{engine_id}",encodeURIComponent(String(t))),o=new URL(s,W);let i;e&&(i=e.baseOptions);const l={method:"POST",...i,...r},a={},f={};a["Content-Type"]="application/json",Q(o,f);let d=i&&i.headers?i.headers:{};return l.headers={...a,...d,...r.headers},l.body=He(n,l,e),{url:G(o),options:l}},createTranscription:async(t,n,r,s,o,i,l={})=>{q("createTranscription","file",t),q("createTranscription","model",n);const a="/audio/transcriptions",f=new URL(a,W);let d;e&&(d=e.baseOptions);const u={method:"POST",...d,...l},g={},b={},x=new(e&&e.formDataCtor||FormData);t!==void 0&&x.append("file",t),n!==void 0&&x.append("model",n),r!==void 0&&x.append("prompt",r),s!==void 0&&x.append("response_format",s),o!==void 0&&x.append("temperature",o),i!==void 0&&x.append("language",i),g["Content-Type"]="multipart/form-data",Q(f,b);let T=d&&d.headers?d.headers:{};return u.headers={...g,...x.getHeaders(),...T,...l.headers},u.body=x,{url:G(f),options:u}},createTranslation:async(t,n,r,s,o,i={})=>{q("createTranslation","file",t),q("createTranslation","model",n);const l="/audio/translations",a=new URL(l,W);let f;e&&(f=e.baseOptions);const d={method:"POST",...f,...i},u={},g={},b=new(e&&e.formDataCtor||FormData);t!==void 0&&b.append("file",t),n!==void 0&&b.append("model",n),r!==void 0&&b.append("prompt",r),s!==void 0&&b.append("response_format",s),o!==void 0&&b.append("temperature",o),u["Content-Type"]="multipart/form-data",Q(a,g);let x=f&&f.headers?f.headers:{};return d.headers={...u,...b.getHeaders(),...x,...i.headers},d.body=b,{url:G(a),options:d}},deleteFile:async(t,n={})=>{q("deleteFile","fileId",t);const r="/files/{file_id}".replace("{file_id}",encodeURIComponent(String(t))),s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"DELETE",...o,...n},l={};Q(s,{});let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},{url:G(s),options:i}},deleteModel:async(t,n={})=>{q("deleteModel","model",t);const r="/models/{model}".replace("{model}",encodeURIComponent(String(t))),s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"DELETE",...o,...n},l={};Q(s,{});let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},{url:G(s),options:i}},downloadFile:async(t,n={})=>{q("downloadFile","fileId",t);const r="/files/{file_id}/content".replace("{file_id}",encodeURIComponent(String(t))),s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"GET",...o,...n},l={};Q(s,{});let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},{url:G(s),options:i}},listEngines:async(t={})=>{const n="/engines",r=new URL(n,W);let s;e&&(s=e.baseOptions);const o={method:"GET",...s,...t},i={};Q(r,{});let a=s&&s.headers?s.headers:{};return o.headers={...i,...a,...t.headers},{url:G(r),options:o}},listFiles:async(t={})=>{const n="/files",r=new URL(n,W);let s;e&&(s=e.baseOptions);const o={method:"GET",...s,...t},i={};Q(r,{});let a=s&&s.headers?s.headers:{};return o.headers={...i,...a,...t.headers},{url:G(r),options:o}},listFineTuneEvents:async(t,n,r={})=>{q("listFineTuneEvents","fineTuneId",t);const s="/fine-tunes/{fine_tune_id}/events".replace("{fine_tune_id}",encodeURIComponent(String(t))),o=new URL(s,W);let i;e&&(i=e.baseOptions);const l={method:"GET",...i,...r},a={},f={};n!==void 0&&(f.stream=n),Q(o,f);let d=i&&i.headers?i.headers:{};return l.headers={...a,...d,...r.headers},{url:G(o),options:l}},listFineTunes:async(t={})=>{const n="/fine-tunes",r=new URL(n,W);let s;e&&(s=e.baseOptions);const o={method:"GET",...s,...t},i={};Q(r,{});let a=s&&s.headers?s.headers:{};return o.headers={...i,...a,...t.headers},{url:G(r),options:o}},listModels:async(t={})=>{const n="/models",r=new URL(n,W);let s;e&&(s=e.baseOptions);const o={method:"GET",...s,...t},i={};Q(r,{});let a=s&&s.headers?s.headers:{};return o.headers={...i,...a,...t.headers},{url:G(r),options:o}},retrieveEngine:async(t,n={})=>{q("retrieveEngine","engineId",t);const r="/engines/{engine_id}".replace("{engine_id}",encodeURIComponent(String(t))),s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"GET",...o,...n},l={};Q(s,{});let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},{url:G(s),options:i}},retrieveFile:async(t,n={})=>{q("retrieveFile","fileId",t);const r="/files/{file_id}".replace("{file_id}",encodeURIComponent(String(t))),s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"GET",...o,...n},l={};Q(s,{});let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},{url:G(s),options:i}},retrieveFineTune:async(t,n={})=>{q("retrieveFineTune","fineTuneId",t);const r="/fine-tunes/{fine_tune_id}".replace("{fine_tune_id}",encodeURIComponent(String(t))),s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"GET",...o,...n},l={};Q(s,{});let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},{url:G(s),options:i}},retrieveModel:async(t,n={})=>{q("retrieveModel","model",t);const r="/models/{model}".replace("{model}",encodeURIComponent(String(t))),s=new URL(r,W);let o;e&&(o=e.baseOptions);const i={method:"GET",...o,...n},l={};Q(s,{});let f=o&&o.headers?o.headers:{};return i.headers={...l,...f,...n.headers},{url:G(s),options:i}}}},z=function(e){const t=_u(e);return{async cancelFineTune(n,r){const s=await t.cancelFineTune(n,r);return J(s,Y,K,e)},async createAnswer(n,r){const s=await t.createAnswer(n,r);return J(s,Y,K,e)},async createChatCompletion(n,r){const s=await t.createChatCompletion(n,r);return J(s,Y,K,e)},async createClassification(n,r){const s=await t.createClassification(n,r);return J(s,Y,K,e)},async createCompletion(n,r){const s=await t.createCompletion(n,r);return J(s,Y,K,e)},async createEdit(n,r){const s=await t.createEdit(n,r);return J(s,Y,K,e)},async createEmbedding(n,r){const s=await t.createEmbedding(n,r);return J(s,Y,K,e)},async createFile(n,r,s){const o=await t.createFile(n,r,s);return J(o,Y,K,e)},async createFineTune(n,r){const s=await t.createFineTune(n,r);return J(s,Y,K,e)},async createImage(n,r){const s=await t.createImage(n,r);return J(s,Y,K,e)},async createImageEdit(n,r,s,o,i,l,a,f){const d=await t.createImageEdit(n,r,s,o,i,l,a,f);return J(d,Y,K,e)},async createImageVariation(n,r,s,o,i,l){const a=await t.createImageVariation(n,r,s,o,i,l);return J(a,Y,K,e)},async createModeration(n,r){const s=await t.createModeration(n,r);return J(s,Y,K,e)},async createSearch(n,r,s){const o=await t.createSearch(n,r,s);return J(o,Y,K,e)},async createTranscription(n,r,s,o,i,l,a){const f=await t.createTranscription(n,r,s,o,i,l,a);return J(f,Y,K,e)},async createTranslation(n,r,s,o,i,l){const a=await t.createTranslation(n,r,s,o,i,l);return J(a,Y,K,e)},async deleteFile(n,r){const s=await t.deleteFile(n,r);return J(s,Y,K,e)},async deleteModel(n,r){const s=await t.deleteModel(n,r);return J(s,Y,K,e)},async downloadFile(n,r){const s=await t.downloadFile(n,r);return J(s,Y,K,e)},async listEngines(n){const r=await t.listEngines(n);return J(r,Y,K,e)},async listFiles(n){const r=await t.listFiles(n);return J(r,Y,K,e)},async listFineTuneEvents(n,r,s){const o=await t.listFineTuneEvents(n,r,s);return J(o,Y,K,e)},async listFineTunes(n){const r=await t.listFineTunes(n);return J(r,Y,K,e)},async listModels(n){const r=await t.listModels(n);return J(r,Y,K,e)},async retrieveEngine(n,r){const s=await t.retrieveEngine(n,r);return J(s,Y,K,e)},async retrieveFile(n,r){const s=await t.retrieveFile(n,r);return J(s,Y,K,e)},async retrieveFineTune(n,r){const s=await t.retrieveFineTune(n,r);return J(s,Y,K,e)},async retrieveModel(n,r){const s=await t.retrieveModel(n,r);return J(s,Y,K,e)}}};class vu extends gu{cancelFineTune(t,n){return z(this.configuration).cancelFineTune(t,n).then(r=>r(this.fetch,this.basePath))}createAnswer(t,n){return z(this.configuration).createAnswer(t,n).then(r=>r(this.fetch,this.basePath))}createChatCompletion(t,n){return z(this.configuration).createChatCompletion(t,n).then(r=>r(this.fetch,this.basePath))}createClassification(t,n){return z(this.configuration).createClassification(t,n).then(r=>r(this.fetch,this.basePath))}createCompletion(t,n){return z(this.configuration).createCompletion(t,n).then(r=>r(this.fetch,this.basePath))}createEdit(t,n){return z(this.configuration).createEdit(t,n).then(r=>r(this.fetch,this.basePath))}createEmbedding(t,n){return z(this.configuration).createEmbedding(t,n).then(r=>r(this.fetch,this.basePath))}createFile(t,n,r){return z(this.configuration).createFile(t,n,r).then(s=>s(this.fetch,this.basePath))}createFineTune(t,n){return z(this.configuration).createFineTune(t,n).then(r=>r(this.fetch,this.basePath))}createImage(t,n){return z(this.configuration).createImage(t,n).then(r=>r(this.fetch,this.basePath))}createImageEdit(t,n,r,s,o,i,l,a){return z(this.configuration).createImageEdit(t,n,r,s,o,i,l,a).then(f=>f(this.fetch,this.basePath))}createImageVariation(t,n,r,s,o,i){return z(this.configuration).createImageVariation(t,n,r,s,o,i).then(l=>l(this.fetch,this.basePath))}createModeration(t,n){return z(this.configuration).createModeration(t,n).then(r=>r(this.fetch,this.basePath))}createSearch(t,n,r){return z(this.configuration).createSearch(t,n,r).then(s=>s(this.fetch,this.basePath))}createTranscription(t,n,r,s,o,i,l){return z(this.configuration).createTranscription(t,n,r,s,o,i,l).then(a=>a(this.fetch,this.basePath))}createTranslation(t,n,r,s,o,i){return z(this.configuration).createTranslation(t,n,r,s,o,i).then(l=>l(this.fetch,this.basePath))}deleteFile(t,n){return z(this.configuration).deleteFile(t,n).then(r=>r(this.fetch,this.basePath))}deleteModel(t,n){return z(this.configuration).deleteModel(t,n).then(r=>r(this.fetch,this.basePath))}downloadFile(t,n){return z(this.configuration).downloadFile(t,n).then(r=>r(this.fetch,this.basePath))}listEngines(t){return z(this.configuration).listEngines(t).then(n=>n(this.fetch,this.basePath))}listFiles(t){return z(this.configuration).listFiles(t).then(n=>n(this.fetch,this.basePath))}listFineTuneEvents(t,n,r){return z(this.configuration).listFineTuneEvents(t,n,r).then(s=>s(this.fetch,this.basePath))}listFineTunes(t){return z(this.configuration).listFineTunes(t).then(n=>n(this.fetch,this.basePath))}listModels(t){return z(this.configuration).listModels(t).then(n=>n(this.fetch,this.basePath))}retrieveEngine(t,n){return z(this.configuration).retrieveEngine(t,n).then(r=>r(this.fetch,this.basePath))}retrieveFile(t,n){return z(this.configuration).retrieveFile(t,n).then(r=>r(this.fetch,this.basePath))}retrieveFineTune(t,n){return z(this.configuration).retrieveFineTune(t,n).then(r=>r(this.fetch,this.basePath))}retrieveModel(t,n){return z(this.configuration).retrieveModel(t,n).then(r=>r(this.fetch,this.basePath))}}function Eu(){for(var e="--------------------------",t=0;t<24;t++)e+=Math.floor(Math.random()*10).toString(16);return e}class yu extends FormData{constructor(...n){super(...n);fe(this,"_boundary");this._boundary=Eu()}getHeaders(){var n={"content-type":"multipart/form-data; boundary="+this._boundary};return n}}class Ou{constructor(t={}){fe(this,"apiKey");fe(this,"organization");fe(this,"username");fe(this,"password");fe(this,"accessToken");fe(this,"basePath");fe(this,"baseOptions");fe(this,"defaultQueryParams");fe(this,"formDataCtor");this.apiKey=t.apiKey,this.organization=t.organization,this.username=t.username,this.password=t.password,this.accessToken=t.accessToken,this.basePath=t.basePath,this.baseOptions=t.baseOptions,this.defaultQueryParams=t.defaultQueryParams,this.formDataCtor=t.formDataCtor,this.baseOptions||(this.baseOptions={}),this.baseOptions.headers={Authorization:`Bearer ${this.apiKey}`,...this.baseOptions.headers},this.organization&&(this.baseOptions.headers["OpenAI-Organization"]=this.organization),this.formDataCtor||(this.formDataCtor=yu)}isJsonMime(t){const n=new RegExp("^(application/json|[^;/ 	]+/[^;/ 	]+[+]json)[ 	]*(;.*)?$","i");return t!==null&&(n.test(t)||t.toLowerCase()==="application/json-patch+json")}}const{fetchSyncPost:Nu}=require("siyuan"),Vu=new Ou({apiKey:"09bc63119e1f26d148cac77cda12e089.Rw7lnq1zkg3FcmYZ",basePath:"https://open.bigmodel.cn/api/paas/v4"}),qr=new vu(Vu),rt={model:"GLM-4-Flash",max_tokens:9999,temperature:.3};async function Ti(e,t){const r=await(await e.openai.createChatCompletion({model:e.model??rt.model,messages:[{role:"system",content:`你是一名助理，专门协助用户进行搜索。请按照以下规则提供答案：
+For more details, see https://link.vuejs.org/feature-flags.`
+    );
+  }
+}
+const queuePostRenderEffect = queueEffectWithSuspense;
+function createRenderer(options) {
+  return baseCreateRenderer(options);
+}
+function baseCreateRenderer(options, createHydrationFns) {
+  {
+    initFeatureFlags();
+  }
+  const target = getGlobalThis();
+  target.__VUE__ = true;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+    setDevtoolsHook$1(target.__VUE_DEVTOOLS_GLOBAL_HOOK__, target);
+  }
+  const {
+    insert: hostInsert,
+    remove: hostRemove,
+    patchProp: hostPatchProp,
+    createElement: hostCreateElement,
+    createText: hostCreateText,
+    createComment: hostCreateComment,
+    setText: hostSetText,
+    setElementText: hostSetElementText,
+    parentNode: hostParentNode,
+    nextSibling: hostNextSibling,
+    setScopeId: hostSetScopeId = NOOP,
+    insertStaticContent: hostInsertStaticContent
+  } = options;
+  const patch = (n1, n2, container, anchor = null, parentComponent = null, parentSuspense = null, namespace = void 0, slotScopeIds = null, optimized = !!(define_process_default$2.env.NODE_ENV !== "production") && isHmrUpdating ? false : !!n2.dynamicChildren) => {
+    if (n1 === n2) {
+      return;
+    }
+    if (n1 && !isSameVNodeType(n1, n2)) {
+      anchor = getNextHostNode(n1);
+      unmount(n1, parentComponent, parentSuspense, true);
+      n1 = null;
+    }
+    if (n2.patchFlag === -2) {
+      optimized = false;
+      n2.dynamicChildren = null;
+    }
+    const { type, ref: ref3, shapeFlag } = n2;
+    switch (type) {
+      case Text:
+        processText(n1, n2, container, anchor);
+        break;
+      case Comment:
+        processCommentNode(n1, n2, container, anchor);
+        break;
+      case Static:
+        if (n1 == null) {
+          mountStaticNode(n2, container, anchor, namespace);
+        } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          patchStaticNode(n1, n2, container, namespace);
+        }
+        break;
+      case Fragment:
+        processFragment(
+          n1,
+          n2,
+          container,
+          anchor,
+          parentComponent,
+          parentSuspense,
+          namespace,
+          slotScopeIds,
+          optimized
+        );
+        break;
+      default:
+        if (shapeFlag & 1) {
+          processElement(
+            n1,
+            n2,
+            container,
+            anchor,
+            parentComponent,
+            parentSuspense,
+            namespace,
+            slotScopeIds,
+            optimized
+          );
+        } else if (shapeFlag & 6) {
+          processComponent(
+            n1,
+            n2,
+            container,
+            anchor,
+            parentComponent,
+            parentSuspense,
+            namespace,
+            slotScopeIds,
+            optimized
+          );
+        } else if (shapeFlag & 64) {
+          type.process(
+            n1,
+            n2,
+            container,
+            anchor,
+            parentComponent,
+            parentSuspense,
+            namespace,
+            slotScopeIds,
+            optimized,
+            internals
+          );
+        } else if (shapeFlag & 128) {
+          type.process(
+            n1,
+            n2,
+            container,
+            anchor,
+            parentComponent,
+            parentSuspense,
+            namespace,
+            slotScopeIds,
+            optimized,
+            internals
+          );
+        } else if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          warn$1("Invalid VNode type:", type, `(${typeof type})`);
+        }
+    }
+    if (ref3 != null && parentComponent) {
+      setRef(ref3, n1 && n1.ref, parentSuspense, n2 || n1, !n2);
+    }
+  };
+  const processText = (n1, n2, container, anchor) => {
+    if (n1 == null) {
+      hostInsert(
+        n2.el = hostCreateText(n2.children),
+        container,
+        anchor
+      );
+    } else {
+      const el = n2.el = n1.el;
+      if (n2.children !== n1.children) {
+        hostSetText(el, n2.children);
+      }
+    }
+  };
+  const processCommentNode = (n1, n2, container, anchor) => {
+    if (n1 == null) {
+      hostInsert(
+        n2.el = hostCreateComment(n2.children || ""),
+        container,
+        anchor
+      );
+    } else {
+      n2.el = n1.el;
+    }
+  };
+  const mountStaticNode = (n2, container, anchor, namespace) => {
+    [n2.el, n2.anchor] = hostInsertStaticContent(
+      n2.children,
+      container,
+      anchor,
+      namespace,
+      n2.el,
+      n2.anchor
+    );
+  };
+  const patchStaticNode = (n1, n2, container, namespace) => {
+    if (n2.children !== n1.children) {
+      const anchor = hostNextSibling(n1.anchor);
+      removeStaticNode(n1);
+      [n2.el, n2.anchor] = hostInsertStaticContent(
+        n2.children,
+        container,
+        anchor,
+        namespace
+      );
+    } else {
+      n2.el = n1.el;
+      n2.anchor = n1.anchor;
+    }
+  };
+  const moveStaticNode = ({ el, anchor }, container, nextSibling) => {
+    let next;
+    while (el && el !== anchor) {
+      next = hostNextSibling(el);
+      hostInsert(el, container, nextSibling);
+      el = next;
+    }
+    hostInsert(anchor, container, nextSibling);
+  };
+  const removeStaticNode = ({ el, anchor }) => {
+    let next;
+    while (el && el !== anchor) {
+      next = hostNextSibling(el);
+      hostRemove(el);
+      el = next;
+    }
+    hostRemove(anchor);
+  };
+  const processElement = (n1, n2, container, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized) => {
+    if (n2.type === "svg") {
+      namespace = "svg";
+    } else if (n2.type === "math") {
+      namespace = "mathml";
+    }
+    if (n1 == null) {
+      mountElement(
+        n2,
+        container,
+        anchor,
+        parentComponent,
+        parentSuspense,
+        namespace,
+        slotScopeIds,
+        optimized
+      );
+    } else {
+      patchElement(
+        n1,
+        n2,
+        parentComponent,
+        parentSuspense,
+        namespace,
+        slotScopeIds,
+        optimized
+      );
+    }
+  };
+  const mountElement = (vnode, container, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized) => {
+    let el;
+    let vnodeHook;
+    const { props, shapeFlag, transition, dirs } = vnode;
+    el = vnode.el = hostCreateElement(
+      vnode.type,
+      namespace,
+      props && props.is,
+      props
+    );
+    if (shapeFlag & 8) {
+      hostSetElementText(el, vnode.children);
+    } else if (shapeFlag & 16) {
+      mountChildren(
+        vnode.children,
+        el,
+        null,
+        parentComponent,
+        parentSuspense,
+        resolveChildrenNamespace(vnode, namespace),
+        slotScopeIds,
+        optimized
+      );
+    }
+    if (dirs) {
+      invokeDirectiveHook(vnode, null, parentComponent, "created");
+    }
+    setScopeId(el, vnode, vnode.scopeId, slotScopeIds, parentComponent);
+    if (props) {
+      for (const key in props) {
+        if (key !== "value" && !isReservedProp(key)) {
+          hostPatchProp(el, key, null, props[key], namespace, parentComponent);
+        }
+      }
+      if ("value" in props) {
+        hostPatchProp(el, "value", null, props.value, namespace);
+      }
+      if (vnodeHook = props.onVnodeBeforeMount) {
+        invokeVNodeHook(vnodeHook, parentComponent, vnode);
+      }
+    }
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+      def(el, "__vnode", vnode, true);
+      def(el, "__vueParentComponent", parentComponent, true);
+    }
+    if (dirs) {
+      invokeDirectiveHook(vnode, null, parentComponent, "beforeMount");
+    }
+    const needCallTransitionHooks = needTransition(parentSuspense, transition);
+    if (needCallTransitionHooks) {
+      transition.beforeEnter(el);
+    }
+    hostInsert(el, container, anchor);
+    if ((vnodeHook = props && props.onVnodeMounted) || needCallTransitionHooks || dirs) {
+      queuePostRenderEffect(() => {
+        vnodeHook && invokeVNodeHook(vnodeHook, parentComponent, vnode);
+        needCallTransitionHooks && transition.enter(el);
+        dirs && invokeDirectiveHook(vnode, null, parentComponent, "mounted");
+      }, parentSuspense);
+    }
+  };
+  const setScopeId = (el, vnode, scopeId, slotScopeIds, parentComponent) => {
+    if (scopeId) {
+      hostSetScopeId(el, scopeId);
+    }
+    if (slotScopeIds) {
+      for (let i = 0; i < slotScopeIds.length; i++) {
+        hostSetScopeId(el, slotScopeIds[i]);
+      }
+    }
+    if (parentComponent) {
+      let subTree = parentComponent.subTree;
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && subTree.patchFlag > 0 && subTree.patchFlag & 2048) {
+        subTree = filterSingleRoot(subTree.children) || subTree;
+      }
+      if (vnode === subTree || isSuspense(subTree.type) && (subTree.ssContent === vnode || subTree.ssFallback === vnode)) {
+        const parentVNode = parentComponent.vnode;
+        setScopeId(
+          el,
+          parentVNode,
+          parentVNode.scopeId,
+          parentVNode.slotScopeIds,
+          parentComponent.parent
+        );
+      }
+    }
+  };
+  const mountChildren = (children, container, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized, start = 0) => {
+    for (let i = start; i < children.length; i++) {
+      const child = children[i] = optimized ? cloneIfMounted(children[i]) : normalizeVNode(children[i]);
+      patch(
+        null,
+        child,
+        container,
+        anchor,
+        parentComponent,
+        parentSuspense,
+        namespace,
+        slotScopeIds,
+        optimized
+      );
+    }
+  };
+  const patchElement = (n1, n2, parentComponent, parentSuspense, namespace, slotScopeIds, optimized) => {
+    const el = n2.el = n1.el;
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+      el.__vnode = n2;
+    }
+    let { patchFlag, dynamicChildren, dirs } = n2;
+    patchFlag |= n1.patchFlag & 16;
+    const oldProps = n1.props || EMPTY_OBJ;
+    const newProps = n2.props || EMPTY_OBJ;
+    let vnodeHook;
+    parentComponent && toggleRecurse(parentComponent, false);
+    if (vnodeHook = newProps.onVnodeBeforeUpdate) {
+      invokeVNodeHook(vnodeHook, parentComponent, n2, n1);
+    }
+    if (dirs) {
+      invokeDirectiveHook(n2, n1, parentComponent, "beforeUpdate");
+    }
+    parentComponent && toggleRecurse(parentComponent, true);
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && isHmrUpdating) {
+      patchFlag = 0;
+      optimized = false;
+      dynamicChildren = null;
+    }
+    if (oldProps.innerHTML && newProps.innerHTML == null || oldProps.textContent && newProps.textContent == null) {
+      hostSetElementText(el, "");
+    }
+    if (dynamicChildren) {
+      patchBlockChildren(
+        n1.dynamicChildren,
+        dynamicChildren,
+        el,
+        parentComponent,
+        parentSuspense,
+        resolveChildrenNamespace(n2, namespace),
+        slotScopeIds
+      );
+      if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+        traverseStaticChildren(n1, n2);
+      }
+    } else if (!optimized) {
+      patchChildren(
+        n1,
+        n2,
+        el,
+        null,
+        parentComponent,
+        parentSuspense,
+        resolveChildrenNamespace(n2, namespace),
+        slotScopeIds,
+        false
+      );
+    }
+    if (patchFlag > 0) {
+      if (patchFlag & 16) {
+        patchProps(el, oldProps, newProps, parentComponent, namespace);
+      } else {
+        if (patchFlag & 2) {
+          if (oldProps.class !== newProps.class) {
+            hostPatchProp(el, "class", null, newProps.class, namespace);
+          }
+        }
+        if (patchFlag & 4) {
+          hostPatchProp(el, "style", oldProps.style, newProps.style, namespace);
+        }
+        if (patchFlag & 8) {
+          const propsToUpdate = n2.dynamicProps;
+          for (let i = 0; i < propsToUpdate.length; i++) {
+            const key = propsToUpdate[i];
+            const prev = oldProps[key];
+            const next = newProps[key];
+            if (next !== prev || key === "value") {
+              hostPatchProp(el, key, prev, next, namespace, parentComponent);
+            }
+          }
+        }
+      }
+      if (patchFlag & 1) {
+        if (n1.children !== n2.children) {
+          hostSetElementText(el, n2.children);
+        }
+      }
+    } else if (!optimized && dynamicChildren == null) {
+      patchProps(el, oldProps, newProps, parentComponent, namespace);
+    }
+    if ((vnodeHook = newProps.onVnodeUpdated) || dirs) {
+      queuePostRenderEffect(() => {
+        vnodeHook && invokeVNodeHook(vnodeHook, parentComponent, n2, n1);
+        dirs && invokeDirectiveHook(n2, n1, parentComponent, "updated");
+      }, parentSuspense);
+    }
+  };
+  const patchBlockChildren = (oldChildren, newChildren, fallbackContainer, parentComponent, parentSuspense, namespace, slotScopeIds) => {
+    for (let i = 0; i < newChildren.length; i++) {
+      const oldVNode = oldChildren[i];
+      const newVNode = newChildren[i];
+      const container = (
+        // oldVNode may be an errored async setup() component inside Suspense
+        // which will not have a mounted element
+        oldVNode.el && // - In the case of a Fragment, we need to provide the actual parent
+        // of the Fragment itself so it can move its children.
+        (oldVNode.type === Fragment || // - In the case of different nodes, there is going to be a replacement
+        // which also requires the correct parent container
+        !isSameVNodeType(oldVNode, newVNode) || // - In the case of a component, it could contain anything.
+        oldVNode.shapeFlag & (6 | 64)) ? hostParentNode(oldVNode.el) : (
+          // In other cases, the parent container is not actually used so we
+          // just pass the block element here to avoid a DOM parentNode call.
+          fallbackContainer
+        )
+      );
+      patch(
+        oldVNode,
+        newVNode,
+        container,
+        null,
+        parentComponent,
+        parentSuspense,
+        namespace,
+        slotScopeIds,
+        true
+      );
+    }
+  };
+  const patchProps = (el, oldProps, newProps, parentComponent, namespace) => {
+    if (oldProps !== newProps) {
+      if (oldProps !== EMPTY_OBJ) {
+        for (const key in oldProps) {
+          if (!isReservedProp(key) && !(key in newProps)) {
+            hostPatchProp(
+              el,
+              key,
+              oldProps[key],
+              null,
+              namespace,
+              parentComponent
+            );
+          }
+        }
+      }
+      for (const key in newProps) {
+        if (isReservedProp(key)) continue;
+        const next = newProps[key];
+        const prev = oldProps[key];
+        if (next !== prev && key !== "value") {
+          hostPatchProp(el, key, prev, next, namespace, parentComponent);
+        }
+      }
+      if ("value" in newProps) {
+        hostPatchProp(el, "value", oldProps.value, newProps.value, namespace);
+      }
+    }
+  };
+  const processFragment = (n1, n2, container, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized) => {
+    const fragmentStartAnchor = n2.el = n1 ? n1.el : hostCreateText("");
+    const fragmentEndAnchor = n2.anchor = n1 ? n1.anchor : hostCreateText("");
+    let { patchFlag, dynamicChildren, slotScopeIds: fragmentSlotScopeIds } = n2;
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && // #5523 dev root fragment may inherit directives
+    (isHmrUpdating || patchFlag & 2048)) {
+      patchFlag = 0;
+      optimized = false;
+      dynamicChildren = null;
+    }
+    if (fragmentSlotScopeIds) {
+      slotScopeIds = slotScopeIds ? slotScopeIds.concat(fragmentSlotScopeIds) : fragmentSlotScopeIds;
+    }
+    if (n1 == null) {
+      hostInsert(fragmentStartAnchor, container, anchor);
+      hostInsert(fragmentEndAnchor, container, anchor);
+      mountChildren(
+        // #10007
+        // such fragment like `<></>` will be compiled into
+        // a fragment which doesn't have a children.
+        // In this case fallback to an empty array
+        n2.children || [],
+        container,
+        fragmentEndAnchor,
+        parentComponent,
+        parentSuspense,
+        namespace,
+        slotScopeIds,
+        optimized
+      );
+    } else {
+      if (patchFlag > 0 && patchFlag & 64 && dynamicChildren && // #2715 the previous fragment could've been a BAILed one as a result
+      // of renderSlot() with no valid children
+      n1.dynamicChildren) {
+        patchBlockChildren(
+          n1.dynamicChildren,
+          dynamicChildren,
+          container,
+          parentComponent,
+          parentSuspense,
+          namespace,
+          slotScopeIds
+        );
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          traverseStaticChildren(n1, n2);
+        } else if (
+          // #2080 if the stable fragment has a key, it's a <template v-for> that may
+          //  get moved around. Make sure all root level vnodes inherit el.
+          // #2134 or if it's a component root, it may also get moved around
+          // as the component is being moved.
+          n2.key != null || parentComponent && n2 === parentComponent.subTree
+        ) {
+          traverseStaticChildren(
+            n1,
+            n2,
+            true
+            /* shallow */
+          );
+        }
+      } else {
+        patchChildren(
+          n1,
+          n2,
+          container,
+          fragmentEndAnchor,
+          parentComponent,
+          parentSuspense,
+          namespace,
+          slotScopeIds,
+          optimized
+        );
+      }
+    }
+  };
+  const processComponent = (n1, n2, container, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized) => {
+    n2.slotScopeIds = slotScopeIds;
+    if (n1 == null) {
+      if (n2.shapeFlag & 512) {
+        parentComponent.ctx.activate(
+          n2,
+          container,
+          anchor,
+          namespace,
+          optimized
+        );
+      } else {
+        mountComponent(
+          n2,
+          container,
+          anchor,
+          parentComponent,
+          parentSuspense,
+          namespace,
+          optimized
+        );
+      }
+    } else {
+      updateComponent(n1, n2, optimized);
+    }
+  };
+  const mountComponent = (initialVNode, container, anchor, parentComponent, parentSuspense, namespace, optimized) => {
+    const instance = initialVNode.component = createComponentInstance(
+      initialVNode,
+      parentComponent,
+      parentSuspense
+    );
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && instance.type.__hmrId) {
+      registerHMR(instance);
+    }
+    if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      pushWarningContext(initialVNode);
+      startMeasure(instance, `mount`);
+    }
+    if (isKeepAlive(initialVNode)) {
+      instance.ctx.renderer = internals;
+    }
+    {
+      if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+        startMeasure(instance, `init`);
+      }
+      setupComponent(instance, false, optimized);
+      if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+        endMeasure(instance, `init`);
+      }
+    }
+    if (instance.asyncDep) {
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && isHmrUpdating) initialVNode.el = null;
+      parentSuspense && parentSuspense.registerDep(instance, setupRenderEffect, optimized);
+      if (!initialVNode.el) {
+        const placeholder = instance.subTree = createVNode(Comment);
+        processCommentNode(null, placeholder, container, anchor);
+      }
+    } else {
+      setupRenderEffect(
+        instance,
+        initialVNode,
+        container,
+        anchor,
+        parentSuspense,
+        namespace,
+        optimized
+      );
+    }
+    if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      popWarningContext();
+      endMeasure(instance, `mount`);
+    }
+  };
+  const updateComponent = (n1, n2, optimized) => {
+    const instance = n2.component = n1.component;
+    if (shouldUpdateComponent(n1, n2, optimized)) {
+      if (instance.asyncDep && !instance.asyncResolved) {
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          pushWarningContext(n2);
+        }
+        updateComponentPreRender(instance, n2, optimized);
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          popWarningContext();
+        }
+        return;
+      } else {
+        instance.next = n2;
+        instance.update();
+      }
+    } else {
+      n2.el = n1.el;
+      instance.vnode = n2;
+    }
+  };
+  const setupRenderEffect = (instance, initialVNode, container, anchor, parentSuspense, namespace, optimized) => {
+    const componentUpdateFn = () => {
+      if (!instance.isMounted) {
+        let vnodeHook;
+        const { el, props } = initialVNode;
+        const { bm, m, parent, root, type } = instance;
+        const isAsyncWrapperVNode = isAsyncWrapper(initialVNode);
+        toggleRecurse(instance, false);
+        if (bm) {
+          invokeArrayFns(bm);
+        }
+        if (!isAsyncWrapperVNode && (vnodeHook = props && props.onVnodeBeforeMount)) {
+          invokeVNodeHook(vnodeHook, parent, initialVNode);
+        }
+        toggleRecurse(instance, true);
+        {
+          if (root.ce) {
+            root.ce._injectChildStyle(type);
+          }
+          if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+            startMeasure(instance, `render`);
+          }
+          const subTree = instance.subTree = renderComponentRoot(instance);
+          if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+            endMeasure(instance, `render`);
+          }
+          if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+            startMeasure(instance, `patch`);
+          }
+          patch(
+            null,
+            subTree,
+            container,
+            anchor,
+            instance,
+            parentSuspense,
+            namespace
+          );
+          if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+            endMeasure(instance, `patch`);
+          }
+          initialVNode.el = subTree.el;
+        }
+        if (m) {
+          queuePostRenderEffect(m, parentSuspense);
+        }
+        if (!isAsyncWrapperVNode && (vnodeHook = props && props.onVnodeMounted)) {
+          const scopedInitialVNode = initialVNode;
+          queuePostRenderEffect(
+            () => invokeVNodeHook(vnodeHook, parent, scopedInitialVNode),
+            parentSuspense
+          );
+        }
+        if (initialVNode.shapeFlag & 256 || parent && isAsyncWrapper(parent.vnode) && parent.vnode.shapeFlag & 256) {
+          instance.a && queuePostRenderEffect(instance.a, parentSuspense);
+        }
+        instance.isMounted = true;
+        if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+          devtoolsComponentAdded(instance);
+        }
+        initialVNode = container = anchor = null;
+      } else {
+        let { next, bu, u, parent, vnode } = instance;
+        {
+          const nonHydratedAsyncRoot = locateNonHydratedAsyncRoot(instance);
+          if (nonHydratedAsyncRoot) {
+            if (next) {
+              next.el = vnode.el;
+              updateComponentPreRender(instance, next, optimized);
+            }
+            nonHydratedAsyncRoot.asyncDep.then(() => {
+              if (!instance.isUnmounted) {
+                componentUpdateFn();
+              }
+            });
+            return;
+          }
+        }
+        let originNext = next;
+        let vnodeHook;
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          pushWarningContext(next || instance.vnode);
+        }
+        toggleRecurse(instance, false);
+        if (next) {
+          next.el = vnode.el;
+          updateComponentPreRender(instance, next, optimized);
+        } else {
+          next = vnode;
+        }
+        if (bu) {
+          invokeArrayFns(bu);
+        }
+        if (vnodeHook = next.props && next.props.onVnodeBeforeUpdate) {
+          invokeVNodeHook(vnodeHook, parent, next, vnode);
+        }
+        toggleRecurse(instance, true);
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          startMeasure(instance, `render`);
+        }
+        const nextTree = renderComponentRoot(instance);
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          endMeasure(instance, `render`);
+        }
+        const prevTree = instance.subTree;
+        instance.subTree = nextTree;
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          startMeasure(instance, `patch`);
+        }
+        patch(
+          prevTree,
+          nextTree,
+          // parent may have changed if it's in a teleport
+          hostParentNode(prevTree.el),
+          // anchor may have changed if it's in a fragment
+          getNextHostNode(prevTree),
+          instance,
+          parentSuspense,
+          namespace
+        );
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          endMeasure(instance, `patch`);
+        }
+        next.el = nextTree.el;
+        if (originNext === null) {
+          updateHOCHostEl(instance, nextTree.el);
+        }
+        if (u) {
+          queuePostRenderEffect(u, parentSuspense);
+        }
+        if (vnodeHook = next.props && next.props.onVnodeUpdated) {
+          queuePostRenderEffect(
+            () => invokeVNodeHook(vnodeHook, parent, next, vnode),
+            parentSuspense
+          );
+        }
+        if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+          devtoolsComponentUpdated(instance);
+        }
+        if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+          popWarningContext();
+        }
+      }
+    };
+    instance.scope.on();
+    const effect2 = instance.effect = new ReactiveEffect(componentUpdateFn);
+    instance.scope.off();
+    const update = instance.update = effect2.run.bind(effect2);
+    const job = instance.job = effect2.runIfDirty.bind(effect2);
+    job.i = instance;
+    job.id = instance.uid;
+    effect2.scheduler = () => queueJob(job);
+    toggleRecurse(instance, true);
+    if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      effect2.onTrack = instance.rtc ? (e) => invokeArrayFns(instance.rtc, e) : void 0;
+      effect2.onTrigger = instance.rtg ? (e) => invokeArrayFns(instance.rtg, e) : void 0;
+    }
+    update();
+  };
+  const updateComponentPreRender = (instance, nextVNode, optimized) => {
+    nextVNode.component = instance;
+    const prevProps = instance.vnode.props;
+    instance.vnode = nextVNode;
+    instance.next = null;
+    updateProps(instance, nextVNode.props, prevProps, optimized);
+    updateSlots(instance, nextVNode.children, optimized);
+    pauseTracking();
+    flushPreFlushCbs(instance);
+    resetTracking();
+  };
+  const patchChildren = (n1, n2, container, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized = false) => {
+    const c1 = n1 && n1.children;
+    const prevShapeFlag = n1 ? n1.shapeFlag : 0;
+    const c2 = n2.children;
+    const { patchFlag, shapeFlag } = n2;
+    if (patchFlag > 0) {
+      if (patchFlag & 128) {
+        patchKeyedChildren(
+          c1,
+          c2,
+          container,
+          anchor,
+          parentComponent,
+          parentSuspense,
+          namespace,
+          slotScopeIds,
+          optimized
+        );
+        return;
+      } else if (patchFlag & 256) {
+        patchUnkeyedChildren(
+          c1,
+          c2,
+          container,
+          anchor,
+          parentComponent,
+          parentSuspense,
+          namespace,
+          slotScopeIds,
+          optimized
+        );
+        return;
+      }
+    }
+    if (shapeFlag & 8) {
+      if (prevShapeFlag & 16) {
+        unmountChildren(c1, parentComponent, parentSuspense);
+      }
+      if (c2 !== c1) {
+        hostSetElementText(container, c2);
+      }
+    } else {
+      if (prevShapeFlag & 16) {
+        if (shapeFlag & 16) {
+          patchKeyedChildren(
+            c1,
+            c2,
+            container,
+            anchor,
+            parentComponent,
+            parentSuspense,
+            namespace,
+            slotScopeIds,
+            optimized
+          );
+        } else {
+          unmountChildren(c1, parentComponent, parentSuspense, true);
+        }
+      } else {
+        if (prevShapeFlag & 8) {
+          hostSetElementText(container, "");
+        }
+        if (shapeFlag & 16) {
+          mountChildren(
+            c2,
+            container,
+            anchor,
+            parentComponent,
+            parentSuspense,
+            namespace,
+            slotScopeIds,
+            optimized
+          );
+        }
+      }
+    }
+  };
+  const patchUnkeyedChildren = (c1, c2, container, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized) => {
+    c1 = c1 || EMPTY_ARR;
+    c2 = c2 || EMPTY_ARR;
+    const oldLength = c1.length;
+    const newLength = c2.length;
+    const commonLength = Math.min(oldLength, newLength);
+    let i;
+    for (i = 0; i < commonLength; i++) {
+      const nextChild = c2[i] = optimized ? cloneIfMounted(c2[i]) : normalizeVNode(c2[i]);
+      patch(
+        c1[i],
+        nextChild,
+        container,
+        null,
+        parentComponent,
+        parentSuspense,
+        namespace,
+        slotScopeIds,
+        optimized
+      );
+    }
+    if (oldLength > newLength) {
+      unmountChildren(
+        c1,
+        parentComponent,
+        parentSuspense,
+        true,
+        false,
+        commonLength
+      );
+    } else {
+      mountChildren(
+        c2,
+        container,
+        anchor,
+        parentComponent,
+        parentSuspense,
+        namespace,
+        slotScopeIds,
+        optimized,
+        commonLength
+      );
+    }
+  };
+  const patchKeyedChildren = (c1, c2, container, parentAnchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized) => {
+    let i = 0;
+    const l2 = c2.length;
+    let e1 = c1.length - 1;
+    let e2 = l2 - 1;
+    while (i <= e1 && i <= e2) {
+      const n1 = c1[i];
+      const n2 = c2[i] = optimized ? cloneIfMounted(c2[i]) : normalizeVNode(c2[i]);
+      if (isSameVNodeType(n1, n2)) {
+        patch(
+          n1,
+          n2,
+          container,
+          null,
+          parentComponent,
+          parentSuspense,
+          namespace,
+          slotScopeIds,
+          optimized
+        );
+      } else {
+        break;
+      }
+      i++;
+    }
+    while (i <= e1 && i <= e2) {
+      const n1 = c1[e1];
+      const n2 = c2[e2] = optimized ? cloneIfMounted(c2[e2]) : normalizeVNode(c2[e2]);
+      if (isSameVNodeType(n1, n2)) {
+        patch(
+          n1,
+          n2,
+          container,
+          null,
+          parentComponent,
+          parentSuspense,
+          namespace,
+          slotScopeIds,
+          optimized
+        );
+      } else {
+        break;
+      }
+      e1--;
+      e2--;
+    }
+    if (i > e1) {
+      if (i <= e2) {
+        const nextPos = e2 + 1;
+        const anchor = nextPos < l2 ? c2[nextPos].el : parentAnchor;
+        while (i <= e2) {
+          patch(
+            null,
+            c2[i] = optimized ? cloneIfMounted(c2[i]) : normalizeVNode(c2[i]),
+            container,
+            anchor,
+            parentComponent,
+            parentSuspense,
+            namespace,
+            slotScopeIds,
+            optimized
+          );
+          i++;
+        }
+      }
+    } else if (i > e2) {
+      while (i <= e1) {
+        unmount(c1[i], parentComponent, parentSuspense, true);
+        i++;
+      }
+    } else {
+      const s1 = i;
+      const s2 = i;
+      const keyToNewIndexMap = /* @__PURE__ */ new Map();
+      for (i = s2; i <= e2; i++) {
+        const nextChild = c2[i] = optimized ? cloneIfMounted(c2[i]) : normalizeVNode(c2[i]);
+        if (nextChild.key != null) {
+          if (!!(define_process_default$2.env.NODE_ENV !== "production") && keyToNewIndexMap.has(nextChild.key)) {
+            warn$1(
+              `Duplicate keys found during update:`,
+              JSON.stringify(nextChild.key),
+              `Make sure keys are unique.`
+            );
+          }
+          keyToNewIndexMap.set(nextChild.key, i);
+        }
+      }
+      let j;
+      let patched = 0;
+      const toBePatched = e2 - s2 + 1;
+      let moved = false;
+      let maxNewIndexSoFar = 0;
+      const newIndexToOldIndexMap = new Array(toBePatched);
+      for (i = 0; i < toBePatched; i++) newIndexToOldIndexMap[i] = 0;
+      for (i = s1; i <= e1; i++) {
+        const prevChild = c1[i];
+        if (patched >= toBePatched) {
+          unmount(prevChild, parentComponent, parentSuspense, true);
+          continue;
+        }
+        let newIndex;
+        if (prevChild.key != null) {
+          newIndex = keyToNewIndexMap.get(prevChild.key);
+        } else {
+          for (j = s2; j <= e2; j++) {
+            if (newIndexToOldIndexMap[j - s2] === 0 && isSameVNodeType(prevChild, c2[j])) {
+              newIndex = j;
+              break;
+            }
+          }
+        }
+        if (newIndex === void 0) {
+          unmount(prevChild, parentComponent, parentSuspense, true);
+        } else {
+          newIndexToOldIndexMap[newIndex - s2] = i + 1;
+          if (newIndex >= maxNewIndexSoFar) {
+            maxNewIndexSoFar = newIndex;
+          } else {
+            moved = true;
+          }
+          patch(
+            prevChild,
+            c2[newIndex],
+            container,
+            null,
+            parentComponent,
+            parentSuspense,
+            namespace,
+            slotScopeIds,
+            optimized
+          );
+          patched++;
+        }
+      }
+      const increasingNewIndexSequence = moved ? getSequence(newIndexToOldIndexMap) : EMPTY_ARR;
+      j = increasingNewIndexSequence.length - 1;
+      for (i = toBePatched - 1; i >= 0; i--) {
+        const nextIndex = s2 + i;
+        const nextChild = c2[nextIndex];
+        const anchor = nextIndex + 1 < l2 ? c2[nextIndex + 1].el : parentAnchor;
+        if (newIndexToOldIndexMap[i] === 0) {
+          patch(
+            null,
+            nextChild,
+            container,
+            anchor,
+            parentComponent,
+            parentSuspense,
+            namespace,
+            slotScopeIds,
+            optimized
+          );
+        } else if (moved) {
+          if (j < 0 || i !== increasingNewIndexSequence[j]) {
+            move(nextChild, container, anchor, 2);
+          } else {
+            j--;
+          }
+        }
+      }
+    }
+  };
+  const move = (vnode, container, anchor, moveType, parentSuspense = null) => {
+    const { el, type, transition, children, shapeFlag } = vnode;
+    if (shapeFlag & 6) {
+      move(vnode.component.subTree, container, anchor, moveType);
+      return;
+    }
+    if (shapeFlag & 128) {
+      vnode.suspense.move(container, anchor, moveType);
+      return;
+    }
+    if (shapeFlag & 64) {
+      type.move(vnode, container, anchor, internals);
+      return;
+    }
+    if (type === Fragment) {
+      hostInsert(el, container, anchor);
+      for (let i = 0; i < children.length; i++) {
+        move(children[i], container, anchor, moveType);
+      }
+      hostInsert(vnode.anchor, container, anchor);
+      return;
+    }
+    if (type === Static) {
+      moveStaticNode(vnode, container, anchor);
+      return;
+    }
+    const needTransition2 = moveType !== 2 && shapeFlag & 1 && transition;
+    if (needTransition2) {
+      if (moveType === 0) {
+        transition.beforeEnter(el);
+        hostInsert(el, container, anchor);
+        queuePostRenderEffect(() => transition.enter(el), parentSuspense);
+      } else {
+        const { leave, delayLeave, afterLeave } = transition;
+        const remove22 = () => hostInsert(el, container, anchor);
+        const performLeave = () => {
+          leave(el, () => {
+            remove22();
+            afterLeave && afterLeave();
+          });
+        };
+        if (delayLeave) {
+          delayLeave(el, remove22, performLeave);
+        } else {
+          performLeave();
+        }
+      }
+    } else {
+      hostInsert(el, container, anchor);
+    }
+  };
+  const unmount = (vnode, parentComponent, parentSuspense, doRemove = false, optimized = false) => {
+    const {
+      type,
+      props,
+      ref: ref3,
+      children,
+      dynamicChildren,
+      shapeFlag,
+      patchFlag,
+      dirs,
+      cacheIndex
+    } = vnode;
+    if (patchFlag === -2) {
+      optimized = false;
+    }
+    if (ref3 != null) {
+      setRef(ref3, null, parentSuspense, vnode, true);
+    }
+    if (cacheIndex != null) {
+      parentComponent.renderCache[cacheIndex] = void 0;
+    }
+    if (shapeFlag & 256) {
+      parentComponent.ctx.deactivate(vnode);
+      return;
+    }
+    const shouldInvokeDirs = shapeFlag & 1 && dirs;
+    const shouldInvokeVnodeHook = !isAsyncWrapper(vnode);
+    let vnodeHook;
+    if (shouldInvokeVnodeHook && (vnodeHook = props && props.onVnodeBeforeUnmount)) {
+      invokeVNodeHook(vnodeHook, parentComponent, vnode);
+    }
+    if (shapeFlag & 6) {
+      unmountComponent(vnode.component, parentSuspense, doRemove);
+    } else {
+      if (shapeFlag & 128) {
+        vnode.suspense.unmount(parentSuspense, doRemove);
+        return;
+      }
+      if (shouldInvokeDirs) {
+        invokeDirectiveHook(vnode, null, parentComponent, "beforeUnmount");
+      }
+      if (shapeFlag & 64) {
+        vnode.type.remove(
+          vnode,
+          parentComponent,
+          parentSuspense,
+          internals,
+          doRemove
+        );
+      } else if (dynamicChildren && // #5154
+      // when v-once is used inside a block, setBlockTracking(-1) marks the
+      // parent block with hasOnce: true
+      // so that it doesn't take the fast path during unmount - otherwise
+      // components nested in v-once are never unmounted.
+      !dynamicChildren.hasOnce && // #1153: fast path should not be taken for non-stable (v-for) fragments
+      (type !== Fragment || patchFlag > 0 && patchFlag & 64)) {
+        unmountChildren(
+          dynamicChildren,
+          parentComponent,
+          parentSuspense,
+          false,
+          true
+        );
+      } else if (type === Fragment && patchFlag & (128 | 256) || !optimized && shapeFlag & 16) {
+        unmountChildren(children, parentComponent, parentSuspense);
+      }
+      if (doRemove) {
+        remove2(vnode);
+      }
+    }
+    if (shouldInvokeVnodeHook && (vnodeHook = props && props.onVnodeUnmounted) || shouldInvokeDirs) {
+      queuePostRenderEffect(() => {
+        vnodeHook && invokeVNodeHook(vnodeHook, parentComponent, vnode);
+        shouldInvokeDirs && invokeDirectiveHook(vnode, null, parentComponent, "unmounted");
+      }, parentSuspense);
+    }
+  };
+  const remove2 = (vnode) => {
+    const { type, el, anchor, transition } = vnode;
+    if (type === Fragment) {
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && vnode.patchFlag > 0 && vnode.patchFlag & 2048 && transition && !transition.persisted) {
+        vnode.children.forEach((child) => {
+          if (child.type === Comment) {
+            hostRemove(child.el);
+          } else {
+            remove2(child);
+          }
+        });
+      } else {
+        removeFragment(el, anchor);
+      }
+      return;
+    }
+    if (type === Static) {
+      removeStaticNode(vnode);
+      return;
+    }
+    const performRemove = () => {
+      hostRemove(el);
+      if (transition && !transition.persisted && transition.afterLeave) {
+        transition.afterLeave();
+      }
+    };
+    if (vnode.shapeFlag & 1 && transition && !transition.persisted) {
+      const { leave, delayLeave } = transition;
+      const performLeave = () => leave(el, performRemove);
+      if (delayLeave) {
+        delayLeave(vnode.el, performRemove, performLeave);
+      } else {
+        performLeave();
+      }
+    } else {
+      performRemove();
+    }
+  };
+  const removeFragment = (cur, end) => {
+    let next;
+    while (cur !== end) {
+      next = hostNextSibling(cur);
+      hostRemove(cur);
+      cur = next;
+    }
+    hostRemove(end);
+  };
+  const unmountComponent = (instance, parentSuspense, doRemove) => {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && instance.type.__hmrId) {
+      unregisterHMR(instance);
+    }
+    const { bum, scope, job, subTree, um, m, a } = instance;
+    invalidateMount(m);
+    invalidateMount(a);
+    if (bum) {
+      invokeArrayFns(bum);
+    }
+    scope.stop();
+    if (job) {
+      job.flags |= 8;
+      unmount(subTree, instance, parentSuspense, doRemove);
+    }
+    if (um) {
+      queuePostRenderEffect(um, parentSuspense);
+    }
+    queuePostRenderEffect(() => {
+      instance.isUnmounted = true;
+    }, parentSuspense);
+    if (parentSuspense && parentSuspense.pendingBranch && !parentSuspense.isUnmounted && instance.asyncDep && !instance.asyncResolved && instance.suspenseId === parentSuspense.pendingId) {
+      parentSuspense.deps--;
+      if (parentSuspense.deps === 0) {
+        parentSuspense.resolve();
+      }
+    }
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+      devtoolsComponentRemoved(instance);
+    }
+  };
+  const unmountChildren = (children, parentComponent, parentSuspense, doRemove = false, optimized = false, start = 0) => {
+    for (let i = start; i < children.length; i++) {
+      unmount(children[i], parentComponent, parentSuspense, doRemove, optimized);
+    }
+  };
+  const getNextHostNode = (vnode) => {
+    if (vnode.shapeFlag & 6) {
+      return getNextHostNode(vnode.component.subTree);
+    }
+    if (vnode.shapeFlag & 128) {
+      return vnode.suspense.next();
+    }
+    const el = hostNextSibling(vnode.anchor || vnode.el);
+    const teleportEnd = el && el[TeleportEndKey];
+    return teleportEnd ? hostNextSibling(teleportEnd) : el;
+  };
+  let isFlushing = false;
+  const render2 = (vnode, container, namespace) => {
+    if (vnode == null) {
+      if (container._vnode) {
+        unmount(container._vnode, null, null, true);
+      }
+    } else {
+      patch(
+        container._vnode || null,
+        vnode,
+        container,
+        null,
+        null,
+        null,
+        namespace
+      );
+    }
+    container._vnode = vnode;
+    if (!isFlushing) {
+      isFlushing = true;
+      flushPreFlushCbs();
+      flushPostFlushCbs();
+      isFlushing = false;
+    }
+  };
+  const internals = {
+    p: patch,
+    um: unmount,
+    m: move,
+    r: remove2,
+    mt: mountComponent,
+    mc: mountChildren,
+    pc: patchChildren,
+    pbc: patchBlockChildren,
+    n: getNextHostNode,
+    o: options
+  };
+  let hydrate;
+  return {
+    render: render2,
+    hydrate,
+    createApp: createAppAPI(render2)
+  };
+}
+function resolveChildrenNamespace({ type, props }, currentNamespace) {
+  return currentNamespace === "svg" && type === "foreignObject" || currentNamespace === "mathml" && type === "annotation-xml" && props && props.encoding && props.encoding.includes("html") ? void 0 : currentNamespace;
+}
+function toggleRecurse({ effect: effect2, job }, allowed) {
+  if (allowed) {
+    effect2.flags |= 32;
+    job.flags |= 4;
+  } else {
+    effect2.flags &= -33;
+    job.flags &= -5;
+  }
+}
+function needTransition(parentSuspense, transition) {
+  return (!parentSuspense || parentSuspense && !parentSuspense.pendingBranch) && transition && !transition.persisted;
+}
+function traverseStaticChildren(n1, n2, shallow = false) {
+  const ch1 = n1.children;
+  const ch2 = n2.children;
+  if (isArray(ch1) && isArray(ch2)) {
+    for (let i = 0; i < ch1.length; i++) {
+      const c1 = ch1[i];
+      let c2 = ch2[i];
+      if (c2.shapeFlag & 1 && !c2.dynamicChildren) {
+        if (c2.patchFlag <= 0 || c2.patchFlag === 32) {
+          c2 = ch2[i] = cloneIfMounted(ch2[i]);
+          c2.el = c1.el;
+        }
+        if (!shallow && c2.patchFlag !== -2)
+          traverseStaticChildren(c1, c2);
+      }
+      if (c2.type === Text) {
+        c2.el = c1.el;
+      }
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && c2.type === Comment && !c2.el) {
+        c2.el = c1.el;
+      }
+    }
+  }
+}
+function getSequence(arr) {
+  const p2 = arr.slice();
+  const result = [0];
+  let i, j, u, v, c;
+  const len = arr.length;
+  for (i = 0; i < len; i++) {
+    const arrI = arr[i];
+    if (arrI !== 0) {
+      j = result[result.length - 1];
+      if (arr[j] < arrI) {
+        p2[i] = j;
+        result.push(i);
+        continue;
+      }
+      u = 0;
+      v = result.length - 1;
+      while (u < v) {
+        c = u + v >> 1;
+        if (arr[result[c]] < arrI) {
+          u = c + 1;
+        } else {
+          v = c;
+        }
+      }
+      if (arrI < arr[result[u]]) {
+        if (u > 0) {
+          p2[i] = result[u - 1];
+        }
+        result[u] = i;
+      }
+    }
+  }
+  u = result.length;
+  v = result[u - 1];
+  while (u-- > 0) {
+    result[u] = v;
+    v = p2[v];
+  }
+  return result;
+}
+function locateNonHydratedAsyncRoot(instance) {
+  const subComponent = instance.subTree.component;
+  if (subComponent) {
+    if (subComponent.asyncDep && !subComponent.asyncResolved) {
+      return subComponent;
+    } else {
+      return locateNonHydratedAsyncRoot(subComponent);
+    }
+  }
+}
+function invalidateMount(hooks) {
+  if (hooks) {
+    for (let i = 0; i < hooks.length; i++)
+      hooks[i].flags |= 8;
+  }
+}
+const ssrContextKey = Symbol.for("v-scx");
+const useSSRContext = () => {
+  {
+    const ctx = inject(ssrContextKey);
+    if (!ctx) {
+      !!(define_process_default$2.env.NODE_ENV !== "production") && warn$1(
+        `Server rendering context not provided. Make sure to only call useSSRContext() conditionally in the server build.`
+      );
+    }
+    return ctx;
+  }
+};
+function watchEffect(effect2, options) {
+  return doWatch(effect2, null, options);
+}
+function watch(source, cb, options) {
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && !isFunction(cb)) {
+    warn$1(
+      `\`watch(fn, options?)\` signature has been moved to a separate API. Use \`watchEffect(fn, options?)\` instead. \`watch\` now only supports \`watch(source, cb, options?) signature.`
+    );
+  }
+  return doWatch(source, cb, options);
+}
+function doWatch(source, cb, options = EMPTY_OBJ) {
+  const { immediate, deep, flush, once } = options;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && !cb) {
+    if (immediate !== void 0) {
+      warn$1(
+        `watch() "immediate" option is only respected when using the watch(source, callback, options?) signature.`
+      );
+    }
+    if (deep !== void 0) {
+      warn$1(
+        `watch() "deep" option is only respected when using the watch(source, callback, options?) signature.`
+      );
+    }
+    if (once !== void 0) {
+      warn$1(
+        `watch() "once" option is only respected when using the watch(source, callback, options?) signature.`
+      );
+    }
+  }
+  const baseWatchOptions = extend({}, options);
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) baseWatchOptions.onWarn = warn$1;
+  const runsImmediately = cb && immediate || !cb && flush !== "post";
+  let ssrCleanup;
+  if (isInSSRComponentSetup) {
+    if (flush === "sync") {
+      const ctx = useSSRContext();
+      ssrCleanup = ctx.__watcherHandles || (ctx.__watcherHandles = []);
+    } else if (!runsImmediately) {
+      const watchStopHandle = () => {
+      };
+      watchStopHandle.stop = NOOP;
+      watchStopHandle.resume = NOOP;
+      watchStopHandle.pause = NOOP;
+      return watchStopHandle;
+    }
+  }
+  const instance = currentInstance;
+  baseWatchOptions.call = (fn, type, args) => callWithAsyncErrorHandling(fn, instance, type, args);
+  let isPre = false;
+  if (flush === "post") {
+    baseWatchOptions.scheduler = (job) => {
+      queuePostRenderEffect(job, instance && instance.suspense);
+    };
+  } else if (flush !== "sync") {
+    isPre = true;
+    baseWatchOptions.scheduler = (job, isFirstRun) => {
+      if (isFirstRun) {
+        job();
+      } else {
+        queueJob(job);
+      }
+    };
+  }
+  baseWatchOptions.augmentJob = (job) => {
+    if (cb) {
+      job.flags |= 4;
+    }
+    if (isPre) {
+      job.flags |= 2;
+      if (instance) {
+        job.id = instance.uid;
+        job.i = instance;
+      }
+    }
+  };
+  const watchHandle = watch$1(source, cb, baseWatchOptions);
+  if (isInSSRComponentSetup) {
+    if (ssrCleanup) {
+      ssrCleanup.push(watchHandle);
+    } else if (runsImmediately) {
+      watchHandle();
+    }
+  }
+  return watchHandle;
+}
+function instanceWatch(source, value, options) {
+  const publicThis = this.proxy;
+  const getter = isString(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
+  let cb;
+  if (isFunction(value)) {
+    cb = value;
+  } else {
+    cb = value.handler;
+    options = value;
+  }
+  const reset = setCurrentInstance(this);
+  const res = doWatch(getter, cb.bind(publicThis), options);
+  reset();
+  return res;
+}
+function createPathGetter(ctx, path) {
+  const segments = path.split(".");
+  return () => {
+    let cur = ctx;
+    for (let i = 0; i < segments.length && cur; i++) {
+      cur = cur[segments[i]];
+    }
+    return cur;
+  };
+}
+const getModelModifiers = (props, modelName) => {
+  return modelName === "modelValue" || modelName === "model-value" ? props.modelModifiers : props[`${modelName}Modifiers`] || props[`${camelize(modelName)}Modifiers`] || props[`${hyphenate(modelName)}Modifiers`];
+};
+function emit(instance, event, ...rawArgs) {
+  if (instance.isUnmounted) return;
+  const props = instance.vnode.props || EMPTY_OBJ;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    const {
+      emitsOptions,
+      propsOptions: [propsOptions]
+    } = instance;
+    if (emitsOptions) {
+      if (!(event in emitsOptions) && true) {
+        if (!propsOptions || !(toHandlerKey(camelize(event)) in propsOptions)) {
+          warn$1(
+            `Component emitted event "${event}" but it is neither declared in the emits option nor as an "${toHandlerKey(camelize(event))}" prop.`
+          );
+        }
+      } else {
+        const validator = emitsOptions[event];
+        if (isFunction(validator)) {
+          const isValid = validator(...rawArgs);
+          if (!isValid) {
+            warn$1(
+              `Invalid event arguments: event validation failed for event "${event}".`
+            );
+          }
+        }
+      }
+    }
+  }
+  let args = rawArgs;
+  const isModelListener2 = event.startsWith("update:");
+  const modifiers = isModelListener2 && getModelModifiers(props, event.slice(7));
+  if (modifiers) {
+    if (modifiers.trim) {
+      args = rawArgs.map((a) => isString(a) ? a.trim() : a);
+    }
+    if (modifiers.number) {
+      args = rawArgs.map(looseToNumber);
+    }
+  }
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+    devtoolsComponentEmit(instance, event, args);
+  }
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    const lowerCaseEvent = event.toLowerCase();
+    if (lowerCaseEvent !== event && props[toHandlerKey(lowerCaseEvent)]) {
+      warn$1(
+        `Event "${lowerCaseEvent}" is emitted in component ${formatComponentName(
+          instance,
+          instance.type
+        )} but the handler is registered for "${event}". Note that HTML attributes are case-insensitive and you cannot use v-on to listen to camelCase events when using in-DOM templates. You should probably use "${hyphenate(
+          event
+        )}" instead of "${event}".`
+      );
+    }
+  }
+  let handlerName;
+  let handler = props[handlerName = toHandlerKey(event)] || // also try camelCase event handler (#2249)
+  props[handlerName = toHandlerKey(camelize(event))];
+  if (!handler && isModelListener2) {
+    handler = props[handlerName = toHandlerKey(hyphenate(event))];
+  }
+  if (handler) {
+    callWithAsyncErrorHandling(
+      handler,
+      instance,
+      6,
+      args
+    );
+  }
+  const onceHandler = props[handlerName + `Once`];
+  if (onceHandler) {
+    if (!instance.emitted) {
+      instance.emitted = {};
+    } else if (instance.emitted[handlerName]) {
+      return;
+    }
+    instance.emitted[handlerName] = true;
+    callWithAsyncErrorHandling(
+      onceHandler,
+      instance,
+      6,
+      args
+    );
+  }
+}
+function normalizeEmitsOptions(comp, appContext, asMixin = false) {
+  const cache = appContext.emitsCache;
+  const cached = cache.get(comp);
+  if (cached !== void 0) {
+    return cached;
+  }
+  const raw = comp.emits;
+  let normalized = {};
+  let hasExtends = false;
+  if (!isFunction(comp)) {
+    const extendEmits = (raw2) => {
+      const normalizedFromExtend = normalizeEmitsOptions(raw2, appContext, true);
+      if (normalizedFromExtend) {
+        hasExtends = true;
+        extend(normalized, normalizedFromExtend);
+      }
+    };
+    if (!asMixin && appContext.mixins.length) {
+      appContext.mixins.forEach(extendEmits);
+    }
+    if (comp.extends) {
+      extendEmits(comp.extends);
+    }
+    if (comp.mixins) {
+      comp.mixins.forEach(extendEmits);
+    }
+  }
+  if (!raw && !hasExtends) {
+    if (isObject(comp)) {
+      cache.set(comp, null);
+    }
+    return null;
+  }
+  if (isArray(raw)) {
+    raw.forEach((key) => normalized[key] = null);
+  } else {
+    extend(normalized, raw);
+  }
+  if (isObject(comp)) {
+    cache.set(comp, normalized);
+  }
+  return normalized;
+}
+function isEmitListener(options, key) {
+  if (!options || !isOn(key)) {
+    return false;
+  }
+  key = key.slice(2).replace(/Once$/, "");
+  return hasOwn(options, key[0].toLowerCase() + key.slice(1)) || hasOwn(options, hyphenate(key)) || hasOwn(options, key);
+}
+let accessedAttrs = false;
+function markAttrsAccessed() {
+  accessedAttrs = true;
+}
+function renderComponentRoot(instance) {
+  const {
+    type: Component,
+    vnode,
+    proxy,
+    withProxy,
+    propsOptions: [propsOptions],
+    slots,
+    attrs,
+    emit: emit2,
+    render: render2,
+    renderCache,
+    props,
+    data,
+    setupState,
+    ctx,
+    inheritAttrs
+  } = instance;
+  const prev = setCurrentRenderingInstance(instance);
+  let result;
+  let fallthroughAttrs;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    accessedAttrs = false;
+  }
+  try {
+    if (vnode.shapeFlag & 4) {
+      const proxyToUse = withProxy || proxy;
+      const thisProxy = !!(define_process_default$2.env.NODE_ENV !== "production") && setupState.__isScriptSetup ? new Proxy(proxyToUse, {
+        get(target, key, receiver) {
+          warn$1(
+            `Property '${String(
+              key
+            )}' was accessed via 'this'. Avoid using 'this' in templates.`
+          );
+          return Reflect.get(target, key, receiver);
+        }
+      }) : proxyToUse;
+      result = normalizeVNode(
+        render2.call(
+          thisProxy,
+          proxyToUse,
+          renderCache,
+          !!(define_process_default$2.env.NODE_ENV !== "production") ? shallowReadonly(props) : props,
+          setupState,
+          data,
+          ctx
+        )
+      );
+      fallthroughAttrs = attrs;
+    } else {
+      const render22 = Component;
+      if (!!(define_process_default$2.env.NODE_ENV !== "production") && attrs === props) {
+        markAttrsAccessed();
+      }
+      result = normalizeVNode(
+        render22.length > 1 ? render22(
+          !!(define_process_default$2.env.NODE_ENV !== "production") ? shallowReadonly(props) : props,
+          !!(define_process_default$2.env.NODE_ENV !== "production") ? {
+            get attrs() {
+              markAttrsAccessed();
+              return shallowReadonly(attrs);
+            },
+            slots,
+            emit: emit2
+          } : { attrs, slots, emit: emit2 }
+        ) : render22(
+          !!(define_process_default$2.env.NODE_ENV !== "production") ? shallowReadonly(props) : props,
+          null
+        )
+      );
+      fallthroughAttrs = Component.props ? attrs : getFunctionalFallthrough(attrs);
+    }
+  } catch (err) {
+    blockStack.length = 0;
+    handleError(err, instance, 1);
+    result = createVNode(Comment);
+  }
+  let root = result;
+  let setRoot = void 0;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && result.patchFlag > 0 && result.patchFlag & 2048) {
+    [root, setRoot] = getChildRoot(result);
+  }
+  if (fallthroughAttrs && inheritAttrs !== false) {
+    const keys = Object.keys(fallthroughAttrs);
+    const { shapeFlag } = root;
+    if (keys.length) {
+      if (shapeFlag & (1 | 6)) {
+        if (propsOptions && keys.some(isModelListener)) {
+          fallthroughAttrs = filterModelListeners(
+            fallthroughAttrs,
+            propsOptions
+          );
+        }
+        root = cloneVNode(root, fallthroughAttrs, false, true);
+      } else if (!!(define_process_default$2.env.NODE_ENV !== "production") && !accessedAttrs && root.type !== Comment) {
+        const allAttrs = Object.keys(attrs);
+        const eventAttrs = [];
+        const extraAttrs = [];
+        for (let i = 0, l = allAttrs.length; i < l; i++) {
+          const key = allAttrs[i];
+          if (isOn(key)) {
+            if (!isModelListener(key)) {
+              eventAttrs.push(key[2].toLowerCase() + key.slice(3));
+            }
+          } else {
+            extraAttrs.push(key);
+          }
+        }
+        if (extraAttrs.length) {
+          warn$1(
+            `Extraneous non-props attributes (${extraAttrs.join(", ")}) were passed to component but could not be automatically inherited because component renders fragment or text or teleport root nodes.`
+          );
+        }
+        if (eventAttrs.length) {
+          warn$1(
+            `Extraneous non-emits event listeners (${eventAttrs.join(", ")}) were passed to component but could not be automatically inherited because component renders fragment or text root nodes. If the listener is intended to be a component custom event listener only, declare it using the "emits" option.`
+          );
+        }
+      }
+    }
+  }
+  if (vnode.dirs) {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && !isElementRoot(root)) {
+      warn$1(
+        `Runtime directive used on component with non-element root node. The directives will not function as intended.`
+      );
+    }
+    root = cloneVNode(root, null, false, true);
+    root.dirs = root.dirs ? root.dirs.concat(vnode.dirs) : vnode.dirs;
+  }
+  if (vnode.transition) {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && !isElementRoot(root)) {
+      warn$1(
+        `Component inside <Transition> renders non-element root node that cannot be animated.`
+      );
+    }
+    setTransitionHooks(root, vnode.transition);
+  }
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && setRoot) {
+    setRoot(root);
+  } else {
+    result = root;
+  }
+  setCurrentRenderingInstance(prev);
+  return result;
+}
+const getChildRoot = (vnode) => {
+  const rawChildren = vnode.children;
+  const dynamicChildren = vnode.dynamicChildren;
+  const childRoot = filterSingleRoot(rawChildren, false);
+  if (!childRoot) {
+    return [vnode, void 0];
+  } else if (!!(define_process_default$2.env.NODE_ENV !== "production") && childRoot.patchFlag > 0 && childRoot.patchFlag & 2048) {
+    return getChildRoot(childRoot);
+  }
+  const index = rawChildren.indexOf(childRoot);
+  const dynamicIndex = dynamicChildren ? dynamicChildren.indexOf(childRoot) : -1;
+  const setRoot = (updatedRoot) => {
+    rawChildren[index] = updatedRoot;
+    if (dynamicChildren) {
+      if (dynamicIndex > -1) {
+        dynamicChildren[dynamicIndex] = updatedRoot;
+      } else if (updatedRoot.patchFlag > 0) {
+        vnode.dynamicChildren = [...dynamicChildren, updatedRoot];
+      }
+    }
+  };
+  return [normalizeVNode(childRoot), setRoot];
+};
+function filterSingleRoot(children, recurse = true) {
+  let singleRoot;
+  for (let i = 0; i < children.length; i++) {
+    const child = children[i];
+    if (isVNode(child)) {
+      if (child.type !== Comment || child.children === "v-if") {
+        if (singleRoot) {
+          return;
+        } else {
+          singleRoot = child;
+          if (!!(define_process_default$2.env.NODE_ENV !== "production") && recurse && singleRoot.patchFlag > 0 && singleRoot.patchFlag & 2048) {
+            return filterSingleRoot(singleRoot.children);
+          }
+        }
+      }
+    } else {
+      return;
+    }
+  }
+  return singleRoot;
+}
+const getFunctionalFallthrough = (attrs) => {
+  let res;
+  for (const key in attrs) {
+    if (key === "class" || key === "style" || isOn(key)) {
+      (res || (res = {}))[key] = attrs[key];
+    }
+  }
+  return res;
+};
+const filterModelListeners = (attrs, props) => {
+  const res = {};
+  for (const key in attrs) {
+    if (!isModelListener(key) || !(key.slice(9) in props)) {
+      res[key] = attrs[key];
+    }
+  }
+  return res;
+};
+const isElementRoot = (vnode) => {
+  return vnode.shapeFlag & (6 | 1) || vnode.type === Comment;
+};
+function shouldUpdateComponent(prevVNode, nextVNode, optimized) {
+  const { props: prevProps, children: prevChildren, component } = prevVNode;
+  const { props: nextProps, children: nextChildren, patchFlag } = nextVNode;
+  const emits = component.emitsOptions;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && (prevChildren || nextChildren) && isHmrUpdating) {
+    return true;
+  }
+  if (nextVNode.dirs || nextVNode.transition) {
+    return true;
+  }
+  if (optimized && patchFlag >= 0) {
+    if (patchFlag & 1024) {
+      return true;
+    }
+    if (patchFlag & 16) {
+      if (!prevProps) {
+        return !!nextProps;
+      }
+      return hasPropsChanged(prevProps, nextProps, emits);
+    } else if (patchFlag & 8) {
+      const dynamicProps = nextVNode.dynamicProps;
+      for (let i = 0; i < dynamicProps.length; i++) {
+        const key = dynamicProps[i];
+        if (nextProps[key] !== prevProps[key] && !isEmitListener(emits, key)) {
+          return true;
+        }
+      }
+    }
+  } else {
+    if (prevChildren || nextChildren) {
+      if (!nextChildren || !nextChildren.$stable) {
+        return true;
+      }
+    }
+    if (prevProps === nextProps) {
+      return false;
+    }
+    if (!prevProps) {
+      return !!nextProps;
+    }
+    if (!nextProps) {
+      return true;
+    }
+    return hasPropsChanged(prevProps, nextProps, emits);
+  }
+  return false;
+}
+function hasPropsChanged(prevProps, nextProps, emitsOptions) {
+  const nextKeys = Object.keys(nextProps);
+  if (nextKeys.length !== Object.keys(prevProps).length) {
+    return true;
+  }
+  for (let i = 0; i < nextKeys.length; i++) {
+    const key = nextKeys[i];
+    if (nextProps[key] !== prevProps[key] && !isEmitListener(emitsOptions, key)) {
+      return true;
+    }
+  }
+  return false;
+}
+function updateHOCHostEl({ vnode, parent }, el) {
+  while (parent) {
+    const root = parent.subTree;
+    if (root.suspense && root.suspense.activeBranch === vnode) {
+      root.el = vnode.el;
+    }
+    if (root === vnode) {
+      (vnode = parent.vnode).el = el;
+      parent = parent.parent;
+    } else {
+      break;
+    }
+  }
+}
+const isSuspense = (type) => type.__isSuspense;
+function queueEffectWithSuspense(fn, suspense) {
+  if (suspense && suspense.pendingBranch) {
+    if (isArray(fn)) {
+      suspense.effects.push(...fn);
+    } else {
+      suspense.effects.push(fn);
+    }
+  } else {
+    queuePostFlushCb(fn);
+  }
+}
+const Fragment = Symbol.for("v-fgt");
+const Text = Symbol.for("v-txt");
+const Comment = Symbol.for("v-cmt");
+const Static = Symbol.for("v-stc");
+const blockStack = [];
+let currentBlock = null;
+function openBlock(disableTracking = false) {
+  blockStack.push(currentBlock = disableTracking ? null : []);
+}
+function closeBlock() {
+  blockStack.pop();
+  currentBlock = blockStack[blockStack.length - 1] || null;
+}
+let isBlockTreeEnabled = 1;
+function setBlockTracking(value, inVOnce = false) {
+  isBlockTreeEnabled += value;
+  if (value < 0 && currentBlock && inVOnce) {
+    currentBlock.hasOnce = true;
+  }
+}
+function setupBlock(vnode) {
+  vnode.dynamicChildren = isBlockTreeEnabled > 0 ? currentBlock || EMPTY_ARR : null;
+  closeBlock();
+  if (isBlockTreeEnabled > 0 && currentBlock) {
+    currentBlock.push(vnode);
+  }
+  return vnode;
+}
+function createElementBlock(type, props, children, patchFlag, dynamicProps, shapeFlag) {
+  return setupBlock(
+    createBaseVNode(
+      type,
+      props,
+      children,
+      patchFlag,
+      dynamicProps,
+      shapeFlag,
+      true
+    )
+  );
+}
+function createBlock(type, props, children, patchFlag, dynamicProps) {
+  return setupBlock(
+    createVNode(
+      type,
+      props,
+      children,
+      patchFlag,
+      dynamicProps,
+      true
+    )
+  );
+}
+function isVNode(value) {
+  return value ? value.__v_isVNode === true : false;
+}
+function isSameVNodeType(n1, n2) {
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && n2.shapeFlag & 6 && n1.component) {
+    const dirtyInstances = hmrDirtyComponents.get(n2.type);
+    if (dirtyInstances && dirtyInstances.has(n1.component)) {
+      n1.shapeFlag &= -257;
+      n2.shapeFlag &= -513;
+      return false;
+    }
+  }
+  return n1.type === n2.type && n1.key === n2.key;
+}
+const createVNodeWithArgsTransform = (...args) => {
+  return _createVNode(
+    ...args
+  );
+};
+const normalizeKey = ({ key }) => key != null ? key : null;
+const normalizeRef = ({
+  ref: ref3,
+  ref_key,
+  ref_for
+}) => {
+  if (typeof ref3 === "number") {
+    ref3 = "" + ref3;
+  }
+  return ref3 != null ? isString(ref3) || isRef(ref3) || isFunction(ref3) ? { i: currentRenderingInstance, r: ref3, k: ref_key, f: !!ref_for } : ref3 : null;
+};
+function createBaseVNode(type, props = null, children = null, patchFlag = 0, dynamicProps = null, shapeFlag = type === Fragment ? 0 : 1, isBlockNode = false, needFullChildrenNormalization = false) {
+  const vnode = {
+    __v_isVNode: true,
+    __v_skip: true,
+    type,
+    props,
+    key: props && normalizeKey(props),
+    ref: props && normalizeRef(props),
+    scopeId: currentScopeId,
+    slotScopeIds: null,
+    children,
+    component: null,
+    suspense: null,
+    ssContent: null,
+    ssFallback: null,
+    dirs: null,
+    transition: null,
+    el: null,
+    anchor: null,
+    target: null,
+    targetStart: null,
+    targetAnchor: null,
+    staticCount: 0,
+    shapeFlag,
+    patchFlag,
+    dynamicProps,
+    dynamicChildren: null,
+    appContext: null,
+    ctx: currentRenderingInstance
+  };
+  if (needFullChildrenNormalization) {
+    normalizeChildren(vnode, children);
+    if (shapeFlag & 128) {
+      type.normalize(vnode);
+    }
+  } else if (children) {
+    vnode.shapeFlag |= isString(children) ? 8 : 16;
+  }
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && vnode.key !== vnode.key) {
+    warn$1(`VNode created with invalid key (NaN). VNode type:`, vnode.type);
+  }
+  if (isBlockTreeEnabled > 0 && // avoid a block node from tracking itself
+  !isBlockNode && // has current parent block
+  currentBlock && // presence of a patch flag indicates this node needs patching on updates.
+  // component nodes also should always be patched, because even if the
+  // component doesn't need to update, it needs to persist the instance on to
+  // the next vnode so that it can be properly unmounted later.
+  (vnode.patchFlag > 0 || shapeFlag & 6) && // the EVENTS flag is only for hydration and if it is the only flag, the
+  // vnode should not be considered dynamic due to handler caching.
+  vnode.patchFlag !== 32) {
+    currentBlock.push(vnode);
+  }
+  return vnode;
+}
+const createVNode = !!(define_process_default$2.env.NODE_ENV !== "production") ? createVNodeWithArgsTransform : _createVNode;
+function _createVNode(type, props = null, children = null, patchFlag = 0, dynamicProps = null, isBlockNode = false) {
+  if (!type || type === NULL_DYNAMIC_COMPONENT) {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && !type) {
+      warn$1(`Invalid vnode type when creating vnode: ${type}.`);
+    }
+    type = Comment;
+  }
+  if (isVNode(type)) {
+    const cloned = cloneVNode(
+      type,
+      props,
+      true
+      /* mergeRef: true */
+    );
+    if (children) {
+      normalizeChildren(cloned, children);
+    }
+    if (isBlockTreeEnabled > 0 && !isBlockNode && currentBlock) {
+      if (cloned.shapeFlag & 6) {
+        currentBlock[currentBlock.indexOf(type)] = cloned;
+      } else {
+        currentBlock.push(cloned);
+      }
+    }
+    cloned.patchFlag = -2;
+    return cloned;
+  }
+  if (isClassComponent(type)) {
+    type = type.__vccOpts;
+  }
+  if (props) {
+    props = guardReactiveProps(props);
+    let { class: klass, style } = props;
+    if (klass && !isString(klass)) {
+      props.class = normalizeClass(klass);
+    }
+    if (isObject(style)) {
+      if (isProxy(style) && !isArray(style)) {
+        style = extend({}, style);
+      }
+      props.style = normalizeStyle(style);
+    }
+  }
+  const shapeFlag = isString(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject(type) ? 4 : isFunction(type) ? 2 : 0;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && shapeFlag & 4 && isProxy(type)) {
+    type = toRaw(type);
+    warn$1(
+      `Vue received a Component that was made a reactive object. This can lead to unnecessary performance overhead and should be avoided by marking the component with \`markRaw\` or using \`shallowRef\` instead of \`ref\`.`,
+      `
+Component that was made reactive: `,
+      type
+    );
+  }
+  return createBaseVNode(
+    type,
+    props,
+    children,
+    patchFlag,
+    dynamicProps,
+    shapeFlag,
+    isBlockNode,
+    true
+  );
+}
+function guardReactiveProps(props) {
+  if (!props) return null;
+  return isProxy(props) || isInternalObject(props) ? extend({}, props) : props;
+}
+function cloneVNode(vnode, extraProps, mergeRef = false, cloneTransition = false) {
+  const { props, ref: ref3, patchFlag, children, transition } = vnode;
+  const mergedProps = extraProps ? mergeProps(props || {}, extraProps) : props;
+  const cloned = {
+    __v_isVNode: true,
+    __v_skip: true,
+    type: vnode.type,
+    props: mergedProps,
+    key: mergedProps && normalizeKey(mergedProps),
+    ref: extraProps && extraProps.ref ? (
+      // #2078 in the case of <component :is="vnode" ref="extra"/>
+      // if the vnode itself already has a ref, cloneVNode will need to merge
+      // the refs so the single vnode can be set on multiple refs
+      mergeRef && ref3 ? isArray(ref3) ? ref3.concat(normalizeRef(extraProps)) : [ref3, normalizeRef(extraProps)] : normalizeRef(extraProps)
+    ) : ref3,
+    scopeId: vnode.scopeId,
+    slotScopeIds: vnode.slotScopeIds,
+    children: !!(define_process_default$2.env.NODE_ENV !== "production") && patchFlag === -1 && isArray(children) ? children.map(deepCloneVNode) : children,
+    target: vnode.target,
+    targetStart: vnode.targetStart,
+    targetAnchor: vnode.targetAnchor,
+    staticCount: vnode.staticCount,
+    shapeFlag: vnode.shapeFlag,
+    // if the vnode is cloned with extra props, we can no longer assume its
+    // existing patch flag to be reliable and need to add the FULL_PROPS flag.
+    // note: preserve flag for fragments since they use the flag for children
+    // fast paths only.
+    patchFlag: extraProps && vnode.type !== Fragment ? patchFlag === -1 ? 16 : patchFlag | 16 : patchFlag,
+    dynamicProps: vnode.dynamicProps,
+    dynamicChildren: vnode.dynamicChildren,
+    appContext: vnode.appContext,
+    dirs: vnode.dirs,
+    transition,
+    // These should technically only be non-null on mounted VNodes. However,
+    // they *should* be copied for kept-alive vnodes. So we just always copy
+    // them since them being non-null during a mount doesn't affect the logic as
+    // they will simply be overwritten.
+    component: vnode.component,
+    suspense: vnode.suspense,
+    ssContent: vnode.ssContent && cloneVNode(vnode.ssContent),
+    ssFallback: vnode.ssFallback && cloneVNode(vnode.ssFallback),
+    el: vnode.el,
+    anchor: vnode.anchor,
+    ctx: vnode.ctx,
+    ce: vnode.ce
+  };
+  if (transition && cloneTransition) {
+    setTransitionHooks(
+      cloned,
+      transition.clone(cloned)
+    );
+  }
+  return cloned;
+}
+function deepCloneVNode(vnode) {
+  const cloned = cloneVNode(vnode);
+  if (isArray(vnode.children)) {
+    cloned.children = vnode.children.map(deepCloneVNode);
+  }
+  return cloned;
+}
+function createTextVNode(text = " ", flag = 0) {
+  return createVNode(Text, null, text, flag);
+}
+function createCommentVNode(text = "", asBlock = false) {
+  return asBlock ? (openBlock(), createBlock(Comment, null, text)) : createVNode(Comment, null, text);
+}
+function normalizeVNode(child) {
+  if (child == null || typeof child === "boolean") {
+    return createVNode(Comment);
+  } else if (isArray(child)) {
+    return createVNode(
+      Fragment,
+      null,
+      // #3666, avoid reference pollution when reusing vnode
+      child.slice()
+    );
+  } else if (isVNode(child)) {
+    return cloneIfMounted(child);
+  } else {
+    return createVNode(Text, null, String(child));
+  }
+}
+function cloneIfMounted(child) {
+  return child.el === null && child.patchFlag !== -1 || child.memo ? child : cloneVNode(child);
+}
+function normalizeChildren(vnode, children) {
+  let type = 0;
+  const { shapeFlag } = vnode;
+  if (children == null) {
+    children = null;
+  } else if (isArray(children)) {
+    type = 16;
+  } else if (typeof children === "object") {
+    if (shapeFlag & (1 | 64)) {
+      const slot = children.default;
+      if (slot) {
+        slot._c && (slot._d = false);
+        normalizeChildren(vnode, slot());
+        slot._c && (slot._d = true);
+      }
+      return;
+    } else {
+      type = 32;
+      const slotFlag = children._;
+      if (!slotFlag && !isInternalObject(children)) {
+        children._ctx = currentRenderingInstance;
+      } else if (slotFlag === 3 && currentRenderingInstance) {
+        if (currentRenderingInstance.slots._ === 1) {
+          children._ = 1;
+        } else {
+          children._ = 2;
+          vnode.patchFlag |= 1024;
+        }
+      }
+    }
+  } else if (isFunction(children)) {
+    children = { default: children, _ctx: currentRenderingInstance };
+    type = 32;
+  } else {
+    children = String(children);
+    if (shapeFlag & 64) {
+      type = 16;
+      children = [createTextVNode(children)];
+    } else {
+      type = 8;
+    }
+  }
+  vnode.children = children;
+  vnode.shapeFlag |= type;
+}
+function mergeProps(...args) {
+  const ret = {};
+  for (let i = 0; i < args.length; i++) {
+    const toMerge = args[i];
+    for (const key in toMerge) {
+      if (key === "class") {
+        if (ret.class !== toMerge.class) {
+          ret.class = normalizeClass([ret.class, toMerge.class]);
+        }
+      } else if (key === "style") {
+        ret.style = normalizeStyle([ret.style, toMerge.style]);
+      } else if (isOn(key)) {
+        const existing = ret[key];
+        const incoming = toMerge[key];
+        if (incoming && existing !== incoming && !(isArray(existing) && existing.includes(incoming))) {
+          ret[key] = existing ? [].concat(existing, incoming) : incoming;
+        }
+      } else if (key !== "") {
+        ret[key] = toMerge[key];
+      }
+    }
+  }
+  return ret;
+}
+function invokeVNodeHook(hook, instance, vnode, prevVNode = null) {
+  callWithAsyncErrorHandling(hook, instance, 7, [
+    vnode,
+    prevVNode
+  ]);
+}
+const emptyAppContext = createAppContext();
+let uid = 0;
+function createComponentInstance(vnode, parent, suspense) {
+  const type = vnode.type;
+  const appContext = (parent ? parent.appContext : vnode.appContext) || emptyAppContext;
+  const instance = {
+    uid: uid++,
+    vnode,
+    type,
+    parent,
+    appContext,
+    root: null,
+    // to be immediately set
+    next: null,
+    subTree: null,
+    // will be set synchronously right after creation
+    effect: null,
+    update: null,
+    // will be set synchronously right after creation
+    job: null,
+    scope: new EffectScope(
+      true
+      /* detached */
+    ),
+    render: null,
+    proxy: null,
+    exposed: null,
+    exposeProxy: null,
+    withProxy: null,
+    provides: parent ? parent.provides : Object.create(appContext.provides),
+    ids: parent ? parent.ids : ["", 0, 0],
+    accessCache: null,
+    renderCache: [],
+    // local resolved assets
+    components: null,
+    directives: null,
+    // resolved props and emits options
+    propsOptions: normalizePropsOptions(type, appContext),
+    emitsOptions: normalizeEmitsOptions(type, appContext),
+    // emit
+    emit: null,
+    // to be set immediately
+    emitted: null,
+    // props default value
+    propsDefaults: EMPTY_OBJ,
+    // inheritAttrs
+    inheritAttrs: type.inheritAttrs,
+    // state
+    ctx: EMPTY_OBJ,
+    data: EMPTY_OBJ,
+    props: EMPTY_OBJ,
+    attrs: EMPTY_OBJ,
+    slots: EMPTY_OBJ,
+    refs: EMPTY_OBJ,
+    setupState: EMPTY_OBJ,
+    setupContext: null,
+    // suspense related
+    suspense,
+    suspenseId: suspense ? suspense.pendingId : 0,
+    asyncDep: null,
+    asyncResolved: false,
+    // lifecycle hooks
+    // not using enums here because it results in computed properties
+    isMounted: false,
+    isUnmounted: false,
+    isDeactivated: false,
+    bc: null,
+    c: null,
+    bm: null,
+    m: null,
+    bu: null,
+    u: null,
+    um: null,
+    bum: null,
+    da: null,
+    a: null,
+    rtg: null,
+    rtc: null,
+    ec: null,
+    sp: null
+  };
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    instance.ctx = createDevRenderContext(instance);
+  } else {
+    instance.ctx = { _: instance };
+  }
+  instance.root = parent ? parent.root : instance;
+  instance.emit = emit.bind(null, instance);
+  if (vnode.ce) {
+    vnode.ce(instance);
+  }
+  return instance;
+}
+let currentInstance = null;
+const getCurrentInstance = () => currentInstance || currentRenderingInstance;
+let internalSetCurrentInstance;
+let setInSSRSetupState;
+{
+  const g = getGlobalThis();
+  const registerGlobalSetter = (key, setter) => {
+    let setters;
+    if (!(setters = g[key])) setters = g[key] = [];
+    setters.push(setter);
+    return (v) => {
+      if (setters.length > 1) setters.forEach((set) => set(v));
+      else setters[0](v);
+    };
+  };
+  internalSetCurrentInstance = registerGlobalSetter(
+    `__VUE_INSTANCE_SETTERS__`,
+    (v) => currentInstance = v
+  );
+  setInSSRSetupState = registerGlobalSetter(
+    `__VUE_SSR_SETTERS__`,
+    (v) => isInSSRComponentSetup = v
+  );
+}
+const setCurrentInstance = (instance) => {
+  const prev = currentInstance;
+  internalSetCurrentInstance(instance);
+  instance.scope.on();
+  return () => {
+    instance.scope.off();
+    internalSetCurrentInstance(prev);
+  };
+};
+const unsetCurrentInstance = () => {
+  currentInstance && currentInstance.scope.off();
+  internalSetCurrentInstance(null);
+};
+const isBuiltInTag = /* @__PURE__ */ makeMap("slot,component");
+function validateComponentName(name, { isNativeTag }) {
+  if (isBuiltInTag(name) || isNativeTag(name)) {
+    warn$1(
+      "Do not use built-in or reserved HTML elements as component id: " + name
+    );
+  }
+}
+function isStatefulComponent(instance) {
+  return instance.vnode.shapeFlag & 4;
+}
+let isInSSRComponentSetup = false;
+function setupComponent(instance, isSSR = false, optimized = false) {
+  isSSR && setInSSRSetupState(isSSR);
+  const { props, children } = instance.vnode;
+  const isStateful = isStatefulComponent(instance);
+  initProps(instance, props, isStateful, isSSR);
+  initSlots(instance, children, optimized);
+  const setupResult = isStateful ? setupStatefulComponent(instance, isSSR) : void 0;
+  isSSR && setInSSRSetupState(false);
+  return setupResult;
+}
+function setupStatefulComponent(instance, isSSR) {
+  var _a;
+  const Component = instance.type;
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    if (Component.name) {
+      validateComponentName(Component.name, instance.appContext.config);
+    }
+    if (Component.components) {
+      const names = Object.keys(Component.components);
+      for (let i = 0; i < names.length; i++) {
+        validateComponentName(names[i], instance.appContext.config);
+      }
+    }
+    if (Component.directives) {
+      const names = Object.keys(Component.directives);
+      for (let i = 0; i < names.length; i++) {
+        validateDirectiveName(names[i]);
+      }
+    }
+    if (Component.compilerOptions && isRuntimeOnly()) {
+      warn$1(
+        `"compilerOptions" is only supported when using a build of Vue that includes the runtime compiler. Since you are using a runtime-only build, the options should be passed via your build tool config instead.`
+      );
+    }
+  }
+  instance.accessCache = /* @__PURE__ */ Object.create(null);
+  instance.proxy = new Proxy(instance.ctx, PublicInstanceProxyHandlers);
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    exposePropsOnRenderContext(instance);
+  }
+  const { setup } = Component;
+  if (setup) {
+    pauseTracking();
+    const setupContext = instance.setupContext = setup.length > 1 ? createSetupContext(instance) : null;
+    const reset = setCurrentInstance(instance);
+    const setupResult = callWithErrorHandling(
+      setup,
+      instance,
+      0,
+      [
+        !!(define_process_default$2.env.NODE_ENV !== "production") ? shallowReadonly(instance.props) : instance.props,
+        setupContext
+      ]
+    );
+    const isAsyncSetup = isPromise(setupResult);
+    resetTracking();
+    reset();
+    if ((isAsyncSetup || instance.sp) && !isAsyncWrapper(instance)) {
+      markAsyncBoundary(instance);
+    }
+    if (isAsyncSetup) {
+      setupResult.then(unsetCurrentInstance, unsetCurrentInstance);
+      if (isSSR) {
+        return setupResult.then((resolvedResult) => {
+          handleSetupResult(instance, resolvedResult, isSSR);
+        }).catch((e) => {
+          handleError(e, instance, 0);
+        });
+      } else {
+        instance.asyncDep = setupResult;
+        if (!!(define_process_default$2.env.NODE_ENV !== "production") && !instance.suspense) {
+          const name = (_a = Component.name) != null ? _a : "Anonymous";
+          warn$1(
+            `Component <${name}>: setup function returned a promise, but no <Suspense> boundary was found in the parent component tree. A component with async setup() must be nested in a <Suspense> in order to be rendered.`
+          );
+        }
+      }
+    } else {
+      handleSetupResult(instance, setupResult, isSSR);
+    }
+  } else {
+    finishComponentSetup(instance, isSSR);
+  }
+}
+function handleSetupResult(instance, setupResult, isSSR) {
+  if (isFunction(setupResult)) {
+    if (instance.type.__ssrInlineRender) {
+      instance.ssrRender = setupResult;
+    } else {
+      instance.render = setupResult;
+    }
+  } else if (isObject(setupResult)) {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") && isVNode(setupResult)) {
+      warn$1(
+        `setup() should not return VNodes directly - return a render function instead.`
+      );
+    }
+    if (!!(define_process_default$2.env.NODE_ENV !== "production") || false) {
+      instance.devtoolsRawSetupState = setupResult;
+    }
+    instance.setupState = proxyRefs(setupResult);
+    if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      exposeSetupStateOnRenderContext(instance);
+    }
+  } else if (!!(define_process_default$2.env.NODE_ENV !== "production") && setupResult !== void 0) {
+    warn$1(
+      `setup() should return an object. Received: ${setupResult === null ? "null" : typeof setupResult}`
+    );
+  }
+  finishComponentSetup(instance, isSSR);
+}
+const isRuntimeOnly = () => true;
+function finishComponentSetup(instance, isSSR, skipOptions) {
+  const Component = instance.type;
+  if (!instance.render) {
+    instance.render = Component.render || NOOP;
+  }
+  {
+    const reset = setCurrentInstance(instance);
+    pauseTracking();
+    try {
+      applyOptions(instance);
+    } finally {
+      resetTracking();
+      reset();
+    }
+  }
+  if (!!(define_process_default$2.env.NODE_ENV !== "production") && !Component.render && instance.render === NOOP && !isSSR) {
+    if (Component.template) {
+      warn$1(
+        `Component provided template option but runtime compilation is not supported in this build of Vue. Configure your bundler to alias "vue" to "vue/dist/vue.esm-bundler.js".`
+      );
+    } else {
+      warn$1(`Component is missing template or render function: `, Component);
+    }
+  }
+}
+const attrsProxyHandlers = !!(define_process_default$2.env.NODE_ENV !== "production") ? {
+  get(target, key) {
+    markAttrsAccessed();
+    track(target, "get", "");
+    return target[key];
+  },
+  set() {
+    warn$1(`setupContext.attrs is readonly.`);
+    return false;
+  },
+  deleteProperty() {
+    warn$1(`setupContext.attrs is readonly.`);
+    return false;
+  }
+} : {
+  get(target, key) {
+    track(target, "get", "");
+    return target[key];
+  }
+};
+function getSlotsProxy(instance) {
+  return new Proxy(instance.slots, {
+    get(target, key) {
+      track(instance, "get", "$slots");
+      return target[key];
+    }
+  });
+}
+function createSetupContext(instance) {
+  const expose = (exposed) => {
+    if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+      if (instance.exposed) {
+        warn$1(`expose() should be called only once per setup().`);
+      }
+      if (exposed != null) {
+        let exposedType = typeof exposed;
+        if (exposedType === "object") {
+          if (isArray(exposed)) {
+            exposedType = "array";
+          } else if (isRef(exposed)) {
+            exposedType = "ref";
+          }
+        }
+        if (exposedType !== "object") {
+          warn$1(
+            `expose() should be passed a plain object, received ${exposedType}.`
+          );
+        }
+      }
+    }
+    instance.exposed = exposed || {};
+  };
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    let attrsProxy;
+    let slotsProxy;
+    return Object.freeze({
+      get attrs() {
+        return attrsProxy || (attrsProxy = new Proxy(instance.attrs, attrsProxyHandlers));
+      },
+      get slots() {
+        return slotsProxy || (slotsProxy = getSlotsProxy(instance));
+      },
+      get emit() {
+        return (event, ...args) => instance.emit(event, ...args);
+      },
+      expose
+    });
+  } else {
+    return {
+      attrs: new Proxy(instance.attrs, attrsProxyHandlers),
+      slots: instance.slots,
+      emit: instance.emit,
+      expose
+    };
+  }
+}
+function getComponentPublicInstance(instance) {
+  if (instance.exposed) {
+    return instance.exposeProxy || (instance.exposeProxy = new Proxy(proxyRefs(markRaw(instance.exposed)), {
+      get(target, key) {
+        if (key in target) {
+          return target[key];
+        } else if (key in publicPropertiesMap) {
+          return publicPropertiesMap[key](instance);
+        }
+      },
+      has(target, key) {
+        return key in target || key in publicPropertiesMap;
+      }
+    }));
+  } else {
+    return instance.proxy;
+  }
+}
+const classifyRE = /(?:^|[-_])(\w)/g;
+const classify = (str) => str.replace(classifyRE, (c) => c.toUpperCase()).replace(/[-_]/g, "");
+function getComponentName(Component, includeInferred = true) {
+  return isFunction(Component) ? Component.displayName || Component.name : Component.name || includeInferred && Component.__name;
+}
+function formatComponentName(instance, Component, isRoot = false) {
+  let name = getComponentName(Component);
+  if (!name && Component.__file) {
+    const match = Component.__file.match(/([^/\\]+)\.\w+$/);
+    if (match) {
+      name = match[1];
+    }
+  }
+  if (!name && instance && instance.parent) {
+    const inferFromRegistry = (registry) => {
+      for (const key in registry) {
+        if (registry[key] === Component) {
+          return key;
+        }
+      }
+    };
+    name = inferFromRegistry(
+      instance.components || instance.parent.type.components
+    ) || inferFromRegistry(instance.appContext.components);
+  }
+  return name ? classify(name) : isRoot ? `App` : `Anonymous`;
+}
+function isClassComponent(value) {
+  return isFunction(value) && "__vccOpts" in value;
+}
+const computed = (getterOrOptions, debugOptions) => {
+  const c = computed$1(getterOrOptions, debugOptions, isInSSRComponentSetup);
+  if (!!(define_process_default$2.env.NODE_ENV !== "production")) {
+    const i = getCurrentInstance();
+    if (i && i.appContext.config.warnRecursiveComputed) {
+      c._warnRecursive = true;
+    }
+  }
+  return c;
+};
+function initCustomFormatter() {
+  if (!!!(define_process_default$2.env.NODE_ENV !== "production") || typeof window === "undefined") {
+    return;
+  }
+  const vueStyle = { style: "color:#3ba776" };
+  const numberStyle = { style: "color:#1677ff" };
+  const stringStyle = { style: "color:#f5222d" };
+  const keywordStyle = { style: "color:#eb2f96" };
+  const formatter = {
+    __vue_custom_formatter: true,
+    header(obj) {
+      if (!isObject(obj)) {
+        return null;
+      }
+      if (obj.__isVue) {
+        return ["div", vueStyle, `VueInstance`];
+      } else if (isRef(obj)) {
+        return [
+          "div",
+          {},
+          ["span", vueStyle, genRefFlag(obj)],
+          "<",
+          // avoid debugger accessing value affecting behavior
+          formatValue("_value" in obj ? obj._value : obj),
+          `>`
+        ];
+      } else if (isReactive(obj)) {
+        return [
+          "div",
+          {},
+          ["span", vueStyle, isShallow(obj) ? "ShallowReactive" : "Reactive"],
+          "<",
+          formatValue(obj),
+          `>${isReadonly(obj) ? ` (readonly)` : ``}`
+        ];
+      } else if (isReadonly(obj)) {
+        return [
+          "div",
+          {},
+          ["span", vueStyle, isShallow(obj) ? "ShallowReadonly" : "Readonly"],
+          "<",
+          formatValue(obj),
+          ">"
+        ];
+      }
+      return null;
+    },
+    hasBody(obj) {
+      return obj && obj.__isVue;
+    },
+    body(obj) {
+      if (obj && obj.__isVue) {
+        return [
+          "div",
+          {},
+          ...formatInstance(obj.$)
+        ];
+      }
+    }
+  };
+  function formatInstance(instance) {
+    const blocks = [];
+    if (instance.type.props && instance.props) {
+      blocks.push(createInstanceBlock("props", toRaw(instance.props)));
+    }
+    if (instance.setupState !== EMPTY_OBJ) {
+      blocks.push(createInstanceBlock("setup", instance.setupState));
+    }
+    if (instance.data !== EMPTY_OBJ) {
+      blocks.push(createInstanceBlock("data", toRaw(instance.data)));
+    }
+    const computed2 = extractKeys(instance, "computed");
+    if (computed2) {
+      blocks.push(createInstanceBlock("computed", computed2));
+    }
+    const injected = extractKeys(instance, "inject");
+    if (injected) {
+      blocks.push(createInstanceBlock("injected", injected));
+    }
+    blocks.push([
+      "div",
+      {},
+      [
+        "span",
+        {
+          style: keywordStyle.style + ";opacity:0.66"
+        },
+        "$ (internal): "
+      ],
+      ["object", { object: instance }]
+    ]);
+    return blocks;
+  }
+  function createInstanceBlock(type, target) {
+    target = extend({}, target);
+    if (!Object.keys(target).length) {
+      return ["span", {}];
+    }
+    return [
+      "div",
+      { style: "line-height:1.25em;margin-bottom:0.6em" },
+      [
+        "div",
+        {
+          style: "color:#476582"
+        },
+        type
+      ],
+      [
+        "div",
+        {
+          style: "padding-left:1.25em"
+        },
+        ...Object.keys(target).map((key) => {
+          return [
+            "div",
+            {},
+            ["span", keywordStyle, key + ": "],
+            formatValue(target[key], false)
+          ];
+        })
+      ]
+    ];
+  }
+  function formatValue(v, asRaw = true) {
+    if (typeof v === "number") {
+      return ["span", numberStyle, v];
+    } else if (typeof v === "string") {
+      return ["span", stringStyle, JSON.stringify(v)];
+    } else if (typeof v === "boolean") {
+      return ["span", keywordStyle, v];
+    } else if (isObject(v)) {
+      return ["object", { object: asRaw ? toRaw(v) : v }];
+    } else {
+      return ["span", stringStyle, String(v)];
+    }
+  }
+  function extractKeys(instance, type) {
+    const Comp = instance.type;
+    if (isFunction(Comp)) {
+      return;
+    }
+    const extracted = {};
+    for (const key in instance.ctx) {
+      if (isKeyOfType(Comp, key, type)) {
+        extracted[key] = instance.ctx[key];
+      }
+    }
+    return extracted;
+  }
+  function isKeyOfType(Comp, key, type) {
+    const opts = Comp[type];
+    if (isArray(opts) && opts.includes(key) || isObject(opts) && key in opts) {
+      return true;
+    }
+    if (Comp.extends && isKeyOfType(Comp.extends, key, type)) {
+      return true;
+    }
+    if (Comp.mixins && Comp.mixins.some((m) => isKeyOfType(m, key, type))) {
+      return true;
+    }
+  }
+  function genRefFlag(v) {
+    if (isShallow(v)) {
+      return `ShallowRef`;
+    }
+    if (v.effect) {
+      return `ComputedRef`;
+    }
+    return `Ref`;
+  }
+  if (window.devtoolsFormatters) {
+    window.devtoolsFormatters.push(formatter);
+  } else {
+    window.devtoolsFormatters = [formatter];
+  }
+}
+const version = "3.5.13";
+const warn = !!(define_process_default$2.env.NODE_ENV !== "production") ? warn$1 : NOOP;
+var define_process_default$1 = { env: {} };
+let policy = void 0;
+const tt = typeof window !== "undefined" && window.trustedTypes;
+if (tt) {
+  try {
+    policy = /* @__PURE__ */ tt.createPolicy("vue", {
+      createHTML: (val) => val
+    });
+  } catch (e) {
+    !!(define_process_default$1.env.NODE_ENV !== "production") && warn(`Error creating trusted types policy: ${e}`);
+  }
+}
+const unsafeToTrustedHTML = policy ? (val) => policy.createHTML(val) : (val) => val;
+const svgNS = "http://www.w3.org/2000/svg";
+const mathmlNS = "http://www.w3.org/1998/Math/MathML";
+const doc = typeof document !== "undefined" ? document : null;
+const templateContainer = doc && /* @__PURE__ */ doc.createElement("template");
+const nodeOps = {
+  insert: (child, parent, anchor) => {
+    parent.insertBefore(child, anchor || null);
+  },
+  remove: (child) => {
+    const parent = child.parentNode;
+    if (parent) {
+      parent.removeChild(child);
+    }
+  },
+  createElement: (tag, namespace, is, props) => {
+    const el = namespace === "svg" ? doc.createElementNS(svgNS, tag) : namespace === "mathml" ? doc.createElementNS(mathmlNS, tag) : is ? doc.createElement(tag, { is }) : doc.createElement(tag);
+    if (tag === "select" && props && props.multiple != null) {
+      el.setAttribute("multiple", props.multiple);
+    }
+    return el;
+  },
+  createText: (text) => doc.createTextNode(text),
+  createComment: (text) => doc.createComment(text),
+  setText: (node, text) => {
+    node.nodeValue = text;
+  },
+  setElementText: (el, text) => {
+    el.textContent = text;
+  },
+  parentNode: (node) => node.parentNode,
+  nextSibling: (node) => node.nextSibling,
+  querySelector: (selector) => doc.querySelector(selector),
+  setScopeId(el, id) {
+    el.setAttribute(id, "");
+  },
+  // __UNSAFE__
+  // Reason: innerHTML.
+  // Static content here can only come from compiled templates.
+  // As long as the user only uses trusted templates, this is safe.
+  insertStaticContent(content, parent, anchor, namespace, start, end) {
+    const before = anchor ? anchor.previousSibling : parent.lastChild;
+    if (start && (start === end || start.nextSibling)) {
+      while (true) {
+        parent.insertBefore(start.cloneNode(true), anchor);
+        if (start === end || !(start = start.nextSibling)) break;
+      }
+    } else {
+      templateContainer.innerHTML = unsafeToTrustedHTML(
+        namespace === "svg" ? `<svg>${content}</svg>` : namespace === "mathml" ? `<math>${content}</math>` : content
+      );
+      const template = templateContainer.content;
+      if (namespace === "svg" || namespace === "mathml") {
+        const wrapper = template.firstChild;
+        while (wrapper.firstChild) {
+          template.appendChild(wrapper.firstChild);
+        }
+        template.removeChild(wrapper);
+      }
+      parent.insertBefore(template, anchor);
+    }
+    return [
+      // first
+      before ? before.nextSibling : parent.firstChild,
+      // last
+      anchor ? anchor.previousSibling : parent.lastChild
+    ];
+  }
+};
+const vtcKey = Symbol("_vtc");
+function patchClass(el, value, isSVG) {
+  const transitionClasses = el[vtcKey];
+  if (transitionClasses) {
+    value = (value ? [value, ...transitionClasses] : [...transitionClasses]).join(" ");
+  }
+  if (value == null) {
+    el.removeAttribute("class");
+  } else if (isSVG) {
+    el.setAttribute("class", value);
+  } else {
+    el.className = value;
+  }
+}
+const vShowOriginalDisplay = Symbol("_vod");
+const vShowHidden = Symbol("_vsh");
+const CSS_VAR_TEXT = Symbol(!!(define_process_default$1.env.NODE_ENV !== "production") ? "CSS_VAR_TEXT" : "");
+const displayRE = /(^|;)\s*display\s*:/;
+function patchStyle(el, prev, next) {
+  const style = el.style;
+  const isCssString = isString(next);
+  let hasControlledDisplay = false;
+  if (next && !isCssString) {
+    if (prev) {
+      if (!isString(prev)) {
+        for (const key in prev) {
+          if (next[key] == null) {
+            setStyle(style, key, "");
+          }
+        }
+      } else {
+        for (const prevStyle of prev.split(";")) {
+          const key = prevStyle.slice(0, prevStyle.indexOf(":")).trim();
+          if (next[key] == null) {
+            setStyle(style, key, "");
+          }
+        }
+      }
+    }
+    for (const key in next) {
+      if (key === "display") {
+        hasControlledDisplay = true;
+      }
+      setStyle(style, key, next[key]);
+    }
+  } else {
+    if (isCssString) {
+      if (prev !== next) {
+        const cssVarText = style[CSS_VAR_TEXT];
+        if (cssVarText) {
+          next += ";" + cssVarText;
+        }
+        style.cssText = next;
+        hasControlledDisplay = displayRE.test(next);
+      }
+    } else if (prev) {
+      el.removeAttribute("style");
+    }
+  }
+  if (vShowOriginalDisplay in el) {
+    el[vShowOriginalDisplay] = hasControlledDisplay ? style.display : "";
+    if (el[vShowHidden]) {
+      style.display = "none";
+    }
+  }
+}
+const semicolonRE = /[^\\];\s*$/;
+const importantRE = /\s*!important$/;
+function setStyle(style, name, val) {
+  if (isArray(val)) {
+    val.forEach((v) => setStyle(style, name, v));
+  } else {
+    if (val == null) val = "";
+    if (!!(define_process_default$1.env.NODE_ENV !== "production")) {
+      if (semicolonRE.test(val)) {
+        warn(
+          `Unexpected semicolon at the end of '${name}' style value: '${val}'`
+        );
+      }
+    }
+    if (name.startsWith("--")) {
+      style.setProperty(name, val);
+    } else {
+      const prefixed = autoPrefix(style, name);
+      if (importantRE.test(val)) {
+        style.setProperty(
+          hyphenate(prefixed),
+          val.replace(importantRE, ""),
+          "important"
+        );
+      } else {
+        style[prefixed] = val;
+      }
+    }
+  }
+}
+const prefixes = ["Webkit", "Moz", "ms"];
+const prefixCache = {};
+function autoPrefix(style, rawName) {
+  const cached = prefixCache[rawName];
+  if (cached) {
+    return cached;
+  }
+  let name = camelize(rawName);
+  if (name !== "filter" && name in style) {
+    return prefixCache[rawName] = name;
+  }
+  name = capitalize(name);
+  for (let i = 0; i < prefixes.length; i++) {
+    const prefixed = prefixes[i] + name;
+    if (prefixed in style) {
+      return prefixCache[rawName] = prefixed;
+    }
+  }
+  return rawName;
+}
+const xlinkNS = "http://www.w3.org/1999/xlink";
+function patchAttr(el, key, value, isSVG, instance, isBoolean2 = isSpecialBooleanAttr(key)) {
+  if (isSVG && key.startsWith("xlink:")) {
+    if (value == null) {
+      el.removeAttributeNS(xlinkNS, key.slice(6, key.length));
+    } else {
+      el.setAttributeNS(xlinkNS, key, value);
+    }
+  } else {
+    if (value == null || isBoolean2 && !includeBooleanAttr(value)) {
+      el.removeAttribute(key);
+    } else {
+      el.setAttribute(
+        key,
+        isBoolean2 ? "" : isSymbol(value) ? String(value) : value
+      );
+    }
+  }
+}
+function patchDOMProp(el, key, value, parentComponent, attrName) {
+  if (key === "innerHTML" || key === "textContent") {
+    if (value != null) {
+      el[key] = key === "innerHTML" ? unsafeToTrustedHTML(value) : value;
+    }
+    return;
+  }
+  const tag = el.tagName;
+  if (key === "value" && tag !== "PROGRESS" && // custom elements may use _value internally
+  !tag.includes("-")) {
+    const oldValue = tag === "OPTION" ? el.getAttribute("value") || "" : el.value;
+    const newValue = value == null ? (
+      // #11647: value should be set as empty string for null and undefined,
+      // but <input type="checkbox"> should be set as 'on'.
+      el.type === "checkbox" ? "on" : ""
+    ) : String(value);
+    if (oldValue !== newValue || !("_value" in el)) {
+      el.value = newValue;
+    }
+    if (value == null) {
+      el.removeAttribute(key);
+    }
+    el._value = value;
+    return;
+  }
+  let needRemove = false;
+  if (value === "" || value == null) {
+    const type = typeof el[key];
+    if (type === "boolean") {
+      value = includeBooleanAttr(value);
+    } else if (value == null && type === "string") {
+      value = "";
+      needRemove = true;
+    } else if (type === "number") {
+      value = 0;
+      needRemove = true;
+    }
+  }
+  try {
+    el[key] = value;
+  } catch (e) {
+    if (!!(define_process_default$1.env.NODE_ENV !== "production") && !needRemove) {
+      warn(
+        `Failed setting prop "${key}" on <${tag.toLowerCase()}>: value ${value} is invalid.`,
+        e
+      );
+    }
+  }
+  needRemove && el.removeAttribute(attrName || key);
+}
+function addEventListener(el, event, handler, options) {
+  el.addEventListener(event, handler, options);
+}
+function removeEventListener(el, event, handler, options) {
+  el.removeEventListener(event, handler, options);
+}
+const veiKey = Symbol("_vei");
+function patchEvent(el, rawName, prevValue, nextValue, instance = null) {
+  const invokers = el[veiKey] || (el[veiKey] = {});
+  const existingInvoker = invokers[rawName];
+  if (nextValue && existingInvoker) {
+    existingInvoker.value = !!(define_process_default$1.env.NODE_ENV !== "production") ? sanitizeEventValue(nextValue, rawName) : nextValue;
+  } else {
+    const [name, options] = parseName(rawName);
+    if (nextValue) {
+      const invoker = invokers[rawName] = createInvoker(
+        !!(define_process_default$1.env.NODE_ENV !== "production") ? sanitizeEventValue(nextValue, rawName) : nextValue,
+        instance
+      );
+      addEventListener(el, name, invoker, options);
+    } else if (existingInvoker) {
+      removeEventListener(el, name, existingInvoker, options);
+      invokers[rawName] = void 0;
+    }
+  }
+}
+const optionsModifierRE = /(?:Once|Passive|Capture)$/;
+function parseName(name) {
+  let options;
+  if (optionsModifierRE.test(name)) {
+    options = {};
+    let m;
+    while (m = name.match(optionsModifierRE)) {
+      name = name.slice(0, name.length - m[0].length);
+      options[m[0].toLowerCase()] = true;
+    }
+  }
+  const event = name[2] === ":" ? name.slice(3) : hyphenate(name.slice(2));
+  return [event, options];
+}
+let cachedNow = 0;
+const p = /* @__PURE__ */ Promise.resolve();
+const getNow = () => cachedNow || (p.then(() => cachedNow = 0), cachedNow = Date.now());
+function createInvoker(initialValue, instance) {
+  const invoker = (e) => {
+    if (!e._vts) {
+      e._vts = Date.now();
+    } else if (e._vts <= invoker.attached) {
+      return;
+    }
+    callWithAsyncErrorHandling(
+      patchStopImmediatePropagation(e, invoker.value),
+      instance,
+      5,
+      [e]
+    );
+  };
+  invoker.value = initialValue;
+  invoker.attached = getNow();
+  return invoker;
+}
+function sanitizeEventValue(value, propName) {
+  if (isFunction(value) || isArray(value)) {
+    return value;
+  }
+  warn(
+    `Wrong type passed as event handler to ${propName} - did you forget @ or : in front of your prop?
+Expected function or array of functions, received type ${typeof value}.`
+  );
+  return NOOP;
+}
+function patchStopImmediatePropagation(e, value) {
+  if (isArray(value)) {
+    const originalStop = e.stopImmediatePropagation;
+    e.stopImmediatePropagation = () => {
+      originalStop.call(e);
+      e._stopped = true;
+    };
+    return value.map(
+      (fn) => (e2) => !e2._stopped && fn && fn(e2)
+    );
+  } else {
+    return value;
+  }
+}
+const isNativeOn = (key) => key.charCodeAt(0) === 111 && key.charCodeAt(1) === 110 && // lowercase letter
+key.charCodeAt(2) > 96 && key.charCodeAt(2) < 123;
+const patchProp = (el, key, prevValue, nextValue, namespace, parentComponent) => {
+  const isSVG = namespace === "svg";
+  if (key === "class") {
+    patchClass(el, nextValue, isSVG);
+  } else if (key === "style") {
+    patchStyle(el, prevValue, nextValue);
+  } else if (isOn(key)) {
+    if (!isModelListener(key)) {
+      patchEvent(el, key, prevValue, nextValue, parentComponent);
+    }
+  } else if (key[0] === "." ? (key = key.slice(1), true) : key[0] === "^" ? (key = key.slice(1), false) : shouldSetAsProp(el, key, nextValue, isSVG)) {
+    patchDOMProp(el, key, nextValue);
+    if (!el.tagName.includes("-") && (key === "value" || key === "checked" || key === "selected")) {
+      patchAttr(el, key, nextValue, isSVG, parentComponent, key !== "value");
+    }
+  } else if (
+    // #11081 force set props for possible async custom element
+    el._isVueCE && (/[A-Z]/.test(key) || !isString(nextValue))
+  ) {
+    patchDOMProp(el, camelize(key), nextValue, parentComponent, key);
+  } else {
+    if (key === "true-value") {
+      el._trueValue = nextValue;
+    } else if (key === "false-value") {
+      el._falseValue = nextValue;
+    }
+    patchAttr(el, key, nextValue, isSVG);
+  }
+};
+function shouldSetAsProp(el, key, value, isSVG) {
+  if (isSVG) {
+    if (key === "innerHTML" || key === "textContent") {
+      return true;
+    }
+    if (key in el && isNativeOn(key) && isFunction(value)) {
+      return true;
+    }
+    return false;
+  }
+  if (key === "spellcheck" || key === "draggable" || key === "translate") {
+    return false;
+  }
+  if (key === "form") {
+    return false;
+  }
+  if (key === "list" && el.tagName === "INPUT") {
+    return false;
+  }
+  if (key === "type" && el.tagName === "TEXTAREA") {
+    return false;
+  }
+  if (key === "width" || key === "height") {
+    const tag = el.tagName;
+    if (tag === "IMG" || tag === "VIDEO" || tag === "CANVAS" || tag === "SOURCE") {
+      return false;
+    }
+  }
+  if (isNativeOn(key) && isString(value)) {
+    return false;
+  }
+  return key in el;
+}
+const getModelAssigner = (vnode) => {
+  const fn = vnode.props["onUpdate:modelValue"] || false;
+  return isArray(fn) ? (value) => invokeArrayFns(fn, value) : fn;
+};
+function onCompositionStart(e) {
+  e.target.composing = true;
+}
+function onCompositionEnd(e) {
+  const target = e.target;
+  if (target.composing) {
+    target.composing = false;
+    target.dispatchEvent(new Event("input"));
+  }
+}
+const assignKey = Symbol("_assign");
+const vModelText = {
+  created(el, { modifiers: { lazy, trim, number } }, vnode) {
+    el[assignKey] = getModelAssigner(vnode);
+    const castToNumber = number || vnode.props && vnode.props.type === "number";
+    addEventListener(el, lazy ? "change" : "input", (e) => {
+      if (e.target.composing) return;
+      let domValue = el.value;
+      if (trim) {
+        domValue = domValue.trim();
+      }
+      if (castToNumber) {
+        domValue = looseToNumber(domValue);
+      }
+      el[assignKey](domValue);
+    });
+    if (trim) {
+      addEventListener(el, "change", () => {
+        el.value = el.value.trim();
+      });
+    }
+    if (!lazy) {
+      addEventListener(el, "compositionstart", onCompositionStart);
+      addEventListener(el, "compositionend", onCompositionEnd);
+      addEventListener(el, "change", onCompositionEnd);
+    }
+  },
+  // set value on mounted so it's after min/max for type="range"
+  mounted(el, { value }) {
+    el.value = value == null ? "" : value;
+  },
+  beforeUpdate(el, { value, oldValue, modifiers: { lazy, trim, number } }, vnode) {
+    el[assignKey] = getModelAssigner(vnode);
+    if (el.composing) return;
+    const elValue = (number || el.type === "number") && !/^0\d/.test(el.value) ? looseToNumber(el.value) : el.value;
+    const newValue = value == null ? "" : value;
+    if (elValue === newValue) {
+      return;
+    }
+    if (document.activeElement === el && el.type !== "range") {
+      if (lazy && value === oldValue) {
+        return;
+      }
+      if (trim && el.value.trim() === newValue) {
+        return;
+      }
+    }
+    el.value = newValue;
+  }
+};
+const systemModifiers = ["ctrl", "shift", "alt", "meta"];
+const modifierGuards = {
+  stop: (e) => e.stopPropagation(),
+  prevent: (e) => e.preventDefault(),
+  self: (e) => e.target !== e.currentTarget,
+  ctrl: (e) => !e.ctrlKey,
+  shift: (e) => !e.shiftKey,
+  alt: (e) => !e.altKey,
+  meta: (e) => !e.metaKey,
+  left: (e) => "button" in e && e.button !== 0,
+  middle: (e) => "button" in e && e.button !== 1,
+  right: (e) => "button" in e && e.button !== 2,
+  exact: (e, modifiers) => systemModifiers.some((m) => e[`${m}Key`] && !modifiers.includes(m))
+};
+const withModifiers = (fn, modifiers) => {
+  const cache = fn._withMods || (fn._withMods = {});
+  const cacheKey = modifiers.join(".");
+  return cache[cacheKey] || (cache[cacheKey] = (event, ...args) => {
+    for (let i = 0; i < modifiers.length; i++) {
+      const guard = modifierGuards[modifiers[i]];
+      if (guard && guard(event, modifiers)) return;
+    }
+    return fn(event, ...args);
+  });
+};
+const rendererOptions = /* @__PURE__ */ extend({ patchProp }, nodeOps);
+let renderer;
+function ensureRenderer() {
+  return renderer || (renderer = createRenderer(rendererOptions));
+}
+const createApp = (...args) => {
+  const app = ensureRenderer().createApp(...args);
+  if (!!(define_process_default$1.env.NODE_ENV !== "production")) {
+    injectNativeTagCheck(app);
+    injectCompilerOptionsCheck(app);
+  }
+  const { mount } = app;
+  app.mount = (containerOrSelector) => {
+    const container = normalizeContainer(containerOrSelector);
+    if (!container) return;
+    const component = app._component;
+    if (!isFunction(component) && !component.render && !component.template) {
+      component.template = container.innerHTML;
+    }
+    if (container.nodeType === 1) {
+      container.textContent = "";
+    }
+    const proxy = mount(container, false, resolveRootNamespace(container));
+    if (container instanceof Element) {
+      container.removeAttribute("v-cloak");
+      container.setAttribute("data-v-app", "");
+    }
+    return proxy;
+  };
+  return app;
+};
+function resolveRootNamespace(container) {
+  if (container instanceof SVGElement) {
+    return "svg";
+  }
+  if (typeof MathMLElement === "function" && container instanceof MathMLElement) {
+    return "mathml";
+  }
+}
+function injectNativeTagCheck(app) {
+  Object.defineProperty(app.config, "isNativeTag", {
+    value: (tag) => isHTMLTag(tag) || isSVGTag(tag) || isMathMLTag(tag),
+    writable: false
+  });
+}
+function injectCompilerOptionsCheck(app) {
+  {
+    const isCustomElement = app.config.isCustomElement;
+    Object.defineProperty(app.config, "isCustomElement", {
+      get() {
+        return isCustomElement;
+      },
+      set() {
+        warn(
+          `The \`isCustomElement\` config option is deprecated. Use \`compilerOptions.isCustomElement\` instead.`
+        );
+      }
+    });
+    const compilerOptions = app.config.compilerOptions;
+    const msg = `The \`compilerOptions\` config option is only respected when using a build of Vue.js that includes the runtime compiler (aka "full build"). Since you are using the runtime-only build, \`compilerOptions\` must be passed to \`@vue/compiler-dom\` in the build setup instead.
+- For vue-loader: pass it via vue-loader's \`compilerOptions\` loader option.
+- For vue-cli: see https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader
+- For vite: pass it via @vitejs/plugin-vue options. See https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#example-for-passing-options-to-vuecompiler-sfc`;
+    Object.defineProperty(app.config, "compilerOptions", {
+      get() {
+        warn(msg);
+        return compilerOptions;
+      },
+      set() {
+        warn(msg);
+      }
+    });
+  }
+}
+function normalizeContainer(container) {
+  if (isString(container)) {
+    const res = document.querySelector(container);
+    if (!!(define_process_default$1.env.NODE_ENV !== "production") && !res) {
+      warn(
+        `Failed to mount app: mount target selector "${container}" returned null.`
+      );
+    }
+    return res;
+  }
+  if (!!(define_process_default$1.env.NODE_ENV !== "production") && window.ShadowRoot && container instanceof window.ShadowRoot && container.mode === "closed") {
+    warn(
+      `mounting on a ShadowRoot with \`{mode: "closed"}\` may lead to unpredictable bugs`
+    );
+  }
+  return container;
+}
+var define_process_default = { env: {} };
+function initDev() {
+  {
+    initCustomFormatter();
+  }
+}
+if (!!(define_process_default.env.NODE_ENV !== "production")) {
+  initDev();
+}
+const oceanpress_ui_flag = "oceanpress_ui_falg";
+const { Plugin } = require("siyuan");
+class SiyuanPlugin extends Plugin {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "onunloadFn", []);
+  }
+  // 在 unload 时执行注册的函数
+  addUnloadFn(fn) {
+    this.onunloadFn.push(fn);
+  }
+  onunload() {
+    this.onunloadFn.forEach((fn) => fn());
+  }
+  /**
+   * 如果 ui 组件已添加，就不会重复添加
+   */
+  async addUiComponent(parentEL, jsxEl) {
+    if (parentEL.querySelector("." + oceanpress_ui_flag)) return;
+    const div = document.createElement("div");
+    div.style.pointerEvents = "none";
+    const dispose = render(jsxEl, div);
+    this.addUnloadFn(() => (div.remove(), dispose()));
+    parentEL.appendChild(div);
+  }
+  /**
+   * 如果 ui 组件已添加，就不会重复添加
+   */
+  async addVueUiComponent(parentEL, VueComponent, props) {
+    if (parentEL.querySelector(`.${oceanpress_ui_flag}`)) return;
+    const mountEl = parentEL.firstChild;
+    const stopPropagation = (e) => {
+      e.stopImmediatePropagation();
+    };
+    const events = [
+      "compositionstart",
+      "compositionend",
+      "mousedown",
+      "mouseup",
+      "keydown",
+      "keyup",
+      "input",
+      "copy",
+      "cut",
+      "paste"
+    ];
+    events.forEach((event) => {
+      mountEl.addEventListener(event, stopPropagation);
+    });
+    mountEl.classList.add(oceanpress_ui_flag);
+    const blockId = parentEL.dataset.nodeId;
+    const app = createApp(VueComponent, {
+      blockId,
+      ...props
+    });
+    const instance = app.mount(mountEl);
+    this.saveData;
+    this.addUnloadFn(() => {
+      app.unmount();
+      mountEl.remove();
+    });
+    return instance;
+  }
+  async addVueUi(parentEL, VueComponent, props) {
+    if (parentEL.querySelector(`.${oceanpress_ui_flag}`)) return;
+    const mountEl = document.createElement("div");
+    parentEL.appendChild(mountEl);
+    mountEl.classList.add(oceanpress_ui_flag);
+    const stopPropagation = (e) => {
+      e.stopImmediatePropagation();
+    };
+    const events = [
+      "compositionstart",
+      "compositionend",
+      "mousedown",
+      "mouseup",
+      "keydown",
+      "keyup",
+      "input",
+      "copy",
+      "cut",
+      "paste"
+    ];
+    events.forEach((event) => {
+      mountEl.addEventListener(event, stopPropagation);
+    });
+    mountEl.classList.add(oceanpress_ui_flag);
+    const blockId = parentEL.dataset.nodeId;
+    const app = createApp(VueComponent, {
+      blockId,
+      ...props
+    });
+    const instance = app.mount(mountEl);
+    this.saveData;
+    this.addUnloadFn(() => {
+      app.unmount();
+      mountEl.remove();
+    });
+    return instance;
+  }
+}
+function generateTimestamp() {
+  const now = /* @__PURE__ */ new Date();
+  return [
+    now.getFullYear(),
+    now.getMonth() + 1,
+    now.getDate(),
+    now.getHours(),
+    now.getMinutes(),
+    now.getSeconds()
+  ].map((part) => part.toString().padStart(2, "0")).join("");
+}
+function generateUniqueId() {
+  const randomString = Math.random().toString(36).substring(2, 9);
+  return `${generateTimestamp()}-${randomString}`;
+}
+const BASE_PATH = "https://api.openai.com/v1".replace(/\/+$/, "");
+const globalFetch$1 = typeof fetch === "undefined" ? void 0 : fetch;
+class BaseAPI {
+  constructor(configuration2, basePath = BASE_PATH, fetch2 = globalFetch$1) {
+    __publicField(this, "basePath");
+    __publicField(this, "fetch");
+    __publicField(this, "configuration");
+    this.basePath = basePath;
+    this.fetch = fetch2;
+    if (configuration2) {
+      this.configuration = configuration2;
+      this.basePath = configuration2.basePath || this.basePath;
+    }
+  }
+}
+class RequiredError extends Error {
+  constructor(field, msg) {
+    super(msg);
+    __publicField(this, "field");
+    this.field = field;
+    this.name = "RequiredError";
+  }
+}
+const DUMMY_BASE_URL = "https://example.com";
+const assertParamExists = function(functionName, paramName, paramValue) {
+  if (paramValue === null || paramValue === void 0) {
+    throw new RequiredError(paramName, `Required parameter ${paramName} was null or undefined when calling ${functionName}.`);
+  }
+};
+function setFlattenedQueryParams(urlSearchParams, parameter, key = "") {
+  if (parameter == null)
+    return;
+  if (typeof parameter === "object") {
+    if (Array.isArray(parameter)) {
+      parameter.forEach((item) => setFlattenedQueryParams(urlSearchParams, item, key));
+    } else {
+      Object.keys(parameter).forEach((currentKey) => setFlattenedQueryParams(urlSearchParams, parameter[currentKey], `${key}${key !== "" ? "." : ""}${currentKey}`));
+    }
+  } else {
+    if (urlSearchParams.has(key)) {
+      urlSearchParams.append(key, parameter);
+    } else {
+      urlSearchParams.set(key, parameter);
+    }
+  }
+}
+const setSearchParams = function(url, ...objects) {
+  const searchParams = new URLSearchParams(url.search);
+  setFlattenedQueryParams(searchParams, objects);
+  url.search = searchParams.toString();
+};
+const serializeDataIfNeeded = function(value, requestOptions, configuration2) {
+  const nonString = typeof value !== "string";
+  const needsSerialization = nonString && configuration2 && configuration2.isJsonMime ? configuration2.isJsonMime(requestOptions.headers["Content-Type"]) : nonString;
+  return needsSerialization ? JSON.stringify(value !== void 0 ? value : {}) : value || "";
+};
+const toPathString = function(url) {
+  return url.pathname + url.search + url.hash;
+};
+const createRequestFunction = function(fetchArgs, globalFetch2, BASE_PATH2, configuration2) {
+  return (fetch2 = globalFetch2, basePath = BASE_PATH2) => {
+    if (typeof fetch2 === "undefined") {
+      throw new Error("You must pass a fetch polyfill if you're running in an environment without a global fetch");
+    }
+    let url = fetchArgs.url;
+    if (configuration2 == null ? void 0 : configuration2.defaultQueryParams) {
+      const queryPrefix = url.indexOf("?") === -1 ? "?" : "&";
+      url += queryPrefix + configuration2.defaultQueryParams;
+    }
+    return fetch2(((configuration2 == null ? void 0 : configuration2.basePath) || basePath) + url, fetchArgs.options);
+  };
+};
+const globalFetch = typeof fetch === "undefined" ? void 0 : fetch;
+const OpenAIApiParamCreator = function(configuration2) {
+  return {
+    /**
+     *
+     * @summary Immediately cancel a fine-tune job.
+     * @param {string} fineTuneId The ID of the fine-tune job to cancel
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cancelFineTune: async (fineTuneId, options = {}) => {
+      assertParamExists("cancelFineTune", "fineTuneId", fineTuneId);
+      const localVarPath = `/fine-tunes/{fine_tune_id}/cancel`.replace(`{${"fine_tune_id"}}`, encodeURIComponent(String(fineTuneId)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Answers the specified question using the provided documents and examples.  The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
+     * @param {CreateAnswerRequest} createAnswerRequest
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    createAnswer: async (createAnswerRequest, options = {}) => {
+      assertParamExists("createAnswer", "createAnswerRequest", createAnswerRequest);
+      const localVarPath = `/answers`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      localVarHeaderParameter["Content-Type"] = "application/json";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = serializeDataIfNeeded(createAnswerRequest, localVarRequestOptions, configuration2);
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Creates a model response for the given chat conversation.
+     * @param {CreateChatCompletionRequest} createChatCompletionRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createChatCompletion: async (createChatCompletionRequest, options = {}) => {
+      assertParamExists("createChatCompletion", "createChatCompletionRequest", createChatCompletionRequest);
+      const localVarPath = `/chat/completions`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      localVarHeaderParameter["Content-Type"] = "application/json";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = serializeDataIfNeeded(createChatCompletionRequest, localVarRequestOptions, configuration2);
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Classifies the specified `query` using provided examples.  The endpoint first [searches](/docs/api-reference/searches) over the labeled examples to select the ones most relevant for the particular query. Then, the relevant examples are combined with the query to construct a prompt to produce the final label via the [completions](/docs/api-reference/completions) endpoint.  Labeled examples can be provided via an uploaded `file`, or explicitly listed in the request using the `examples` parameter for quick tests and small scale use cases.
+     * @param {CreateClassificationRequest} createClassificationRequest
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    createClassification: async (createClassificationRequest, options = {}) => {
+      assertParamExists("createClassification", "createClassificationRequest", createClassificationRequest);
+      const localVarPath = `/classifications`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      localVarHeaderParameter["Content-Type"] = "application/json";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = serializeDataIfNeeded(createClassificationRequest, localVarRequestOptions, configuration2);
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Creates a completion for the provided prompt and parameters.
+     * @param {CreateCompletionRequest} createCompletionRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createCompletion: async (createCompletionRequest, options = {}) => {
+      assertParamExists("createCompletion", "createCompletionRequest", createCompletionRequest);
+      const localVarPath = `/completions`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      localVarHeaderParameter["Content-Type"] = "application/json";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = serializeDataIfNeeded(createCompletionRequest, localVarRequestOptions, configuration2);
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Creates a new edit for the provided input, instruction, and parameters.
+     * @param {CreateEditRequest} createEditRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createEdit: async (createEditRequest, options = {}) => {
+      assertParamExists("createEdit", "createEditRequest", createEditRequest);
+      const localVarPath = `/edits`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      localVarHeaderParameter["Content-Type"] = "application/json";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = serializeDataIfNeeded(createEditRequest, localVarRequestOptions, configuration2);
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Creates an embedding vector representing the input text.
+     * @param {CreateEmbeddingRequest} createEmbeddingRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createEmbedding: async (createEmbeddingRequest, options = {}) => {
+      assertParamExists("createEmbedding", "createEmbeddingRequest", createEmbeddingRequest);
+      const localVarPath = `/embeddings`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      localVarHeaderParameter["Content-Type"] = "application/json";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = serializeDataIfNeeded(createEmbeddingRequest, localVarRequestOptions, configuration2);
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
+     * @param {File} file Name of the [JSON Lines](https://jsonlines.readthedocs.io/en/latest/) file to be uploaded.  If the &#x60;purpose&#x60; is set to \\\&quot;fine-tune\\\&quot;, each line is a JSON record with \\\&quot;prompt\\\&quot; and \\\&quot;completion\\\&quot; fields representing your [training examples](/docs/guides/fine-tuning/prepare-training-data).
+     * @param {string} purpose The intended purpose of the uploaded documents.  Use \\\&quot;fine-tune\\\&quot; for [Fine-tuning](/docs/api-reference/fine-tunes). This allows us to validate the format of the uploaded file.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createFile: async (file, purpose, options = {}) => {
+      assertParamExists("createFile", "file", file);
+      assertParamExists("createFile", "purpose", purpose);
+      const localVarPath = `/files`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      const localVarFormParams = new (configuration2 && configuration2.formDataCtor || FormData)();
+      if (file !== void 0) {
+        localVarFormParams.append("file", file);
+      }
+      if (purpose !== void 0) {
+        localVarFormParams.append("purpose", purpose);
+      }
+      localVarHeaderParameter["Content-Type"] = "multipart/form-data";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...localVarFormParams.getHeaders(),
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = localVarFormParams;
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Creates a job that fine-tunes a specified model from a given dataset.  Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.  [Learn more about Fine-tuning](/docs/guides/fine-tuning)
+     * @param {CreateFineTuneRequest} createFineTuneRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createFineTune: async (createFineTuneRequest, options = {}) => {
+      assertParamExists("createFineTune", "createFineTuneRequest", createFineTuneRequest);
+      const localVarPath = `/fine-tunes`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      localVarHeaderParameter["Content-Type"] = "application/json";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = serializeDataIfNeeded(createFineTuneRequest, localVarRequestOptions, configuration2);
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Creates an image given a prompt.
+     * @param {CreateImageRequest} createImageRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createImage: async (createImageRequest, options = {}) => {
+      assertParamExists("createImage", "createImageRequest", createImageRequest);
+      const localVarPath = `/images/generations`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      localVarHeaderParameter["Content-Type"] = "application/json";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = serializeDataIfNeeded(createImageRequest, localVarRequestOptions, configuration2);
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Creates an edited or extended image given an original image and a prompt.
+     * @param {File} image The image to edit. Must be a valid PNG file, less than 4MB, and square. If mask is not provided, image must have transparency, which will be used as the mask.
+     * @param {string} prompt A text description of the desired image(s). The maximum length is 1000 characters.
+     * @param {File} [mask] An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where &#x60;image&#x60; should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as &#x60;image&#x60;.
+     * @param {number} [n] The number of images to generate. Must be between 1 and 10.
+     * @param {string} [size] The size of the generated images. Must be one of &#x60;256x256&#x60;, &#x60;512x512&#x60;, or &#x60;1024x1024&#x60;.
+     * @param {string} [responseFormat] The format in which the generated images are returned. Must be one of &#x60;url&#x60; or &#x60;b64_json&#x60;.
+     * @param {string} [user] A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices/end-user-ids).
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createImageEdit: async (image, prompt, mask, n, size, responseFormat, user, options = {}) => {
+      assertParamExists("createImageEdit", "image", image);
+      assertParamExists("createImageEdit", "prompt", prompt);
+      const localVarPath = `/images/edits`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      const localVarFormParams = new (configuration2 && configuration2.formDataCtor || FormData)();
+      if (image !== void 0) {
+        localVarFormParams.append("image", image);
+      }
+      if (mask !== void 0) {
+        localVarFormParams.append("mask", mask);
+      }
+      if (prompt !== void 0) {
+        localVarFormParams.append("prompt", prompt);
+      }
+      if (n !== void 0) {
+        localVarFormParams.append("n", n);
+      }
+      if (size !== void 0) {
+        localVarFormParams.append("size", size);
+      }
+      if (responseFormat !== void 0) {
+        localVarFormParams.append("response_format", responseFormat);
+      }
+      if (user !== void 0) {
+        localVarFormParams.append("user", user);
+      }
+      localVarHeaderParameter["Content-Type"] = "multipart/form-data";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...localVarFormParams.getHeaders(),
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = localVarFormParams;
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Creates a variation of a given image.
+     * @param {File} image The image to use as the basis for the variation(s). Must be a valid PNG file, less than 4MB, and square.
+     * @param {number} [n] The number of images to generate. Must be between 1 and 10.
+     * @param {string} [size] The size of the generated images. Must be one of &#x60;256x256&#x60;, &#x60;512x512&#x60;, or &#x60;1024x1024&#x60;.
+     * @param {string} [responseFormat] The format in which the generated images are returned. Must be one of &#x60;url&#x60; or &#x60;b64_json&#x60;.
+     * @param {string} [user] A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices/end-user-ids).
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createImageVariation: async (image, n, size, responseFormat, user, options = {}) => {
+      assertParamExists("createImageVariation", "image", image);
+      const localVarPath = `/images/variations`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      const localVarFormParams = new (configuration2 && configuration2.formDataCtor || FormData)();
+      if (image !== void 0) {
+        localVarFormParams.append("image", image);
+      }
+      if (n !== void 0) {
+        localVarFormParams.append("n", n);
+      }
+      if (size !== void 0) {
+        localVarFormParams.append("size", size);
+      }
+      if (responseFormat !== void 0) {
+        localVarFormParams.append("response_format", responseFormat);
+      }
+      if (user !== void 0) {
+        localVarFormParams.append("user", user);
+      }
+      localVarHeaderParameter["Content-Type"] = "multipart/form-data";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...localVarFormParams.getHeaders(),
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = localVarFormParams;
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Classifies if text violates OpenAI\'s Content Policy
+     * @param {CreateModerationRequest} createModerationRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createModeration: async (createModerationRequest, options = {}) => {
+      assertParamExists("createModeration", "createModerationRequest", createModerationRequest);
+      const localVarPath = `/moderations`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      localVarHeaderParameter["Content-Type"] = "application/json";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = serializeDataIfNeeded(createModerationRequest, localVarRequestOptions, configuration2);
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.  To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.  The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
+     * @param {string} engineId The ID of the engine to use for this request.  You can select one of &#x60;ada&#x60;, &#x60;babbage&#x60;, &#x60;curie&#x60;, or &#x60;davinci&#x60;.
+     * @param {CreateSearchRequest} createSearchRequest
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    createSearch: async (engineId, createSearchRequest, options = {}) => {
+      assertParamExists("createSearch", "engineId", engineId);
+      assertParamExists("createSearch", "createSearchRequest", createSearchRequest);
+      const localVarPath = `/engines/{engine_id}/search`.replace(`{${"engine_id"}}`, encodeURIComponent(String(engineId)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      localVarHeaderParameter["Content-Type"] = "application/json";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = serializeDataIfNeeded(createSearchRequest, localVarRequestOptions, configuration2);
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Transcribes audio into the input language.
+     * @param {File} file The audio file object (not file name) to transcribe, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
+     * @param {string} model ID of the model to use. Only &#x60;whisper-1&#x60; is currently available.
+     * @param {string} [prompt] An optional text to guide the model\\\&#39;s style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.
+     * @param {string} [responseFormat] The format of the transcript output, in one of these options: json, text, srt, verbose_json, or vtt.
+     * @param {number} [temperature] The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.
+     * @param {string} [language] The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createTranscription: async (file, model, prompt, responseFormat, temperature, language, options = {}) => {
+      assertParamExists("createTranscription", "file", file);
+      assertParamExists("createTranscription", "model", model);
+      const localVarPath = `/audio/transcriptions`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      const localVarFormParams = new (configuration2 && configuration2.formDataCtor || FormData)();
+      if (file !== void 0) {
+        localVarFormParams.append("file", file);
+      }
+      if (model !== void 0) {
+        localVarFormParams.append("model", model);
+      }
+      if (prompt !== void 0) {
+        localVarFormParams.append("prompt", prompt);
+      }
+      if (responseFormat !== void 0) {
+        localVarFormParams.append("response_format", responseFormat);
+      }
+      if (temperature !== void 0) {
+        localVarFormParams.append("temperature", temperature);
+      }
+      if (language !== void 0) {
+        localVarFormParams.append("language", language);
+      }
+      localVarHeaderParameter["Content-Type"] = "multipart/form-data";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...localVarFormParams.getHeaders(),
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = localVarFormParams;
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Translates audio into into English.
+     * @param {File} file The audio file object (not file name) translate, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
+     * @param {string} model ID of the model to use. Only &#x60;whisper-1&#x60; is currently available.
+     * @param {string} [prompt] An optional text to guide the model\\\&#39;s style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.
+     * @param {string} [responseFormat] The format of the transcript output, in one of these options: json, text, srt, verbose_json, or vtt.
+     * @param {number} [temperature] The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createTranslation: async (file, model, prompt, responseFormat, temperature, options = {}) => {
+      assertParamExists("createTranslation", "file", file);
+      assertParamExists("createTranslation", "model", model);
+      const localVarPath = `/audio/translations`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "POST",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      const localVarFormParams = new (configuration2 && configuration2.formDataCtor || FormData)();
+      if (file !== void 0) {
+        localVarFormParams.append("file", file);
+      }
+      if (model !== void 0) {
+        localVarFormParams.append("model", model);
+      }
+      if (prompt !== void 0) {
+        localVarFormParams.append("prompt", prompt);
+      }
+      if (responseFormat !== void 0) {
+        localVarFormParams.append("response_format", responseFormat);
+      }
+      if (temperature !== void 0) {
+        localVarFormParams.append("temperature", temperature);
+      }
+      localVarHeaderParameter["Content-Type"] = "multipart/form-data";
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...localVarFormParams.getHeaders(),
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      localVarRequestOptions.body = localVarFormParams;
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Delete a file.
+     * @param {string} fileId The ID of the file to use for this request
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteFile: async (fileId, options = {}) => {
+      assertParamExists("deleteFile", "fileId", fileId);
+      const localVarPath = `/files/{file_id}`.replace(`{${"file_id"}}`, encodeURIComponent(String(fileId)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "DELETE",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Delete a fine-tuned model. You must have the Owner role in your organization.
+     * @param {string} model The model to delete
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteModel: async (model, options = {}) => {
+      assertParamExists("deleteModel", "model", model);
+      const localVarPath = `/models/{model}`.replace(`{${"model"}}`, encodeURIComponent(String(model)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "DELETE",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Returns the contents of the specified file
+     * @param {string} fileId The ID of the file to use for this request
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    downloadFile: async (fileId, options = {}) => {
+      assertParamExists("downloadFile", "fileId", fileId);
+      const localVarPath = `/files/{file_id}/content`.replace(`{${"file_id"}}`, encodeURIComponent(String(fileId)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "GET",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    listEngines: async (options = {}) => {
+      const localVarPath = `/engines`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "GET",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Returns a list of files that belong to the user\'s organization.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listFiles: async (options = {}) => {
+      const localVarPath = `/files`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "GET",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Get fine-grained status updates for a fine-tune job.
+     * @param {string} fineTuneId The ID of the fine-tune job to get events for.
+     * @param {boolean} [stream] Whether to stream events for the fine-tune job. If set to true, events will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available. The stream will terminate with a &#x60;data: [DONE]&#x60; message when the job is finished (succeeded, cancelled, or failed).  If set to false, only events generated so far will be returned.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listFineTuneEvents: async (fineTuneId, stream, options = {}) => {
+      assertParamExists("listFineTuneEvents", "fineTuneId", fineTuneId);
+      const localVarPath = `/fine-tunes/{fine_tune_id}/events`.replace(`{${"fine_tune_id"}}`, encodeURIComponent(String(fineTuneId)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "GET",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      if (stream !== void 0) {
+        localVarQueryParameter["stream"] = stream;
+      }
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary List your organization\'s fine-tuning jobs
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listFineTunes: async (options = {}) => {
+      const localVarPath = `/fine-tunes`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "GET",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Lists the currently available models, and provides basic information about each one such as the owner and availability.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listModels: async (options = {}) => {
+      const localVarPath = `/models`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "GET",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Retrieves a model instance, providing basic information about it such as the owner and availability.
+     * @param {string} engineId The ID of the engine to use for this request
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    retrieveEngine: async (engineId, options = {}) => {
+      assertParamExists("retrieveEngine", "engineId", engineId);
+      const localVarPath = `/engines/{engine_id}`.replace(`{${"engine_id"}}`, encodeURIComponent(String(engineId)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "GET",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Returns information about a specific file.
+     * @param {string} fileId The ID of the file to use for this request
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveFile: async (fileId, options = {}) => {
+      assertParamExists("retrieveFile", "fileId", fileId);
+      const localVarPath = `/files/{file_id}`.replace(`{${"file_id"}}`, encodeURIComponent(String(fileId)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "GET",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Gets info about the fine-tune job.  [Learn more about Fine-tuning](/docs/guides/fine-tuning)
+     * @param {string} fineTuneId The ID of the fine-tune job
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveFineTune: async (fineTuneId, options = {}) => {
+      assertParamExists("retrieveFineTune", "fineTuneId", fineTuneId);
+      const localVarPath = `/fine-tunes/{fine_tune_id}`.replace(`{${"fine_tune_id"}}`, encodeURIComponent(String(fineTuneId)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "GET",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @summary Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
+     * @param {string} model The ID of the model to use for this request
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveModel: async (model, options = {}) => {
+      assertParamExists("retrieveModel", "model", model);
+      const localVarPath = `/models/{model}`.replace(`{${"model"}}`, encodeURIComponent(String(model)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration2) {
+        baseOptions = configuration2.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: "GET",
+        ...baseOptions,
+        ...options
+      };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers
+      };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    }
+  };
+};
+const OpenAIApiFp = function(configuration2) {
+  const localVarParamCreator = OpenAIApiParamCreator(configuration2);
+  return {
+    /**
+     *
+     * @summary Immediately cancel a fine-tune job.
+     * @param {string} fineTuneId The ID of the fine-tune job to cancel
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async cancelFineTune(fineTuneId, options) {
+      const localVarArgs = await localVarParamCreator.cancelFineTune(fineTuneId, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Answers the specified question using the provided documents and examples.  The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
+     * @param {CreateAnswerRequest} createAnswerRequest
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    async createAnswer(createAnswerRequest, options) {
+      const localVarArgs = await localVarParamCreator.createAnswer(createAnswerRequest, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Creates a model response for the given chat conversation.
+     * @param {CreateChatCompletionRequest} createChatCompletionRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createChatCompletion(createChatCompletionRequest, options) {
+      const localVarArgs = await localVarParamCreator.createChatCompletion(createChatCompletionRequest, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Classifies the specified `query` using provided examples.  The endpoint first [searches](/docs/api-reference/searches) over the labeled examples to select the ones most relevant for the particular query. Then, the relevant examples are combined with the query to construct a prompt to produce the final label via the [completions](/docs/api-reference/completions) endpoint.  Labeled examples can be provided via an uploaded `file`, or explicitly listed in the request using the `examples` parameter for quick tests and small scale use cases.
+     * @param {CreateClassificationRequest} createClassificationRequest
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    async createClassification(createClassificationRequest, options) {
+      const localVarArgs = await localVarParamCreator.createClassification(createClassificationRequest, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Creates a completion for the provided prompt and parameters.
+     * @param {CreateCompletionRequest} createCompletionRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createCompletion(createCompletionRequest, options) {
+      const localVarArgs = await localVarParamCreator.createCompletion(createCompletionRequest, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Creates a new edit for the provided input, instruction, and parameters.
+     * @param {CreateEditRequest} createEditRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createEdit(createEditRequest, options) {
+      const localVarArgs = await localVarParamCreator.createEdit(createEditRequest, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Creates an embedding vector representing the input text.
+     * @param {CreateEmbeddingRequest} createEmbeddingRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createEmbedding(createEmbeddingRequest, options) {
+      const localVarArgs = await localVarParamCreator.createEmbedding(createEmbeddingRequest, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
+     * @param {File} file Name of the [JSON Lines](https://jsonlines.readthedocs.io/en/latest/) file to be uploaded.  If the &#x60;purpose&#x60; is set to \\\&quot;fine-tune\\\&quot;, each line is a JSON record with \\\&quot;prompt\\\&quot; and \\\&quot;completion\\\&quot; fields representing your [training examples](/docs/guides/fine-tuning/prepare-training-data).
+     * @param {string} purpose The intended purpose of the uploaded documents.  Use \\\&quot;fine-tune\\\&quot; for [Fine-tuning](/docs/api-reference/fine-tunes). This allows us to validate the format of the uploaded file.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createFile(file, purpose, options) {
+      const localVarArgs = await localVarParamCreator.createFile(file, purpose, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Creates a job that fine-tunes a specified model from a given dataset.  Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.  [Learn more about Fine-tuning](/docs/guides/fine-tuning)
+     * @param {CreateFineTuneRequest} createFineTuneRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createFineTune(createFineTuneRequest, options) {
+      const localVarArgs = await localVarParamCreator.createFineTune(createFineTuneRequest, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Creates an image given a prompt.
+     * @param {CreateImageRequest} createImageRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createImage(createImageRequest, options) {
+      const localVarArgs = await localVarParamCreator.createImage(createImageRequest, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Creates an edited or extended image given an original image and a prompt.
+     * @param {File} image The image to edit. Must be a valid PNG file, less than 4MB, and square. If mask is not provided, image must have transparency, which will be used as the mask.
+     * @param {string} prompt A text description of the desired image(s). The maximum length is 1000 characters.
+     * @param {File} [mask] An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where &#x60;image&#x60; should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as &#x60;image&#x60;.
+     * @param {number} [n] The number of images to generate. Must be between 1 and 10.
+     * @param {string} [size] The size of the generated images. Must be one of &#x60;256x256&#x60;, &#x60;512x512&#x60;, or &#x60;1024x1024&#x60;.
+     * @param {string} [responseFormat] The format in which the generated images are returned. Must be one of &#x60;url&#x60; or &#x60;b64_json&#x60;.
+     * @param {string} [user] A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices/end-user-ids).
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createImageEdit(image, prompt, mask, n, size, responseFormat, user, options) {
+      const localVarArgs = await localVarParamCreator.createImageEdit(image, prompt, mask, n, size, responseFormat, user, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Creates a variation of a given image.
+     * @param {File} image The image to use as the basis for the variation(s). Must be a valid PNG file, less than 4MB, and square.
+     * @param {number} [n] The number of images to generate. Must be between 1 and 10.
+     * @param {string} [size] The size of the generated images. Must be one of &#x60;256x256&#x60;, &#x60;512x512&#x60;, or &#x60;1024x1024&#x60;.
+     * @param {string} [responseFormat] The format in which the generated images are returned. Must be one of &#x60;url&#x60; or &#x60;b64_json&#x60;.
+     * @param {string} [user] A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices/end-user-ids).
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createImageVariation(image, n, size, responseFormat, user, options) {
+      const localVarArgs = await localVarParamCreator.createImageVariation(image, n, size, responseFormat, user, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Classifies if text violates OpenAI\'s Content Policy
+     * @param {CreateModerationRequest} createModerationRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createModeration(createModerationRequest, options) {
+      const localVarArgs = await localVarParamCreator.createModeration(createModerationRequest, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.  To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.  The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
+     * @param {string} engineId The ID of the engine to use for this request.  You can select one of &#x60;ada&#x60;, &#x60;babbage&#x60;, &#x60;curie&#x60;, or &#x60;davinci&#x60;.
+     * @param {CreateSearchRequest} createSearchRequest
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    async createSearch(engineId, createSearchRequest, options) {
+      const localVarArgs = await localVarParamCreator.createSearch(engineId, createSearchRequest, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Transcribes audio into the input language.
+     * @param {File} file The audio file object (not file name) to transcribe, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
+     * @param {string} model ID of the model to use. Only &#x60;whisper-1&#x60; is currently available.
+     * @param {string} [prompt] An optional text to guide the model\\\&#39;s style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.
+     * @param {string} [responseFormat] The format of the transcript output, in one of these options: json, text, srt, verbose_json, or vtt.
+     * @param {number} [temperature] The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.
+     * @param {string} [language] The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createTranscription(file, model, prompt, responseFormat, temperature, language, options) {
+      const localVarArgs = await localVarParamCreator.createTranscription(file, model, prompt, responseFormat, temperature, language, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Translates audio into into English.
+     * @param {File} file The audio file object (not file name) translate, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
+     * @param {string} model ID of the model to use. Only &#x60;whisper-1&#x60; is currently available.
+     * @param {string} [prompt] An optional text to guide the model\\\&#39;s style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.
+     * @param {string} [responseFormat] The format of the transcript output, in one of these options: json, text, srt, verbose_json, or vtt.
+     * @param {number} [temperature] The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createTranslation(file, model, prompt, responseFormat, temperature, options) {
+      const localVarArgs = await localVarParamCreator.createTranslation(file, model, prompt, responseFormat, temperature, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Delete a file.
+     * @param {string} fileId The ID of the file to use for this request
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteFile(fileId, options) {
+      const localVarArgs = await localVarParamCreator.deleteFile(fileId, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Delete a fine-tuned model. You must have the Owner role in your organization.
+     * @param {string} model The model to delete
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteModel(model, options) {
+      const localVarArgs = await localVarParamCreator.deleteModel(model, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Returns the contents of the specified file
+     * @param {string} fileId The ID of the file to use for this request
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async downloadFile(fileId, options) {
+      const localVarArgs = await localVarParamCreator.downloadFile(fileId, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    async listEngines(options) {
+      const localVarArgs = await localVarParamCreator.listEngines(options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Returns a list of files that belong to the user\'s organization.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listFiles(options) {
+      const localVarArgs = await localVarParamCreator.listFiles(options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Get fine-grained status updates for a fine-tune job.
+     * @param {string} fineTuneId The ID of the fine-tune job to get events for.
+     * @param {boolean} [stream] Whether to stream events for the fine-tune job. If set to true, events will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available. The stream will terminate with a &#x60;data: [DONE]&#x60; message when the job is finished (succeeded, cancelled, or failed).  If set to false, only events generated so far will be returned.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listFineTuneEvents(fineTuneId, stream, options) {
+      const localVarArgs = await localVarParamCreator.listFineTuneEvents(fineTuneId, stream, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary List your organization\'s fine-tuning jobs
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listFineTunes(options) {
+      const localVarArgs = await localVarParamCreator.listFineTunes(options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Lists the currently available models, and provides basic information about each one such as the owner and availability.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listModels(options) {
+      const localVarArgs = await localVarParamCreator.listModels(options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Retrieves a model instance, providing basic information about it such as the owner and availability.
+     * @param {string} engineId The ID of the engine to use for this request
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    async retrieveEngine(engineId, options) {
+      const localVarArgs = await localVarParamCreator.retrieveEngine(engineId, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Returns information about a specific file.
+     * @param {string} fileId The ID of the file to use for this request
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async retrieveFile(fileId, options) {
+      const localVarArgs = await localVarParamCreator.retrieveFile(fileId, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Gets info about the fine-tune job.  [Learn more about Fine-tuning](/docs/guides/fine-tuning)
+     * @param {string} fineTuneId The ID of the fine-tune job
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async retrieveFineTune(fineTuneId, options) {
+      const localVarArgs = await localVarParamCreator.retrieveFineTune(fineTuneId, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    },
+    /**
+     *
+     * @summary Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
+     * @param {string} model The ID of the model to use for this request
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async retrieveModel(model, options) {
+      const localVarArgs = await localVarParamCreator.retrieveModel(model, options);
+      return createRequestFunction(localVarArgs, globalFetch, BASE_PATH, configuration2);
+    }
+  };
+};
+class OpenAIApi extends BaseAPI {
+  /**
+   *
+   * @summary Immediately cancel a fine-tune job.
+   * @param {string} fineTuneId The ID of the fine-tune job to cancel
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  cancelFineTune(fineTuneId, options) {
+    return OpenAIApiFp(this.configuration).cancelFineTune(fineTuneId, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Answers the specified question using the provided documents and examples.  The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
+   * @param {CreateAnswerRequest} createAnswerRequest
+   * @param {*} [options] Override http request option.
+   * @deprecated
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createAnswer(createAnswerRequest, options) {
+    return OpenAIApiFp(this.configuration).createAnswer(createAnswerRequest, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Creates a model response for the given chat conversation.
+   * @param {CreateChatCompletionRequest} createChatCompletionRequest
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createChatCompletion(createChatCompletionRequest, options) {
+    return OpenAIApiFp(this.configuration).createChatCompletion(createChatCompletionRequest, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Classifies the specified `query` using provided examples.  The endpoint first [searches](/docs/api-reference/searches) over the labeled examples to select the ones most relevant for the particular query. Then, the relevant examples are combined with the query to construct a prompt to produce the final label via the [completions](/docs/api-reference/completions) endpoint.  Labeled examples can be provided via an uploaded `file`, or explicitly listed in the request using the `examples` parameter for quick tests and small scale use cases.
+   * @param {CreateClassificationRequest} createClassificationRequest
+   * @param {*} [options] Override http request option.
+   * @deprecated
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createClassification(createClassificationRequest, options) {
+    return OpenAIApiFp(this.configuration).createClassification(createClassificationRequest, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Creates a completion for the provided prompt and parameters.
+   * @param {CreateCompletionRequest} createCompletionRequest
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createCompletion(createCompletionRequest, options) {
+    return OpenAIApiFp(this.configuration).createCompletion(createCompletionRequest, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Creates a new edit for the provided input, instruction, and parameters.
+   * @param {CreateEditRequest} createEditRequest
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createEdit(createEditRequest, options) {
+    return OpenAIApiFp(this.configuration).createEdit(createEditRequest, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Creates an embedding vector representing the input text.
+   * @param {CreateEmbeddingRequest} createEmbeddingRequest
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createEmbedding(createEmbeddingRequest, options) {
+    return OpenAIApiFp(this.configuration).createEmbedding(createEmbeddingRequest, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
+   * @param {File} file Name of the [JSON Lines](https://jsonlines.readthedocs.io/en/latest/) file to be uploaded.  If the &#x60;purpose&#x60; is set to \\\&quot;fine-tune\\\&quot;, each line is a JSON record with \\\&quot;prompt\\\&quot; and \\\&quot;completion\\\&quot; fields representing your [training examples](/docs/guides/fine-tuning/prepare-training-data).
+   * @param {string} purpose The intended purpose of the uploaded documents.  Use \\\&quot;fine-tune\\\&quot; for [Fine-tuning](/docs/api-reference/fine-tunes). This allows us to validate the format of the uploaded file.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createFile(file, purpose, options) {
+    return OpenAIApiFp(this.configuration).createFile(file, purpose, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Creates a job that fine-tunes a specified model from a given dataset.  Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.  [Learn more about Fine-tuning](/docs/guides/fine-tuning)
+   * @param {CreateFineTuneRequest} createFineTuneRequest
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createFineTune(createFineTuneRequest, options) {
+    return OpenAIApiFp(this.configuration).createFineTune(createFineTuneRequest, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Creates an image given a prompt.
+   * @param {CreateImageRequest} createImageRequest
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createImage(createImageRequest, options) {
+    return OpenAIApiFp(this.configuration).createImage(createImageRequest, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Creates an edited or extended image given an original image and a prompt.
+   * @param {File} image The image to edit. Must be a valid PNG file, less than 4MB, and square. If mask is not provided, image must have transparency, which will be used as the mask.
+   * @param {string} prompt A text description of the desired image(s). The maximum length is 1000 characters.
+   * @param {File} [mask] An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where &#x60;image&#x60; should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as &#x60;image&#x60;.
+   * @param {number} [n] The number of images to generate. Must be between 1 and 10.
+   * @param {string} [size] The size of the generated images. Must be one of &#x60;256x256&#x60;, &#x60;512x512&#x60;, or &#x60;1024x1024&#x60;.
+   * @param {string} [responseFormat] The format in which the generated images are returned. Must be one of &#x60;url&#x60; or &#x60;b64_json&#x60;.
+   * @param {string} [user] A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices/end-user-ids).
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createImageEdit(image, prompt, mask, n, size, responseFormat, user, options) {
+    return OpenAIApiFp(this.configuration).createImageEdit(image, prompt, mask, n, size, responseFormat, user, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Creates a variation of a given image.
+   * @param {File} image The image to use as the basis for the variation(s). Must be a valid PNG file, less than 4MB, and square.
+   * @param {number} [n] The number of images to generate. Must be between 1 and 10.
+   * @param {string} [size] The size of the generated images. Must be one of &#x60;256x256&#x60;, &#x60;512x512&#x60;, or &#x60;1024x1024&#x60;.
+   * @param {string} [responseFormat] The format in which the generated images are returned. Must be one of &#x60;url&#x60; or &#x60;b64_json&#x60;.
+   * @param {string} [user] A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices/end-user-ids).
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createImageVariation(image, n, size, responseFormat, user, options) {
+    return OpenAIApiFp(this.configuration).createImageVariation(image, n, size, responseFormat, user, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Classifies if text violates OpenAI\'s Content Policy
+   * @param {CreateModerationRequest} createModerationRequest
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createModeration(createModerationRequest, options) {
+    return OpenAIApiFp(this.configuration).createModeration(createModerationRequest, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.  To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.  The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
+   * @param {string} engineId The ID of the engine to use for this request.  You can select one of &#x60;ada&#x60;, &#x60;babbage&#x60;, &#x60;curie&#x60;, or &#x60;davinci&#x60;.
+   * @param {CreateSearchRequest} createSearchRequest
+   * @param {*} [options] Override http request option.
+   * @deprecated
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createSearch(engineId, createSearchRequest, options) {
+    return OpenAIApiFp(this.configuration).createSearch(engineId, createSearchRequest, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Transcribes audio into the input language.
+   * @param {File} file The audio file object (not file name) to transcribe, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
+   * @param {string} model ID of the model to use. Only &#x60;whisper-1&#x60; is currently available.
+   * @param {string} [prompt] An optional text to guide the model\\\&#39;s style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.
+   * @param {string} [responseFormat] The format of the transcript output, in one of these options: json, text, srt, verbose_json, or vtt.
+   * @param {number} [temperature] The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.
+   * @param {string} [language] The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createTranscription(file, model, prompt, responseFormat, temperature, language, options) {
+    return OpenAIApiFp(this.configuration).createTranscription(file, model, prompt, responseFormat, temperature, language, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Translates audio into into English.
+   * @param {File} file The audio file object (not file name) translate, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
+   * @param {string} model ID of the model to use. Only &#x60;whisper-1&#x60; is currently available.
+   * @param {string} [prompt] An optional text to guide the model\\\&#39;s style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.
+   * @param {string} [responseFormat] The format of the transcript output, in one of these options: json, text, srt, verbose_json, or vtt.
+   * @param {number} [temperature] The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  createTranslation(file, model, prompt, responseFormat, temperature, options) {
+    return OpenAIApiFp(this.configuration).createTranslation(file, model, prompt, responseFormat, temperature, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Delete a file.
+   * @param {string} fileId The ID of the file to use for this request
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  deleteFile(fileId, options) {
+    return OpenAIApiFp(this.configuration).deleteFile(fileId, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Delete a fine-tuned model. You must have the Owner role in your organization.
+   * @param {string} model The model to delete
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  deleteModel(model, options) {
+    return OpenAIApiFp(this.configuration).deleteModel(model, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Returns the contents of the specified file
+   * @param {string} fileId The ID of the file to use for this request
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  downloadFile(fileId, options) {
+    return OpenAIApiFp(this.configuration).downloadFile(fileId, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.
+   * @param {*} [options] Override http request option.
+   * @deprecated
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  listEngines(options) {
+    return OpenAIApiFp(this.configuration).listEngines(options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Returns a list of files that belong to the user\'s organization.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  listFiles(options) {
+    return OpenAIApiFp(this.configuration).listFiles(options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Get fine-grained status updates for a fine-tune job.
+   * @param {string} fineTuneId The ID of the fine-tune job to get events for.
+   * @param {boolean} [stream] Whether to stream events for the fine-tune job. If set to true, events will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available. The stream will terminate with a &#x60;data: [DONE]&#x60; message when the job is finished (succeeded, cancelled, or failed).  If set to false, only events generated so far will be returned.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  listFineTuneEvents(fineTuneId, stream, options) {
+    return OpenAIApiFp(this.configuration).listFineTuneEvents(fineTuneId, stream, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary List your organization\'s fine-tuning jobs
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  listFineTunes(options) {
+    return OpenAIApiFp(this.configuration).listFineTunes(options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Lists the currently available models, and provides basic information about each one such as the owner and availability.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  listModels(options) {
+    return OpenAIApiFp(this.configuration).listModels(options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Retrieves a model instance, providing basic information about it such as the owner and availability.
+   * @param {string} engineId The ID of the engine to use for this request
+   * @param {*} [options] Override http request option.
+   * @deprecated
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  retrieveEngine(engineId, options) {
+    return OpenAIApiFp(this.configuration).retrieveEngine(engineId, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Returns information about a specific file.
+   * @param {string} fileId The ID of the file to use for this request
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  retrieveFile(fileId, options) {
+    return OpenAIApiFp(this.configuration).retrieveFile(fileId, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Gets info about the fine-tune job.  [Learn more about Fine-tuning](/docs/guides/fine-tuning)
+   * @param {string} fineTuneId The ID of the fine-tune job
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  retrieveFineTune(fineTuneId, options) {
+    return OpenAIApiFp(this.configuration).retrieveFineTune(fineTuneId, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+  /**
+   *
+   * @summary Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
+   * @param {string} model The ID of the model to use for this request
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OpenAIApi
+   */
+  retrieveModel(model, options) {
+    return OpenAIApiFp(this.configuration).retrieveModel(model, options).then((request2) => request2(this.fetch, this.basePath));
+  }
+}
+function generateBoundary() {
+  var boundary = "--------------------------";
+  for (var i = 0; i < 24; i++) {
+    boundary += Math.floor(Math.random() * 10).toString(16);
+  }
+  return boundary;
+}
+class CustomFormData extends FormData {
+  constructor(...args) {
+    super(...args);
+    __publicField(this, "_boundary");
+    this._boundary = generateBoundary();
+  }
+  getHeaders() {
+    var formHeaders = {
+      "content-type": "multipart/form-data; boundary=" + this._boundary
+    };
+    return formHeaders;
+  }
+}
+class Configuration {
+  constructor(param = {}) {
+    /**
+     * parameter for apiKey security
+     * @param name security name
+     * @memberof Configuration
+     */
+    __publicField(this, "apiKey");
+    /**
+     * OpenAI organization id
+     *
+     * @type {string}
+     * @memberof Configuration
+     */
+    __publicField(this, "organization");
+    /**
+     * parameter for basic security
+     *
+     * @type {string}
+     * @memberof Configuration
+     */
+    __publicField(this, "username");
+    /**
+     * parameter for basic security
+     *
+     * @type {string}
+     * @memberof Configuration
+     */
+    __publicField(this, "password");
+    /**
+     * parameter for oauth2 security
+     * @param name security name
+     * @param scopes oauth2 scope
+     * @memberof Configuration
+     */
+    __publicField(this, "accessToken");
+    /**
+     * override base path
+     *
+     * @type {string}
+     * @memberof Configuration
+     */
+    __publicField(this, "basePath");
+    /**
+     * base options for calls
+     *
+     * @type {any}
+     * @memberof Configuration
+     */
+    __publicField(this, "baseOptions");
+    /**
+     * The FormData constructor that will be used to create multipart form data
+     * requests. You can inject this here so that execution environments that
+     * do not support the FormData class can still run the generated client.
+     *
+     * @type {new () => FormData}
+     */
+    __publicField(this, "defaultQueryParams");
+    __publicField(this, "formDataCtor");
+    this.apiKey = param.apiKey;
+    this.organization = param.organization;
+    this.username = param.username;
+    this.password = param.password;
+    this.accessToken = param.accessToken;
+    this.basePath = param.basePath;
+    this.baseOptions = param.baseOptions;
+    this.defaultQueryParams = param.defaultQueryParams;
+    this.formDataCtor = param.formDataCtor;
+    if (!this.baseOptions) {
+      this.baseOptions = {};
+    }
+    this.baseOptions.headers = {
+      // "User-Agent": `OpenAI/NodeJS/${packageJson.version}`,
+      Authorization: `Bearer ${this.apiKey}`,
+      ...this.baseOptions.headers
+    };
+    if (this.organization) {
+      this.baseOptions.headers["OpenAI-Organization"] = this.organization;
+    }
+    if (!this.formDataCtor) {
+      this.formDataCtor = CustomFormData;
+    }
+  }
+  /**
+   * Check if the given MIME is a JSON MIME.
+   * JSON MIME examples:
+   *   application/json
+   *   application/json; charset=UTF8
+   *   APPLICATION/JSON
+   *   application/vnd.company+json
+   * @param mime - MIME (Multipurpose Internet Mail Extensions)
+   * @return True if the given MIME is JSON, false otherwise.
+   */
+  isJsonMime(mime) {
+    const jsonMime = new RegExp("^(application/json|[^;/ 	]+/[^;/ 	]+[+]json)[ 	]*(;.*)?$", "i");
+    return mime !== null && (jsonMime.test(mime) || mime.toLowerCase() === "application/json-patch+json");
+  }
+}
+const { fetchSyncPost: fetchSyncPost$1 } = require("siyuan");
+const configuration = new Configuration({
+  apiKey: "09bc63119e1f26d148cac77cda12e089.Rw7lnq1zkg3FcmYZ",
+  basePath: "https://open.bigmodel.cn/api/paas/v4"
+});
+const openai = new OpenAIApi(configuration);
+const defaultConfig = {
+  //   model: "gpt-3.5-turbo",
+  /** 智谱清言 免费模型 */
+  model: "GLM-4-Flash",
+  //   max_tokens: undefined,
+  max_tokens: 9999,
+  temperature: 0.3
+};
+async function ai搜索关键词提取(ai, userInput) {
+  const completion = await ai.openai.createChatCompletion({
+    model: ai.model ?? defaultConfig.model,
+    messages: [
+      {
+        role: "system",
+        content: `你是一名助理，专门协助用户进行搜索。请按照以下规则提供答案：
 
 1. 输出格式：**JSON 格式**，不要使用代码块,要确保你的回答可以直接被 JSON.parse。
 2. 内容要求：
@@ -23,9 +10376,42 @@ Expected function or array of functions, received type ${typeof e}.`),ae)}functi
 示例：
 用户: “有哪些关键词”
 你: ["关键词1", "关键词2"]
-`},{role:"user",content:t}],max_tokens:e.max_tokens??rt.max_tokens,temperature:e.temperature??rt.temperature,stream:!1})).json(),s=r.choices[0].message.content;let o;try{if(s.startsWith("```")){const i=s.split(`
-`);i[0]="",i[i.length-1]="",o=JSON.parse(i.join(`
-`))}else o=JSON.parse(s)}catch(i){console.log("[error]",i),o=[s]}return{res:o,raw:r}}async function Ci(e,t,n){const s=await(await e.openai.createChatCompletion({model:e.model??rt.model,messages:[{role:"system",content:`你是用户的笔记ai提问助手，请根据用户的问题和你检索到的笔记内容来回答用户的问题
+`
+      },
+      { role: "user", content: userInput }
+    ],
+    max_tokens: ai.max_tokens ?? defaultConfig.max_tokens,
+    temperature: ai.temperature ?? defaultConfig.temperature,
+    stream: false
+  });
+  const data = await completion.json();
+  const resStr = data.choices[0].message.content;
+  let queryArr;
+  try {
+    if (resStr.startsWith("```")) {
+      const lines = resStr.split("\n");
+      lines[0] = "";
+      lines[lines.length - 1] = "";
+      queryArr = JSON.parse(lines.join("\n"));
+    } else {
+      queryArr = JSON.parse(resStr);
+    }
+  } catch (error) {
+    console.log("[error]", error);
+    queryArr = [resStr];
+  }
+  return {
+    res: queryArr,
+    raw: data
+  };
+}
+async function ai回答(ai, userInput, searchMd) {
+  const completion = await ai.openai.createChatCompletion({
+    model: ai.model ?? defaultConfig.model,
+    messages: [
+      {
+        role: "system",
+        content: `你是用户的笔记ai提问助手，请根据用户的问题和你检索到的笔记内容来回答用户的问题
 ## 回答的格式
 
 你的回答要表示是基于哪些块的内容回答的，表现方式是在对应回答的后面添加 :[种花心得(这个块的内容摘要)](siyuan://blocks/20240113141417-va4uedb(笔记块的id))
@@ -38,12 +10424,269 @@ Expected function or array of functions, received type ${typeof e}.`),ae)}functi
 2. 需要准备的一些工具:.....  [种花心得](siyuan://blocks/20160133242325-d23dfg1)
 
 ## 注意你的回答最后面附加的链接 [] 内填的是这个块的摘要文本 () 中的 siyuan://blocks/id 是思源特有的链接方式
-`},{role:"assistant",content:`检索到的内容:
-${n}`},{role:"user",content:t}],max_tokens:e.max_tokens??rt.max_tokens,temperature:e.temperature??rt.temperature,stream:!1})).json();return{res:s.choices[0].message.content,raw:s}}async function wu(e,t){const r=await(await e.openai.createChatCompletion({model:e.model??rt.model,messages:[{role:"system",content:`你是一名翻译助手，专门将用户输入的内容翻译为英文。请确保翻译的准确性和流畅性。
+`
+      },
+      {
+        role: "assistant",
+        content: `检索到的内容:
+${searchMd}`
+      },
+      { role: "user", content: userInput }
+    ],
+    max_tokens: ai.max_tokens ?? defaultConfig.max_tokens,
+    temperature: ai.temperature ?? defaultConfig.temperature,
+    stream: false
+  });
+  const data = await completion.json();
+  return {
+    res: data.choices[0].message.content,
+    raw: data
+  };
+}
+async function ai翻译为英文(ai, userInput) {
+  const completion = await ai.openai.createChatCompletion({
+    model: ai.model ?? defaultConfig.model,
+    messages: [
+      {
+        role: "system",
+        content: `你是一名翻译助手，专门将用户输入的内容翻译为英文。请确保翻译的准确性和流畅性。
 ## 注意
 
 1. 仅输出译文
-2. 原文是 kramdown 格式的，会有 {: id="20250306213356-961wtvs" updated="20250306213413"} 这样的属性，你不要输出其中的 id`},{role:"user",content:`请将以下内容翻译为英文：
-${t}`}],max_tokens:e.max_tokens??rt.max_tokens,temperature:e.temperature??rt.temperature,stream:!1})).json();return{res:r.choices[0].message.content,raw:r}}async function Du(e){async function t(r){return await Nu("/api/search/fullTextSearchBlock",{query:r,method:0,types:{audioBlock:!0,blockquote:!0,codeBlock:!0,databaseBlock:!0,document:!0,embedBlock:!0,heading:!0,htmlBlock:!0,iframeBlock:!0,list:!1,listItem:!1,mathBlock:!0,paragraph:!0,superBlock:!0,table:!1,videoBlock:!0,widgetBlock:!0},paths:[],groupBy:0,orderBy:0,page:1,reqId:Date.now()}).then(s=>({blocks:s.data.blocks,query:r}))}return await Promise.all(e.map(r=>t(r)))}async function xu(e){const t=await Du(e);return`# 搜索结果json：
+2. 原文是 kramdown 格式的，会有 {: id="20250306213356-961wtvs" updated="20250306213413"} 这样的属性，你不要输出其中的 id`
+      },
+      { role: "user", content: `请将以下内容翻译为英文：
+${userInput}` }
+    ],
+    max_tokens: ai.max_tokens ?? defaultConfig.max_tokens,
+    temperature: ai.temperature ?? defaultConfig.temperature,
+    stream: false
+  });
+  const data = await completion.json();
+  return {
+    res: data.choices[0].message.content,
+    raw: data
+  };
+}
+async function batchSearch(keywords) {
+  async function search(query) {
+    return await fetchSyncPost$1("/api/search/fullTextSearchBlock", {
+      query,
+      method: 0,
+      types: {
+        audioBlock: true,
+        blockquote: true,
+        codeBlock: true,
+        databaseBlock: true,
+        document: true,
+        embedBlock: true,
+        heading: true,
+        htmlBlock: true,
+        iframeBlock: true,
+        list: false,
+        listItem: false,
+        mathBlock: true,
+        paragraph: true,
+        superBlock: true,
+        table: false,
+        videoBlock: true,
+        widgetBlock: true
+      },
+      paths: [],
+      groupBy: 0,
+      orderBy: 0,
+      page: 1,
+      reqId: Date.now()
+    }).then((r) => ({
+      blocks: r.data.blocks,
+      query
+    }));
+  }
+  const searchRes = await Promise.all(keywords.map((el) => search(el)));
+  return searchRes;
+}
+async function batchSearchParse(keywords) {
+  const searchRes = await batchSearch(keywords);
+  let s = `# 搜索结果json：
 
-${JSON.stringify(t.map(r=>({query:r.query,blocks:r.blocks.map(s=>({id:s.id,md:s.markdown}))})))}}`}async function Si(e){const t=(await Ti({openai:qr},e)).res;console.log("keywords",t);const n=await xu(t);console.log("searchMd",n);const r=await Ci({openai:qr},e,n);return console.log("aiRes",r),r}const Pu=Object.freeze(Object.defineProperty({__proto__:null,ai回答:Ci,ai搜索关键词提取:Ti,ai翻译为英文:wu,openai:qr,执行ai问答:Si},Symbol.toStringTag,{value:"Module"})),{fetchSyncPost:Tu}=require("siyuan");async function Fi(e,t){let n=await Tu(e,t);return n.code===0?n.data:null}async function Cu(e,t){return Fi("/api/attr/setBlockAttrs",{id:e,attrs:t})}async function Su(e){return Fi("/api/attr/getBlockAttrs",{id:e})}const Fu={class:"input-row"},Au=["disabled"],Ru=["innerHTML"],Iu=da({__name:"ui",props:{blockId:{type:String,required:!0}},setup(e){const t=ws("uiDiv"),n=e;async function r(){return await Cu(n.blockId,{"custom-ai-config":JSON.stringify(o)})}async function s(){const u=await Su(n.blockId);console.log("res",u),Object.assign(o,JSON.parse(u["custom-ai-config"]??"{}"))}Hi(()=>{s()});const o=Zn({html:"",searchText:"",run:!1}),i=ws("resultDiv");sc(()=>{var u;o.html,(u=i.value)==null||u.querySelectorAll("[contenteditable]").forEach(g=>{g.setAttribute("contenteditable","false")})});async function l(){try{o.run=!0;const u=await Si(o.searchText);o.html=d(u.res)}finally{o.run=!1,await r()}}const f=globalThis.Lute.New();function d(u){return f.Md2BlockDOM(u)}return(u,g)=>(Ur(),js("div",{class:zn(["protyle-custom",Mo(Cn)]),contenteditable:"false",ref_key:"uiDiv",ref:t},[Vt("div",Fu,[g[2]||(g[2]=Vt("h2",{class:"title"},"思源AI助手(测试版)",-1)),Vt("div",{class:"editable-wrapper",onMousedown:g[1]||(g[1]=ro(()=>{},["stop"]))},[ca(Vt("textarea",{"onUpdate:modelValue":g[0]||(g[0]=b=>o.searchText=b),placeholder:"请输入您的问题..."},null,512),[[eu,o.searchText]])],32),Vt("button",{onClick:ro(l,["stop"]),class:"submit-button",disabled:o.run},_o(o.run?"执行中...":"提交问题"),9,Au)]),o.html?(Ur(),js("div",{key:0,ref_key:"resultDiv",ref:i,class:"result",innerHTML:o.html},null,8,Ru)):_c("",!0)],2))}}),Mu=(e,t)=>{const n=e.__vccOpts||e;for(const[r,s]of t)n[r]=s;return n},$u=Mu(Iu,[["__scopeId","data-v-b25bcb10"]]);class ju extends pu{constructor(){super(...arguments);fe(this,"openaiAPI",Pu)}async onload(){window.aiChatPlugin=this,this.protyleSlash.push({id:"ai:chat",filter:["ai","chat","gpt"],callback(r){console.log("[protyle]",r);const s=hu(),o=Pi();r.insert(`<div data-node-id="${s}" custom-ai-chat="1" data-type="NodeParagraph" updated="${o}"></div>`,!0,!0)},html:"ai:chat"});const n=setInterval(()=>{document.querySelectorAll("[custom-ai-chat]").forEach(r=>{this.addVueUiComponent(r,$u)})},500);this.addUnloadFn(()=>clearInterval(n))}}module.exports=ju;
+${JSON.stringify(
+    searchRes.map((el) => {
+      return {
+        query: el.query,
+        blocks: el.blocks.map((block) => ({
+          id: block.id,
+          md: block.markdown
+        }))
+      };
+    })
+  )}}`;
+  return s;
+}
+async function 执行ai问答(userInput) {
+  const keywords = (await ai搜索关键词提取({ openai }, userInput)).res;
+  console.log("keywords", keywords);
+  const searchMd = await batchSearchParse(keywords);
+  console.log("searchMd", searchMd);
+  const aiRes = await ai回答({ openai }, userInput, searchMd);
+  console.log("aiRes", aiRes);
+  return aiRes;
+}
+const openaiAPI = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  ai回答,
+  ai搜索关键词提取,
+  ai翻译为英文,
+  openai,
+  执行ai问答
+}, Symbol.toStringTag, { value: "Module" }));
+const { fetchSyncPost } = require("siyuan");
+async function request(url, data) {
+  let response = await fetchSyncPost(url, data);
+  let res = response.code === 0 ? response.data : null;
+  return res;
+}
+async function setBlockAttrs(id, attrs) {
+  let data = {
+    id,
+    attrs
+  };
+  let url = "/api/attr/setBlockAttrs";
+  return request(url, data);
+}
+async function getBlockAttrs(id) {
+  let data = {
+    id
+  };
+  let url = "/api/attr/getBlockAttrs";
+  return request(url, data);
+}
+const _hoisted_1 = { class: "input-row" };
+const _hoisted_2 = ["disabled"];
+const _hoisted_3 = ["innerHTML"];
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  __name: "ui",
+  props: {
+    blockId: {
+      type: String,
+      required: true
+    }
+  },
+  setup(__props) {
+    const uiDiv = useTemplateRef("uiDiv");
+    const props = __props;
+    async function saveConfig() {
+      return await setBlockAttrs(props.blockId, { "custom-ai-config": JSON.stringify(config) });
+    }
+    async function loadConfig() {
+      const res = await getBlockAttrs(props.blockId);
+      console.log("res", res);
+      Object.assign(config, JSON.parse(res["custom-ai-config"] ?? "{}"));
+    }
+    onMount(() => {
+      loadConfig();
+    });
+    const config = reactive({
+      html: ``,
+      searchText: ``,
+      run: false
+    });
+    const resultDiv = useTemplateRef("resultDiv");
+    watchEffect(() => {
+      var _a;
+      config.html;
+      (_a = resultDiv.value) == null ? void 0 : _a.querySelectorAll("[contenteditable]").forEach((el) => {
+        el.setAttribute("contenteditable", "false");
+      });
+    });
+    async function run() {
+      try {
+        config.run = true;
+        const res = await 执行ai问答(config.searchText);
+        config.html = Md2BlockDOM(res.res);
+      } finally {
+        config.run = false;
+        await saveConfig();
+      }
+    }
+    const Lute = globalThis.Lute;
+    const lute = Lute.New();
+    function Md2BlockDOM(md) {
+      return lute.Md2BlockDOM(md);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass(["protyle-custom", unref(oceanpress_ui_flag)]),
+        contenteditable: "false",
+        ref_key: "uiDiv",
+        ref: uiDiv
+      }, [
+        createBaseVNode("div", _hoisted_1, [
+          _cache[2] || (_cache[2] = createBaseVNode("h2", { class: "title" }, "思源AI助手(测试版)", -1)),
+          createBaseVNode("div", {
+            class: "editable-wrapper",
+            onMousedown: _cache[1] || (_cache[1] = withModifiers(() => {
+            }, ["stop"]))
+          }, [
+            withDirectives(createBaseVNode("textarea", {
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => config.searchText = $event),
+              placeholder: "请输入您的问题..."
+            }, null, 512), [
+              [vModelText, config.searchText]
+            ])
+          ], 32),
+          createBaseVNode("button", {
+            onClick: withModifiers(run, ["stop"]),
+            class: "submit-button",
+            disabled: config.run
+          }, toDisplayString(config.run ? "执行中..." : "提交问题"), 9, _hoisted_2)
+        ]),
+        config.html ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          ref_key: "resultDiv",
+          ref: resultDiv,
+          class: "result",
+          innerHTML: config.html
+        }, null, 8, _hoisted_3)) : createCommentVNode("", true)
+      ], 2);
+    };
+  }
+});
+const _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+const chatAIView = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-b25bcb10"]]);
+class VitePlugin extends SiyuanPlugin {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "openaiAPI", openaiAPI);
+  }
+  async onload() {
+    window["aiChatPlugin"] = this;
+    this.protyleSlash.push({
+      id: "ai:chat",
+      filter: ["ai", "chat", "gpt"],
+      callback(protyle) {
+        console.log("[protyle]", protyle);
+        const id2 = generateUniqueId();
+        const updated = generateTimestamp();
+        protyle.insert(
+          `<div data-node-id="${id2}" custom-ai-chat="1" data-type="NodeParagraph" updated="${updated}"></div>`,
+          true,
+          true
+        );
+      },
+      html: `ai:chat`
+    });
+    const id = setInterval(() => {
+      document.querySelectorAll(`[custom-ai-chat]`).forEach((el) => {
+        this.addVueUiComponent(el, chatAIView);
+      });
+    }, 500);
+    this.addUnloadFn(() => clearInterval(id));
+  }
+}
+module.exports = VitePlugin;
