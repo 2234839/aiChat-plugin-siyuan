@@ -3,7 +3,7 @@
   try {
     if (typeof document != "undefined") {
       var elementStyle = document.createElement("style");
-      elementStyle.appendChild(document.createTextNode(".protyle-custom[data-v-b25bcb10] {\n    padding: 2px;\n    border-radius: 8px;\n}\n.input-row[data-v-b25bcb10] {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n.title[data-v-b25bcb10] {\n    font-size: 20px;\n    font-weight: bold;\n    margin: 0;\n    white-space: nowrap;\n    margin-right: 15px;\n}\n.editable-wrapper[data-v-b25bcb10] {\n    flex-grow: 1;\n    margin-right: 15px;\n}\ntextarea[data-v-b25bcb10] {\n    width: 100%;\n    height: 40px;\n    padding: 8px;\n    border: 1px solid #ccc;\n    border-radius: 4px;\n    font-size: 14px;\n    resize: none;\n}\ntextarea[data-v-b25bcb10]:focus {\n    outline: none;\n    border-color: #4a90e2;\n    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);\n}\n.submit-button[data-v-b25bcb10] {\n    margin-left: 8px;\n    padding: 8px 15px;\n    background-color: #4a90e2;\n    color: white;\n    border: none;\n    border-radius: 4px;\n    font-size: 14px;\n    cursor: pointer;\n    transition: background-color 0.3s ease;\n    white-space: nowrap;\n}\n.submit-button[data-v-b25bcb10]:hover:not(:disabled) {\n    background-color: #357abd;\n}\n.submit-button[data-v-b25bcb10]:disabled {\n    background-color: #cccccc;\n    cursor: not-allowed;\n}\n.result[data-v-b25bcb10] {\n    margin-top: 9px;\n    padding: 2px;\n    border-radius: 4px;\n    border: 1px solid #979595;\n}"));
+      elementStyle.appendChild(document.createTextNode(".protyle-custom[data-v-4df88e19] {\n    padding: 2px;\n    border-radius: 8px;\n}\n.input-row[data-v-4df88e19] {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n.title[data-v-4df88e19] {\n    font-size: 20px;\n    font-weight: bold;\n    margin: 0;\n    white-space: nowrap;\n    margin-right: 15px;\n}\n.editable-wrapper[data-v-4df88e19] {\n    flex-grow: 1;\n    margin-right: 15px;\n}\ntextarea[data-v-4df88e19] {\n    width: 100%;\n    height: 40px;\n    padding: 8px;\n    border: 1px solid #ccc;\n    border-radius: 4px;\n    font-size: 14px;\n    resize: none;\n}\ntextarea[data-v-4df88e19]:focus {\n    outline: none;\n    border-color: #4a90e2;\n    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);\n}\n.submit-button[data-v-4df88e19] {\n    margin-left: 8px;\n    padding: 8px 15px;\n    background-color: #4a90e2;\n    color: white;\n    border: none;\n    border-radius: 4px;\n    font-size: 14px;\n    cursor: pointer;\n    transition: background-color 0.3s ease;\n    white-space: nowrap;\n}\n.submit-button[data-v-4df88e19]:hover:not(:disabled) {\n    background-color: #357abd;\n}\n.submit-button[data-v-4df88e19]:disabled {\n    background-color: #cccccc;\n    cursor: not-allowed;\n}\n.result[data-v-4df88e19] {\n    margin-top: 9px;\n    padding: 2px;\n    border-radius: 4px;\n    border: 1px solid #979595;\n}\n.settings-icon[data-v-4df88e19] {\n    width: 24px;\n    height: 24px;\n    margin-left: 10px;\n    cursor: pointer;\n    opacity: 0.7;\n    transition: opacity 0.2s;\n}\n.settings-icon[data-v-4df88e19]:hover {\n    opacity: 1;\n}\n.config-panel[data-v-4df88e19] {\n    margin-top: 10px;\n    padding: 15px;\n    border: 1px solid #ddd;\n    border-radius: 5px;\n}\n.config-item[data-v-4df88e19] {\n    margin-bottom: 10px;\n    display: flex;\n    gap: 5px;\n    align-items: center;\n}\n.config-item label[data-v-4df88e19] {\n    display: block;\n    margin-bottom: 5px;\n    font-weight: bold;\n}\n.config-item input[data-v-4df88e19] {\n    width: 100%;\n    padding: 8px;\n    border: 1px solid #ccc;\n    border-radius: 4px;\n}"));
       document.head.appendChild(elementStyle);
     }
   } catch (e) {
@@ -51,12 +51,6 @@ function createRenderEffect(fn, value, options) {
   const c = createComputation(fn, value, false, STALE);
   updateComputation(c);
 }
-function createEffect(fn, value, options) {
-  runEffects = runUserEffects;
-  const c = createComputation(fn, value, false, STALE);
-  c.user = true;
-  Effects ? Effects.push(c) : updateComputation(c);
-}
 function untrack(fn) {
   if (Listener === null) return fn();
   const listener = Listener;
@@ -67,9 +61,6 @@ function untrack(fn) {
   } finally {
     Listener = listener;
   }
-}
-function onMount(fn) {
-  createEffect(() => untrack(fn));
 }
 function writeSignal(node, value, isComp) {
   let current = node.value;
@@ -207,15 +198,6 @@ function completeUpdates(wait) {
 }
 function runQueue(queue2) {
   for (let i = 0; i < queue2.length; i++) runTop(queue2[i]);
-}
-function runUserEffects(queue2) {
-  let i, userLength = 0;
-  for (i = 0; i < queue2.length; i++) {
-    const e = queue2[i];
-    if (!e.user) runTop(e);
-    else queue2[userLength++] = e;
-  }
-  for (i = 0; i < userLength; i++) runTop(queue2[i]);
 }
 function lookUpstream(node, ignore) {
   node.state = 0;
@@ -486,6 +468,7 @@ const hasOwn = (val, key) => hasOwnProperty$1.call(val, key);
 const isArray = Array.isArray;
 const isMap = (val) => toTypeString(val) === "[object Map]";
 const isSet = (val) => toTypeString(val) === "[object Set]";
+const isDate = (val) => toTypeString(val) === "[object Date]";
 const isFunction = (val) => typeof val === "function";
 const isString = (val) => typeof val === "string";
 const isSymbol = (val) => typeof val === "symbol";
@@ -615,6 +598,52 @@ const specialBooleanAttrs = `itemscope,allowfullscreen,formnovalidate,ismap,nomo
 const isSpecialBooleanAttr = /* @__PURE__ */ makeMap(specialBooleanAttrs);
 function includeBooleanAttr(value) {
   return !!value || value === "";
+}
+function looseCompareArrays(a, b) {
+  if (a.length !== b.length) return false;
+  let equal = true;
+  for (let i = 0; equal && i < a.length; i++) {
+    equal = looseEqual(a[i], b[i]);
+  }
+  return equal;
+}
+function looseEqual(a, b) {
+  if (a === b) return true;
+  let aValidType = isDate(a);
+  let bValidType = isDate(b);
+  if (aValidType || bValidType) {
+    return aValidType && bValidType ? a.getTime() === b.getTime() : false;
+  }
+  aValidType = isSymbol(a);
+  bValidType = isSymbol(b);
+  if (aValidType || bValidType) {
+    return a === b;
+  }
+  aValidType = isArray(a);
+  bValidType = isArray(b);
+  if (aValidType || bValidType) {
+    return aValidType && bValidType ? looseCompareArrays(a, b) : false;
+  }
+  aValidType = isObject(a);
+  bValidType = isObject(b);
+  if (aValidType || bValidType) {
+    if (!aValidType || !bValidType) {
+      return false;
+    }
+    const aKeysCount = Object.keys(a).length;
+    const bKeysCount = Object.keys(b).length;
+    if (aKeysCount !== bKeysCount) {
+      return false;
+    }
+    for (const key in a) {
+      const aHasKey = a.hasOwnProperty(key);
+      const bHasKey = b.hasOwnProperty(key);
+      if (aHasKey && !bHasKey || !aHasKey && bHasKey || !looseEqual(a[key], b[key])) {
+        return false;
+      }
+    }
+  }
+  return String(a) === String(b);
 }
 const isRef$1 = (val) => {
   return !!(val && val["__v_isRef"] === true);
@@ -1944,6 +1973,9 @@ const toReadonly = (value) => isObject(value) ? readonly(value) : value;
 function isRef(r) {
   return r ? r["__v_isRef"] === true : false;
 }
+function ref(value) {
+  return createRef(value, false);
+}
 function shallowRef(value) {
   return createRef(value, true);
 }
@@ -1997,6 +2029,9 @@ class RefImpl {
 }
 function unref(ref2) {
   return isRef(ref2) ? ref2.value : ref2;
+}
+function toValue(source) {
+  return isFunction(source) ? source() : unref(source);
 }
 const shallowUnwrapHandlers = {
   get: (target, key, receiver) => key === "__v_raw" ? target : unref(Reflect.get(target, key, receiver)),
@@ -8144,6 +8179,24 @@ const vModelText = {
     el.value = newValue;
   }
 };
+const vModelRadio = {
+  created(el, { value }, vnode) {
+    el.checked = looseEqual(value, vnode.props.value);
+    el[assignKey] = getModelAssigner(vnode);
+    addEventListener(el, "change", () => {
+      el[assignKey](getValue(el));
+    });
+  },
+  beforeUpdate(el, { value, oldValue }, vnode) {
+    el[assignKey] = getModelAssigner(vnode);
+    if (value !== oldValue) {
+      el.checked = looseEqual(value, vnode.props.value);
+    }
+  }
+};
+function getValue(el) {
+  return "_value" in el ? el._value : el.value;
+}
 const systemModifiers = ["ctrl", "shift", "alt", "meta"];
 const modifierGuards = {
   stop: (e) => e.stopPropagation(),
@@ -10344,22 +10397,63 @@ class Configuration {
   }
 }
 const { fetchSyncPost: fetchSyncPost$1 } = require("siyuan");
+const aiChatConfig = reactive({
+  apiBaseUrl: "",
+  apiKey: "",
+  model: "",
+  apiProvider: "siyuan"
+});
 const configuration = new Configuration({
   apiKey: "09bc63119e1f26d148cac77cda12e089.Rw7lnq1zkg3FcmYZ",
   basePath: "https://open.bigmodel.cn/api/paas/v4"
 });
 const openai = new OpenAIApi(configuration);
+const openai$ = computed(() => {
+  if (aiChatConfig.apiProvider === "siyuan") {
+    return new OpenAIApi(
+      new Configuration({
+        apiKey: window.siyuan.config.ai.openAI.apiKey,
+        basePath: window.siyuan.config.ai.openAI.apiBaseURL
+      })
+    );
+  } else if (aiChatConfig.apiProvider === "崮生") {
+    return new OpenAIApi(
+      new Configuration({
+        apiKey: "09bc63119e1f26d148cac77cda12e089.Rw7lnq1zkg3FcmYZ",
+        basePath: "https://open.bigmodel.cn/api/paas/v4"
+      })
+    );
+  } else if (aiChatConfig.apiProvider === "openai") {
+    return new OpenAIApi(
+      new Configuration({
+        apiKey: aiChatConfig.apiKey,
+        basePath: aiChatConfig.apiBaseUrl
+      })
+    );
+  } else {
+    throw new Error("Unsupported API provider");
+  }
+});
+const model$ = computed(() => {
+  if (aiChatConfig.apiProvider === "openai") {
+    return aiChatConfig.model;
+  } else if (aiChatConfig.apiProvider === "siyuan") {
+    return window.siyuan.config.ai.openAI.apiModel;
+  } else if (aiChatConfig.apiProvider === "崮生") {
+    return "GLM-4-Flash";
+  } else {
+    throw new Error("Unsupported API provider");
+  }
+});
 const defaultConfig = {
   //   model: "gpt-3.5-turbo",
-  /** 智谱清言 免费模型 */
-  model: "GLM-4-Flash",
   //   max_tokens: undefined,
-  max_tokens: 9999,
+  max_tokens: 8192,
   temperature: 0.3
 };
 async function ai搜索关键词提取(ai, userInput) {
   const completion = await ai.openai.createChatCompletion({
-    model: ai.model ?? defaultConfig.model,
+    model: ai.model ?? model$.value,
     messages: [
       {
         role: "system",
@@ -10407,7 +10501,7 @@ async function ai搜索关键词提取(ai, userInput) {
 }
 async function ai回答(ai, userInput, searchMd) {
   const completion = await ai.openai.createChatCompletion({
-    model: ai.model ?? defaultConfig.model,
+    model: ai.model ?? model$.value,
     messages: [
       {
         role: "system",
@@ -10445,7 +10539,7 @@ ${searchMd}`
 }
 async function ai翻译为英文(ai, userInput) {
   const completion = await ai.openai.createChatCompletion({
-    model: ai.model ?? defaultConfig.model,
+    model: ai.model ?? model$.value,
     messages: [
       {
         role: "system",
@@ -10523,20 +10617,22 @@ ${JSON.stringify(
   return s;
 }
 async function 执行ai问答(userInput) {
-  const keywords = (await ai搜索关键词提取({ openai }, userInput)).res;
+  const keywords = (await ai搜索关键词提取({ openai: openai$.value }, userInput)).res;
   console.log("keywords", keywords);
   const searchMd = await batchSearchParse(keywords);
   console.log("searchMd", searchMd);
-  const aiRes = await ai回答({ openai }, userInput, searchMd);
+  const aiRes = await ai回答({ openai: openai$.value }, userInput, searchMd);
   console.log("aiRes", aiRes);
   return aiRes;
 }
 const openaiAPI = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
+  aiChatConfig,
   ai回答,
   ai搜索关键词提取,
   ai翻译为英文,
   openai,
+  openai$,
   执行ai问答
 }, Symbol.toStringTag, { value: "Module" }));
 const { fetchSyncPost } = require("siyuan");
@@ -10562,50 +10658,76 @@ async function getBlockAttrs(id) {
 }
 const _hoisted_1 = { class: "input-row" };
 const _hoisted_2 = ["disabled"];
-const _hoisted_3 = ["innerHTML"];
+const _hoisted_3 = {
+  key: 0,
+  class: "config-panel"
+};
+const _hoisted_4 = { class: "config-item" };
+const _hoisted_5 = {
+  key: 0,
+  class: "config-item"
+};
+const _hoisted_6 = ["disabled"];
+const _hoisted_7 = {
+  key: 1,
+  class: "config-item"
+};
+const _hoisted_8 = ["disabled"];
+const _hoisted_9 = {
+  key: 2,
+  class: "config-item"
+};
+const _hoisted_10 = ["disabled"];
+const _hoisted_11 = ["innerHTML"];
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "ui",
   props: {
     blockId: {
       type: String,
       required: true
+    },
+    plugin: {
+      type: Object,
+      required: true
     }
   },
   setup(__props) {
     const uiDiv = useTemplateRef("uiDiv");
+    const showConfig = ref(false);
     const props = __props;
-    async function saveConfig() {
-      return await setBlockAttrs(props.blockId, { "custom-ai-config": JSON.stringify(config) });
-    }
-    async function loadConfig() {
-      const res = await getBlockAttrs(props.blockId);
-      console.log("res", res);
-      Object.assign(config, JSON.parse(res["custom-ai-config"] ?? "{}"));
-    }
-    onMount(() => {
-      loadConfig();
-    });
-    const config = reactive({
+    const data = reactive({
       html: ``,
       searchText: ``,
       run: false
     });
-    const resultDiv = useTemplateRef("resultDiv");
+    async function saveData() {
+      return await setBlockAttrs(props.blockId, { "custom-ai-config": JSON.stringify(data) });
+    }
+    async function loadData() {
+      const res = await getBlockAttrs(props.blockId);
+      Object.assign(data, JSON.parse(res["custom-ai-config"] ?? "{}"));
+    }
+    onMounted(() => {
+      loadData();
+    });
+    const resultDiv$ = useTemplateRef("resultDiv");
     watchEffect(() => {
-      var _a;
-      config.html;
-      (_a = resultDiv.value) == null ? void 0 : _a.querySelectorAll("[contenteditable]").forEach((el) => {
-        el.setAttribute("contenteditable", "false");
-      });
+      data.html;
+      setTimeout(() => {
+        var _a;
+        (_a = resultDiv$.value) == null ? void 0 : _a.querySelectorAll("[contenteditable]").forEach((el) => {
+          el.setAttribute("contenteditable", "false");
+        });
+      }, 100);
     });
     async function run() {
       try {
-        config.run = true;
-        const res = await 执行ai问答(config.searchText);
-        config.html = Md2BlockDOM(res.res);
+        data.run = true;
+        const res = await 执行ai问答(data.searchText);
+        data.html = Md2BlockDOM(res.res);
       } finally {
-        config.run = false;
-        await saveConfig();
+        data.run = false;
+        await saveData();
       }
     }
     const Lute = globalThis.Lute;
@@ -10621,32 +10743,104 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         ref: uiDiv
       }, [
         createBaseVNode("div", _hoisted_1, [
-          _cache[2] || (_cache[2] = createBaseVNode("h2", { class: "title" }, "思源AI助手(测试版)", -1)),
+          _cache[9] || (_cache[9] = createBaseVNode("h2", { class: "title" }, "思源AI助手(测试版)", -1)),
           createBaseVNode("div", {
             class: "editable-wrapper",
             onMousedown: _cache[1] || (_cache[1] = withModifiers(() => {
             }, ["stop"]))
           }, [
             withDirectives(createBaseVNode("textarea", {
-              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => config.searchText = $event),
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => data.searchText = $event),
               placeholder: "请输入您的问题..."
             }, null, 512), [
-              [vModelText, config.searchText]
+              [vModelText, data.searchText]
             ])
           ], 32),
           createBaseVNode("button", {
             onClick: withModifiers(run, ["stop"]),
             class: "submit-button",
-            disabled: config.run
-          }, toDisplayString(config.run ? "执行中..." : "提交问题"), 9, _hoisted_2)
+            disabled: data.run
+          }, toDisplayString(data.run ? "执行中..." : "提交问题"), 9, _hoisted_2),
+          createBaseVNode("div", {
+            onClick: _cache[2] || (_cache[2] = withModifiers(($event) => showConfig.value = !showConfig.value, ["stop"]))
+          }, "⚙️")
         ]),
-        config.html ? (openBlock(), createElementBlock("div", {
-          key: 0,
-          ref_key: "resultDiv",
-          ref: resultDiv,
+        showConfig.value ? (openBlock(), createElementBlock("div", _hoisted_3, [
+          createBaseVNode("div", _hoisted_4, [
+            createBaseVNode("label", null, [
+              withDirectives(createBaseVNode("input", {
+                type: "radio",
+                "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => unref(aiChatConfig).apiProvider = $event),
+                value: "siyuan"
+              }, null, 512), [
+                [vModelRadio, unref(aiChatConfig).apiProvider]
+              ]),
+              _cache[10] || (_cache[10] = createTextVNode(" 使用思源设置中的ai "))
+            ]),
+            createBaseVNode("label", null, [
+              withDirectives(createBaseVNode("input", {
+                type: "radio",
+                "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => unref(aiChatConfig).apiProvider = $event),
+                value: "崮生"
+              }, null, 512), [
+                [vModelRadio, unref(aiChatConfig).apiProvider]
+              ]),
+              _cache[11] || (_cache[11] = createTextVNode(" 使用插件作者提供的ai "))
+            ]),
+            createBaseVNode("label", null, [
+              withDirectives(createBaseVNode("input", {
+                type: "radio",
+                "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => unref(aiChatConfig).apiProvider = $event),
+                value: "openai"
+              }, null, 512), [
+                [vModelRadio, unref(aiChatConfig).apiProvider]
+              ]),
+              _cache[12] || (_cache[12] = createTextVNode(" 使用自定义ai "))
+            ])
+          ]),
+          unref(aiChatConfig).apiProvider === "openai" ? (openBlock(), createElementBlock("div", _hoisted_5, [
+            createBaseVNode("label", null, [
+              _cache[13] || (_cache[13] = createTextVNode(" API Base URL: ")),
+              withDirectives(createBaseVNode("input", {
+                type: "text",
+                "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => unref(aiChatConfig).apiBaseUrl = $event),
+                disabled: unref(aiChatConfig).apiProvider !== "openai"
+              }, null, 8, _hoisted_6), [
+                [vModelText, unref(aiChatConfig).apiBaseUrl]
+              ])
+            ])
+          ])) : createCommentVNode("", true),
+          unref(aiChatConfig).apiProvider === "openai" ? (openBlock(), createElementBlock("div", _hoisted_7, [
+            createBaseVNode("label", null, [
+              _cache[14] || (_cache[14] = createTextVNode(" API Key: ")),
+              withDirectives(createBaseVNode("input", {
+                type: "password",
+                "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => unref(aiChatConfig).apiKey = $event),
+                disabled: unref(aiChatConfig).apiProvider !== "openai"
+              }, null, 8, _hoisted_8), [
+                [vModelText, unref(aiChatConfig).apiKey]
+              ])
+            ])
+          ])) : createCommentVNode("", true),
+          unref(aiChatConfig).apiProvider === "openai" ? (openBlock(), createElementBlock("div", _hoisted_9, [
+            createBaseVNode("label", null, [
+              _cache[15] || (_cache[15] = createTextVNode(" Model: ")),
+              withDirectives(createBaseVNode("input", {
+                type: "text",
+                "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => unref(aiChatConfig).model = $event),
+                disabled: unref(aiChatConfig).apiProvider !== "openai"
+              }, null, 8, _hoisted_10), [
+                [vModelText, unref(aiChatConfig).model]
+              ])
+            ])
+          ])) : createCommentVNode("", true)
+        ])) : createCommentVNode("", true),
+        data.html ? (openBlock(), createElementBlock("div", {
+          key: 1,
+          ref: "resultDiv",
           class: "result",
-          innerHTML: config.html
-        }, null, 8, _hoisted_3)) : createCommentVNode("", true)
+          innerHTML: data.html
+        }, null, 8, _hoisted_11)) : createCommentVNode("", true)
       ], 2);
     };
   }
@@ -10658,7 +10852,93 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const chatAIView = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-b25bcb10"]]);
+const chatAIView = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-4df88e19"]]);
+typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
+const noop = () => {
+};
+function createFilterWrapper(filter, fn) {
+  function wrapper(...args) {
+    return new Promise((resolve, reject) => {
+      Promise.resolve(filter(() => fn.apply(this, args), { fn, thisArg: this, args })).then(resolve).catch(reject);
+    });
+  }
+  return wrapper;
+}
+const bypassFilter = (invoke) => {
+  return invoke();
+};
+function debounceFilter(ms, options = {}) {
+  let timer;
+  let maxTimer;
+  let lastRejector = noop;
+  const _clearTimeout = (timer2) => {
+    clearTimeout(timer2);
+    lastRejector();
+    lastRejector = noop;
+  };
+  let lastInvoker;
+  const filter = (invoke) => {
+    const duration = toValue(ms);
+    const maxDuration = toValue(options.maxWait);
+    if (timer)
+      _clearTimeout(timer);
+    if (duration <= 0 || maxDuration !== void 0 && maxDuration <= 0) {
+      if (maxTimer) {
+        _clearTimeout(maxTimer);
+        maxTimer = null;
+      }
+      return Promise.resolve(invoke());
+    }
+    return new Promise((resolve, reject) => {
+      lastRejector = options.rejectOnCancel ? reject : resolve;
+      lastInvoker = invoke;
+      if (maxDuration && !maxTimer) {
+        maxTimer = setTimeout(() => {
+          if (timer)
+            _clearTimeout(timer);
+          maxTimer = null;
+          resolve(lastInvoker());
+        }, maxDuration);
+      }
+      timer = setTimeout(() => {
+        if (maxTimer)
+          _clearTimeout(maxTimer);
+        maxTimer = null;
+        resolve(invoke());
+      }, duration);
+    });
+  };
+  return filter;
+}
+function watchWithFilter(source, cb, options = {}) {
+  const {
+    eventFilter = bypassFilter,
+    ...watchOptions
+  } = options;
+  return watch(
+    source,
+    createFilterWrapper(
+      eventFilter,
+      cb
+    ),
+    watchOptions
+  );
+}
+function watchDebounced(source, cb, options = {}) {
+  const {
+    debounce = 0,
+    maxWait = void 0,
+    ...watchOptions
+  } = options;
+  return watchWithFilter(
+    source,
+    cb,
+    {
+      ...watchOptions,
+      eventFilter: debounceFilter(debounce, { maxWait })
+    }
+  );
+}
 class VitePlugin extends SiyuanPlugin {
   constructor() {
     super(...arguments);
@@ -10683,10 +10963,29 @@ class VitePlugin extends SiyuanPlugin {
     });
     const id = setInterval(() => {
       document.querySelectorAll(`[custom-ai-chat]`).forEach((el) => {
-        this.addVueUiComponent(el, chatAIView);
+        this.addVueUiComponent(el, chatAIView, { plugin: this });
       });
     }, 500);
-    this.addUnloadFn(() => clearInterval(id));
+    await this.loadConfig();
+    const clear = watchDebounced(
+      aiChatConfig,
+      () => {
+        console.log("Config changed:", aiChatConfig);
+        this.saveConfig();
+      },
+      { deep: true, debounce: 1e3 }
+    );
+    this.addUnloadFn(() => {
+      clearInterval(id);
+      clear();
+    });
+  }
+  async loadConfig() {
+    const saveConfig = await this.loadData("aiChatConfig");
+    Object.assign(aiChatConfig, saveConfig);
+  }
+  async saveConfig() {
+    await this.saveData("aiChatConfig", aiChatConfig);
   }
 }
 module.exports = VitePlugin;
