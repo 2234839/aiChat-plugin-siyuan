@@ -1,5 +1,6 @@
 <template>
-  <div class="chat-panel">
+  <div class="chat-panel" contenteditable="false"
+    @mousedown.stop @mouseup.stop @click.stop @dblclick.stop @keydown.stop>
     <div class="chat-messages" ref="messagesContainer">
       <!-- 空状态 slogan -->
       <div v-if="messages.length === 0 && !chatLoading" class="empty-state">
@@ -17,9 +18,6 @@
           <div v-if="msg.toolCalls?.length" class="tool-calls">
             <div v-for="(tc, j) in msg.toolCalls" :key="j" class="tool-call-item">
               <div class="tool-call-header" @click="tc._expanded = !tc._expanded">
-                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
-                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-                </svg>
                 <span class="tool-name">{{ tc.name }}</span>
                 <span class="tool-args-preview">{{ formatArgs(tc.args) }}</span>
                 <svg class="expand-icon" :class="{ expanded: tc._expanded }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
@@ -38,8 +36,16 @@
               </div>
             </div>
           </div>
-          <!-- 助手文本 -->
-          <div v-if="msg.html" class="msg-content assistant-bubble" v-html="msg.html"></div>
+          <!--
+            助手文本渲染容器
+            - protyle-wysiwyg: 让思源 protyle CSS 生效，块 DOM 正确渲染（标题、列表、代码块等）
+            - contenteditable="false": 阻止编辑，否则用户误操作会导致思源崩溃
+            - @mousedown/.stop 等: 阻止事件冒泡到思源 protyle 的选区管理器，否则跨行选中会被拦截
+          -->
+          <div v-if="msg.html" class="msg-content assistant-bubble protyle-wysiwyg"
+            contenteditable="false"
+            @mousedown.stop @mouseup.stop @selectionchange.stop
+            v-html="msg.html"></div>
         </div>
       </template>
       <!-- 正在思考（无工具调用且无文本时） -->
@@ -53,16 +59,18 @@
         <div class="tool-calls">
           <div v-for="(tc, j) in currentToolCalls" :key="'live-'+j" class="tool-call-item live">
             <div class="tool-call-header">
-              <div class="tool-spinner"></div>
-              <span class="tool-name">{{ tc.name }}</span>
+              <span class="tool-name live-name">{{ tc.name }}</span>
               <span class="tool-args-preview">{{ formatArgs(tc.args) }}</span>
             </div>
           </div>
         </div>
       </div>
-      <!-- 流式文本（尚未绑定到消息） -->
+      <!-- 流式文本（尚未绑定到消息），渲染策略同已完成消息 -->
       <div v-if="streamingHtml && chatLoading" class="msg msg-assistant">
-        <div class="msg-content assistant-bubble" v-html="streamingHtml"></div>
+        <div class="msg-content assistant-bubble protyle-wysiwyg"
+          contenteditable="false"
+          @mousedown.stop @mouseup.stop @selectionchange.stop
+          v-html="streamingHtml"></div>
       </div>
       <!-- 错误 -->
       <div v-if="chatError" class="chat-error">{{ chatError }}</div>
@@ -100,7 +108,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, useTemplateRef, onUpdated } from "vue"
+import { ref, nextTick, useTemplateRef, onMounted, onBeforeUnmount } from "vue"
 import { consumeEach } from "@llej/micro-agent"
 import type { ChatEvent } from "@llej/micro-agent"
 import { getSiyuanAgent, destroySiyuanAgent, stopCurrentChat } from "../agent"
@@ -125,6 +133,11 @@ const emit = defineEmits<{
   update: [messages: ChatMessage[]]
 }>()
 
+const props = defineProps<{
+  /** 嵌入聊天块场景传入，用于定位所在文档 */
+  blockId?: string
+}>()
+
 const messagesContainer = useTemplateRef<HTMLElement>("messagesContainer")
 
 const messages = ref<ChatMessage[]>([])
@@ -138,19 +151,42 @@ const streamingHtml = ref("")
 
 const Lute = (globalThis as any).Lute
 const lute = Lute.New()
-function Md2BlockDOM(md: string) {
+
+/** 将 Markdown 转为思源块 DOM（获得思源渲染加持：链接点击、块引用等） */
+function md2Html(md: string) {
   return lute.Md2BlockDOM(md) as string
 }
 
-/** 清除 Lute 渲染 HTML 中的 contenteditable 属性，确保文本可正常选中 */
-function cleanContentEditable() {
+/**
+ * Lute.Md2BlockDOM 输出的每个块都带 contenteditable="true"，
+ * 需要持续将其改为 "false" 以防止用户误编辑（编辑会导致思源崩溃）。
+ * 用 MutationObserver 而非 onUpdated，因为 protyle 可能随时重新注入该属性。
+ * cleaning 标志位防止 Observer 回调中的 setAttribute 再次触发自身导致无限循环。
+ */
+let contentEditableObserver: MutationObserver | undefined
+function startCleanContentEditable() {
   if (!messagesContainer.value) return
-  for (const el of messagesContainer.value.querySelectorAll('[contenteditable]')) {
-    el.removeAttribute('contenteditable')
+  let cleaning = false
+  const clean = () => {
+    if (cleaning) return
+    cleaning = true
+    if (!messagesContainer.value) return
+    for (const el of messagesContainer.value.querySelectorAll('[contenteditable]')) {
+      if (el.getAttribute('contenteditable') !== 'false') {
+        el.setAttribute('contenteditable', 'false')
+      }
+    }
+    cleaning = false
   }
+  clean()
+  contentEditableObserver = new MutationObserver(clean)
+  contentEditableObserver.observe(messagesContainer.value, {
+    childList: true, subtree: true, attributes: true, attributeFilter: ['contenteditable'],
+  })
 }
 
-onUpdated(cleanContentEditable)
+onMounted(startCleanContentEditable)
+onBeforeUnmount(() => contentEditableObserver?.disconnect())
 
 function scrollToBottom() {
   nextTick(() => {
@@ -183,6 +219,18 @@ function clearMessages() {
   emit('update', [])
 }
 
+/** 构建助手消息（完成和中断复用） */
+function buildAssistantMsg(fullText: string, toolCalls: ToolCallRecord[]): ChatMessage {
+  return {
+    role: "assistant",
+    content: fullText,
+    html: md2Html(fullText),
+    toolCalls: toolCalls.length > 0
+      ? toolCalls.map(tc => ({ ...tc, _expanded: false }))
+      : undefined,
+  }
+}
+
 /** 中止当前生成 */
 function abortChat() {
   stopCurrentChat()
@@ -206,14 +254,14 @@ async function sendChat() {
   const roundToolCalls: ToolCallRecord[] = []
   let fullText = ""
 
-  const agent = getSiyuanAgent()
+  const agent = getSiyuanAgent(props.blockId)
 
   try {
     await consumeEach(agent.chat(input), (event: ChatEvent) => {
       switch (event.type) {
         case 'text':
           fullText += event.content
-          streamingHtml.value = Md2BlockDOM(fullText)
+          streamingHtml.value = md2Html(fullText)
           currentToolCalls.value = []
           scrollToBottom()
           break
@@ -246,29 +294,13 @@ async function sendChat() {
     })
 
     /** 添加助手消息 */
-    const assistantMsg: ChatMessage = {
-      role: "assistant",
-      content: fullText,
-      html: Md2BlockDOM(fullText),
-      toolCalls: roundToolCalls.length > 0
-        ? roundToolCalls.map(tc => ({ ...tc, _expanded: false }))
-        : undefined,
-    }
-    messages.value.push(assistantMsg)
+    messages.value.push(buildAssistantMsg(fullText, roundToolCalls))
     emit('update', messages.value)
   } catch (e: any) {
     /** 被用户中断时，保留已生成的内容 */
     const isCancelled = e?.code === 'CANCELLED' || e?.message?.includes('取消')
     if (isCancelled && fullText) {
-      const assistantMsg: ChatMessage = {
-        role: "assistant",
-        content: fullText,
-        html: Md2BlockDOM(fullText),
-        toolCalls: roundToolCalls.length > 0
-          ? roundToolCalls.map(tc => ({ ...tc, _expanded: false }))
-          : undefined,
-      }
-      messages.value.push(assistantMsg)
+      messages.value.push(buildAssistantMsg(fullText, roundToolCalls))
       emit('update', messages.value)
     } else {
       chatError.value = e.message ?? String(e)
@@ -290,6 +322,20 @@ defineExpose({ messages, loadMessages, clearMessages })
   flex-direction: column;
   height: 100%;
   min-height: 0;
+  cursor: default !important;
+}
+
+/** 强制覆盖思源 protyle 的 cursor: text */
+.chat-panel :deep(*) {
+  cursor: default !important;
+}
+
+.chat-panel .chat-input {
+  cursor: text !important;
+}
+
+.chat-panel button {
+  cursor: pointer !important;
 }
 
 .chat-messages {
@@ -376,47 +422,76 @@ html[data-theme-mode="dark"] .msg-content {
   80%, 100% { opacity: 0.2; }
 }
 
-/* 工具调用 — 简洁内联 */
+/* 工具调用 */
 .tool-calls {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  margin-bottom: 6px;
+  gap: 4px;
+  margin-bottom: 8px;
   font-size: 12px;
-  color: var(--b3-theme-on-background-light, #999);
 }
 
 .tool-call-item {
-  border-left: 2px solid var(--b3-theme-background-light, #ddd);
-  padding: 2px 0 2px 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--b3-theme-background-light, rgba(0,0,0,0.03));
+  transition: background 0.15s;
 }
 
 html[data-theme-mode="dark"] .tool-call-item {
-  border-left-color: var(--b3-theme-background-light, #444);
+  background: var(--b3-theme-background-light, rgba(255,255,255,0.04));
+}
+
+.tool-call-item:not(.live) .tool-call-header {
+  cursor: pointer;
+}
+
+.tool-call-item:not(.live):hover {
+  background: var(--b3-theme-background-light, rgba(0,0,0,0.06));
+}
+
+html[data-theme-mode="dark"] .tool-call-item:not(.live):hover {
+  background: var(--b3-theme-background-light, rgba(255,255,255,0.07));
 }
 
 .tool-call-item.live {
-  border-left-style: dashed;
+  background: transparent;
 }
 
 .tool-call-header {
   display: flex;
   align-items: center;
   gap: 6px;
-  cursor: pointer;
-}
-
-.tool-call-item:not(.live) .tool-call-header:hover {
-  color: var(--b3-theme-on-background, #333);
 }
 
 .tool-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-weight: 500;
-  color: var(--b3-theme-on-background-light, #666);
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: var(--b3-theme-primary, #3573f0);
+  color: #fff;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.5;
 }
 
-html[data-theme-mode="dark"] .tool-name {
-  color: var(--b3-theme-on-background-light, #aaa);
+.live-name {
+  background: var(--b3-theme-primary, #3573f0);
+  position: relative;
+}
+
+.live-name::after {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  animation: pulse 1.2s ease-in-out infinite;
 }
 
 .tool-args-preview {
@@ -424,11 +499,13 @@ html[data-theme-mode="dark"] .tool-name {
   text-overflow: ellipsis;
   white-space: nowrap;
   flex: 1;
+  color: var(--b3-theme-on-background-light, #999);
 }
 
 .expand-icon {
   flex-shrink: 0;
   transition: transform 0.2s;
+  color: var(--b3-theme-on-background-light, #bbb);
 }
 
 .expand-icon.expanded {
@@ -436,7 +513,7 @@ html[data-theme-mode="dark"] .tool-name {
 }
 
 .tool-call-detail {
-  padding: 4px 0 0 0;
+  padding: 6px 0 0 0;
   color: var(--b3-theme-on-background, #555);
 }
 
@@ -464,14 +541,9 @@ html[data-theme-mode="dark"] .tool-call-detail {
   word-break: break-all;
 }
 
-.tool-spinner {
-  width: 10px;
-  height: 10px;
-  border: 1px solid var(--b3-border-color, #ddd);
-  border-top-color: var(--b3-theme-on-background-light, #999);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  flex-shrink: 0;
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
 @keyframes spin {
@@ -573,15 +645,6 @@ html[data-theme-mode="dark"] .chat-input {
 
 .send-btn:hover .stop-icon {
   color: #dc2626;
-}
-
-.send-spinner {
-  width: 14px;
-  height: 14px;
-  border: 1.5px solid var(--b3-border-color, #ddd);
-  border-top-color: var(--b3-theme-on-background-light, #999);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
 }
 
 .chat-error {
